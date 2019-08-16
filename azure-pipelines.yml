@@ -24,11 +24,13 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/docs/presentations/output'
     artifactName: 'drop'
 
-- task: AzureFileCopy@2
-  displayName: 'AzureBlob File Copy'
+# Copy files to Azure Blob Storage or virtual machines
+- task: AzureFileCopy@3
   inputs:
-    SourcePath: docs/presentations/output
+    sourcePath: '$(System.DefaultWorkingDirectory)/docs/presentations/output'
     azureSubscription: AzureServiceConnection
-    Destination: AzureBlob
-    storage: mhewstorage
-    ContainerName: '$web'
+    destination: AzureBlob
+    storage: mhewstoragev2
+    containerName: '$web'
+    copyFilesInParallel: true
+    cleanTargetBeforeCopy: true
