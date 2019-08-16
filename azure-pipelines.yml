@@ -1,0 +1,34 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  displayName: 'Use Python 3.6'
+  inputs:
+    versionSpec: 3.6
+
+- bash: |
+   pip install hovercraft
+  displayName: 'Bash - Setup'
+
+- bash: |
+   cd docs/presentations/
+   hovercraft introduction.rst output
+  displayName: 'Bash - run hovercraft'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/docs/presentations/output'
+    artifactName: 'drop'
+
+- task: AzureFileCopy@2
+  displayName: 'AzureBlob File Copy'
+  inputs:
+    SourcePath: docs/presentations/output
+    azureSubscription: AzureServiceConnection
+    Destination: AzureBlob
+    storage: mhewstorage
+    ContainerName: '$web'
