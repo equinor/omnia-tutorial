@@ -1,3 +1,6 @@
+.. image:: https://dev.azure.com/mhew/omnia-tutorial/_apis/build/status/omnia-tutorial?branchName=master
+   :target: https://dev.azure.com/mhew/omnia-tutorial/_build/latest?definitionId=10&branchName=master
+
 omnia-tutorial
 ==============
 
