@@ -16,10 +16,10 @@ steps:
 
 - bash: |
    cd docs/presentations/
-   hovercraft introduction.rst output/compute
-   hovercraft introduction.rst output/consume
-   hovercraft introduction.rst output/expose
-   hovercraft introduction.rst output/ingest
+   hovercraft compute.rst output/compute
+   hovercraft consume.rst output/consume
+   hovercraft expose.rst output/expose
+   hovercraft ingest.rst output/ingest
    hovercraft introduction.rst output/introduction
   displayName: 'Bash - run hovercraft'
 
