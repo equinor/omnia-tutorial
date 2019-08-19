@@ -16,7 +16,11 @@ steps:
 
 - bash: |
    cd docs/presentations/
-   hovercraft introduction.rst output
+   hovercraft introduction.rst output/compute
+   hovercraft introduction.rst output/consume
+   hovercraft introduction.rst output/expose
+   hovercraft introduction.rst output/ingest
+   hovercraft introduction.rst output/introduction
   displayName: 'Bash - run hovercraft'
 
 - task: PublishBuildArtifacts@1

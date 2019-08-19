@@ -22,9 +22,9 @@ an automatically generated version.
 
 You can render this presentation to HTML with the command::
 
-    hovercraft introduction.rst output
+    hovercraft introduction.rst output/compute
 
-And then view the output/index.html file to see how it turned out.
+And then view the output/compute/index.html file to see how it turned out.
 
 You separate slides with a line that consists of four or more dashes. The
 first slide will start at the first such line, or at the first heading. Since
