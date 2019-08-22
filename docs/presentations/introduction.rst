@@ -34,7 +34,7 @@ output.
 
 ----
 
-Goal and Purpose (expectations)
+Goal and Purpose2 (expectations)
 ==========================================
 
 asdf
