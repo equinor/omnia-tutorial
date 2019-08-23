@@ -1,0 +1,14 @@
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.deps.json
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.runtimeconfig.json
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.runtimeconfig.dev.json
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.dll
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.csprojAssemblyReference.cache
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.csproj.CoreCompileInputs.cache
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorAssemblyInfo.cache
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorAssemblyInfo.cs
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.AssemblyInfoInputs.cache
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.AssemblyInfo.cs
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorTargetAssemblyInfo.cache
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.pdb
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.dll
+C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.pdb
