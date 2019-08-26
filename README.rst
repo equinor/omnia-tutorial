@@ -18,6 +18,7 @@ Contents
 #. Compute (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst </docs/presentations/compute.rst>`__) | `Exercises </docs/exercises/compute.rst>`__)
 #. Expose (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst </docs/presentations/expose.rst>`__) | `Exercises </docs/exercises/expose.rst>`__)
 #. Consume (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst </docs/presentations/consume.rst>`__) | `Exercises </docs/exercises/consume.rst>`__)
+#. End Notes (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/endnotes/index.html>`__ (`rst </docs/presentations/endnotes.rst>`__)
 
 Note that for the exercises, we provide reference implementations for each step that you can use if you have trouble completing prior parts.
 
