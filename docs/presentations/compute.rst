@@ -34,23 +34,30 @@ output.
 
 TODO - one slide on the below:
 
+
 ----
 
-Ingest Methods
+Considerations
 ==============
+
+* Polling v's Event Driven
+* Elasticity
+* Cost
+
+.. note::
+
+   Explain what compute is!
+
+----
+
+Compute Alternatives
+====================
 
 List the different alternatives
 
 ----
 
-Data Factory
-============
-
-Info
-
-----
-
-Data Set
-========
+Data Bricks
+===========
 
 See draft links in ingest excercises document
