@@ -22,7 +22,7 @@ you can view an automatically generated version.
 
 You can render this presentation to HTML with the command::
 
-    hovercraft introduction.rst output/consume
+    hovercraft consume.rst output/consume
 
 And then view the output/consume/index.html file to see how it turned out.
 
@@ -32,25 +32,24 @@ none of the text so far has been a heading, it means that the first slide has
 not yet started. As a result, all this text will be ignored in the generated 
 output.
 
-TODO - one slide on the below:
-
 ----
 
-Ingest Methods
+Considerations
 ==============
 
-List the different alternatives
-
+asdf
 ----
 
-Data Factory
+Alternatives
 ============
 
-Info
+* Power BI
+* Web / Desktop / Mobile App
+* ...
 
 ----
 
-Data Set
+Power BI
 ========
 
-See draft links in ingest excercises document
+
