@@ -22,7 +22,7 @@ you can view an automatically generated version.
 
 You can render this presentation to HTML with the command::
 
-    hovercraft introduction.rst output/expose
+    hovercraft expose.rst output/expose
 
 And then view the output/expose/index.html file to see how it turned out.
 
@@ -32,25 +32,56 @@ none of the text so far has been a heading, it means that the first slide has
 not yet started. As a result, all this text will be ignored in the generated 
 output.
 
-TODO - one slide on the below:
-
 ----
 
-Ingest Methods
+Considerations
 ==============
 
-List the different alternatives
+asdf
 
 ----
 
-Data Factory
+API's
+=====
+
+* Why
+* Development Approach
+* Naming
+* APIM
+
+----
+
+Data Catalogue
+==============
+
+asdf
+
+----
+
+App Service
+===========
+
+asdf
+
+----
+
+Alternatives
 ============
 
-Info
+List the different alternatives with pro's / cons
+* Radix
+* Azure Functions
+* App Service
+* AKS / ACI
+* (Storage - Static hosting)
 
+.. note::
+
+    Commennt / contrast from general webapp hosting perspective too.
+    
 ----
 
-Data Set
-========
+App Service
+===========
 
-See draft links in ingest excercises document
+asdf
