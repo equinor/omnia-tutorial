@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Services.AppAuthentication;
+﻿using EDC_API.Models;
+using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace EDC_API.Data
             var conn = (SqlConnection)Database.GetDbConnection();
             conn.AccessToken = new AzureServiceTokenProvider().GetAccessTokenAsync("https://database.windows.net/").Result;
         }
+
+        public DbSet<ProductionData> ProductionData { get; set; }
     }
 }

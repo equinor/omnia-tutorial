@@ -12,3 +12,17 @@ C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.R
 C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.pdb
 C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.dll
 C:\Code\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.pdb
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.deps.json
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.runtimeconfig.json
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.runtimeconfig.dev.json
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.dll
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\bin\Debug\netcoreapp2.2\EDC-API.pdb
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.csprojAssemblyReference.cache
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.csproj.CoreCompileInputs.cache
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorAssemblyInfo.cache
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorAssemblyInfo.cs
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.AssemblyInfoInputs.cache
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.AssemblyInfo.cs
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.RazorTargetAssemblyInfo.cache
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.dll
+C:\Users\jckr\source\repos\omnia-tutorial\src\Api\EDC-API\EDC-API\obj\Debug\netcoreapp2.2\EDC-API.pdb
