@@ -10,10 +10,21 @@ building the below scenario:
 
 TODO: Architecture diagram goes here
 
-Prerequisites
--------------
+Contents
+--------
 
-There are **no** prerequisites to run this tutorial other than a modern browser. That said, we present alternatives that more closely match how you might otherwise develop for Omnia. In that regard it can be useful to have a developer profile PC with the following free tools installed: 
+#. Introduction (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/introduction/index.html>`__ (`rst </docs/presentations/introduction.rst>`__) | `Exercises </docs/exercises/introduction.rst>`__)
+#. Ingestion (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst </docs/presentations/ingest.rst>`__) | `Exercises </docs/exercises/ingestion.rst>`__)
+#. Compute (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst </docs/presentations/compute.rst>`__) | `Exercises </docs/exercises/compute.rst>`__)
+#. Expose (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst </docs/presentations/expose.rst>`__) | `Exercises </docs/exercises/expose.rst>`__)
+#. Consume (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst </docs/presentations/consume.rst>`__) | `Exercises </docs/exercises/consume.rst>`__)
+
+Note that for the exercises, we provide reference implementations for each step that you can use if you have trouble completing prior parts.
+
+Exercise Prerequisites
+----------------------
+
+There are **no prerequisites** to run the exercises other than a modern browser. That said, we present alternatives that more closely match how you might otherwise develop for Omnia. In that regard it can be useful to have a developer profile PC with the following free tools installed: 
 
 * `Azure SDK <https://azure.microsoft.com/en-us/downloads/>`__ for the language of your choice.
 * `Azure Command Line Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__ and / or `Powershell Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__
@@ -26,16 +37,6 @@ You may also want to consider having the following:
 
 * An `Azure DevOps <https://dev.azure.com>`__ organisation.
 
-Contents
---------
-
-#. Introduction (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/introduction/index.html>`__ (`rst </docs/presentations/introduction.rst>`__) | `Exercises </docs/exercises/introduction.rst>`__)
-#. Ingestion (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst </docs/presentations/ingest.rst>`__) | `Exercises </docs/exercises/ingestion.rst>`__)
-#. Compute (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst </docs/presentations/compute.rst>`__) | `Exercises </docs/exercises/compute.rst>`__)
-#. Expose (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst </docs/presentations/expose.rst>`__) | `Exercises </docs/exercises/expose.rst>`__)
-#. Consume (`Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst </docs/presentations/consume.rst>`__) | `Exercises </docs/exercises/consume.rst>`__)
-
-For the tutorials, we provide reference implementations for each step that you can use in subsequent parts if you have trouble completing prior steps.
 
 Getting Help
 ------------
