@@ -58,17 +58,11 @@ asdf
 
 ----
 
-App Service
-===========
-
-asdf
-
-----
-
 Alternatives
 ============
 
 List the different alternatives with pro's / cons
+
 * Radix
 * Azure Functions
 * App Service
