@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EDC_API.Data;
@@ -10,29 +7,37 @@ using EDC_API.Models;
 
 namespace EDC_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("production-data")]
     [ApiController]
-    public class ProductionDatasController : ControllerBase
+    public class ProductionDataController : ControllerBase
     {
         private readonly CommonDbContext _context;
 
-        public ProductionDatasController(CommonDbContext context)
+        public ProductionDataController(CommonDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/ProductionDatas
+        // GET: production-data
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductionData>>> GetProductionData()
+        public ActionResult<IEnumerable<ProductionData>> GetList(string searchString)
         {
-            return await _context.ProductionData.ToListAsync();
+            var productionDataQueryable = _context.ProductionData.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                productionDataQueryable = productionDataQueryable
+                    .Where(pa => pa.Wellbore.Contains(searchString) || pa.Year.ToString().Contains(searchString));
+            };
+
+            return productionDataQueryable.ToList();
         }
 
-        // GET: api/ProductionDatas/5
+        // GET: production-data/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductionData>> GetProductionData(int id)
+        public ActionResult<ProductionData> Get(int id)
         {
-            var productionData = await _context.ProductionData.FindAsync(id);
+            var productionData =  _context.ProductionData.Find(id);
 
             if (productionData == null)
             {
@@ -42,20 +47,20 @@ namespace EDC_API.Controllers
             return productionData;
         }
 
-        // PUT: api/ProductionDatas/5
+        // PUT: production-data/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductionData(int id, ProductionData productionData)
+        public IActionResult Put(int id, ProductionData productionData)
         {
             if (id != productionData.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(productionData).State = EntityState.Modified;
+            _context.Update(productionData);
 
             try
             {
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,22 +77,15 @@ namespace EDC_API.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductionDatas
+        // POST: production-data
         [HttpPost]
-        public async Task<ActionResult<ProductionData>> PostProductionData(ProductionDataRequest request)
+        public ActionResult<ProductionData> Post(ProductionDataRequest request)
         {
-            _context.ProductionData.Add(new ProductionData
-            {
-                Gas = request.Gas,
-                Oil = request.Oil,
-                Month = request.Month,
-                Wellbore = request.Wellbore,
-                Year = request.Year
-            });
+            _context.ProductionData.Add(request);
 
             try
             {
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -96,23 +94,49 @@ namespace EDC_API.Controllers
 
             var productionData = _context.ProductionData.Last();
 
-            return CreatedAtAction("GetProductionData", new { id = productionData.Id }, productionData);
+            return CreatedAtAction("GetProductionData", productionData);
         }
 
-        // DELETE: api/ProductionDatas/5
+        // DELETE: production-data/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ProductionData>> DeleteProductionData(int id)
+        public ActionResult<ProductionData> Delete(int id)
         {
-            var productionData = await _context.ProductionData.FindAsync(id);
+            var productionData = _context.ProductionData.Find(id);
             if (productionData == null)
             {
                 return NotFound();
             }
 
             _context.ProductionData.Remove(productionData);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return productionData;
+        }
+
+        // GET: production-data/between-dates
+        [HttpGet("between-dates")]
+        public ActionResult<IEnumerable<ProductionData>> GetListBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        {
+            var productionDataQueryable = _context.ProductionData.AsQueryable();
+
+            if (fromYear != null)
+            {
+                productionDataQueryable = productionDataQueryable.Where(pa => pa.Year >= fromYear);
+            }
+            if (toYear != null)
+            {
+                productionDataQueryable = productionDataQueryable.Where(pa => pa.Year <= toYear);
+            }
+            if (fromMonth != null)
+            {
+                productionDataQueryable = productionDataQueryable.Where(pa => pa.Month >= fromMonth);
+            }
+            if (toMonth != null)
+            {
+                productionDataQueryable = productionDataQueryable.Where(pa => pa.Month <= toMonth);
+            }
+
+            return productionDataQueryable.ToList();
         }
 
         private bool ProductionDataExists(int id)
