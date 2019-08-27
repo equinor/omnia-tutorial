@@ -39,8 +39,37 @@ Implement the controller method `DeleteProductionData(int id)`
 - *NB: Can't delete an entry that doesn't exist.*
 ## 3. AggregatesController
 
+All these methods calculate properties for all the wellbores.
 
-## X. Open API Specification (Swagger)
+### 3.1 Calculate sum of Oil & Gas between 2 dates
+Implemented the controller methods:
+- `GetOilBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+    - Takes in 2 dates, as a year-month pair, and calculates the total amount of Oil production in the interval sorted by wellbores.
+    - Should return a list of wellbores and their total amount of Oil
+- `GetGasBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+    - Takes in 2 dates, as a year-month pair, and calculates the total amount of Gas production in the interval.
+    - Should return a list of wellbores and their total amount of Gas
+
+> Be sure to preprocess the input properly
+### 3.2 Calculate average Oil and Gas between 2 dates
+Implemented the controller methods:
+- `GetOilAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+    - Takes in 2 dates, as a year-month pair, and calculates the average amount of Oil production in the interval sorted by wellbores.
+    - Should return a list of wellbores and their average amount of Oil
+- `GetGasAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+    - Takes in 2 dates, as a year-month pair, and calculates the average amount of Gas production in the interval.
+    - Should return a list of wellbores and their average amount of Gas
+
+> Be sure to preprocess the input properly
+
+
+### 3.3 Find the number of wellbore records between 2 dates
+
+Implement the method `GetWellboreRecordsBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`:
+- Should return a list of wellbores and the amount of records each wellbore has for the given period.
+
+> Be sure to preprocess the input properly
+## 4 Open API Specification
 
 As mentioned earlier, we have enabled [swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) for the project. Swashbuckle is a open-source framework that auto generates a Open API Specification file based on the source code.
 
@@ -51,7 +80,7 @@ A API specification file has some interesting use-cases;
 - It can supplement API documentation, making the API easier to understand.
 - It can be used to publish an API in Azure API Management (APIM).
 
-## X 1. Azure API Management
+## 5 Azure API Management
 
 In order to get an API exposed on the api.equinor.com domain, the API has to be published in Equinors Azure API Management instance. There are many reasons why you maybe want to do this;
 - Sharing APIs with both internal and external partners in a good manner
