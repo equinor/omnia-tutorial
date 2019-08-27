@@ -69,7 +69,33 @@ Implement the method `GetWellboreRecordsBetweenDates(int? fromYear, int? toYear,
 - Should return a list of wellbores and the amount of records each wellbore has for the given period.
 
 > Be sure to preprocess the input properly
-## 4 Open API Specification
+
+## 4 Moving to Azure
+
+In a traditional setup deployments to Azure should be done using some DevOps tools, like Azure DevOps. However, for the sake of brevity we will publish the code directly.
+
+### [Visual Studio](https://docs.microsoft.com/en-us/dotnet/azure/dotnet-quickstart-vs?view=azure-dotnet#deploying-the-application-as-an-azure-web-app)
+- Right click the api project in the solution explorer
+- Select `Publish..`
+- Select `App Service` and then check of `Select Existing` and hit `Publish`
+- Give the app a logical name
+- Select the subscription `Omnia Application Workspace - Sandbox` and `edc2019_<shortname>`
+- Select the app service `edc2019-<shortname>app` and hit `Ok`
+
+After a while a new window will open with the API
+
+### [Visual Studio Code](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#generate-the-deployment-package-locally)
+- Install the `Azure App Service` extension
+- Open Visual Studio Code terminal
+- Use the following command to generate a Release package to a sub folder called publish:
+    - `dotnet publish -c Release -o ./publish`
+- A new publish folder will be created under the project structure
+- Right click the `publish` folder and select `Deploy to Web App...`, this might prompt for login
+- Select the subscription the existing Web App resides
+- Select the Web App from the list
+- Visual Studio Code will ask you if you want to overwrite the existing content. Click `Deploy` to confirm
+
+## 5 Open API Specification
 
 As mentioned earlier, we have enabled [swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) for the project. Swashbuckle is a open-source framework that auto generates a Open API Specification file based on the source code.
 
@@ -80,7 +106,7 @@ A API specification file has some interesting use-cases;
 - It can supplement API documentation, making the API easier to understand.
 - It can be used to publish an API in Azure API Management (APIM).
 
-## 5 Azure API Management
+## 6 Azure API Management
 
 In order to get an API exposed on the api.equinor.com domain, the API has to be published in Equinors Azure API Management instance. There are many reasons why you maybe want to do this;
 - Sharing APIs with both internal and external partners in a good manner
