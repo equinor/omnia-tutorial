@@ -25,7 +25,7 @@
       }
     },
     "variables": {
-      "webAppPortalName": "[concat('edc2019-', parameters('shortName'), 'app')]",
+      "webAppPortalName": "[concat('edc2019-', parameters('shortName'), '-app')]",
       "appServicePlanName": "[concat('edc2019-', parameters('shortName'), '-asp')]"
     },
     "resources": [
