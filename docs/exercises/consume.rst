@@ -31,21 +31,21 @@ We will do this visually by clicking around in the user interface, but of course
 .. image:: ./images/new_workbook.jpg 
 
 * Add the REST API as a data source
-.. image:: ./images/add_data_source.jpg
+.. image:: ./consume/images/add_data_source.jpg
 
-.. image:: ./images/data_source_url.jpg
+.. image:: ./consume/images/add_data_source_url.jpg
 
-.. image:: ./images/convert_data_to_table.jpg
+.. image:: ./consume/images/convert_data_to_table.jpg
 
-.. image:: ./images/convert_data_to_table_ok.jpg
+.. image:: ./consume/images/convert_data_to_table_ok.jpg
 
-.. image:: ./images/convert_data_to_table_expand.jpg
+.. image:: ./consume/images/convert_data_to_table_expand.jpg
 
-.. image:: ./images/convert_data_to_table_expand_ok.jpg
+.. image:: ./consume/images/convert_data_to_table_expand_ok.jpg
 
-.. image:: ./images/convert_data_to_table_expand_and_load.jpg
+.. image:: ./consume/images/convert_data_to_table_expand_close_and_load.jpg
 
-.. image:: ./images/result_save.jpg
+.. image:: ./consume/images/save_result.jpg
 
 
 
