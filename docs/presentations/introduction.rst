@@ -39,8 +39,15 @@ Goal and Purpose (expectations)
 
 * Goal
 * Purpose
+* Outcome
 * What not covering
+* Signup (username)
 
+.. note::
+
+    The door is available for anyone that wants.
+    How to handle signup / provisioning.
+    
 ----
 
 What is Omnia (and why?)

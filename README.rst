@@ -14,7 +14,7 @@ Contents
 --------
 
 #. Introduction - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/introduction/index.html>`__ (`rst </docs/presentations/introduction.rst>`__) | `Exercises </docs/exercises/introduction.rst>`__
-#. Ingestion - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst </docs/presentations/ingest.rst>`__) | `Exercises </docs/exercises/ingestion.rst>`__
+#. Ingestion - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst </docs/presentations/ingest.rst>`__) | `Exercises </docs/exercises/ingest.rst>`__
 #. Compute - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst </docs/presentations/compute.rst>`__) | `Exercises </docs/exercises/compute.rst>`__
 #. Expose - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst </docs/presentations/expose.rst>`__) | `Exercises </docs/exercises/expose.rst>`__
 #. Consume - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst </docs/presentations/consume.rst>`__) | `Exercises </docs/exercises/consume.rst>`__
