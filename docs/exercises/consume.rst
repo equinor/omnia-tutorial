@@ -28,9 +28,9 @@ We will do this visually by clicking around in the user interface, but of course
 * Open MS Excel 
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.png 
+
 .. sidebar:: Create a new file
-	
-	Create a new empty workbook, like indicated on the picture.
+   Create a new empty workbook, like indicated on the picture.
 
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.jpg 
