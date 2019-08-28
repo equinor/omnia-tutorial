@@ -10,6 +10,7 @@ $commonSubscriptionName = "Omnia Application Workspace - Sandbox"
 $commonDlsDataReaderRole = "Storage Blob Data Reader"
 $commonDlsResourceType = "Microsoft.Storage/storageAccounts"
 $commonDlsReaderRole = "Reader"
+$commonKvName = "EDC2019KV"
 
 $location = "northeurope"
 
@@ -69,3 +70,39 @@ Write-Host "Adding DF MSI to OMNIA - EDC2019 ..." -NoNewline
 Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId
 Write-Host "Done" -ForegroundColor Green
 
+# Adding the current user to the shared Databricks-instance
+Write-Host "Getting Databricks access-token from $commonKvName"
+$tokenValue = (Get-AzKeyVaultSecret -VaultName $kvName -Name $secretName -ErrorAction Stop).SecretValueText
+
+$databricksApiUri = "https://northeurope.azuredatabricks.net/api/"
+$endPoint = "2.0/preview/scim/v2/Users"
+$bearerToken = "Bearer " + $tokenValue
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", $bearerToken)
+
+$groups = @()
+
+$entitlements = @()
+
+$body = @{
+    "schemas" = @("urn:ietf:params:scim:schemas:core:2.0:User")
+    "groups" = $groups
+    "entitlements" = $entitlements
+    "userName" = "$shortName@equinor.com"
+} | ConvertTo-Json
+
+# create user
+try {
+    Write-Host "Add user to EDC2019SharedDatabricks"
+    $createUserResponse = Invoke-WebRequest -Method Post -Uri ($databricksApiUri + $endPoint) -Headers $headers -Body $body -ContentType 'application/json'
+    Write-Host $createUserResponse.StatusCode " " $createUserResponse.StatusDescription
+    } 
+    catch {
+    $myError = $_.ErrorDetails.Message
+    if ($myError.Contains('"status":"409"')){
+        Write-Host "User already exist"
+        }
+    else{
+        Write-Host "Some other problem: " $myError
+    }
+}
