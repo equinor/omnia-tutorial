@@ -33,7 +33,19 @@ We will do this visually by clicking around in the user interface, but of course
 * Add the REST API as a data source
 .. image:: ./images/add_data_source.jpg
 
+.. image:: ./images/data_source_url.jpg
 
+.. image:: ./images/convert_data_to_table.jpg
+
+.. image:: ./images/convert_data_to_table_ok.jpg
+
+.. image:: ./images/convert_data_to_table_expand.jpg
+
+.. image:: ./images/convert_data_to_table_expand_ok.jpg
+
+.. image:: ./images/convert_data_to_table_expand_and_load.jpg
+
+.. image:: ./images/result_save.jpg
 
 
 
