@@ -34,11 +34,20 @@ output.
 
 ----
 
-Goal and Purpose2 (expectations)
+Goal and Purpose (expectations)
 ==========================================
 
-asdf
+* Goal
+* Purpose
+* Outcome
+* What not covering
+* Signup (username)
 
+.. note::
+
+    The door is available for anyone that wants.
+    How to handle signup / provisioning.
+    
 ----
 
 What is Omnia (and why?)
@@ -55,10 +64,17 @@ Omnia Applications (v's workshop) - subscription / resource group
 
 ----
 
+Working with Azure
+==================
+
+Portal, CLI, ARM, DevOps, ...
+
+----
+
 Tutorial scenario (+ alternatives / limitations)
 ===============================================================
 
-NPD - show data and plots
+NPD - show data, architecture diagram (and plots?)
 
 https://www.npd.no/en/facts/news/Production-figures/
 

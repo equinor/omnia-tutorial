@@ -1,5 +1,15 @@
-param([string]$shortName, [string]$tokenValue)
+param([string]$shortName)
 
+try {
+    Connect-AzAccount
+	# get databricks token info from key vault
+	$kvName = "EDC2019KV"
+	$secretName = "DBricksToken"
+	$tokenValue = (Get-AzKeyVaultSecret -VaultName $kvName -Name $secretName -ErrorAction Stop).SecretValueText 
+}
+catch {
+    # Do absolytely nothing!
+}
 
 $databricksApiUri = "https://northeurope.azuredatabricks.net/api/"
 $endPoint = "2.0/preview/scim/v2/Users"
