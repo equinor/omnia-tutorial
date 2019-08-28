@@ -10,13 +10,14 @@ using EDC_API.Models;
 
 namespace EDC_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/production-data")]
+
     [ApiController]
-    public class ProductionDatasController : ControllerBase
+    public class ProductionDataController : ControllerBase
     {
         private readonly CommonDbContext _context;
 
-        public ProductionDatasController(CommonDbContext context)
+        public ProductionDataController(CommonDbContext context)
         {
             
             _context = context;
@@ -29,7 +30,6 @@ namespace EDC_API.Controllers
             // TODO Use the CommonDbContext to retrieve all entries from the ProductionData table
 
             throw new NotImplementedException();
-            
         }
 
         // GET: api/ProductionDatas/5
@@ -37,8 +37,6 @@ namespace EDC_API.Controllers
         public async Task<ActionResult<ProductionData>> GetProductionData(int id)
         {
             // TODO Retrieve a single entry with the specified Id.
-
-
             throw new NotImplementedException();
         }
 
@@ -46,9 +44,7 @@ namespace EDC_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductionData(int id, ProductionData productionData)
         {
-
             // TODO Update a ProductionData entry
-
             throw new NotImplementedException();
         }
 
@@ -56,9 +52,7 @@ namespace EDC_API.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductionData>> PostProductionData(ProductionDataRequest request)
         {
-
             // TODO Add new entry to the database
-
             throw new NotImplementedException();
         }
 
@@ -67,7 +61,6 @@ namespace EDC_API.Controllers
         public async Task<ActionResult<ProductionData>> DeleteProductionData(int id)
         {
             // TODO Delete existing entry from the database.
-
             throw new NotImplementedException();
         }
 
