@@ -36,24 +36,24 @@ Here the entire API is explained here: https://edc2019-jonatpapp.azurewebsites.n
 
 .. image:: ./images/consume/add_data_source.jpg
 
-Add service call here:
+* Add service call here:
 .. image:: ./images/consume/add_data_source_url.jpg
 
-The data has been retrieved now in JSON and are listed as records. Convert them to a table. Use default conversion settings and click OK.
+* The data has been retrieved now in JSON and are listed as records. Convert them to a table. Use default conversion settings and click OK.
 .. image:: ./images/consume/convert_data_to_table.jpg
 
 .. image:: ./images/consume/convert_data_to_table_ok.jpg
 
-Expand the JSON records to Excel table columns.
+* Expand the JSON records to Excel table columns.
 .. image:: ./images/consume/convert_data_to_table_expand.jpg
 
-Use all the default of all columns and click OK.
+* Use all the default of all columns and click OK.
 .. image:: ./images/consume/convert_data_to_table_expand_ok.jpg
 
-Close the data source setup and load data into Excel.
+* Close the data source setup and load data into Excel.
 .. image:: ./images/consume/convert_data_to_table_expand_close_and_load.jpg
 
-Finished result. Now all the data returned form the service is in an Excel table ready to be played with. Remember to save. The data connection is also saved for you to reuse/refresh later.
+* Finished result. Now all the data returned form the service is in an Excel table ready to be played with. Remember to save. The data connection is also saved for you to reuse/refresh later.
 .. image:: ./images/consume/save_result.jpg
 
 
