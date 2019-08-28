@@ -21,8 +21,12 @@ namespace EDC_API.Controllers
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
-                                  group pd.Oil by pd.Wellbore into oilRecordsPerWellbore
-                                  select new { Wellbore = oilRecordsPerWellbore.Key, OilSum = oilRecordsPerWellbore.Sum() };
+                                  group pd.Oil by pd.Wellbore into wellboreOilRecords
+                                  select new 
+                                  {
+                                      Wellbore = wellboreOilRecords.Key, 
+                                      OilSum = wellboreOilRecords.Sum() 
+                                  };
 
             return uniqueWellbores.ToList();
         }
@@ -33,8 +37,12 @@ namespace EDC_API.Controllers
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
-                                  group pd.Oil by pd.Wellbore into oilRecordsPerWellbore
-                                  select new { Wellbore = oilRecordsPerWellbore.Key, OilAvg = oilRecordsPerWellbore.Average() };
+                                  group pd.Oil by pd.Wellbore into wellboreOilRecords
+                                  select new 
+                                  { 
+                                      Wellbore = wellboreOilRecords.Key, 
+                                      OilAvg = wellboreOilRecords.Average() 
+                                  };
 
             return uniqueWellbores.ToList();
         }
@@ -45,11 +53,11 @@ namespace EDC_API.Controllers
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
-                                  group pd.Gas by pd.Wellbore into gasRecordsPerWellbore
+                                  group pd.Gas by pd.Wellbore into wellboreGasRecords
                                   select new
                                   {
-                                      Wellbore = gasRecordsPerWellbore.Key,
-                                      GasSum = gasRecordsPerWellbore.Sum()
+                                      Wellbore = wellboreGasRecords.Key,
+                                      GasSum = wellboreGasRecords.Sum()
                                   };
 
             return uniqueWellbores.ToList();
@@ -61,11 +69,11 @@ namespace EDC_API.Controllers
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
-                                  group pd.Gas by pd.Wellbore into gasRecordsPerWellbore
+                                  group pd.Gas by pd.Wellbore into wellboreGasRecords
                                   select new
                                   {
-                                      Wellbore = gasRecordsPerWellbore.Key,
-                                      GasAvg = gasRecordsPerWellbore.Average()
+                                      Wellbore = wellboreGasRecords.Key,
+                                      GasAvg = wellboreGasRecords.Average()
                                   };
 
             return uniqueWellbores.ToList();
