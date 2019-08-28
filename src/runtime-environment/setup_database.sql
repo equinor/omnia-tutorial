@@ -8,9 +8,10 @@ GO
 
 /* Create the table - we expect all rows to contain valid data */
 CREATE TABLE [dbo].[ProductionData](
+	[Id] [int] IDENTITY(1,1) PRIMARY KEY,
 	[Wellbore] [varchar](50) NOT NULL,
-	[Year] [smallint] NOT NULL,
-	[Month] [tinyint] NOT NULL,
+	[Year] [int] NOT NULL,
+	[Month] [int] NOT NULL,
 	[Oil] [decimal](5, 5) NOT NULL,
 	[Gas] [decimal](5, 5) NOT NULL
 ) ON [PRIMARY]
