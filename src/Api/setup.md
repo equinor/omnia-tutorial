@@ -2,14 +2,33 @@
 
 ## 1. Setup
 
-1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place.
-1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
-    - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
-    - Example:
-    - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
-    > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
+1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place. To check the this:
+    - Locate the app service in your resource group in the azure portal
+    - In the list on the left under the title `Settings`, click the field called `Identity`,
+    - Status should be toggled to  `On`,
+    - If it is `Off`, toggle it `On`, and press save. This enables the MSI for your app.    
+1. **IF YOU ARE USING YOU OWN DATABASE**:
+    1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
+        - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
+        - Example:
+        - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
+        > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
+    2. Then we have to grant the MSI access in the database:
+    1. Navigate to your resource group and locate your `SQL database`.
+    1. In the list on the left, navigate to `Query editor (preview)`, and connect using `Active Directory authentication`. *(The login might fail, retry it a few times before contacting one of us)*.
+    1. This should open a query editor, enter the following commands, **updated with your values** of course: 
+        - `CREATE USER [<app name>] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]`
+        - `GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [<app name>]`
+        
+
     
-    > If you didn't finish the previous step, you can use the master database setup by us;  "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`", if you don't get access, please contact one of us.
+1. **IF YOU ARE USING OUR DATABASE**:
+    1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
+        - "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`"
+        - If you don't get access, please contact one of us.
+
+    > NOTE: We only give read access to our database. All endpoints with creates/updates/deletes will then fail, but the logic should still be in place. This is to ensure that someone doesn't break the database for all the rest.
+
 
 We have preconfigured Swashbuckle in the project, giving access to a documentation page.
 
