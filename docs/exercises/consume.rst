@@ -29,6 +29,7 @@ We will do this visually by clicking around in the user interface, but of course
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.png 
 :alt: Test1
+:width: 300
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.jpg 
 :alt: Test2
