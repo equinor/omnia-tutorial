@@ -28,8 +28,9 @@ We will do this visually by clicking around in the user interface, but of course
 * Open MS Excel 
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.png 
+:width: 200px
 :alt: Test1
-:width: 300px
+
 * Create a new file, an empty workbook - 
 .. image:: ./images/new_workbook.jpg 
 :alt: Test2
