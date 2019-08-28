@@ -28,7 +28,7 @@ We will do this visually by clicking around in the user interface, but of course
 * Open MS Excel 
 
 * Create a new file, an empty workbook
-.. image:: ./consume/images/new_workbook.jpg 
+.. image:: ./images/consume/new_workbook.jpg 
 
 * Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work -> https://edc2019-jonatpapp.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12 
 Net production data from January to December 2010 to 2015.
