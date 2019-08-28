@@ -47,7 +47,7 @@ Here the entire API is explained here: https://edc2019-jonatpapp.azurewebsites.n
 * Expand the JSON records to Excel table columns.
 .. image:: ./images/consume/convert_data_to_table_expand.jpg
 
-* Use all the default of all columns and click OK.
+* Use the default of all columns and click OK.
 .. image:: ./images/consume/convert_data_to_table_expand_ok.jpg
 
 * Close the data source setup and load data into Excel.
