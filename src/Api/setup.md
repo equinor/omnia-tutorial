@@ -2,16 +2,6 @@
 
 ## 1. Setup
 
-<<<<<<< HEAD
-1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place.
-1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
-    - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
-    - Example:
-    - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
-    > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
-    
-    > If you didn't finish the previous step, you can use the master database setup by us;  "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`", if you don't get access, please contact one of us.
-=======
 1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place. To check the this:
     - Locate the app service in your resource group in the azure portal
     - In the list on the left under the title `Settings`, click the field called `Identity`,
@@ -39,8 +29,6 @@
 
     > NOTE: We only give read access to our database. All endpoints with creates/updates/deletes will then fail, but the logic should still be in place. This is to ensure that someone doesn't break the database for all the rest.
 
->>>>>>> 1980977bd4f62f1668dac9be937001bbd133f477
-
 We have preconfigured Swashbuckle in the project, giving access to a documentation page.
 
 If you want to test your API, simply run the API locally and use the portal that appears.
@@ -67,9 +55,7 @@ Implement the controller method `DeleteProductionData(int id)`
 - Delete an entry in the database based on its' ID
 - Should return the deleted entry
 - *NB: Can't delete an entry that doesn't exist.*
-<<<<<<< HEAD
-## 3. AggregatesController
-=======
+
 ## 3. AggregatesController
 
 All these methods calculate properties for all the wellbores.
@@ -147,4 +133,3 @@ In order to get an API exposed on the api.equinor.com domain, the API has to be 
 
 
 API Management have various ways of publishing an API, however, it has been decided that publishing should be done using Open API Specification files. This is simply because generating a OpenAPI specification is relatively easy, and importing and publishing such a file in APIM is trivial.
->>>>>>> 1980977bd4f62f1668dac9be937001bbd133f477
