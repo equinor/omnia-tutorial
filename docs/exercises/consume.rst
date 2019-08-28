@@ -28,7 +28,7 @@ We will do this visually by clicking around in the user interface, but of course
 * Open MS Excel 
 
 * Create a new file, an empty workbook
-.. image:: ./images/new_workbook.jpg 
+.. image:: ./consume/images/new_workbook.jpg 
 
 * Add the REST API as a data source
 .. image:: ./consume/images/add_data_source.jpg
