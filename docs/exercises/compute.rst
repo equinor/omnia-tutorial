@@ -7,23 +7,18 @@ This part of the tutorial covers the following points for computing in Azure Dat
 * Add dummy GDPR data 
 * Store the new data into a Sql table
 
-When writing up, be sure to consider:
-
-* Alternative url's / sources if they didn't complete previous parts
-
-
 Prerequisites
 -------------
-* User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace, and has permission to create clusters in the workspace.
+* User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace.
 
-Create Notebook and Cluster in Databricks
+Create Notebook in Databricks
 -----------------------------------------
 
 Get Data From a Data Lake Gen 2
 -------------------------------
 Mount Data Lake Gen 2 Filesystem Into Databricks
 ________________________________________________
-In this step, we will use Client Credentials to authenticate against Data Lake from Databricks and mount the target folder from Data Lake into Databricks.
+In this step, you will use Client Credentials to authenticate against Data Lake from Databricks and mount the target folder from Data Lake into Databricks.
 
 **ReadMe:** 
 A Service Principal **OmniaEDC2019_DatabricksSPN** has been created and set up to be used here as the client. The application ID (client ID) of this Service Principal is "f0d5bd54-9617-491d-afa1-07c8bd4dc5c1".  
@@ -42,9 +37,28 @@ The target dataset is stored in file system **dls** in Data Lake **edc2019dls** 
 
 Read Data After Mounted To Databricks
 _____________________________________
+In this step, you need to load the .csv file as a dataframe from mounted folder in databricks. 
+
+* Task 3: Check Databricks documentation `Accessing Data <https://docs.databricks.com/user-guide/importing-data.html>`_. Load the .csv file as dataframe.
+
+**Note: Different types of dataframes can be created with different libraries. Check what type of dataframe you get before proceeding.**
+
 
 Basic Computing
 -------------------------------
+In this step, you will do some basic compute on the dataframe you get from the steps above. 
+
+* Task 4: For each Information Carrier and each year, calculate the sum of each column listed below:
+
+  * prfPrdOilNetMillSm3  
+  * prfPrdGasNetBillSm3
+  * prfPrdNGLNetMillSm3
+  * prfPrdCondensateNetMillSm3
+  * prfPrdOeNetMillSm3
+  * prfPrdProducedWaterInFieldMillSm3
+
+The output dataframe should look like below:
+.. image:: ./images/compute/basiccompute.png
 
 Add Dummy GDPR Data
 -------------------------------
