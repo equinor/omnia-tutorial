@@ -34,32 +34,21 @@ output.
 
 ----
 
-Goal and outcome
-==========================================
+============
 
-* Goal
-* Purpose
-    * Hands on introduction with Omnia
-
-* Outcome
-* What not covering
+* What we are not covering
 * Signup (username)
 
 .. note::
-    P - A hands on introduction with Omnia
-    O - A better understanding of Omnia
-    W - Better equiped to develop within Equinor's new IT platform
-    E - Who has worked with Omnia? What expectations do people have?
-    R - ?
+    * All the details - this is a high level introduction to set context, we will dig into the details more as we go along. 
 
     * Allowed to leave if not suitable.
     * Signup / provisioning.
-    * high level introduction to set context, we will dig into the details more as we go along. 
     
 ----
 
 What is Omnia (and why?)
-==========================================
+========================
 
 * Equinors cloud journey
 * Enabled by certain technology platforms
