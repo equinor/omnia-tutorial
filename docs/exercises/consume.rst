@@ -40,23 +40,14 @@ We do not take it any further, because once the data is in Excel you have tons o
 
 We will do this visually by clicking around in the user interface, but of course you can also program this in an Excel module later if you like.
 
-
-
 * Open MS Excel 
 
 * Create a new file, an empty workbook
 .. image:: ./images/consume/new_workbook.jpg 
 
-* Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work |call_link|. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here |swagger_link|.
-
-.. |call_link| raw:: html 
-<a href="https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12" title="REST API call" target="_blank">LINK</a>
-
-.. |swagger_link| raw:: html
-<a href="https://edc2019-common.azurewebsites.net/swagger/index.html" title="REST API defintion in Swagger">LINK</a>S
-
-
-.. image:: ./images/consume/add_data_source.jpg
+* Add the REST API as a data source. *NOTE:* Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work `link to API call <https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12>`_. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here in the `Swagger API definition <https://edc2019-common.azurewebsites.net/swagger/index.html>`_.
+ 
+ .. image:: ./images/consume/add_data_source.jpg
 
 * Add service call here
 .. image:: ./images/consume/add_data_source_url.jpg
