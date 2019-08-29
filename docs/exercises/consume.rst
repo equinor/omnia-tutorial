@@ -45,7 +45,7 @@ We will do this visually by clicking around in the user interface, but of course
 * Create a new file, an empty workbook
 .. image:: ./images/consume/new_workbook.jpg 
 
-* Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work `link to API call <https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12>`_. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here `Swagger API definition <https://edc2019-common.azurewebsites.net/swagger/index.html>`_.
+* Add the REST API as a data source. **NOTE:** Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work `link to API call <https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12>`_. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here `Swagger API definition <https://edc2019-common.azurewebsites.net/swagger/index.html>`_.
  
  .. image:: ./images/consume/add_data_source.jpg
 
