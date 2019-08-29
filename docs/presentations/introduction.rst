@@ -73,8 +73,7 @@ Omnia docs: https://docs.omnia.equinor.com/
 
 .. note::
 
-    * Conceptual idea
-    * How to handle signup / provisioning.
+    * Conceptual idea backed by Azure + ...    
     * Pillars
         * Sharing - move from silos to common platform. 
         * Responsibility - more possibilities, but requires more responsibility. (e.g. complience with data architecture, API strategy, cost, ...).
@@ -86,15 +85,21 @@ Omnia docs: https://docs.omnia.equinor.com/
 Omnia as an Environment
 =======================
 
-Runtime environment
+Runtime environment + Compute + Storage
 
-Data platform
-
-Omnia Applications (v's workshop) - subscription / resource group
+.. image:: images/introduction/environment.png
 
 .. note::
 
-    * When does data become a part of the data platform.
+    * Runtime - The basic products (subscription, resourcegroup, networking). Show https://docs.omnia.equinor.com/
+       * Omnia classic
+       * Omnia applications
+       * Standalone
+    * Compute + Storage will come back to as part of the tutorial.
+    * When does data become a part of the data platform. Will come back to later also.
+    * Omnia Applications (v's workshop) - subscription / resource group
+
+    Image is from slide deck at: https://omniahomewa.azurewebsites.net/
 
 ----
 
