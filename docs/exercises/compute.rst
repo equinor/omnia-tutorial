@@ -14,10 +14,12 @@ When writing up, be sure to consider:
 
 Prerequisites
 -------------
-* User has access to databricks workspace **EDC2019sharedDatabricks** and has own folder created in the workspace.
+* User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace, and has permission to create clusters in the workspace.
 
 Get Data From a Data Lake Gen 2
 -------------------------------
+Authentication And Mounting Data from Data Lake
+###############################################
 
 Basic Computing
 -------------------------------
