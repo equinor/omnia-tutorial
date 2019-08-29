@@ -18,8 +18,8 @@ Prerequisites
 
 Get Data From a Data Lake Gen 2
 -------------------------------
-Authentication And Mounting Data from Data Lake
-###############################################
+**Authentication And Mounting Data from Data Lake**
+
 
 Basic Computing
 -------------------------------
