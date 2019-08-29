@@ -48,12 +48,14 @@ We will do this visually by clicking around in the user interface, but of course
 .. image:: ./images/consume/new_workbook.jpg 
 
 .. |call_link| raw:: html
+
 <a href="https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12" title="REST API call" target="_blank">LINK</a>
 
 .. |swagger_link| raw:: html
+
 <a href="https://edc2019-common.azurewebsites.net/swagger/index.html" title="REST API defintion in Swagger">LINK</a>
 
-* Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work |call_link|. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here |swagger_link|.
+* Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work |call_link|_. It will retrieve production data from January to December 2010 to 2015. The entire API is explained here |swagger_link|_.
  
 
 
