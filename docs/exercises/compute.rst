@@ -58,10 +58,16 @@ In this step, you will do some basic compute on the dataframe you get from the s
   * prfPrdProducedWaterInFieldMillSm3
 
 The output dataframe should look like below:
+
 .. image:: ./images/compute/basiccompute.png
+
 
 Add Dummy GDPR Data
 -------------------------------
+In this step, you will add a column to the dataframe you get in the last step. This column will be treated as GDPR data in the next module. 
+
+* Task 5: Add a column named "GDPRColumn" in the dataframe. The content can be any dummy data.
+
 
 Store Data To a SQL Table
 -------------------------------
