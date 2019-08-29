@@ -1,6 +1,10 @@
 Introduction
 ============
-This part of the tutorial covers XXXXX
+This part of the tutorial covers the following points for computing in Azure Databricks:
+* Get data from a data lake gen 2
+* Basic computing on the data
+* Add dummy GDPR data 
+* Store the new data into a Sql table
 
 When writing up, be sure to consider:
 
@@ -9,12 +13,20 @@ When writing up, be sure to consider:
 
 Prerequisites
 -------------
+* User has access to databricks workspace **EDC2019sharedDatabricks** and has own folder created in the workspace.
 
-Sub section
------------
-asdf
-asdf
-asdf
+Get Data From a Data Lake Gen 2
+-------------------------------
+
+Basic Computing
+-------------------------------
+
+Add Dummy GDPR Data
+-------------------------------
+
+Store Data To a SQL Table
+-------------------------------
+
 
 Optional Extras
 ---------------
