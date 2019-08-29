@@ -34,13 +34,27 @@ output.
 
 ----
 
+Introduction
 ============
 
+* A hands on introduction with Omnia
 * What we are not covering
 * Signup (username)
 
 .. note::
+    | P - A hands on introduction with Omnia
+    | O - A better understanding of Omnia
+    | W - Better equiped to develop within Equinor's new IT platform
+    | E - Who has worked with Omnia? What expectations do people have?
+    | R - ?
+
+    What we are not covering
+
+    * You will not be an expert after 1 day
+    * Every possible scenario - but we will touch on alternatives
     * All the details - this is a high level introduction to set context, we will dig into the details more as we go along. 
+
+    Other 
 
     * Allowed to leave if not suitable.
     * Signup / provisioning.
