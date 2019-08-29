@@ -15,6 +15,20 @@ Show advanced Power BI report as first "excercise"?
 ------------------------------------------------------------
 Show?
 
+Possible module introduction?
+------------------------------------------------------------------
+So, here we are. You have all now:
+* Added data to Omnia
+* Done some compute on it
+* Exposed it through an API
+
+It is time to consume the data. Obviously this can be done in many ways. Other applications might want to use the data, you might want to pull then into some kind of application, maybe analyze them and so on. As you see the options are many.
+
+Just to give you a taste we would like to extract data from the API into a visualization/analytics tool of some kind. There are many advanced options like QlikView, Lumira, and Power BI. However their distribution and installation are not very suitable for a quick workshop like this. Hence we have chosen to simply just use MS Excel. Everyone has it installed and it is easy to use.
+However, this also means the excercise is rather simple. 
+
+So what are we doing today? Well, we are going to extract data into MS Excel by using your API as a data source. Let's get started. Take it away!
+
 
 Play around with production data from the new REST API in MS Excel
 -----------------------------------------------------------------------
@@ -34,7 +48,7 @@ We will do this visually by clicking around in the user interface, but of course
 .. image:: ./images/consume/new_workbook.jpg 
 
 * Add the REST API as a data source. NOTE: Use your own API URL if you finished creating one. Otherwise you can use this URL as a fallback that will work -> https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12 
-it will retrieve production data from January to December 2010 to 2015. The entire API is explained here: `API definition in Swagger <https://edc2019-common.azurewebsites.net/swagger/index.html>`_
+it will retrieve production data from January to December 2010 to 2015. The entire API is explained <a href="https://edc2019-common.azurewebsites.net/swagger/index.html" title="Swagger description of the API" target="_blank">here</a>
 
 .. image:: ./images/consume/add_data_source.jpg
 
