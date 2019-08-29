@@ -1,6 +1,7 @@
 Introduction
 ============
 This part of the tutorial covers the following points for computing in Azure Databricks:
+
 * Get data from a data lake gen 2
 * Basic computing on the data
 * Add dummy GDPR data 
