@@ -39,9 +39,9 @@ Goal and outcome
 
 * Goal
 * Purpose
-** Hands on introduction with Omnia
+    * Hands on introduction with Omnia
+
 * Outcome
-** 
 * What not covering
 * Signup (username)
 
@@ -51,30 +51,50 @@ Goal and outcome
     W - Better equiped to develop within Equinor's new IT platform
     E - Who has worked with Omnia? What expectations do people have?
     R - ?
-    
-    The door is available for anyone that wants.
-    How to handle signup / provisioning.
+
+    * Allowed to leave if not suitable.
+    * Signup / provisioning.
+    * high level introduction to set context, we will dig into the details more as we go along. 
     
 ----
 
 What is Omnia (and why?)
 ==========================================
 
-asdf
+* Equinors cloud journey
+* Enabled by certain technology platforms
+* Pillars include:
+    * Sharing
+    * Responsibility
+    * Process
+    
+Omnia home: https://omniahomewa.azurewebsites.net/
+Omnia docs: https://docs.omnia.equinor.com/
+
+.. note::
+
+    * Conceptual idea
+    * How to handle signup / provisioning.
+    * Pillars
+        * Sharing - move from silos to common platform. 
+        * Responsibility - more possibilities, but requires more responsibility. (e.g. complience with data architecture, API strategy, cost, ...).
+        * Process - devops, infra as code, cloud first mindset, EDM
+    * Show Omnia home, what is Omnia, 
 
 ----
 
-Service Offerings
-=================
+Omnia as an Environment
+=======================
+
+Runtime environment
+
+Data platform
 
 Omnia Applications (v's workshop) - subscription / resource group
 
-----
+.. note::
 
-Working with Azure
-==================
-
-Portal, CLI, ARM, DevOps, ...
+    * When does data become a part of the data platform.
 
 ----
 
@@ -86,3 +106,10 @@ NPD - show data, architecture diagram (and plots?)
 https://www.npd.no/en/facts/news/Production-figures/
 
 https://www.npd.no/en/facts/news/Production-figures/2019/production-figures-july-2019/
+
+----
+
+Working with Azure
+==================
+
+Portal, CLI, ARM, DevOps, ...
