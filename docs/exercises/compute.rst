@@ -18,8 +18,17 @@ Prerequisites
 
 Get Data From a Data Lake Gen 2
 -------------------------------
-Authentication And Mounting Data from Data Lake
-_______________________________________________
+Mount Data Lake Gen 2 Filesystem Into Databricks
+________________________________________________
+In this step, we will use Client Credentials to authenticate against Data Lake from Databricks and mount the target folder from Data Lake into Databricks.
+
+A Service Principal **OmniaEDC2019_DatabricksSPN** has been created and set up to be used here as the client. The application ID (client ID) of this Service Principal is "f0d5bd54-9617-491d-afa1-07c8bd4dc5c1".  There is a secret created for this Service Principal to be used as client secret. The secret is stored in the shared key vault **EDC2019KV** with secret name **databricksSpnClientSecret**. The connection between the key vault and the databricks workspace has been set up with a secret scope *edc_key_vault_scope* in the databricks. 
+
+* Task 1: Figure out how to use key vault secrets from databricks
+  **Note: Use this Service Principal and client secret to authenticate against Data Lake. Don't create own Service Principal.**
+
+
+Read Data From 
 
 Basic Computing
 -------------------------------
