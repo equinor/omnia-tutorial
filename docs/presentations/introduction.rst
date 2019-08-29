@@ -39,7 +39,7 @@ Introduction
 
 * A hands on introduction with Omnia
 * What we are not covering
-* Signup (username)
+* Signup
 
 .. note::
     | P - A hands on introduction with Omnia
@@ -66,10 +66,11 @@ What is Omnia (and why?)
 
 * Equinors cloud journey
 * Enabled by certain technology platforms
-* Pillars include:
-    * Sharing
-    * Responsibility
-    * Process
+* Pillars include
+
+  * Sharing
+  * Responsibility
+  * Process
     
 Omnia home: https://omniahomewa.azurewebsites.net/
 Omnia docs: https://docs.omnia.equinor.com/
@@ -78,9 +79,11 @@ Omnia docs: https://docs.omnia.equinor.com/
 
     * Conceptual idea backed by Azure + ...    
     * Pillars
-        * Sharing - move from silos to common platform. 
-        * Responsibility - more possibilities, but requires more responsibility. (e.g. complience with data architecture, API strategy, cost, ...).
-        * Process - devops, infra as code, cloud first mindset, EDM
+
+      * Sharing - move from silos to common platform. 
+      * Responsibility - more possibilities, but requires more responsibility. (e.g. complience with data architecture, API strategy, cost, ...).
+      * Process - devops, infra as code, cloud first mindset, EDM
+
     * Show Omnia home, what is Omnia, 
 
 ----
@@ -95,9 +98,11 @@ Runtime environment + Compute + Storage
 .. note::
 
     * Runtime - The basic products (subscription, resourcegroup, networking). Show https://docs.omnia.equinor.com/
-       * Omnia classic
-       * Omnia applications
-       * Standalone
+
+      * Omnia classic
+      * Omnia applications
+      * Standalone
+
     * Compute + Storage will come back to as part of the tutorial.
     * When does data become a part of the data platform. Will come back to later also.
     * Omnia Applications (v's workshop) - subscription / resource group
@@ -106,18 +111,41 @@ Runtime environment + Compute + Storage
 
 ----
 
-Tutorial scenario (+ alternatives / limitations)
-===============================================================
+Tutorial scenario
+=================
 
-NPD - show data, architecture diagram (and plots?)
+.. image:: images/introduction/NPD.png
 
 https://www.npd.no/en/facts/news/Production-figures/
+http://factpages.npd.no/factpages/Default.aspx?culture=en
 
-https://www.npd.no/en/facts/news/Production-figures/2019/production-figures-july-2019/
+
+.. note::
+
+    * NPD holds open data on production from different fields.
+    * Create a pipeline to make the data available through Omnia
+
+----
+
+What we Will Build
+==================
+
+TODO - Add architecture diagram
+
+.. note::
+
+    * Details on choices for each part and omissions are covered as we go.
 
 ----
 
 Working with Azure
 ==================
 
-Portal, CLI, ARM, DevOps, ...
+.. image:: images/introduction/portal.jpg
+
+.. note::
+
+    * Portal, CLI, Power Shell, Cloud Shell, SDK, ARM templates, DevOps ...
+    * For this tutorial everything can be done through the portal. Where
+      possible we will describe and give alternative options that might more
+      closely reflect how you would develop in practice.
