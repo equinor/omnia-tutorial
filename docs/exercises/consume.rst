@@ -9,12 +9,12 @@ When writing up, be sure to consider:
 
 Prerequisites
 -------------
+??
 
-Sub section
------------
-asdf
-asdf
-asdf
+Show advanced Power BI report as first "excercise"?
+------------------------------------------------------------
+Show?
+
 
 Play around with production data from the new REST API in MS Excel
 -----------------------------------------------------------------------
