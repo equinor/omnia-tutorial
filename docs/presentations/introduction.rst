@@ -34,17 +34,24 @@ output.
 
 ----
 
-Goal and Purpose (expectations)
+Goal and outcome
 ==========================================
 
 * Goal
 * Purpose
+** Hands on introduction with Omnia
 * Outcome
+** 
 * What not covering
 * Signup (username)
 
 .. note::
-
+    P - A hands on introduction with Omnia
+    O - A better understanding of Omnia
+    W - Better equiped to develop within Equinor's new IT platform
+    E - Who has worked with Omnia? What expectations do people have?
+    R - ?
+    
     The door is available for anyone that wants.
     How to handle signup / provisioning.
     
