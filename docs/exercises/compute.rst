@@ -36,7 +36,7 @@ The target dataset is stored in file system **dls** in Data Lake **edc2019dls** 
 
 * Task 1: Figure out how to use key vault secrets from databricks
 
-* Task 2: Reference Databricks documentation `Azure Data Lake Storage gen 2<https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount data with Client credentials.
+* Task 2: Reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount data with Client credentials.
 
 **Note: Use this Service Principal and client secret to authenticate against Data Lake. Don't create own Service Principal.**
 
