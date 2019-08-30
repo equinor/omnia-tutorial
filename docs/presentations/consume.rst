@@ -34,10 +34,12 @@ output.
 
 ----
 
-Considerations
-==============
+Consume
+=======
 
-asdf
+<security (how does connection work e.g. embedded password), distribution, LRA, maintenance>
+<Connection risks - latency, transactional, guaranteed delivery, operations and monitoring>
+<data architecture - staging / precompute (for speed / performance)>
 
 ----
 
@@ -46,12 +48,22 @@ Alternatives
 
 * Power BI
 * Web / Desktop / Mobile App
+* Excel
+* Jupyter Notebook
+* Spotfire
 * ...
+
+----
+
+Exercise Overview
+=================
+
+<High level overview on what they will do>
+<Include Excel v's PowerBI>
 
 ----
 
 Power BI
 ========
 
-asdf
-
+<possible demo>

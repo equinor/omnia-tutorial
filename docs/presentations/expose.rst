@@ -34,10 +34,27 @@ output.
 
 ----
 
-Considerations
+Exposing Data
+=============
+
+<legacy v's future, different patters (big data, streaming, API, ...)>
+<expos alternatives (dls, db view, API, blob, ...>
+<governance - LRA, security (classification, authentication, authorisation, encryption, ...), ...>
+<ownership>
+
+----
+
+Data Catalogue
 ==============
 
 asdf
+
+----
+
+Exercise Overview
+=================
+
+<High level overview on what they will do>
 
 ----
 
@@ -51,15 +68,8 @@ API's
 
 ----
 
-Data Catalogue
-==============
-
-asdf
-
-----
-
-Alternatives
-============
+API Hosting
+===========
 
 List the different alternatives with pro's / cons
 

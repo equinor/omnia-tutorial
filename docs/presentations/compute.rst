@@ -37,8 +37,8 @@ TODO - one slide on the below:
 
 ----
 
-Considerations
-==============
+Compute
+=======
 
 * Polling v's Event Driven
 * Elasticity
@@ -46,14 +46,21 @@ Considerations
 
 .. note::
 
-   Explain what compute is!
+   <Explain what compute is!>
 
 ----
 
-Compute Alternatives
-====================
+Alternatives
+============
 
 List the different alternatives
+
+----
+
+Exercise Overview
+=================
+
+<High level overview on what they will do>
 
 ----
 
