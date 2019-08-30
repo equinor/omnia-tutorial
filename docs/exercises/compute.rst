@@ -10,9 +10,27 @@ This part of the tutorial covers the following points for computing in Azure Dat
 Prerequisites
 -------------
 * User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace.
+* User has own SQL server and database created in module **Ingest**. 
 
 Create Notebook in Databricks
------------------------------------------
+-----------------------------
+* Open Databricks workspace **EDC2019sharedDatabricks** with URL: https://northeurope.azuredatabricks.net/?o=1561392505117079.
+  **Note: Don't launch the workspace from Azure Portal. You don't have access there.**
+* Sign in using Azure AD.
+* After you login, on the upper right area of the web page, click on the people icon, shown as below:
+
+  .. image:: ./images/compute/peopleicon.PNG
+* Accept the invitation from workspace **EDC2019sharedDatabricks**. Make sure you are working in this workspace before you continue.
+* Find your user folder under **Workspace**, like below:
+  
+  .. image:: ./images/compute/userfolder.PNG
+* Right click on your folder and choose **Create** -> **Notebook**:
+
+  .. image:: ./images/compute/createnotebook.PNG
+* Input the name of you notebook and attach the notebook to a running cluster we have created for you:
+  
+  .. image:: ./images/compute/createnotebook2.PNG
+After the notebook is created, you will jump to the notebook page. And you can start your databricks notebook from there now!
 
 Get Data From a Data Lake Gen 2
 -------------------------------
@@ -59,7 +77,7 @@ In this step, you will do some basic compute on the dataframe you get from the s
 
 The output dataframe should look like below:
 
-.. image:: ./images/compute/basiccompute.png
+.. image:: ./images/compute/basiccompute.PNG
 
 
 Add Dummy GDPR Data
@@ -71,14 +89,16 @@ In this step, you will add a column to the dataframe you get in the last step. T
 
 Store Data To a SQL Table
 -------------------------------
+In this step, the latest dataframe will be stored into a table in the SQL database you created in module **Ingest**.
 
+* Task 6: Connect to SQL Database using JDBC. Create a table named **dbo.FieldProduction** under database. Write the dataframe you get from the last step into this table. 
 
 Optional Extras
 ---------------
 
 Optional Extra 1
 ________________
-The followinga assumes that you have [Visual Studio installed|an Azure DevOps account|...]
+
 
 What we Didn't Cover
 --------------------
