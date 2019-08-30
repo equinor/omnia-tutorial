@@ -27,7 +27,7 @@ $resourceGroupName = "edc2019_$shortName"
 $dfName = "edc2019-" + $shortName + "-df"
 
 $appServicePlanName = "edc2019-" + $shortName + "-asp"
-$appServiceName = "edc2019-" + $shortName + "app" 
+$appServiceName = "edc2019-" + $shortName + "-app" 
 
 
 $adGroup = Get-AzADGroup -ObjectId $edcAADGroup
@@ -102,7 +102,7 @@ $df = New-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName -L
 Write-Host "Done" -ForegroundColor Green
 
 Write-Host "Creating web app and app service plan ... " -NoNewline
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "webapp-arm-template.json" -shortName $shortName > $null
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "webapp-arm-template.json" -shortName $shortName | Out-Null
 Write-Host "Done" -ForegroundColor Green
 
 
@@ -144,7 +144,8 @@ Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identit
 Write-Host "Done" -ForegroundColor Green
 
 Write-Host "Adding WebApp MSI to OMNIA - EDC2019 ..." -NoNewline
-#Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
+$appService = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appServiceName
+Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
 Write-Host "Done" -ForegroundColor Green
 
 
