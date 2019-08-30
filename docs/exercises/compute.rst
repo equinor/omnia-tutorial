@@ -15,6 +15,7 @@ Prerequisites
 Create Notebook in Databricks
 -----------------------------
 * Open Databricks workspace **EDC2019sharedDatabricks** with URL: https://northeurope.azuredatabricks.net/?o=1561392505117079.
+
   **Note: Don't launch the workspace from Azure Portal. You don't have access there.**
 * Sign in using Azure AD.
 * After you login, on the upper right area of the web page, click on the people icon, shown as below:
