@@ -47,6 +47,8 @@ Introduction
     | W - Better equiped to develop within Equinor's new IT platform
     | E - Who has worked with Omnia? What expectations do people have?
     | R - ?
+    
+    How: A mixture of presentations and tutorial. We will use Azure docs extensively as they need to know how to navigate these pages.
 
     What we are not covering
 
