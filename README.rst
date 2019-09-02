@@ -28,7 +28,7 @@ Exercise Prerequisites
 There are **no prerequisites** to run the exercises other than a modern browser. That said, we present alternatives that more closely match how you might otherwise develop for Omnia. In that regard it can be useful to have a developer profile PC with the following free tools installed: 
 
 * `Azure SDK <https://azure.microsoft.com/en-us/downloads/>`__ for the language of your choice.
-* `Azure Command Line Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__ and / or `Powershell Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__
+* `Azure Command Line Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__ and / or `Powershell Interface <https://docs.microsoft.com/en-us/powershell/azure/>`__
 * `Azure Storage Explorer <https://azure.microsoft.com/en-us/features/storage-explorer/>`__
 * `GIT <https://git-scm.com/downloads>`__
 * `SQL Server Management Studio (SSMS) <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017>`__
