@@ -85,7 +85,7 @@ In this step, the latest dataframe will be stored into a table in the SQL databa
 
 **Note: Use Service Principal OmniaEDC2019_DatabricksSPN. Don't create own Service Principal.**
 
-* Task 4: Get key vault secrets from databricks. 
+* Task 4: Get client secret from key vault in databricks. 
 * Task 5: Authenticate against SQL server with client credentials. Connect to SQL Database using JDBC. 
 * Task 6: Create a table named **dbo.FieldProduction** in SQL database. Write the dataframe you get from the last step into this table. 
 
@@ -101,9 +101,31 @@ Read Data From Datalake Directly Using Client Credentials
 ______________________________________________________________
 * Task 8: Redo step **Get Data From Datalake Gen 2**. Reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to access data in datalake directly with client credentials.
 
+Read Data From SQL Database using Client Credentials
+_____________________________________________________
+* Task 9: Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to use client credentials to read the table you created in step **Store Data To a SQL Table**.
+
+
 Write Data Into SQL Database With Username And Password
 _______________________________________________________
-* Task 9: Redo step **Store Data To a SQL Table**. Instead of using service principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use the username and password you created in module **Ingest** to connect from databricks to your database.
+* Task 10: Redo step **Store Data To a SQL Table**. Instead of using service principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use the username and password you created in module **Ingest** to connect from databricks to your database.
+
+Write Data Into Datalake Gen 2 with Azure Passthrough
+_____________________________________________________
+* Task 11: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to write the latest dataframe into file system **dls** in datalake **edc2019dls**. The path is **/user/<your-short-name>/yearly_field_production.csv**.
+
+Conclusion
+----------
+In this tutorial, we went through different ways to authenticate datalake gen 2 and SQL server. We also did some basic computing upon the dataframe we got. Our focus in this module is to show you how the connections between Azure Databricks and Azure Storage work. Thus, instead of doing computing with python, we put more effort on authentication and connection.  
+
+If you managed to complete all tasks, you should be able to read from / write to datalake / SQL database with different authentication methods listed below:
+
+* Read from datalake gen 2 using Azure Passthrough
+* Read from datalake gen 2 using client credentials with/without mounting data
+* Read from SQL database using client credentials
+* Write to datalake gen 2 using Azure Passthrough
+* Write to SQL database using client credentials
+* Write to SQL database using username and password
 
 What we Didn't Cover
 --------------------
@@ -111,5 +133,5 @@ What we Didn't Cover
 In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
 
 * Automation and DevOps
-* Create client and store client secret in key vault
+* Create client, store client secret in key vault, set up client permissions
 * ...
