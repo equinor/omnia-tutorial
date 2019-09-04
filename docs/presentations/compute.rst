@@ -106,7 +106,6 @@ Azure Databricks
     :width: 800px
     :align: center
     :height: 400px
-    :alt: alternate text
 
 ----
 
