@@ -51,40 +51,91 @@ Compute Basic
 
    * Elasticity: worker nodes, cores, auto-scaling
 
-   * Cost: Will focus on Databricks cost in later slides
+   * Cost: compare between old IT ways like setup a phisical server and using an online service like databricks, in storage, cluster usage and cost
 
 ----
 
 Compute Alternatives
 ====================
 
-* HDInsight: use hive, pig or map reduce jobs
-* Apache Kafka: cover both streaming and computing
-* Stream Analytics: streaming process, need databricks or event hubs to ingest realtime data
-* ...
+* Virtual Machine
+* Azure Batch
+* Function Apps
+* Container & Kubernetes
+* HDInsight
+* Apache Kafka
+* Stream Analytics
+* Azure Databricks
+
+*Links*:
+
+`Decision tree for Azure compute services <https://docs.microsoft.com/en-gb/azure/architecture/guide/technology-choices/compute-decision-tree>`__ 
+
+`Criteria for choosing an Azure compute service <https://docs.microsoft.com/en-gb/azure/architecture/guide/technology-choices/compute-comparison>`__ 
+
+.. note::
+   * Virtual Machine : old way when think of compute
+   * Azure Batch
+   * Function Apps : event triggered
+   * Container & Kubernetes: 
+   * HDInsight: use hive, pig or map reduce jobs
+   * Apache Kafka: cover both streaming and computing
+   * Stream Analytics: streaming process, need databricks or event hubs to ingest realtime data
+   * Azure Databricks
+   * links are from Azure Architecture Center
 
 ----
 
-Databricks
-===========
+Azure Databricks
+================
 * What is Databricks?
 
+.. image:: ./images/compute/azure_databricks.PNG
+    :width: 600px
+    :align: center
+    :height: 400px
+    :alt: alternate text
+
+.. note::
+
+   * Apache Spark
+   * Databricks
+   * Enterprise cloud
+
 ----
 
-Databricks
-===========
-* Databricks Architecture
-  (diagram of databricks architecture)
+Azure Databricks
+================
+* Spark
+
+.. image:: ./images/compute/spark.PNG
+    :width: 800px
+    :align: center
+    :height: 400px
+    :alt: alternate text
 
 ----
 
-Databricks
-===========
-* Demo: How to create cluster/notebook in Databricks?
+Azure Databricks
+================
+* Azure Databricks Architecture
+
+.. image:: ./images/compute/databricks_architecture.PNG
+    :width: 800px
+    :align: center
+    :height: 400px
+    :alt: alternate text
+
+----
+
+Azure Databricks
+================
+
+* Demo: How to create cluster/notebook in Azure Databricks?
 
 ----
 
 Exercise Overview
 =================
 
-* (high level diagram of data flow)
+.. image:: ./images/compute/compute_module.PNG
