@@ -2,10 +2,16 @@ Introduction
 ============
 The main part of the tutorial covers the following points for computing in Azure Databricks:
 
-* Get data from a data lake gen 2
-* Basic computing on the data
-* Add dummy GDPR data 
-* Store the new data into a SQL table
+* Extraction
+  
+  * Load data from ADLS Gen 2
+* Transformation  
+  
+  * Basic computing
+  * Enrich data (dummy GDPR) 
+* Loading
+  
+  * Load transformed data to SQL server for further analysis
 
 Extra section covers other options you can consider.
 
@@ -47,8 +53,8 @@ After the notebook is created, you will jump to the notebook page. And you can s
   * The connection between the key vault and the databricks workspace has been set up with a secret scope **edc_key_vault_scope** in the databricks. 
 
 
-Get Data From a Data Lake Gen 2
--------------------------------
+Extraction - Load data from ADLS Gen 2
+--------------------------------------
 In this step, you need to load the .csv file as a dataframe from targeted folder in datalake. 
 
 * Task 1: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to load targeted .csv file as dataframe from datalake.
@@ -56,8 +62,10 @@ In this step, you need to load the .csv file as a dataframe from targeted folder
 **Note: Different types of dataframes can be created with different libraries. Check what type of dataframe you get before proceeding.**
 
 
+Transformation
+--------------
 Basic Computing
--------------------------------
+_______________
 In this step, you will do some basic compute on the dataframe you get from the steps above. 
 
 * Task 2: For each Information Carrier and each year, calculate the sum of each column listed below:
@@ -74,15 +82,15 @@ The output dataframe should look like below:
 .. image:: ./images/compute/basiccompute.PNG
 
 
-Add Dummy GDPR Data
--------------------------------
+Enrich data (dummy GDPR)
+________________________
 In this step, you will add a column to the dataframe you get in the last step. This column will be treated as GDPR data in the next module. 
 
 * Task 3: Add a column named "GDPRColumn" in the dataframe. The content can be any dummy data.
 
 
-Store Data To a SQL Table
--------------------------------
+Loading - Load transformed data to SQL server for further analysis
+------------------------------------------------------------------
 In this step, the latest dataframe will be stored into a table in the SQL database you created in module **Ingest**. Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to use client credentials to authenticate against SQL server from databricks.
 
 **Note: Use Service Principal OmniaEDC2019_DatabricksSPN. Don't create own Service Principal.**
@@ -94,26 +102,26 @@ In this step, the latest dataframe will be stored into a table in the SQL databa
 Optional Extras
 ---------------
 
-Read Data From Datalake Using Client Credentials With Mounting
-______________________________________________________________
+Extraction - Read Data From Datalake Using Client Credentials With Mounting
+___________________________________________________________________________
 * Task 7: Redo step **Get Data From Datalake Gen 2**. Instead of using Azure Passthrough, reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount targeted data to databricks with client credentials.
 
 
-Read Data From Datalake Directly Using Client Credentials
-______________________________________________________________
+Extraction - Read Data From Datalake Directly Using Client Credentials
+______________________________________________________________________
 * Task 8: Redo step **Get Data From Datalake Gen 2**. Reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to access data in datalake directly with client credentials.
 
-Read Data From SQL Database using Client Credentials
-_____________________________________________________
+Extraction - Read Data From SQL Database using Client Credentials
+_________________________________________________________________
 * Task 9: Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to use client credentials to read the table you created in step **Store Data To a SQL Table**.
 
 
-Write Data Into SQL Database With Username And Password
-_______________________________________________________
+Loading - Write Data Into SQL Database With Username And Password
+_________________________________________________________________
 * Task 10: Redo step **Store Data To a SQL Table**. Instead of using service principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use the username and password you created in module **Ingest** to connect from databricks to your database.
 
-Write Data Into Datalake Gen 2 with Azure Passthrough
-_____________________________________________________
+Loading - Write Data Into Datalake Gen 2 with Azure Passthrough
+_______________________________________________________________
 * Task 11: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to write the latest dataframe into file system **dls** in datalake **edc2019dls**. The path is **/user/<your-short-name>/yearly_field_production.csv**.
 
 Conclusion
@@ -136,4 +144,4 @@ In the interest of time and simplicity, the following points have been omitted f
 
 * Automation and DevOps
 * Create client, store client secret in key vault, set up client permissions
-* ...
+* Source Control (Github)
