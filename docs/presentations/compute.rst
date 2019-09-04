@@ -40,32 +40,26 @@ TODO - one slide on the below:
 Compute Basic
 =============
 
-* Polling v's Event Driven
+* Batch v's Event Driven
 * Elasticity
 * Cost
 
 .. note::
 
-   * Polling: batch processing
-   * Event Driven: stream processing
+   * Elasticity: the ability to scale up/down according to workload. eg: worker nodes, cores
 
-   * Elasticity: worker nodes, cores, auto-scaling
-
-   * Cost: compare between old IT ways like setup a phisical server and using an online service like databricks, in storage, cluster usage and cost
+   * Cost: compare between setting up a phisical server and using an online service like databricks, in storage, cluster usage and cost
 
 ----
 
 Compute Alternatives
 ====================
 
-* Virtual Machine
-* Azure Batch
-* Function Apps
-* Container & Kubernetes
-* HDInsight
-* Apache Kafka
-* Stream Analytics
-* Azure Databricks
+.. image:: ./images/compute/compute-alternatives.PNG
+    :width: 800px
+    :align: center
+    :height: 400px
+    :alt: alternate text
 
 *Links*:
 
@@ -90,7 +84,7 @@ Azure Databricks
 ================
 * What is Databricks?
 
-.. image:: ./images/compute/azure_databricks.PNG
+.. image:: ./images/compute/azure-databricks.PNG
     :width: 600px
     :align: center
     :height: 400px
@@ -106,7 +100,7 @@ Azure Databricks
 
 Azure Databricks
 ================
-* Spark
+* Why Spark?
 
 .. image:: ./images/compute/spark.PNG
     :width: 800px
@@ -126,6 +120,8 @@ Azure Databricks
     :height: 400px
     :alt: alternate text
 
+*Image from: https://azure.microsoft.com/es-es/blog/a-technical-overview-of-azure-databricks/*
+
 ----
 
 Azure Databricks
@@ -139,3 +135,5 @@ Exercise Overview
 =================
 
 .. image:: ./images/compute/compute_module.PNG
+
+Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exercises/compute.rst
