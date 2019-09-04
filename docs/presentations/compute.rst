@@ -56,10 +56,6 @@ Compute Alternatives
 ====================
 
 .. image:: ./images/compute/compute-alternatives.PNG
-    :width: 800px
-    :align: center
-    :height: 400px
-    :alt: alternate text
 
 *Links*:
 
@@ -85,10 +81,6 @@ Azure Databricks
 * What is Databricks?
 
 .. image:: ./images/compute/azure-databricks.PNG
-    :width: 600px
-    :align: center
-    :height: 400px
-    :alt: alternate text
 
 .. note::
 
@@ -103,9 +95,6 @@ Azure Databricks
 * Why Spark?
 
 .. image:: ./images/compute/spark.PNG
-    :width: 800px
-    :align: center
-    :height: 400px
 
 ----
 
@@ -114,10 +103,6 @@ Azure Databricks
 * Azure Databricks Architecture
 
 .. image:: ./images/compute/databricks_architecture.PNG
-    :width: 800px
-    :align: center
-    :height: 400px
-    :alt: alternate text
 
 *Image from: https://azure.microsoft.com/es-es/blog/a-technical-overview-of-azure-databricks/*
 
