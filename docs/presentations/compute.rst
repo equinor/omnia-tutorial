@@ -55,7 +55,7 @@ Compute Basic
 Compute Alternatives
 ====================
 
-.. image:: ./images/compute/compute-alternatives.PNG
+.. image:: ./images/compute/compute-alternatives.png
 
 *Links*:
 
@@ -80,7 +80,7 @@ Azure Databricks
 ================
 * What is Databricks?
 
-.. image:: ./images/compute/azure-databricks.PNG
+.. image:: ./images/compute/azure-databricks.png
 
 .. note::
 
@@ -94,7 +94,7 @@ Azure Databricks
 ================
 * Why Spark?
 
-.. image:: ./images/compute/spark.PNG
+.. image:: ./images/compute/spark.png
 
 ----
 
