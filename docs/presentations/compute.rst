@@ -102,7 +102,7 @@ Azure Databricks
 ================
 * Azure Databricks Architecture
 
-.. image:: ./images/compute/databricks_architecture.PNG
+.. image:: ./images/compute/databricks_architecture.png
 
 *Image from: https://azure.microsoft.com/es-es/blog/a-technical-overview-of-azure-databricks/*
 
