@@ -37,8 +37,8 @@ TODO - one slide on the below:
 
 ----
 
-Considerations
-==============
+Compute Basic
+=============
 
 * Polling v's Event Driven
 * Elasticity
@@ -46,18 +46,45 @@ Considerations
 
 .. note::
 
-   Explain what compute is!
+   * Polling: batch processing
+   * Event Driven: stream processing
+
+   * Elasticity: worker nodes, cores, auto-scaling
+
+   * Cost: Will focus on Databricks cost in later slides
 
 ----
 
 Compute Alternatives
 ====================
 
-List the different alternatives
+* HDInsight: use hive, pig or map reduce jobs
+* Apache Kafka: cover both streaming and computing
+* Stream Analytics: streaming process, need databricks or event hubs to ingest realtime data
+* ...
 
 ----
 
-Data Bricks
+Databricks
 ===========
+* What is Databricks?
 
-See draft links in ingest excercises document
+----
+
+Databricks
+===========
+* Databricks Architecture
+  (diagram of databricks architecture)
+
+----
+
+Databricks
+===========
+* Demo: How to create cluster/notebook in Databricks?
+
+----
+
+Exercise Overview
+=================
+
+* (high level diagram of data flow)
