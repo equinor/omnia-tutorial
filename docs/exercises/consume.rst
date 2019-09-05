@@ -114,20 +114,22 @@ environment.
 
 * In the first cell add the following code to query the API: 
 
-   | import pandas as pd
-   | 
-   | # specify the url - swap the below (solution url) with your custom one 
-     from the expose exercise.
-   | api_url = 'https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12'
-   | 
-   | # Call the api and use pandas to convert the returned json into a 
-     dataframe
-   | df_production_data = pd.read_json(api_url)
+   .. code:: python
+
+      import pandas as pd
+     
+      # specify the url - swap the below (solution url) with your custom one from the expose exercise.
+      api_url = 'https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12'
+     
+      # Call the api and use pandas to convert the returned json into a dataframe
+      df_production_data = pd.read_json(api_url)
 
 * Create a new cell with the following code to display a summary of the 
   returned data: 
 
-    | df_production_data.head(10)
+   .. code:: python
+
+      df_production_data.head(10)
 
 * Attach a cluster to run the notebook as shown below and then chose 
   *Run All*.
