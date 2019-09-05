@@ -137,7 +137,7 @@ After a while a new window will open with the API
 
 | Name | State |ResourceGroup |EnabledHostNames | Location |
 |--|--|--|--|--|
-| edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`| North Europe |
+| edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`, ...| North Europe |
 
 - Navigate to `edc2019-'your-hortname'app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
 
