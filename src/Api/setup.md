@@ -134,9 +134,11 @@ After a while a new window will open with the API
     ```
 - The deployment might take a few seconds
 - It should produce output like the table below if the deployment was successful:
-    | Name | State |ResourceGroup |EnabledHostNames | Location |
-    |--|--|--|--|--|
-    | edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`, edc2019-jon… | North Europe |
+
+| Name | State |ResourceGroup |EnabledHostNames | Location |
+|--|--|--|--|--|
+| edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`, edc2019-jon… | North Europe |
+
 - Navigate to `edc2019-'your-hortname'app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
 
 ## 5 Open API Specification
