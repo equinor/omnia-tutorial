@@ -82,3 +82,20 @@ Exercise Overview
 
 Power BI - DEMO
 ===============
+
+.. note::
+
+    * For getting data use exact same steps as in the Excel-excercise (Power Query-based both of them...)
+    
+----
+
+Excercise
+=========
+
+
+----
+
+Summary
+=======
+
+* Where to run compute?
