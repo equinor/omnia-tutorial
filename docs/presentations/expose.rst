@@ -37,55 +37,266 @@ output.
 Exposing Data
 =============
 
-<legacy v's future, different patters (big data, streaming, API, ...)>
-<expos alternatives (dls, db view, API, blob, ...>
-<governance - LRA, security (classification, authentication, authorisation, encryption, ...), ...>
-<ownership>
+* Patterns
+* Alternatives (API First)
+* Governance
+* Security
+
+.. note::
+  * *Patterns* - big data analytics, streaming, API (size, frequency, latency,
+    query pattern)
+  * *Alternatives* - Depend on usage pattern. API, dls, blob, (db view)...
+  * *Governance* - Classification, LRA, Ownership
+  * *Security* - Authentication, Authorisation, Encryption
 
 ----
 
 Data Catalogue
 ==============
 
-asdf
+.. image:: ./images/expose/data-catalog.png
+  :width: 800px
 
-----
+https://eun-su1.azuredatacatalog.com/#/home
 
-Exercise Overview
-=================
-
-<High level overview on what they will do>
+.. note:: 
+  * Where to look for data
+  * Apply for access in access it.
 
 ----
 
 API's
 =====
 
-* Why
-* Development Approach
-* Naming
+* What is it
+* Why do we use it
 * APIM
+* API Strategy & Naming:
+  https://github.com/equinor/api-strategy
+
+.. note::
+  * What is it?
+
+    * Architectural design to abstract away the specific implementation of certain parts
+  * Why do we use it?
+
+    * Decoupling logic, making the solution more flexible.
+    * Increases re-usability of components
 
 ----
 
-API Hosting
-===========
+Representational State Transfer (REST)
+======================================
 
-List the different alternatives with pro's / cons
+* Client-Server Architecture
+* Statelessness
+* Cacheability
+* Layered System
+* Uniform Interface:
 
-* Radix
-* Azure Functions
-* App Service
-* AKS / ACI
-* (Storage - Static hosting)
+  * Resource Identification in Requests
+  * Resource Manipulation through representations
+  * Self-descriptive messages
+  * Hypermedia as the engine of application state
+
+.. note::
+  Client-Server Architecture
+
+  * Separation of concerns. Separating the user interface from the data storage
+  * Improves portability and scalability
+  * Allow for independent evolvement of the components
+
+  Statelessness:
+
+  * No client context is stored on the server between requests. Each request from any client contains enough info to process the request.
+
+  Cacheability:
+
+  * Responses must implicitly or explicitly define themselves as cacheable, to prevent stale data reaching the client.
+  * Important to do properly, to increase scalability and performance.
+
+  Layered System
+
+  * A client should not have to care what server it is talking to
+  * Enables load balancing, shared caches, added security layers etc.
+  * Distribute a client call to many backends
+
+  Uniform Interface:
+
+  * Resource identification in request:
+
+    * Individual resources are identified in requests, example using URIs.
+    * Resources are conceptually separate from their representation, i.e can return HTML, XML, or JSON.
+  * Resource manipulation through representation:
+
+    * When a client holds a representation of a resource, including any attached metadata,
+    * It as enough information to modify or delete the resource
+  * Self-descriptive messages
+
+    * Each message include enough information to describe how to process the message
+    * Example, which parser to invoke specified by a media type
+  * Hypermedia as the engine for application state(HATEOAS)
+
+    * Having accessed an initial URI for the REST application,
+    * A REST client should be able to use server-provided links dynamically to discover all available actions and resources needed.
+
+----
+
+Open API Specification
+======================
+
+.. |openapi2| image:: ./images/expose/open-api-v2.jpg
+  :width: 300px
+
+.. list-table:: 
+   :widths: 25 25
+
+   * - OAS2.0: Swagger
+
+       * JSON or YAML
+       * Info
+       * Host & schemes
+       * Paths
+       * Parameters
+       * Responses
+       * Input and output models
+       * Authentication       
+     - |openapi2| 
 
 .. note::
 
-    Commennt / contrast from general webapp hosting perspective too.
-    
+  V2: Swagger
+
+  * Started as a open-source software framework
+  * Has a large collection of tools that help developers design, build, document and consume RESTful web services.
+  * JSON or YAML
+  * Info
+  * Host & schemes
+  * Paths
+  * Parameters
+  * Responses
+  * Input and output models
+  * Authentication
+
 ----
 
-App Service
-===========
+Open API Specification
+======================
 
-asdf
+.. |openapi3| image:: ./images/expose/open-api-v3.jpg
+  :width: 300px
+
+.. list-table:: 
+   :widths: 25 25
+
+   * - OAS3.0:
+
+       * Simplified structure
+       * Content negotiation
+       * Form data can now contain objects and arrays
+       * Enhanced security definitions
+       * Updated Parameter types
+       * Improved Examples
+       * Support for describing callbacks
+     - |openapi3| 
+
+.. note::
+
+  V3:
+
+  * Simplified structure
+  * Content negotiation
+  * Form data can now contain objects and arrays
+  * Enhanced security definitions
+  * Updated Parameter types
+  * Improved Examples
+  * Support for describing callbacks
+
+----
+
+Azure API Management
+====================
+
+Main Components:
+
+* Gateway
+* Developer Portal
+
+.. image:: ./images/expose/apim.jpg
+
+.. note::
+
+  Gateway
+
+  * Can perform certain tasks on requests
+  * Forwards the request to the appropriate backend
+
+  Developer Portal
+
+  * Discover APIs
+  * Read documentation and test APIs
+  * Publish your own APIs for other to discover
+
+----
+
+Azure API Management
+====================
+
+.. image:: ./images/expose/apim-portal.jpg
+
+----
+
+API Hosting Alternatives
+========================
+
+* Omnia Radix
+* Azure Functions
+* Azure App Service
+* AKS / ACI
+* (Storage)
+
+.. note::
+  * Radix - Simplified hosting of Docker containers. Includes automatic build, deploy,..
+  * Azure Functions - Serverless (explain what serverless is) hosting of API's and applications
+  * Azure App Service - Hosting of code / Docker containers
+  * AKS / ACI - Hosting of containers in managed scalable infrastructure.
+  * V2 Storage - Static web hosting of open content so not for API's
+  
+  **Do not use Virtual Machines!**
+
+----
+
+Azure App Service
+=================
+
+* Service for hosting HTTP-based websites, web applications and API's
+* Can deploy docker images
+* Can run & test locally
+* Auto scale out
+* Configurable authentication / authorisation
+* Management & Monitoring
+* ...
+
+----
+
+Excercise
+=========
+
+Part 1:
+
+* Use the provided skeleton code and implement the API
+
+Part 2:
+
+* Implement the Aggregates controller
+
+----
+
+Summary
+=======
+
+* TODO
+
+.. note::
+
+  * TODO
