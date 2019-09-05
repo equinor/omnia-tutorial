@@ -67,6 +67,8 @@ Alternatives
 * Spotfire
 * ...
 
+.. image:: ./images/consume/alternatives.png
+
 ----
 
 Exercise Overview
