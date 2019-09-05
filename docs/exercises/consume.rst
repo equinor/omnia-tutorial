@@ -3,7 +3,7 @@ Consuming Data Through API's
 This part of the tutorial covers how you might consume data from an API hosted
 in Omnia (or elsewhere). You might want this data to include in an application
 as part of a visualisation, for furthar analytics and more. As discussed in 
-the `expose exercises <expose.rst>`_ API's are the preferred way to expose 
+the `expose exercises <expose.rst>`_. API's are the preferred way to expose 
 data within Equinor.
 
 There are many possibilities when consuming API's. We cover a number of 
@@ -15,11 +15,6 @@ Prerequisites
 
 You can select which of the options you want to try so only need the
 tools for those parts. More details follow in the different sections.
-
-, however if 
-using Power BI then you will need `this installed <https://powerbi.microsoft.com/en-us/downloads/>`__
-(note use the advanced download options for direct download to avoid 
-installing through Microsoft Store).
 
 Using Microsoft Excel
 ---------------------
@@ -144,11 +139,38 @@ This notebook can be viewed online in github or imported directly into DataBrick
 Consuming an API from PowerBI
 -----------------------------
 
+To run this part of the tutorial you will need Power BI desktop `installed <https://powerbi.microsoft.com/en-us/downloads/>`__
+. Use the advanced download options for direct download to avoid 
+installing through Microsoft Store).
 
-What we Didn't Cover
---------------------
+Getting data into PowerBI is similar as with Excel as both use power query to
+import data.
 
-There are several points that we haven't covered in the interest of time:
+* Open PowerBI 
+
+* From the startup screen, or home tab chose the option *Get data* followed
+  by *Other->Web* followed by *Connect*. 
+  
+* You will now be in a set of dialog boxes that mirror those above in the 
+  Excel section for importing data that you can follow to have the data 
+  availablew in Power BI.
+
+* To verify the data is loaded you can click the *data view*.
+
+  .. image:: ./images/consume/powerbi-table.png
+
+* Moving back to the *report view* we will add a simple graph.
+
+**<JMOR TODO>**
+
+Feel free to play around with other options to improve the display, show other
+values or add filtering or other functionality.
+
+Summary
+-------
+
+We have shown how to consume an API in several tools. There are however 
+several points that we haven't covered in the interest of time:
 
 * *Other tools* - there are many other tools that can also be used.
 * *Authorisation & Authentication* - for simplicity this exercise used an 
@@ -158,3 +180,10 @@ There are several points that we haven't covered in the interest of time:
   from an API you might want to operationalise and share it somehow.
 * *Legal aspects* - if you modify and combine data, you may be changing the 
   security classification and so need to consider possible implications
+* *Performance* - There are different query patterns and also a question 
+  about what options are best and where to run compute. We might need 
+  additional backend infrastructure to improve frontend user performance.
+
+.. note::
+
+    * Content copied from presentation summary

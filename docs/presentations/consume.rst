@@ -80,7 +80,7 @@ Exercise Overview
 
 ----
 
-Power BI - DEMO
+Power BI - Demo
 ===============
 
 .. note::
@@ -92,10 +92,30 @@ Power BI - DEMO
 Excercise
 =========
 
+Your turn to try it out
 
 ----
 
 Summary
 =======
 
-* Where to run compute?
+* Other tools
+* Authorisation & Authentication
+* Deployment & Sharing
+* Legal aspects
+* Performance
+
+.. note::
+
+   * *Other tools* - there are many other tools that can also be used.
+   * *Authorisation & Authentication* - for simplicity this exercise used an 
+     open API with no security. In real world scenarios it is highly likely 
+     that you will need to ensure API's are secured.
+   * *Deployment & Sharing* - once you have a solution created that consumes data
+     from an API you might want to operationalise and share it somehow.
+   * *Legal aspects* - if you modify and combine data, you may be changing the 
+     security classification and so need to consider possible implications
+   * *Performance* - There are different query patterns and also a question 
+     about what options are best and where to run compute. We might need 
+     additional backend infrastructure to improve frontend user performance.
+
