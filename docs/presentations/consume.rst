@@ -37,9 +37,23 @@ output.
 Consume
 =======
 
-<security (how does connection work e.g. embedded password), distribution, LRA, maintenance>
-<Connection risks - latency, transactional, guaranteed delivery, operations and monitoring>
-<data architecture - staging / precompute (for speed / performance)>
+* API First
+* Security
+* Governance
+* Data Architecture
+* Connection
+
+.. note::
+
+    * API First - How are we accessing the data - API preferred but might not 
+      meet all requirements.
+    * Security - How does the connection work e.g. embedded password
+    * Governance - Distribution / merging of data, need for LRA, maintenance
+      of solution
+    * Data Architecture - how does the API fit with our specific needs 
+      including access patterns. Do we need additional services for speed / 
+      performance (e.g. to cache values or reduce the number of queries)
+    * Connection risks - latency, transactional, guaranteed delivery, operations and monitoring>
 
 ----
 
@@ -58,12 +72,11 @@ Alternatives
 Exercise Overview
 =================
 
-<High level overview on what they will do>
-<Include Excel v's PowerBI>
+* Excel
+* Python
+* Power BI
 
 ----
 
-Power BI
-========
-
-<possible demo>
+Power BI - DEMO
+===============

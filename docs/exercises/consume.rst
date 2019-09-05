@@ -136,8 +136,8 @@ environment.
 
   You should see that the notebook is run and data submitted.
 
-A completed notebook is provided at '<../../solution/consume-from-api.ipynb>'_
-this can be imported directly into DataBricks.
+A completed notebook is provided at https://github.com/equinor/omnia-tutorial/blob/master/solution/consume/consume-from-api.ipynb.
+This notebook can be viewed online in github or imported directly into DataBricks.
 
 Consuming an API from PowerBI
 -----------------------------
