@@ -13,7 +13,7 @@ The main part of the tutorial covers the following points for computing in Azure
   
   * Load transformed data to SQL server for further analysis
 
-Extra section covers other options you can consider.
+The extras section covers other options you can consider.
 
 Prerequisites
 -------------
@@ -36,7 +36,7 @@ Create Notebook in Databricks
 * Right click on your folder and choose **Create** -> **Notebook**:
 
   .. image:: ./images/compute/createnotebook.PNG
-* Input the name of you notebook and attach the notebook to a running cluster we have created for you:
+* Input the name for your new notebook (e.g. 'Compute') and attach the notebook to a running cluster we have created for you:
   
   .. image:: ./images/compute/createnotebook2.PNG
 
