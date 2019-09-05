@@ -71,15 +71,6 @@ Alternatives
 
 ----
 
-Exercise Overview
-=================
-
-* Excel
-* Python
-* Power BI
-
-----
-
 Power BI - Demo
 ===============
 
@@ -89,10 +80,12 @@ Power BI - Demo
     
 ----
 
-Excercise
-=========
+Exercise
+=================
 
-Your turn to try it out
+* Excel
+* Python
+* Power BI
 
 ----
 
@@ -118,4 +111,3 @@ Summary
    * *Performance* - There are different query patterns and also a question 
      about what options are best and where to run compute. We might need 
      additional backend infrastructure to improve frontend user performance.
-

@@ -111,6 +111,7 @@ environment.
 
    .. code:: python
 
+
       import pandas as pd
      
       # specify the url - swap the below (solution url) with your custom one from the expose exercise.
@@ -133,7 +134,32 @@ environment.
 
   You should see that the notebook is run and data submitted.
 
+* We will now create a plot. First create a transformed dataset to ease with
+  plotting by grouping on the columns we want to use on the one axis and then 
+  filtering so we only keep the oil column for the value axis.
+
+  We then plot the values.
+
+   .. code:: python
+
+      import matplotlib.pyplot as plt
+
+      fig, ax = plt.subplots(figsize=(12,16))
+
+      df_plot = df_production_data.groupby(['year', 'wellbore']).sum().unstack()['oil']
+      df_plot.plot(title ="Yearly Oil Production per Wellbore", ax=ax)
+      plt.legend(fontsize="x-small", loc='upper right')
+
+  Note: if running this in DataBricks then wrap the last line in a *display()* block so it is shown correctly e.g. 
+
+   .. code:: python
+
+      ...
+      display(plt.legend(fontsize="x-small", loc='upper right')
+
+
 A completed notebook is provided at https://github.com/equinor/omnia-tutorial/blob/master/solution/consume/consume-from-api.ipynb.
+
 This notebook can be viewed online in github or imported directly into DataBricks.
 
 Consuming an API from PowerBI
@@ -161,7 +187,14 @@ import data.
 
 * Moving back to the *report view* we will add a simple graph.
 
-**<JMOR TODO>**
+  * Click on the *line chart* icon under *Visualisations* to add a new line chart
+  * Drag fields across to *Axis*, *Legend* and *Values* as shown below.
+  * Change the aggregation of the values to *Sum* from the drop down.
+
+  .. image:: ./images/consume/powerbi-report.png
+    :width: 800px
+
+You now have a very basic report completed.
 
 Feel free to play around with other options to improve the display, show other
 values or add filtering or other functionality.
