@@ -37,34 +37,87 @@ TODO - one slide on the below:
 
 ----
 
-Compute
-=======
+Compute Basic
+=============
 
-* Polling v's Event Driven
+* Batch v's Event Driven
 * Elasticity
 * Cost
 
 .. note::
 
-   <Explain what compute is!>
+   * Elasticity: the ability to scale up/down according to workload. eg: worker nodes, cores
+
+   * Cost: compare between setting up a phisical server and using an online service like databricks, in storage, cluster usage and cost
 
 ----
 
 Alternatives
 ============
 
-List the different alternatives
+.. image:: ./images/compute/compute-alternatives.png
+
+*Links*:
+
+`Decision tree for Azure compute services <https://docs.microsoft.com/en-gb/azure/architecture/guide/technology-choices/compute-decision-tree>`__ 
+
+`Criteria for choosing an Azure compute service <https://docs.microsoft.com/en-gb/azure/architecture/guide/technology-choices/compute-comparison>`__ 
+
+.. note::
+   * Virtual Machine : old way when think of compute
+   * Azure Batch
+   * Function Apps : event triggered
+   * Container & Kubernetes: 
+   * HDInsight: use hive, pig or map reduce jobs
+   * Apache Kafka: cover both streaming and computing
+   * Stream Analytics: streaming process, need databricks or event hubs to ingest realtime data
+   * Azure Databricks
+   * links are from Azure Architecture Center
+
+----
+
+Azure Databricks
+================
+* What is Databricks?
+
+.. image:: ./images/compute/azure-databricks.png
+
+.. note::
+
+   * Apache Spark
+   * Databricks
+   * Enterprise cloud
+
+----
+
+Azure Databricks
+================
+* Why Spark?
+
+.. image:: ./images/compute/spark.png
+
+----
+
+Azure Databricks
+================
+* Azure Databricks Architecture
+
+.. image:: ./images/compute/databricks_architecture.png
+
+*Image from: https://azure.microsoft.com/es-es/blog/a-technical-overview-of-azure-databricks/*
+
+----
+
+Azure Databricks
+================
+
+* Demo: How to create cluster/notebook in Azure Databricks?
 
 ----
 
 Exercise Overview
 =================
 
-<High level overview on what they will do>
+.. image:: ./images/compute/compute_module.PNG
 
-----
-
-Data Bricks
-===========
-
-See draft links in ingest excercises document
+Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exercises/compute.rst
