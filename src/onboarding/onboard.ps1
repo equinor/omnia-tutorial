@@ -18,6 +18,8 @@ $commonDls = "edc2019dls"
 $commonSubscriptionId = "160c90f1-6bbe-4276-91f3-f732cc0a45db"
 $commonSubscriptionName = "Omnia Application Workspace - Sandbox"
 
+$logFile = "onboardErrors.ps1" 
+
 $commonKvName = "EDC2019KV"
 
 $location = "northeurope"
@@ -139,13 +141,25 @@ Write-Host "Adding User to OMNIA - EDC2019 ..." -NoNewline
 Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $user.Id 
 Write-Host "Done" -ForegroundColor Green
 
-Write-Host "Adding DF MSI to OMNIA - EDC2019 ..." -NoNewline
-Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId
-Write-Host "Done" -ForegroundColor Green
+try {
+    Write-Host "Adding DF MSI to OMNIA - EDC2019 ..." -NoNewline
+    $df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName
+    Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId
+    Write-Host "Done" -ForegroundColor Green
+}
+catch {
+    Add-Content -Path $logFile  -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($df.Identity.PrincipalId)"
+}
 
-Write-Host "Adding WebApp MSI to OMNIA - EDC2019 ..." -NoNewline
-$appService = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appServiceName
-Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
-Write-Host "Done" -ForegroundColor Green
+try {
+    Write-Host "Adding WebApp MSI to OMNIA - EDC2019 ..." -NoNewline
+    $appService = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appServiceName
+    Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
+    Write-Host "Done" -ForegroundColor Green
+        
+}
+catch {
+    Add-Content -Path $logFile -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($appService.Identity.PrincipalId)"
+}
 
 
