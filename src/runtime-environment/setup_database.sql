@@ -12,8 +12,8 @@ CREATE TABLE [dbo].[ProductionData](
 	[Wellbore] [varchar](50) NOT NULL,
 	[Year] [int] NOT NULL,
 	[Month] [int] NOT NULL,
-	[Oil] [decimal](5, 5) NOT NULL,
-	[Gas] [decimal](5, 5) NOT NULL
+	[Oil] [decimal](15, 5) NOT NULL,
+	[Gas] [decimal](15, 5) NOT NULL
 ) ON [PRIMARY]
 GO
 
