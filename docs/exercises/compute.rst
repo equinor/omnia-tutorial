@@ -42,7 +42,7 @@ Create Notebook in Databricks
 
 After the notebook is created, you will jump to the notebook page. And you can start your databricks notebook from there now!
 
-**!!!Before you get started, read the following points for background info:**
+**!!!Before you get started, read the following points for background info BELOW:**
 
   * The target dataset is stored in file system **dls** in Data Lake **edc2019dls** with path **/data/open/npd.no/field_production/field_production_monthly.csv**. 
 
@@ -52,6 +52,8 @@ After the notebook is created, you will jump to the notebook page. And you can s
 
   * The connection between the key vault and the databricks workspace has been set up with a secret scope **edc_key_vault_scope** in the databricks. 
 
+  * The **tenant ID** of Equinor is "3aa4a235-b6e2-48d5-9195-7fcf05b459b0".
+
 
 Extraction - Load data from ADLS Gen 2
 --------------------------------------
@@ -59,7 +61,7 @@ In this step, you need to load the .csv file as a dataframe from targeted folder
 
 * Task 1: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to load targeted .csv file as dataframe from datalake.
 
-**Note: Different types of dataframes can be created with different libraries. Check what type of dataframe you get before proceeding.**
+**Note: Choose cluster "EDC-HighConcurrency-Shared" to run the notebook. Azure Passthrough is enabled on this cluster.**
 
 
 Transformation
@@ -95,34 +97,39 @@ In this step, the latest dataframe will be stored into a table in the SQL databa
 
 **Note: Use Service Principal OmniaEDC2019_DatabricksSPN. Don't create own Service Principal.**
 
-* Task 4: Get client secret from key vault in databricks. 
-* Task 5: Authenticate against SQL server with client credentials. Connect to SQL Database using JDBC. 
-* Task 6: Create a table named **dbo.FieldProduction** in SQL database. Write the dataframe you get from the last step into this table. 
+* Task 4: Set service principal **OmniaEDC2019_DatabricksSPN** as a user to your database with **db_owner** role. Reference `New SQL Database Guidelines <https://dataplatformwiki.azurewebsites.net/admin/setupartifacts/setup_new_sql_database>`_ for how to set up this permission in SQL queries.
+* Task 5: Get client secret from key vault in databricks. 
+* Task 6: Authenticate against SQL server with client credentials. Connect to SQL Database using JDBC. 
+* Task 7: Create a table named **dbo.FieldProduction** in SQL database. Write the dataframe you get from the last step into this table. 
 
 Optional Extras
 ---------------
 
 Extraction - Read Data From Datalake Using Client Credentials With Mounting
 ___________________________________________________________________________
-* Task 7: Redo step **Get Data From Datalake Gen 2**. Instead of using Azure Passthrough, reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount targeted data to databricks with client credentials.
+* Task 8: Redo step **Get Data From Datalake Gen 2**. Instead of using Azure Passthrough, reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount targeted data to databricks with client credentials.
 
+**Note: Choose cluster "EDC-Standard-Shared" to run the notebook. Azure Passthrough is not enabled on this cluster.**
 
 Extraction - Read Data From Datalake Directly Using Client Credentials
 ______________________________________________________________________
-* Task 8: Redo step **Get Data From Datalake Gen 2**. Reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to access data in datalake directly with client credentials.
+* Task 9: Redo step **Get Data From Datalake Gen 2**. Reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to access data in datalake directly with client credentials.
+
+**Note: Choose cluster "EDC-Standard-Shared" to run the notebook. Azure Passthrough is not enabled on this cluster.**
 
 Extraction - Read Data From SQL Database using Client Credentials
 _________________________________________________________________
-* Task 9: Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to use client credentials to read the table you created in step **Store Data To a SQL Table**.
-
+* Task 10: Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to use client credentials to read the table you created in step **Store Data To a SQL Table**.
 
 Loading - Write Data Into SQL Database With Username And Password
 _________________________________________________________________
-* Task 10: Redo step **Store Data To a SQL Table**. Instead of using service principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use the username and password you created in module **Ingest** to connect from databricks to your database.
+* Task 11: Redo step **Store Data To a SQL Table**. Instead of using service principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use the username and password you created in module **Ingest** to connect from databricks to your database.
 
 Loading - Write Data Into Datalake Gen 2 with Azure Passthrough
 _______________________________________________________________
-* Task 11: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to write the latest dataframe into file system **dls** in datalake **edc2019dls**. The path is **/user/<your-short-name>/yearly_field_production.csv**.
+* Task 12: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to write the latest dataframe into file system **dls** in datalake **edc2019dls**. The path is **/user/<your-short-name>/yearly_field_production.csv**.
+
+**Note: Choose cluster "EDC-HighConcurrency-Shared" to run the notebook. Azure Passthrough is enabled on this cluster.**
 
 Conclusion
 ----------
