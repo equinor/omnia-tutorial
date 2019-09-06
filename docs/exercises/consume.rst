@@ -36,11 +36,11 @@ course you can also program this in an Excel module later if you like.
 
 * Create a new file, an empty workbook
 
-.. image:: ./images/consume/new_workbook.jpg 
+.. image:: ./images/consume/new_workbook.png 
 
 * Add the REST API as a data source.
  
- .. image:: ./images/consume/add_data_source.jpg
+ .. image:: ./images/consume/add_data_source.png
 
 * You should enter the URL of your API created in the previous step.
 
@@ -53,31 +53,35 @@ course you can also program this in an Excel module later if you like.
 
   The entire API is explained here in the `Swagger API definition <https://edc2019-common.azurewebsites.net/swagger/index.html>`_.
 
-.. image:: ./images/consume/add_data_source_url.jpg
+.. image:: ./images/consume/add_data_source_url.png
 
 * When prompted we will connect anonymously. Other options are provided for 
   connecting with secured services.
 
-.. image:: ./images/consume/add_data_source_anonymous_ok.jpg
+.. image:: ./images/consume/add_data_source_anonymous_ok.png
 
 * The data has been retrieved now in JSON and are listed as records. 
   Convert them to a table. Use default conversion settings and click OK
 
-.. image:: ./images/consume/convert_data_to_table.jpg
+.. image:: ./images/consume/convert_data_to_table.png
 
-.. image:: ./images/consume/convert_data_to_table_ok.jpg
+.. image:: ./images/consume/convert_data_to_table_ok.png
 
 * Expand the JSON records to Excel table columns
 
-.. image:: ./images/consume/convert_data_to_table_expand.jpg
+.. image:: ./images/consume/convert_data_to_table_expand.png
 
 * Use the default of all columns and click OK
 
-.. image:: ./images/consume/convert_data_to_table_expand_ok.jpg
+.. image:: ./images/consume/convert_data_to_table_expand_ok.png
+
+* Convert the data-type for the oil and gas to be of the decimal-type
+
+.. image:: ./images/consume/change_datatype.png
 
 * Close the data source setup and load data into Excel
 
-.. image:: ./images/consume/convert_data_to_table_expand_close_and_load.jpg
+.. image:: ./images/consume/convert_data_to_table_expand_close_and_load.png
 
 There we are, finished. All the data returned from the servcie is now in an
 Excel table ready to be played with. 
@@ -89,7 +93,7 @@ refresh the data use the refresh button under the Data menu. Under the
 Data menu you will also find options for modifying the query and connection
 if needed.
 
-.. image:: ./images/consume/save_result.jpg
+.. image:: ./images/consume/save_result.png
 
 
 Consuming an API from Python
