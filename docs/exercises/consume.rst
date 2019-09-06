@@ -93,7 +93,7 @@ refresh the data use the refresh button under the Data menu. Under the
 Data menu you will also find options for modifying the query and connection
 if needed.
 
-.. image:: ./images/consume/save_result.png
+.. image:: ./images/consume/save_and_connection.png
 
 
 Consuming an API from Python
