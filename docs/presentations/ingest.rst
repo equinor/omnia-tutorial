@@ -36,22 +36,48 @@ TODO - one slide on the below:
 
 ----
 
-Ingest Methods
-==============
+Getting Data into Omnia
+=======================
 
-List the different alternatives
-
-----
-
-Data Factory
-============
-
-Info
+<General overview on getting data into Omnia - see Jone's v Next Slide>
+<LRA>
+<Connection risks - latency, transactional, guaranteed delivery, operations and monitoring>
 
 ----
 
 Data Architecture
 =================
+
+Info
+
+----
+
+Data Catalogue
+==============
+
+asdf
+
+----
+
+Alternatives
+============
+
+<List the different alternatives>
+
+.. note::
+    Ingest might not be needed if the source is already a 'community member'-
+
+----
+
+Exercise Overview
+=================
+
+<High level overview on what they will do>
+
+----
+
+Data Factory
+============
 
 Info
 

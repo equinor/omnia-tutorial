@@ -52,8 +52,8 @@ Compute Basic
 
 ----
 
-Compute Alternatives
-====================
+Alternatives
+============
 
 .. image:: ./images/compute/compute-alternatives.png
 

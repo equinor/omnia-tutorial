@@ -34,15 +34,44 @@ output.
 
 ----
 
+What we Covered
+===============
+
+.. image:: ./images/architecture-overview.png
+    :width: 800px
+
+----
+
 What we Didn't Cover
 ====================
 
 * DevOps
 * Security
+* All the different options
+* Lifecycle
+
+.. note::
+
+    * Source control, automation of build, testing. Why is this important?
+    * Security - Dropped for simplicity, but important to understand and include
+    * All the options
+
+      * Ways of working with Azure (SDK, CLI, ARM templates, ...)
+      * Different technologies.
+
+    * Operations, monitoring. Also ties in with Devops
 
 ----
 
 Next Steps
 ==========
 
-asdf
+* Play around - `Portal <https://portal.azure.com/>`__
+* Understand Omnia - `Omnia Home <https://omnia.equinor.com>`__
+* Read the documentation - `Azure <https://docs.microsoft.com/en-gb/azure/>`__
+* Join the community - `Slack <https://equinor.slack.com>`__ | `Yammer <https://yammer.com/statoil.com/>`__
+
+----
+
+THANK YOU 
+=========

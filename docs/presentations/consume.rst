@@ -34,10 +34,26 @@ output.
 
 ----
 
-Considerations
-==============
+Consume
+=======
 
-asdf
+* API First
+* Security
+* Governance
+* Data Architecture
+* Connection
+
+.. note::
+
+    * API First - How are we accessing the data - API preferred but might not 
+      meet all requirements.
+    * Security - How does the connection work e.g. embedded password
+    * Governance - Distribution / merging of data, need for LRA, maintenance
+      of solution
+    * Data Architecture - how does the API fit with our specific needs 
+      including access patterns. Do we need additional services for speed / 
+      performance (e.g. to cache values or reduce the number of queries)
+    * Connection risks - latency, transactional, guaranteed delivery, operations and monitoring>
 
 ----
 
@@ -46,12 +62,52 @@ Alternatives
 
 * Power BI
 * Web / Desktop / Mobile App
+* Excel
+* Jupyter Notebook
+* Spotfire
 * ...
+
+.. image:: ./images/consume/alternatives.png
 
 ----
 
-Power BI
-========
+Power BI - Demo
+===============
 
-asdf
+.. note::
 
+    * For getting data use exact same steps as in the Excel-excercise (Power Query-based both of them...)
+    
+----
+
+Exercise
+=================
+
+* Excel
+* Python
+* Power BI
+
+----
+
+Summary
+=======
+
+* Other tools
+* Authorisation & Authentication
+* Deployment & Sharing
+* Legal aspects
+* Performance
+
+.. note::
+
+   * *Other tools* - there are many other tools that can also be used.
+   * *Authorisation & Authentication* - for simplicity this exercise used an 
+     open API with no security. In real world scenarios it is highly likely 
+     that you will need to ensure API's are secured.
+   * *Deployment & Sharing* - once you have a solution created that consumes data
+     from an API you might want to operationalise and share it somehow.
+   * *Legal aspects* - if you modify and combine data, you may be changing the 
+     security classification and so need to consider possible implications
+   * *Performance* - There are different query patterns and also a question 
+     about what options are best and where to run compute. We might need 
+     additional backend infrastructure to improve frontend user performance.
