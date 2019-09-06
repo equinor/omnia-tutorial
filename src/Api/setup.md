@@ -114,6 +114,33 @@ After a while a new window will open with the API
 - Select the Web App from the list
 - Visual Studio Code will ask you if you want to overwrite the existing content. Click `Deploy` to confirm
 
+### VSCode in Azure CLI
+- Navigate to the folder with the with the solution.
+    - Typically `/home/<your-name>/code/omnia-tutorial/src/Api/EDC-API-skeleton`
+- Run `dotnet publish -c Release`, this creates the project in the `publish` folder.
+    - Typically `/home/<your-name>/code/omnia-tutorial/src/Api/EDC-API-skeleton/EDC-API/bin/Release/netcoreapp2.2/publish/`
+- Create .zip file of the project:
+    - Create a reference to the publish folder: `$publishFolder = "<path-to-folder>"`, this is the same folder from the last step.
+    - Create variable in the CLI: `$publishZip = "publish.zip"`
+    - Create the zip:
+    ```ps1
+    if(Test-path $publishZip) {Remove-item $publishZip}
+    Add-Type -assembly "system.io.compression.filesystem"
+    [io.compression.zipfile]::CreateFromDirectory($publishFolder, $publishZip)
+    ```
+    - Run the following block to deploy the zip file:
+    ```ps1
+    Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>app" -ArchivePath $publishDir
+    ```
+- The deployment might take a few seconds
+- It should produce output like the table below if the deployment was successful:
+
+| Name | State |ResourceGroup |EnabledHostNames | Location |
+|--|--|--|--|--|
+| edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`, ...| North Europe |
+
+- Navigate to `edc2019-'your-hortname'app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
+
 ## 5 Open API Specification
 
 As mentioned earlier, we have enabled [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) for the project. Swashbuckle is a open-source framework that auto generates a Open API Specification file based on the source code.
