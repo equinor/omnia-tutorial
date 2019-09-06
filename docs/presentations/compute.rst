@@ -37,8 +37,8 @@ TODO - one slide on the below:
 
 ----
 
-Compute Basic
-=============
+Compute Introduction
+====================
 
 * Batch v's Event Driven
 * Elasticity
@@ -52,8 +52,8 @@ Compute Basic
 
 ----
 
-Alternatives
-============
+Compute Options
+===============
 
 .. image:: ./images/compute/compute-alternatives.png
 
@@ -80,7 +80,9 @@ Azure Databricks
 ================
 * What is Databricks?
 
-.. image:: ./images/compute/azure-databricks.png
+.. image:: ./images/compute/azure_databricks.png
+
+*Image Source: https://www.jamesserra.com/archive/2017/11/what-is-azure-databricks/*
 
 .. note::
 
@@ -96,15 +98,7 @@ Azure Databricks
 
 .. image:: ./images/compute/spark.png
 
-----
-
-Azure Databricks
-================
-* Azure Databricks Architecture
-
-.. image:: ./images/compute/databricks_architecture.png
-
-*Image from: https://azure.microsoft.com/es-es/blog/a-technical-overview-of-azure-databricks/*
+*Image Source: http://quant36.rssing.com/chan-11018997/all_p2.html*
 
 ----
 
