@@ -100,25 +100,6 @@ if (!$serverFirewallRuleAllAzure)
 Write-Host "Azure SQL server firewallrule:"
 $serverFirewallRuleAllAzure
 
-$database = Get-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -ErrorAction SilentlyContinue
-
-if (!$database)
-{
-    # Create General Purpose Gen4 database with 1 vCore
-    Write-Host "Creating database $databaseName on Azure SQL server $serverName"
-    $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
-    -ServerName $serverName `
-    -DatabaseName $databaseName `
-    -Edition GeneralPurpose `
-    -VCore 2 `
-    -ComputeGeneration Gen5 `
-    -MinimumCapacity 2 `
-    -SampleName "AdventureWorksLT"
-}
-
-Write-Host "Azure SQL database properties:"
-$database
-
 Write-Host "Azure SQL server Active Directory Admin"
 $serverAADAdmin = Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -ServerName $serverName
 
@@ -134,3 +115,18 @@ if (!$serverAADAdmin)
 
 Write-Host "Azure SQL server Active Directory Admin:"
 $serverAADAdmin
+
+$database = Get-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -ErrorAction SilentlyContinue
+
+if (!$database)
+{
+    # Create General Purpose Gen4 database with 1 vCore
+    Write-Host "Creating database $databaseName on Azure SQL server $serverName"
+    $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition "Basic"
+}
+
+Write-Host "Azure SQL database properties:"
+$database
