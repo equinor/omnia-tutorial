@@ -10,8 +10,10 @@ At a high level, this tutorial involves following steps:
 
 Prerequisites
 -------------
-* Azure subscription: If you don't have an Azure subscription, create a free account before you begin.
+* Azure subscription.
+  * Go to your premade resource group through https://portal.azure.com (See [getting started](#getting-started))
 * Azure data factory.
+  * One has been premade for you; (See [getting started](#getting-started))
 
 NPD Info: 
 
@@ -24,6 +26,9 @@ http://factpages.npd.no/ReportServer?/FactPages/TableView/wellbore_exploration_a
 production csv:
 http://factpages.npd.no/ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en
 
+Getting started
+---------------
+screens and stuff? Or move this to introduction...
 
 Data Factory
 -----------------
