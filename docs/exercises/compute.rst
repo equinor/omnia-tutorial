@@ -59,7 +59,7 @@ Extraction - Load data from ADLS Gen 2
 --------------------------------------
 In this step, you need to load the .csv file as a dataframe from targeted folder in datalake. 
 
-* Task 1: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_ for using Azure Passthrough to load targeted .csv file as dataframe from datalake.
+* Task 1: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_. Use the vcode under the section *Read and write Azure Data Lake Storage using credential passthrough* to load the .csv file from the datalake as a dataframe.
 
 **Note: Choose cluster "EDC-HighConcurrency-Shared" to run the notebook. Azure Passthrough is enabled on this cluster.**
 
