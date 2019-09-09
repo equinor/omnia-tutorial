@@ -89,6 +89,13 @@ Create a new linked service to link to the Data Lake Store
 Set the file path for your destination file in thee Data Lake Store
 ![alt text](./images/ingest/12_set_property.png)
 
+Do a test-run of your newly created pipeline
+![alt text](./images/ingest/test-pipeline.png)
+
+Check status of the run
+![alt text](./images/ingest/test-run.png)
+
+
 <br/><br/>
 
 Ingest from Azure Datalake Store into Azure SQL Database
