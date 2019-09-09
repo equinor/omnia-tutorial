@@ -141,7 +141,10 @@ Working with Azure
 
 .. image:: images/introduction/portal.jpg
 
+https://portal.azure.com
+
 .. note::
 
     * Portal, CLI, Power Shell, Cloud Shell, SDK, ARM templates, DevOps ...
     * For this tutorial everything can be done through the portal. Where possible we will describe and give alternative options that might more closely reflect how you would develop in practice.
+    * Demo of portal.azure.com - Create resource, all resources button, search, cloud shell (e.g. 'az group list')
