@@ -148,7 +148,16 @@ try {
     Write-Host "Done" -ForegroundColor Green
 }
 catch {
-    Add-Content -Path $logFile  -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($df.Identity.PrincipalId)"
+    Start-Sleep -Seconds 5
+    $df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName
+    try {
+        Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId    
+    }
+    catch {
+        Add-Content -Path $logFile  -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($df.Identity.PrincipalId)"    
+    }
+    
+    
 }
 
 try {
