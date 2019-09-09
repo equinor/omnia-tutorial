@@ -31,7 +31,7 @@ This guide is an example on how to transfer data from REST APIs using an functio
 - **FileName:** wellbore.json
 <br/>
 The setup shoould look like following:
-![alt-text](EDC2019-Ingest-API.PNG)
+![alt-text](docs/exercises/images/ingest/edc2019_functionapp.PNG)
 3. Set up a Copy activity. The Source is the Blob Storage Dataset and Sink is the SQL Dataste.
 4. In pre-copy script type in the command *DELETE FROM  dbo.Wellbore*
 5. Under Mapping, select Import schemas. This will automatically set up column mapping
