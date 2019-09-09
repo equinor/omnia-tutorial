@@ -10,3 +10,4 @@ Contents
 * *consume/consume-from-api.ipynb* - A python jupyter notebook for consuming \
   the API and plotting results. Can be run locally, in the cloud or imported \
   to DataBricks.
+* *Compute/compute_solution.py* - The solutions are listed based on task number. Can be run in different cells in Azure databricks notebooks.
