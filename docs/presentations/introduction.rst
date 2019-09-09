@@ -64,6 +64,7 @@ Introduction
 
     * Allowed to leave if not suitable.
     * Signup / provisioning.
+    * High level agenda (steps, presentation + exercises). Visit in detail later
     
 ----
 
@@ -131,6 +132,7 @@ What we Will Build
     * Details on choices for each part and omissions are covered as we go.
     * The story is key.
     * Omnia Applications (v's workshop) - subscription / resource group
+    * Show github repository and present agenda
 
 ----
 

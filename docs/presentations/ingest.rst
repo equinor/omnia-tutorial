@@ -149,12 +149,14 @@ Alternatives
 * Azure Databricks​
 * Custom Applications​
 * Stream Analytics​
+* HD Insight
 * IoT Hub
 
 .. note::
 
     Azure Data Factory​
 
+    * Supports on-premis connectivity 
     * Supported formats: CSV, JSON, AVRO, ORC, Parquet​
     * Supported sources: (S)FTP, SMB, HTTP, Oracle/SQL DB, etc.​
 
