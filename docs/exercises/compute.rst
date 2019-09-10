@@ -54,6 +54,8 @@ After the notebook is created, you will jump to the notebook page. And you can s
 
   * The **tenant ID** of Equinor is "3aa4a235-b6e2-48d5-9195-7fcf05b459b0".
 
+  * For the tasks without reference script given, you can find the solution script in `EDC Compute Module Solutions <https://github.com/equinor/omnia-tutorial/blob/master/solution/Compute/compute_solution.py>`_.
+
 
 Extraction - Load data from ADLS Gen 2
 --------------------------------------
@@ -79,9 +81,18 @@ In this step, you will do some basic compute on the dataframe you get from the s
   * prfPrdOeNetMillSm3
   * prfPrdProducedWaterInFieldMillSm3
 
-The output dataframe should look like below:
+  The output dataframe should look like below:
 
-.. image:: ./images/compute/basiccompute.PNG
+  .. image:: ./images/compute/basiccompute.PNG
+
+  If you are not familiar with python, you can reference the script below:
+  ::
+
+      df_2 = df.select(df.prfInformationCarrier.cast("string"), df.prfYear.cast("int"), df.prfPrdOilNetMillSm3.cast("double"), df.prfPrdGasNetBillSm3.cast("double"), df.prfPrdNGLNetMillSm3.cast("double"), df.prfPrdCondensateNetMillSm3.cast("double"), df.prfPrdOeNetMillSm3.cast("double"), df.prfPrdProducedWaterInFieldMillSm3.cast("double"))
+      display(df_2)
+
+      df_3 = df_2.orderBy('prfInformationCarrier').groupBy('prfInformationCarrier','prfYear').agg({'prfPrdOilNetMillSm3':'sum', 'prfPrdGasNetBillSm3':'sum', 'prfPrdNGLNetMillSm3':'sum', 'prfPrdCondensateNetMillSm3':'sum', 'prfPrdOeNetMillSm3':'sum', 'prfPrdProducedWaterInFieldMillSm3':'sum'})
+      display(df_3)
 
 
 Enrich data (dummy GDPR)
@@ -90,6 +101,11 @@ In this step, you will add a column to the dataframe you get in the last step. T
 
 * Task 3: Add a column named "GDPRColumn" in the dataframe. The content can be any dummy data.
 
+  Like in **Basic Computing**, you can reference the script below:
+  ::
+
+      df_4 = df_3.select('*', (df_3.prfYear + 300).alias('GDPRColumn'))
+      display(df_4)
 
 Loading - Load transformed data to SQL server for further analysis
 ------------------------------------------------------------------
@@ -97,10 +113,45 @@ In this step, the latest dataframe will be stored into a table in the SQL databa
 
 **Note: Use Service Principal OmniaEDC2019_DatabricksSPN. Don't create own Service Principal.**
 
-* Task 4: Set service principal **OmniaEDC2019_DatabricksSPN** as a user to your database with **db_owner** role. Reference `New SQL Database Guidelines <https://dataplatformwiki.azurewebsites.net/admin/setupartifacts/setup_new_sql_database>`_ for how to set up this permission in SQL queries.
-* Task 5: Get client secret from key vault in databricks. 
+* Task 4: Set service principal **OmniaEDC2019_DatabricksSPN** as a user to your database with **db_owner** role. 
+
+  Run the following SQL query upon your SQL database:
+  ::
+
+      CREATE USER [OmniaEDC2019_DatabricksSPN] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo];
+
+      EXEC sp_addrolemember N'db_owner', N'OmniaEDC2019_DatabricksSPN';
+
+* Task 5: Get client secret from key vault in databricks. Reference the section **Use the secrets in a notebook** in `Azure Databricks Documentation <https://docs.azuredatabricks.net/user-guide/secrets/example-secret-workflow.html#use-the-secrets-in-a-notebook>`_.
 * Task 6: Authenticate against SQL server with client credentials. Connect to SQL Database using JDBC. 
-* Task 7: Create a table named **dbo.FieldProduction** in SQL database. Write the dataframe you get from the last step into this table. 
+  The example code in `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ is written in Scala. You need to rewrite it in python. You can reference the script below:
+  ::
+
+      import adal
+      authority_host_uri = 'https://login.windows.net'
+      tenant = '3aa4a235-b6e2-48d5-9195-7fcf05b459b0'
+      authority_uri = authority_host_uri + '/' + tenant
+      resource_uri = 'https://database.windows.net/'
+      client_id = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
+
+      context = adal.AuthenticationContext(authority_uri, api_version=None)
+      mgmt_token = context.acquire_token_with_client_credentials(resource_uri, client_id, client_secret)
+      token = mgmt_token['accessToken']
+
+* Task 7: Create a table named **dbo.TransformedFieldProduction** in SQL database. Write the dataframe you get from the last step into this table. 
+
+  You can reference the script below:
+  ::
+
+      df_4.write.format('jdbc').options(
+            url="jdbc:sqlserver://<your-sql-server-name>.database.windows.net:1433",
+            databaseName="<your-sql-database-name>",
+            driver="com.microsoft.sqlserver.jdbc.SQLServerDriver",
+            dbtable="dbo.TransformedFieldProduction",
+            encrypt="true",
+            hostNameInCertificate = "*.database.windows.net",
+            trustServerCertificate = "false",
+            accessToken=token).mode('append').save()
 
 Optional Extras
 ---------------

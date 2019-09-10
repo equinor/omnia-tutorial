@@ -64,14 +64,6 @@ Compute Options
 `Criteria for choosing an Azure compute service <https://docs.microsoft.com/en-gb/azure/architecture/guide/technology-choices/compute-comparison>`__ 
 
 .. note::
-   * Virtual Machine : old way when think of compute
-   * Azure Batch
-   * Function Apps : event triggered
-   * Container & Kubernetes: 
-   * HDInsight: use hive, pig or map reduce jobs
-   * Apache Kafka: cover both streaming and computing
-   * Stream Analytics: streaming process, need databricks or event hubs to ingest realtime data
-   * Azure Databricks
    * links are from Azure Architecture Center
 
 ----
@@ -86,9 +78,9 @@ Azure Databricks
 
 .. note::
 
-   * Apache Spark
-   * Databricks
-   * Enterprise cloud
+   * Apache Spark + databricks + enterprise cloud
+   * Input can be stream data/any storage, like sql, blob, s3
+   * output can be storage, visualization, machine learning pipelines...
 
 ----
 
@@ -99,6 +91,15 @@ Azure Databricks
 .. image:: ./images/compute/spark.png
 
 *Image Source: http://quant36.rssing.com/chan-11018997/all_p2.html*
+
+.. note::
+   * only spark supports all the three
+   * explain a little about these three
+   * spark is good: 
+       * spark is fast because RAM & distributed framework, 
+       * expensive because RAM. 
+   * consider other options based on your data. You don't have to use Spark.
+                    
 
 ----
 

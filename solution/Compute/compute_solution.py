@@ -5,47 +5,13 @@ df = spark.read.format('csv').options(
     header='true', inferschema='false').load("abfss://dls@edc2019dls.dfs.core.windows.net/data/open/npd.no/field_production/*.csv")
 display(df)
 
-# Task 2: For each Information Carrier and each year, calculate the sum of each column listed
-df_2 = df.select(df.prfInformationCarrier.cast("string"), df.prfYear.cast("int"), df.prfPrdOilNetMillSm3.cast("double"), df.prfPrdGasNetBillSm3.cast("double"), df.prfPrdNGLNetMillSm3.cast("double"), df.prfPrdCondensateNetMillSm3.cast("double"), df.prfPrdOeNetMillSm3.cast("double"), df.prfPrdProducedWaterInFieldMillSm3.cast("double"))
-display(df_2)
-
-df_3 = df_2.orderBy('prfInformationCarrier').groupBy('prfInformationCarrier','prfYear').agg({'prfPrdOilNetMillSm3':'sum', 'prfPrdGasNetBillSm3':'sum', 'prfPrdNGLNetMillSm3':'sum', 'prfPrdCondensateNetMillSm3':'sum', 'prfPrdOeNetMillSm3':'sum', 'prfPrdProducedWaterInFieldMillSm3':'sum'})
-display(df_3)
-
-# Task 3: Add a column named "GDPRColumn" in the dataframe. The content can be any dummy data.
-df_4 = df_3.select('*', (df_3.prfYear + 300).alias('GDPRColumn'))
-display(df_4)
-
-# Task 4: Set service principal OmniaEDC2019_DatabricksSPN as a user to your database with db_owner role. Reference New SQL Database Guidelines for how to set up this permission in SQL queries. (The solution code is SQL query)
-create user [OmniaEDC2019_DatabricksSPN] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo];
-
-EXEC sp_addrolemember N'db_owner', N'OmniaEDC2019_DatabricksSPN';
+  # or like below:
+  df =spark.read.csv("abfss://dls@edc2019dls.dfs.core.windows.net/data/open/npd.no/field_production/*.csv", header='true').collect()
+  df = spark.createDataFrame(df)
+  display(df)
 
 # Task 5: Get client secret from key vault in databricks.
 client_secret = dbutils.secrets.get(scope = "edc_key_vault_scope", key = "DatabricksSpnClientSecret")
-
-# Task 6: Authenticate against SQL server with client credentials. Connect to SQL Database using JDBC.
-import adal
-authority_host_uri = 'https://login.windows.net'
-tenant = '3aa4a235-b6e2-48d5-9195-7fcf05b459b0'
-authority_uri = authority_host_uri + '/' + tenant
-resource_uri = 'https://database.windows.net/'
-client_id = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
-
-context = adal.AuthenticationContext(authority_uri, api_version=None)
-mgmt_token = context.acquire_token_with_client_credentials(resource_uri, client_id, client_secret)
-token = mgmt_token['accessToken']
-
-# Task 7: Create a table named dbo.FieldProduction in SQL database. Write the dataframe you get from the last step into this table.
-df_4.write.format('jdbc').options(
-      url="jdbc:sqlserver://<your-sql-server-name>.database.windows.net:1433",
-      databaseName="<your-sql-database-name>",
-      driver="com.microsoft.sqlserver.jdbc.SQLServerDriver",
-      dbtable="dbo.FieldProduction",
-      encrypt="true",
-      hostNameInCertificate = "*.database.windows.net",
-      trustServerCertificate = "false",
-      accessToken=token).mode('append').save()
 	  
 # Task 8: Redo step Get Data From Datalake Gen 2. Instead of using Azure Passthrough, reference Databricks documentation Azure Data Lake Storage Gen 2 to mount targeted data to databricks with client credentials.
 clientId = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
