@@ -97,10 +97,25 @@ What is Omnia (and why?)
       * Omnia classic
       * Omnia applications
       * Standalone
+      * Sandbox - for personal training - not for testing!
 
     * **Data Tab** - When does data become a part of the data platform. Will come back to later also.
 
   We will revisit many of these topics as part of the tutorial.
+
+----
+
+What we Will Build
+==================
+
+.. image:: ./images/architecture-overview.png
+    :width: 800px
+
+.. note::
+
+    * Details on choices for each part and omissions are covered as we go.
+    * The story is key.
+    * Show github repository and present agenda
 
 ----
 
@@ -121,18 +136,28 @@ Tutorial scenario
 
 ----
 
-What we Will Build
-==================
+Subscriptions and all That
+==========================
 
-.. image:: ./images/architecture-overview.png
-    :width: 800px
+.. image:: images/introduction/subscriptions-resourcegroups.jpg
 
 .. note::
 
-    * Details on choices for each part and omissions are covered as we go.
-    * The story is key.
-    * Omnia Applications (v's workshop) - subscription / resource group
-    * Show github repository and present agenda
+  Some common concepts that they will encounter
+
+  * Resources are what you create in Azure e.g. Database, Storage, Azure Functions, Virtual Machine
+  * Many different containers for 'putting things in'.
+
+    * Resource Group - container for grouping resources.
+    * Equinor Tennant - top level 1 for company (so far).
+
+  Used for:
+  
+  * Policies
+  * Grouping
+  * Billing
+
+  How this relates to this workshop - Omnia Applications (v's workshop) - subscription / resource group
 
 ----
 
@@ -145,6 +170,21 @@ https://portal.azure.com
 
 .. note::
 
-    * Portal, CLI, Power Shell, Cloud Shell, SDK, ARM templates, DevOps ...
+    * Many ways of working:
+    
+      * Portal
+      * Command Line Interface (CLI)
+      * Power Shell 
+      * Cloud Shell
+      * Software Developer Kit (SDK)
+      * Infrastructure as code - Azure Resource Manager (ARM) templates
+      * DevOps 
+      * ...
+
     * For this tutorial everything can be done through the portal. Where possible we will describe and give alternative options that might more closely reflect how you would develop in practice.
-    * Demo of portal.azure.com - Create resource, all resources button, search, cloud shell (e.g. 'az group list')
+    * Demo of portal.azure.com
+    
+      * Create resource
+      * All resources button
+      * Search
+      * Cloud shell (e.g. 'az group list')
