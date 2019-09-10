@@ -102,7 +102,7 @@ Check the DLS for the file ingested
 
 ![alt text](./images/ingest/storage-explorer.png)
 
-The "Storage Explorer (Preview)" is using the built in explorer within the portal, this is what we will use. See further [below](#azure-storage-explorer) for "Open in Explorer"-option.
+The "Storage Explorer (Preview)" is using the built in explorer within the portal, this is what we will use. See further [below](#azure-storage-explorer) for "Open in Explorer"-option. Double clicking on the actual file will download it to your computer, from here you can view the file in your favorite csv-application.
 
 ![alt text](./images/ingest/storage-explorer-view-file.png)
 
