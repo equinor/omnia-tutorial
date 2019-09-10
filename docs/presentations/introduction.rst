@@ -167,7 +167,7 @@ What we Will Build
 Subscriptions and all That
 ==========================
 
-.. image:: images/introduction/subscriptions-resourcegroups.jpg
+.. image:: images/introduction/subscriptions-resourcegroups.png
 
 .. note::
 
