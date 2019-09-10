@@ -98,7 +98,19 @@ Check status of the run
 
 ![alt text](./images/ingest/test-run.png)
 
-TODO: image of check file in DLS, mention Storage Explorer (standalone vs portal)
+Check the DLS for the file ingested
+
+![alt text](./images/ingest/storage-explorer.png)
+
+The "Storage Explorer (Preview)" is using the built in explorer within the portal, this is what we will use. See [below](#azure-storage-explorer) for "Open in Explorer"-option.
+
+![alt text](./images/ingest/storage-explorer-view-file.png)
+
+[Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) 
+------------------------------
+
+A cross-platform (windows, linux and macOS) client to connect to Azure Storage Accounts.
+
 
 <br/><br/>
 
