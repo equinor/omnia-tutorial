@@ -111,7 +111,6 @@ Data Architecture
 .. image:: images/ingest/data-architecture.png
   :width: 800px
 
-TODO: Replace DB icon with API
 
 .. note::
     Important to differentitate between the different layers
