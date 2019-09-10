@@ -3,37 +3,69 @@
 ## 1. Setup
 
 1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place. To check the this:
-    - Locate the app service in your resource group in the azure portal
+    - Locate the app service in your resource group in the [Azure Portal](portal.azure.com)
     - In the list on the left under the title `Settings`, click the field called `Identity`,
     - Status should be toggled to  `On`,
     - If it is `Off`, toggle it `On`, and press save. This enables the MSI for your app.    
-1. **IF YOU ARE USING YOU OWN DATABASE**:
-    1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
+1. **IF YOU HAVE COMPLETED THE PREVIOUS TASKS AND WANT TO USE YOUR OWN DATA SOURCE:**
+    1. Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
+    2. Open up the solution `EDC-API-skeleton.sln` in your editor of choice. We recommend Visual Studio 2019 or Visual Studio Code.
+    3. When the solution has been opened, a solution explorer will appear. This shows all the files linked to this solution. Open the file called `appsettings.json`
+    4. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. 
+    1. The connection string is on the following format: 
         - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
         - Example:
         - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
+        - To find the URL, navigate to your resouce group in the [Azure Portal](portal.azure.com), open up your `SQL database`. The URL should be located in the top right under `Server name`.
         > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
     2. Then we have to grant the MSI access in the database:
-    1. Navigate to your resource group and locate your `SQL database`.
-    1. In the list on the left, navigate to `Query editor (preview)`, and connect using `Active Directory authentication`. *(The login might fail, retry it a few times before contacting one of us)*.
-    1. This should open a query editor, enter the following commands, **updated with your values** of course: 
+    3. Navigate to your resource group and locate your `SQL database`.
+    4. In the list on the left, navigate to `Query editor (preview)`, and connect using `Active Directory authentication`. *(The login might fail, retry it a few times before contacting one of us)*.
+    5. This should open a query editor, enter the following commands, **updated with your values** of course: 
         - `CREATE USER [<app name>] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]`
         - `GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [<app name>]`
         
 
-    
-1. **IF YOU ARE USING OUR DATABASE**:
+1. **IF YOU HAVE NOT COMPLETED THE PREVIOUS TASKS AND WANT TO USE OUR DATA SOURCE:**
+    1. Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
+    2. Open up the solution `EDC-API-skeleton.sln` in your editor of choice. We recommend Visual Studio 2019 or Visual Studio Code.
+    3. When the solution has been opened, a solution explorer will appear. This shows all the files linked to this solution. Open the file called `appsettings.json`
     1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
         - "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`"
         - If you don't get access, please contact one of us.
 
     > NOTE: We only give read access to our database. All endpoints with creates/updates/deletes will then fail, but the logic should still be in place. This is to ensure that someone doesn't break the database for all the rest.
 
-We have preconfigured Swashbuckle in the project, giving access to a documentation page.
+1. We have configured [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) for the project. EF is a Object-relational mapper that converts between objects in the code, and tables in the database. This allows us to access data without writing SQL statements. We have configured the project such that the database can be accesses through the `CommonDbContext` class. This class is already injected into both controllers.
+    1. Examples:
+    2. Retrieving all production data entries: 
+        - `var productionDatas = _context.ProductionData.Tolist()`
+    3. Adding new entry: 
+        - `_context.ProductionData.Add(new ProductionData {})`
+    1. Updating existing entry: 
+        - `_context.ProductionData.Update(productionDataObject)`
+    1. Retrieving a single entry based on some criteria: 
+        - `var productionData = _context.ProductionData.FirstOrDefault( pd => pd.Wellbore == "Some wellbore")`
+    1. Retrieving a list of entries matching some criteria: 
+        - `var productionDatasList = _context.ProductionData.Where( pd => pd.Wellbore == "Some wellbore").ToList()`
+    
 
-If you want to test your API, simply run the API locally and use the portal that appears.
+1. We have preconfigured Swashbuckle in the project, giving access to a documentation page. If you want to test your API, simply run the API locally and use the portal that appears.
+
 ## 2. ProductionDatasController
-The `ProductionDatasController` represent the most common functionality for any API; Create, Read, Update, and Delete (CRUD). Typically CRUD is implemented on a per-table/view basis.
+In the solution explorer, under the folder `Controllers` you should find the `ProductionDatasController`. This controller should implement the most common functionality for any API; Create, Read, Update, and Delete (CRUD). Typically CRUD is implemented on a per-table/view basis.
+
+Since we are in the web API domain, all results from the API has to be associated with a HTTP response. This means, we never return a list of objects directly, return a `200 Ok` response that contains the list of objects.
+
+Example:
+```C#
+var entries = _context.Entries.ToList();
+return Ok(entries);
+```
+
+[ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.2) natively supports: `Ok()`, `BadRequest()`, `NotFound()`, `Unauthorized`, `Forbid()`, `NoContent()`, and many more.
+
+
 ### 2.1 Read
 Implement the controller methods:
 - `GetProductionData()`
