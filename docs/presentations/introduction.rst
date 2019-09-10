@@ -119,23 +119,6 @@ What we Will Build
 
 ----
 
-Tutorial scenario
-=================
-
-.. image:: images/introduction/NPD.png
-
-| https://www.npd.no/en/facts/news/Production-figures/
-| http://factpages.npd.no/factpages/Default.aspx?culture=en
-
-
-.. note::
-
-    * NPD holds open data on production from different fields.
-    * Create a pipeline to make the data available through Omnia.
-    * Case chosen to easily highlight some of the important considerations when building cloud base data pipelines.
-
-----
-
 Subscriptions and all That
 ==========================
 
