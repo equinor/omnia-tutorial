@@ -214,4 +214,4 @@ https://portal.azure.com
       * Create resource
       * All resources button
       * Search
-      * Cloud shell (e.g. 'az group list')
+      * Cloud shell (e.g. 'az group list') (TODO: Link to cloud-shell-quickstart.md?) Guinea pigs to test this!

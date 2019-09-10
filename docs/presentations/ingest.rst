@@ -97,8 +97,14 @@ https://eun-su1.azuredatacatalog.com
 
 ----
 
-Alternatives
-============
+Storage Alternatives
+====================
+
+TODO MHEW
+----
+
+Ingest Alternatives
+===================
 
 * Azure Data Factory​ (recommended)
 * Azure Functions​

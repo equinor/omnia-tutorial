@@ -82,19 +82,23 @@ Switch to the Sink tab in the copy activity settings, and select new dataset
 
 ![alt text](./images/ingest/10_new_binary.png)
 
-Create a new linked service to link to the Data Lake Store
+Create a new linked service to link to the Data Lake Store, place this in your personal folder.
 
 ![alt text](./images/ingest/11_new_linkeservice_dls.png)
 
-Set the file path for your destination file in thee Data Lake Store
+Set the file path for your destination file in the Data Lake Store: /dls/user/shortname/filename (e.g. /dls/user/jmor/field_production_monthly.csv)
+
 ![alt text](./images/ingest/12_set_property.png)
 
 Do a test-run of your newly created pipeline
+
 ![alt text](./images/ingest/test-pipeline.png)
 
 Check status of the run
+
 ![alt text](./images/ingest/test-run.png)
 
+TODO: image of check file in DLS, mention Storage Explorer (standalone vs portal)
 
 <br/><br/>
 
@@ -120,7 +124,7 @@ In this step, you first need to Create a Azure SQL Server and Azure SQL Database
 
 ![alt text](./images/ingest/SQL/3_set_firewall.png)
 
-6. Go the Active Directory admin, and add your user as admin
+6. Go the Active Directory admin, and add your @equinor user as admin
 
 ![alt text](./images/ingest/SQL/4_set_AD_admin.png)
 

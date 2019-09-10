@@ -97,6 +97,7 @@ Summary
 * Deployment & Sharing
 * Legal aspects
 * Performance
+* Sharing
 
 .. note::
 
@@ -111,3 +112,4 @@ Summary
    * *Performance* - There are different query patterns and also a question 
      about what options are best and where to run compute. We might need 
      additional backend infrastructure to improve frontend user performance.
+   * *Sharing* - when consuming and curating existing data you are suddenly a producer as well. Consider if your value-added work should be shared (though api's of course)!
