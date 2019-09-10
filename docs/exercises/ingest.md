@@ -98,9 +98,20 @@ Check status of the run
 
 ![alt text](./images/ingest/test-run.png)
 
-TODO: image of check file in DLS, mention Storage Explorer (standalone vs portal)
+Check the DLS for the file ingested
 
-<br/><br/>
+![alt text](./images/ingest/storage-explorer.png)
+
+The "Storage Explorer (Preview)" is using the built in explorer within the portal, this is what we will use. See further [below](#azure-storage-explorer) for "Open in Explorer"-option. Double clicking on the actual file will download it to your computer, from here you can view the file in your favorite csv-application.
+
+![alt text](./images/ingest/storage-explorer-view-file.png)
+
+Open in Explorer
+------------------------------
+
+[Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) is a cross-platform (windows, linux and macOS) client to connect to Azure Storage Accounts.
+
+<br/>
 
 Ingest from Azure Datalake Store into Azure SQL Database
 -----------------------------------------
