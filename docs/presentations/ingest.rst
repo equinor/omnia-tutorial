@@ -182,8 +182,12 @@ Exercise
 Summary
 =======
 
-* TODO
+* Other tools
+* Automation & DevOps
+* Monitoring
 
 .. note::
 
-  * TODO
+   * *Other tools* - there are many other tools that can also be used.
+   * *Automation & Devops* - Github, automation and devops. Also operationalising.
+   * *Monitoring* - How to know if things go wrong (e.g. source unavailable).
