@@ -4,8 +4,9 @@ This guide is an example on how to transfer data from REST APIs using an functio
 
 ## Linked Services
 1. Create a linked service for the function app. You will need the following parameters:
-- **Function url:** https://factpages-tutorial.azurewebsites.net
-- **Function key:** 63qtXSzq1OEwFrnas8VlgcxdPtpoL97ti4Xvw41MAh94FfQk8lD7ag==
+- **Name:** *YourAzureFunctionLinkedServiceName*
+- **Azure Function App selection method:** Enter manually
+- **Function App URL:** https://factpages-tutorial.azurewebsites.net
 2. Create a linked service for the Azure Blob Storage.
 - **Authentication method:** Account Key
 - **Account selection method:** From Azure subscription
@@ -26,7 +27,6 @@ This guide is an example on how to transfer data from REST APIs using an functio
 1. Create a pipeline in Data Factory.
 2. Set up an Azure Function activity. Linked service is the linked service from step 1 in the previous section. Set "Ingest" as Function name. Method can be either GET or POST. Create a new header by clicking on New under Headers. Use the following vales:
 - **Url:** http://factpages.npd.no/ReportServer?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en
-- **ConnectionString:** DefaultEndpointsProtocol=https;AccountName=omniatutorial;AccountKey=M96FW0QVawI1CqIjnlU8VceVzlpCucXTqBcuGrNpjuhW2B9HCph2ZTE07fX3PbQlINS8NePsKwMhvNI6QRupWw==;EndpointSuffix=core.windows.net
 - **ContainerName:** factpages
 - **FileName:** wellbore.json
 <br/>
