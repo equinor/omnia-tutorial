@@ -52,6 +52,8 @@
 
 1. We have preconfigured Swashbuckle in the project, giving access to a documentation page. If you want to test your API, simply run the API locally and use the portal that appears.
 
+1. If you at any point in the code feel stuck, it is allowed to look at the reference implementation in `omnia-tutorial\src\Api\EDC-API`.
+
 ## 2. ProductionDatasController
 In the solution explorer, under the folder `Controllers` you should find the `ProductionDatasController`. This controller should implement the most common functionality for any API; Create, Read, Update, and Delete (CRUD). Typically CRUD is implemented on a per-table/view basis.
 
