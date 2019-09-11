@@ -47,13 +47,12 @@ Introduction
 * https://github.com/equinor/omnia-tutorial/
 
 .. note::
-    | P - A hands on introduction with Omnia
-    | O - A better understanding of Omnia
-    | W - Better equiped to develop within Equinor's new IT platform
-    | E - Who has worked with Omnia? What expectations do people have?
-    | R - ?
+    A hands on introduction with Omnia
+    * They will get a better understanding of Omnia so they are better equiped to develop within Equinor's new IT platform
     
     How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.
+    
+    A lot of material to get through, but we focus on the most important points so don't panic if you can't complete something.
 
     What we are not covering
 
@@ -66,7 +65,7 @@ Introduction
     * Allowed to leave if not suitable.
     * Signup / provisioning. 
     * Ask questions via Slack 
-    * High level agenda (steps, presentation + exercises). Visit in detail later
+    * Show high level agenda (steps, presentation + exercises). Visit in detail later
     
 ----
 
@@ -162,6 +161,7 @@ What we Will Build
     * The story is key.
     * Explain how this relates to data architecture
     * Show github repository and present agenda
+    * Exercises to introduce concepts. Fine if they don't complete anything as we have clear interfaces between each part and completed end points you can reference if you don't get yours completed.
 
 ----
 

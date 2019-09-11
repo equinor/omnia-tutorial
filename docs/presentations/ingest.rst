@@ -102,7 +102,20 @@ https://eun-su1.azuredatacatalog.com
 Storage Alternatives
 ====================
 
-TODO MHEW
+* Data Lake Store
+* Blob Store
+* Archive Storage
+* Relational Databases
+* NOSQL Databases
+* Timeseries Databases
+* ...
+
+.. note:: 
+  * Before doing ingest we need somewhere to put the data
+  * Temporary e.g. queues / Service Bus v's persistant
+  * Many different options for different needs
+  * Datalake the concept v's datalake the technology.
+
 ----
 
 Ingest Alternatives
