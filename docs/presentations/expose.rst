@@ -259,6 +259,7 @@ Azure API Management
 .. image:: ./images/expose/apim-portal.jpg
 
 https://api.equinor.com
+
 ----
 
 API Hosting Alternatives
