@@ -265,7 +265,6 @@ Trigger the pipeline. You can verify the output by going back to the database qu
     CREATE USER [NameOfDatafactory] FROM EXTERNAL PROVIDER
     GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, ALTER ON schema::dbo TO [NameOfDatafactory]
 
-
 Summary
 -------
 

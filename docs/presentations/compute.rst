@@ -32,9 +32,6 @@ none of the text so far has been a heading, it means that the first slide has
 not yet started. As a result, all this text will be ignored in the generated 
 output.
 
-TODO - one slide on the below:
-
-
 ----
 
 Compute Introduction
@@ -119,3 +116,12 @@ Exercise Overview
 .. image:: ./images/compute/compute_module.PNG
 
 Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exercises/compute.rst
+
+Summary
+-------
+
+In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
+
+* Automation and DevOps
+* Create client, store client secret in key vault, set up client permissions
+* Source Control (Github)

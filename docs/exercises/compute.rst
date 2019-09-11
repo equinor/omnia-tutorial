@@ -195,11 +195,15 @@ If you managed to complete all tasks, you should be able to read from / write to
 * Write to SQL database using client credentials
 * Write to SQL database using username and password
 
-What we Didn't Cover
---------------------
+Summary
+-------
 
 In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
 
 * Automation and DevOps
 * Create client, store client secret in key vault, set up client permissions
 * Source Control (Github)
+
+.. note::
+
+    * Content copied from presentation summary
