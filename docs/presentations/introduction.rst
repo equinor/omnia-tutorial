@@ -43,6 +43,7 @@ Introduction
 * A hands on introduction with Omnia
 * What are we not covering?
 * Signup
+* #edc_2019 @Slack
 * https://github.com/equinor/omnia-tutorial/
 
 .. note::
@@ -63,7 +64,8 @@ Introduction
     Other 
 
     * Allowed to leave if not suitable.
-    * Signup / provisioning.
+    * Signup / provisioning. 
+    * Ask questions via Slack 
     * High level agenda (steps, presentation + exercises). Visit in detail later
     
 ----
@@ -214,4 +216,6 @@ https://portal.azure.com
       * Create resource
       * All resources button
       * Search
+      * Show example for browsing to data factory (main links - overview, access, ...)
       * Cloud shell (e.g. 'az group list') (TODO: Link to cloud-shell-quickstart.md?) Guinea pigs to test this!
+      * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)
