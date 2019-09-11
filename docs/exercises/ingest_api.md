@@ -50,7 +50,7 @@ Here you will need the following parameters:
 ### Datasets
 1. Create a Dataset for the Blob Storage. Select linked service from step 2 in the previous section. When promptet for file type, select JSON. Browse for file *wellbore.json*
 - ![alt-text](./images/ingest/API/7_BlobDataset.png)
-2. Create a Dataset for the SQL table. Select SQL linked service from  step 3 from the previous section. Select the table *dbo.Wellbore* as source. If the table doest not exists in the database you can create the table with this [command]()
+2. Create a Dataset for the SQL table. Select SQL linked service from  step 3 from the previous section. Select the table *dbo.Wellbore* as source. If the table doest not exists in the database you can create the table with this [command](https://github.com/equinor/omnia-tutorial/blob/master/docs/exercises/scripts/wellbore.sql)
 - ![alt-text](./images/ingest/API/8_SqlDataset.png)
 
 ### Pipeline
