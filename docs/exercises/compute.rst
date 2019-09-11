@@ -44,7 +44,7 @@ After the notebook is created, you will jump to the notebook page. And you can s
 
 **!!!Before you get started, read the following points for background info BELOW:**
 
-  * The target dataset is stored in file system **dls** in Data Lake **edc2019dls** with path **/data/open/npd.no/field_production/field_production_monthly.csv**. 
+  * The target dataset is stored in file system **dls** in Data Lake **edc2019dls** with path **/user/<your-short-name>/<your-csv-filename>.csv**. 
 
   * A Service Principal **OmniaEDC2019_DatabricksSPN** has been created and set up to be used here as the client. The application ID (client ID) of this Service Principal is "f0d5bd54-9617-491d-afa1-07c8bd4dc5c1".  
 
@@ -64,6 +64,13 @@ In this step, you need to load the .csv file as a dataframe from targeted folder
 * Task 1: Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_. Use the vcode under the section *Read and write Azure Data Lake Storage using credential passthrough* to load the .csv file from the datalake as a dataframe.
 
 **Note: Choose cluster "EDC-HighConcurrency-Shared" to run the notebook. Azure Passthrough is enabled on this cluster.**
+
+  You can reference the example code as below:
+  ::
+
+      df =spark.read.csv("abfss://dls@edc2019dls.dfs.core.windows.net/user/<your-short-name>/*.csv", header='true').collect()
+      df = spark.createDataFrame(df)
+      display(df)
 
 
 Transformation
