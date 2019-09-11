@@ -40,11 +40,14 @@ TODO - one slide on the below:
 Compute Introduction
 ====================
 
+* Why Compute?
 * Batch v's Event Driven
 * Elasticity
 * Cost
 
 .. note::
+
+   * Compute for processing data (cleaning, transformation, ...)
 
    * Elasticity: the ability to scale up/down according to workload. eg: worker nodes, cores
 

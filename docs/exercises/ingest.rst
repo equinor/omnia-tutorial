@@ -128,11 +128,15 @@ If you work with Azure you may want to install the [Azure Storage Explorer](http
 Ingest from Azure Datalake Store into Azure SQL Database
 --------------------------------------------------------
 
-In this step, you will first create an Azure SQL Server and Azure SQL Database.
+In this step, you will first create an Azure SQL Server and Azure SQL 
+Database. Azure SQL Server gives a runtime environment and Azure SQL 
+Database gives a database instance within this. 
 
-Select Azure SQL in the left-hand menu of the Azure portal. If Azure SQL is
-not in the list, select All services, then type Azure SQL in the search 
-box.
+NOTE: In the future you would expect such runtime components to disappear as 
+this everything would be provisioned and scaled automatically.
+
+In the Azure Portal, *All services* from the left menu, then type Azure SQL 
+in the search box. 
 
 (Optional) Select the star next to Azure SQL to favorite it and add it as 
 an item in the left-hand navigation for quick access.
@@ -140,35 +144,111 @@ Select + Add to open the Select SQL deployment option page. You can view
 additional information about the different databases by selecting Show 
 details on the Databases tile.
 
-Select Create:
+Click on the *Azure SQL* service in the results list.
+
+You are presented with different options of what you can create. Select
+*SQL Databases* and *Create* with the default *Single Database* option 
+selected.
 
 .. image:: images/ingest/SQL/1_new_sql_server.png
 
-Enter the following values: (Provide a uniqe Server name)
+Enter the configuration details, ensuring the following:
+
+* Check that the subscription is *Omnia Application Workspace - Sandbox*
+  and select your own resource group edc2019_<shortname>
+* Enter database name as *Common*
+* Click *Create new* under the database details. 
+* Provide a uniqe Server name using consistent naming e.g. edc2019_<shortname>
+* Enter a custom password under the create server dialog as shown below. 
+* Location should be *North Europe*
+* Be sure to check the box *Allow Azure services to access server* so that 
+  Datafactory (and other services) can access the database.
+* Under *Compute & Storage* select *Configure database* and chose the *Basic*
+  option as we only have minimal requirements performance wise. 
 
 .. image:: images/ingest/SQL/2_new_sql_server2.png
 
-Now that you've created the database, go to the the SQL Server and add 
-Firewall details
+Click *Review + create* to create the database followed by *Create* after you 
+have reviewed the settings.
+
+Once the database is created locate / search to find the created SQL Server 
+(not SQL database) so we can add Firewall details to access the database 
+remotely. In the SQL Server links use *Firewalls and virtual networks* link
+to modify the firewall.  
 
 As we will copy data by using the Azure Data Factory integration runtime, 
-configure an Azure SQL Server firewall so that Azure services can access 
-the server. If you copy data by using a self-hosted integration runtime, 
-configure the Azure SQL Server firewall to allow the appropriate IP range. 
-This range includes the machine's IP that's used to connect to Azure
-SQL Database.
+configure the Azure SQL Server firewall so that Azure services can access 
+the server. 
+
+We will open for other needed addresses too as below. 
 
 .. image:: images/ingest/SQL/3_set_firewall.png
 
-Go the Active Directory admin, and add your @equinor user as admin
+To enable single sign-on for login simplicity when working with the database,
+go to the *Active Directory admin* link, and add your @equinor user as admin
 
 .. image:: images/ingest/SQL/4_set_AD_admin.png
 
-Go to the database and Query Editor.
+Go to the SQL Database itself and select the Query Editor link.
 
-Create table and user
+Create table and user by entering and running the below SQL. Be sure to swap
+out *NameOfDatafactory* with the actual name of your data factory e.g. edc2019-<shortname>-df
+
+.. code-block:: sql
+
+    SELECT * FROM [dbo].[ProductionData]
 
 .. image:: images/ingest/SQL/5_Create_table_user.png
+
+Copy data from Azure Datalake Store to Azure SQL Database
+---------------------------------------------------------
+
+Go back to DataFactory.
+
+Create a new pipeline that we will use to copy data from Azure Datalake Store to Azure SQL Database
+
+In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer surface. You can also search for activities in the Activities toolbox.
+
+Switch to the Source tab in the copy activity settings, and select new dataset.
+
+.. image:: images/ingest/SQL/1_new_dataset_dls.png
+
+.. image:: images/ingest/SQL/2_new_dataset_dls2.png
+.. image:: images/ingest/SQL/3_new_delimitedText.png
+
+.. image:: images/ingest/SQL/4_linkedservice_dls.png
+
+Add the file path to the Datalake store.
+
+.. image:: images/ingest/SQL/5_set_property.png
+
+Switch to the Sink tab in the copy activity settings, and select new dataset, 
+Azure SQL Database.
+
+.. image:: images/ingest/SQL/6_new_dataset_sql.png
+
+.. image:: images/ingest/SQL/7_new_linkedservice_sql.png
+
+.. image:: images/ingest/SQL/8_new_linkedservice_sql2.png
+
+.. image:: images/ingest/SQL/9_set_property.png
+
+Swith to the Mapping tab, and click Import Schemas
+
+.. image:: images/ingest/SQL/10_Mapping.png
+
+Remove the mapping to the ID column. This is an Idenntity column in the 
+database.
+
+.. image:: images/ingest/SQL/11_Mapping2.png
+
+When you download the CSV file from NPD, the file contains a new line in the 
+end of the file. The Datafactory will handle this as a record and give an 
+error. To ignore this error, add "Skip incompatible rows"
+
+.. image:: images/ingest/SQL/12_Settings.png
+
+Trigger the pipeline. You can verify the output by going back to the database query editor and running the following SQL to see if data has been loaded into our table.
 
 .. code-block:: sql
 
@@ -185,55 +265,13 @@ Create table and user
     CREATE USER [NameOfDatafactory] FROM EXTERNAL PROVIDER
     GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE, ALTER ON schema::dbo TO [NameOfDatafactory]
 
-Create a new pipeline for copy data from Azure Datalake Store to Azure SQL Database
 
-In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer surface. You can also search for activities in the Activities toolbox.
+Summary
+-------
 
-Switch to the Source tab in the copy activity settings, and select new dataset.
-
-.. image:: images/ingest/SQL/1_new_dataset_dls.png
-
-.. image:: images/ingest/SQL/2_new_dataset_dls2.png
-.. image:: images/ingest/SQL/3_new_delimitedText.png
-
-.. image:: images/ingest/SQL/4_linkedservice_dls.png
-
-Add the file path to the Datalake store. 
-.. image:: images/ingest/SQL/5_set_property.png
-
-Switch to the Sink tab in the copy activity settings, and select new dataset, 
-Azure SQL Database.
-
-.. image:: images/ingest/SQL/6_new_dataset_sql.png
-
-.. image:: images/ingest/SQL/7_new_linkedservice_sql.png
-
-.. image:: images/ingest/SQL/8_new_linkedservice_sql2.png
-
-.. image:: images/ingest/SQL/9_set_property.png
-
-Swith to the Mapping tab, and click Import Schemas
-.. image:: images/ingest/SQL/10_Mapping.png
-
-Remove the mapping to the ID column. This is an Idenntity column in the 
-database.
-
-.. image:: images/ingest/SQL/11_Mapping2.png
-
-When you download the CSV file from NPD, the file contains a new line in the 
-end of the file. The Datafactory will handle this as a record and give an 
-error. To ignore this error, add "Skip incompatible rows"
-
-.. image:: images/ingest/SQL/12_Settings.png
-
-Trigger the pipeline.
-.. image:: images/ingest/SQL/13_Run.png
-
-What we Didn't Cover
---------------------
-
-In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
+We have shown how to copy data using Data Bricks and create certain 
+infrastruvture. There are however several points that we haven't covered in 
+the interest of time:
 
 * Automation and DevOps
-
-
+* Monitoring

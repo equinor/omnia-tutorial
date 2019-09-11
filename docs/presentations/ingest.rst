@@ -75,10 +75,12 @@ Considerations
 
     Technical
 
+    * Push v's Pull
     * Latency
     * Transactional
     * Guaranteed delivery
-    * perations and monitoring
+    * Operations and monitoring
+    * Copy Data v's Connect (reference existing data source)
 
 ----
 
