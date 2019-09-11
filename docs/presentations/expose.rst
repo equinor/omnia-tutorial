@@ -70,7 +70,7 @@ API's
 
 * What is it
 * Why do we use it
-* APIM
+* API Management
 * API Strategy & Naming:
   https://github.com/equinor/api-strategy
 
@@ -82,6 +82,13 @@ API's
 
     * Decoupling logic, making the solution more flexible.
     * Increases re-usability of components
+  * API Management (APIM)
+
+    * Helps organizations publish APIs to external, partner, and internal developers to unlock the potential of their data and services
+    * Contains following components; API gateway, Developer portal, Azure portal
+    * API gateway; endpoint for API calls, routes them to backend, verifies API keys & other credentials, enforces usage quotas and rate limits
+    * Developer portal; web presence for developers, read API documentation, try API via interactive console, subscribe to API keys, access analytics
+    * Azure portal; define and import API schema, package API into products, setup policies, access insight from analytics, manage users
 
 ----
 
@@ -217,24 +224,31 @@ Open API Specification
 Azure API Management
 ====================
 
-Main Components:
+Main components:
 
-* Gateway
+* API Gateway
 * Developer Portal
+* Azure Portal
 
 .. image:: ./images/expose/apim.jpg
 
 .. note::
 
-  Gateway
+  API gateway is the endpoint that
 
-  * Can perform certain tasks on requests
-  * Forwards the request to the appropriate backend
+  * Accepts API calls and routes them to your backends.
+  * Verifies API keys, JWT tokens, certificates, and other credentials.
+  * Enforces usage quotas and rate limits.
+  * Transforms your API on the fly without code modifications.
+  * Caches backend responses where set up.
+  * Logs call metadata for analytics purposes
 
-  Developer Portal
+  Developer Portal serves as the main web presence for developers, where you can
 
   * Discover APIs
   * Read documentation and test APIs
+  * Subscribe to get API keys
+  * Access analytics on your own usage
   * Publish your own APIs for other to discover
 
 ----
@@ -244,6 +258,7 @@ Azure API Management
 
 .. image:: ./images/expose/apim-portal.jpg
 
+https://api.equinor.com
 ----
 
 API Hosting Alternatives
