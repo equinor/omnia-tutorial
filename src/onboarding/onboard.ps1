@@ -148,7 +148,16 @@ try {
     Write-Host "Done" -ForegroundColor Green
 }
 catch {
-    Add-Content -Path $logFile  -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($df.Identity.PrincipalId)"
+    Start-Sleep -Seconds 5
+    $df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName
+    try {
+        Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId    
+    }
+    catch {
+        Add-Content -Path $logFile  -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($df.Identity.PrincipalId)"    
+    }
+    
+    
 }
 
 try {
@@ -162,4 +171,66 @@ catch {
     Add-Content -Path $logFile -Value "Add-AzADGroupMember -TargetGroupObjectId $($adGroup.Id) -MemberObjectId $($appService.Identity.PrincipalId)"
 }
 
+# create user folder in datalake 
+
+$storageAccount = "edc2019dls"
+$fileSystem = "dls"
+
+$tenantId = "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+$clientId = "6e27dafd-0816-4653-ac63-2d7e01b5d764"
+
+try{
+    Write-Host "Creating user folder in datalake ..."
+    $clientSecret = (Get-AzKeyVaultSecret -VaultName 'EDC2019KV' -Name 'DlsOnboarding' -ErrorAction Stop ).SecretValueText 
+
+    # Acquire OAuth token
+    $body = @{ 
+    client_id = $clientId
+    client_secret = $clientSecret
+    scope = "https://storage.azure.com/.default"
+    grant_type = "client_credentials" 
+    }
+    $token = Invoke-RestMethod -Method Post -Uri "https://login.microsoftonline.com/$tenantId/oauth2/v2.0/token" -Body $body
+        
+    # Required headers
+    
+    $headers = @{
+            "x-ms-version" = "2018-11-09"
+            Authorization = "Bearer " + $token.access_token
+    }
+     
+    $path = "user/$shortName"
+    Invoke-WebRequest -Method "Put" -Headers $headers -Uri "https://$storageAccount.dfs.core.windows.net/$fileSystem/$path`?resource=directory"
+
+}
+catch{
+    Write-Host "Creating user folder in datalake failed" -ForegroundColor Red
+
+}
+try{
+    Write-Host "Set permission on user folder ..."
+    $path = [System.Web.HttpUtility]::UrlEncode($path)
+    
+    $ownerId = $user.Id
+    $groupId = $user.Id
+    
+    
+    $aclFolder = "user::rwx,default:user::rwx,group::rwx,default:group::rwx";
+    
+    $aclHeaders = @{
+            "x-ms-version" = "2018-11-09"
+            "x-ms-owner" = $ownerId
+            "x-ms-group" = $groupId
+            "x-ms-acl" = $aclFolder
+            Authorization = "Bearer " + $token.access_token
+           
+    }
+
+    $uri = "https://$storageAccount.dfs.core.windows.net/$fileSystem"
+    Invoke-WebRequest -Headers $aclHeaders -Method "PATCH" -Uri "$uri/$path`?action=setAccessControl"  
+}
+catch{
+    Write-Host "Setting permission on user folder in datalake failed" -ForegroundColor Red
+
+}
 
