@@ -10,7 +10,7 @@ using EDC_API.Models;
 
 namespace EDC_API.Controllers
 {
-    [Route("api/production-data")]
+    [Route("production-data")]
 
     [ApiController]
     public class ProductionDataController : ControllerBase
@@ -23,7 +23,7 @@ namespace EDC_API.Controllers
             _context = context;
         }
 
-        // GET: api/ProductionDatas
+        // GET: production-data
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductionData>>> GetProductionData()
         {
@@ -32,7 +32,7 @@ namespace EDC_API.Controllers
             throw new NotImplementedException();
         }
 
-        // GET: api/ProductionDatas/5
+        // GET: production-data/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductionData>> GetProductionData(int id)
         {
@@ -40,7 +40,7 @@ namespace EDC_API.Controllers
             throw new NotImplementedException();
         }
 
-        // PUT: api/ProductionDatas/5
+        // PUT: production-data/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductionData(int id, ProductionData productionData)
         {
@@ -48,7 +48,7 @@ namespace EDC_API.Controllers
             throw new NotImplementedException();
         }
 
-        // POST: api/ProductionDatas
+        // POST: ProductionDatas
         [HttpPost]
         public async Task<ActionResult<ProductionData>> PostProductionData(ProductionDataRequest request)
         {
@@ -56,7 +56,7 @@ namespace EDC_API.Controllers
             throw new NotImplementedException();
         }
 
-        // DELETE: api/ProductionDatas/5
+        // DELETE: production-data/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProductionData>> DeleteProductionData(int id)
         {
