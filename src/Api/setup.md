@@ -6,31 +6,44 @@
     - Locate the app service in your resource group in the [Azure Portal](portal.azure.com)
     - In the list on the left under the title `Settings`, click the field called `Identity`,
     - Status should be toggled to  `On`,
-    - If it is `Off`, toggle it `On`, and press save. This enables the MSI for your app.    
+    - If it is `Off`, toggle it `On`, and press save. This enables the MSI for your app.
+1. **Opening up the project:**
+    1. Using Visual Studio 17/19:
+        - Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
+        - Double click on `EDC-API-skeleton.sln`
+        - If you are prompted to select program to open the file with, select Visual Studio 17/19.
+        - This should open a Visual Studio 17/19 window
+        - On one of the sides, there should be a `Solution Explorer` containing all the files in the project
+        - If the `Solution Explorer` isn't there, press `Ctrl-Alt-L` and it should appear. If not, navigate to `View` in the top and select `Solution Explorer`.
+    2. Using Visual Studio Code:
+        - Open up Visual Studio Code
+        - Click `File` in the top left, and select `Open Folder`
+        - Navigate to `omnia-tutorial\src\Api` and select the folder `EDC-API-skeleton` and click `Select Folder`
+        - This should open the file structure in the `Explorer` on the left, if not open it by pressing `Ctrl-Shift-E`, or press the icon in the top left.
+    3. Using VSCode in Azure CLI:
+        - Navigate to the folder `omnia-tutorial\src\Api`
+        - Enter `code EDC-API-skeleton`
+        - This should open a VSCode view with the correct folder open
 1. **IF YOU HAVE COMPLETED THE PREVIOUS TASKS AND WANT TO USE YOUR OWN DATA SOURCE:**
-    1. Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
-    2. Open up the solution `EDC-API-skeleton.sln` in your editor of choice. We recommend Visual Studio 2019 or Visual Studio Code.
-    3. When the solution has been opened, a solution explorer will appear. This shows all the files linked to this solution. Open the file called `appsettings.json`
-    4. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. 
+    1. Given that you have opened the solution, described in the previous step, open the file called `appsettings.json`
+    1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. 
     1. The connection string is on the following format: 
         - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
         - Example:
         - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
         - To find the URL, navigate to your resouce group in the [Azure Portal](portal.azure.com), open up your `SQL database`. The URL should be located in the top right under `Server name`.
         > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
-    2. Then we have to grant the MSI access in the database:
-    3. Navigate to your resource group and locate your `SQL database`.
-    4. In the list on the left, navigate to `Query editor (preview)`, and connect using `Active Directory authentication`. *(The login might fail, retry it a few times before contacting one of us)*.
-    5. This should open a query editor, enter the following commands, **updated with your values** of course: 
+    1. Then we have to grant the MSI access in the database:
+    1. Navigate to your resouce group in the [Azure Portal](portal.azure.com) and locate your `SQL database`.
+    1. In the list on the left, navigate to `Query editor (preview)`, and connect using `Active Directory authentication`. *(The login might fail, retry it a few times before contacting one of us)*.
+    1. This should open a query editor, enter the following commands, **updated with your values**: 
         - `CREATE USER [<app name>] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]`
         - `GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [<app name>]`
         
 
 1. **IF YOU HAVE NOT COMPLETED THE PREVIOUS TASKS AND WANT TO USE OUR DATA SOURCE:**
-    1. Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
-    2. Open up the solution `EDC-API-skeleton.sln` in your editor of choice. We recommend Visual Studio 2019 or Visual Studio Code.
-    3. When the solution has been opened, a solution explorer will appear. This shows all the files linked to this solution. Open the file called `appsettings.json`
-    1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. The connection string is on the following format: 
+    1. Given that you have opened the solution, described in the previous step, open the file called `appsettings.json`
+    1. Update the `ConnectionString` in `appsettings.json` with the connection string for our database. The connection string is on the following format: 
         - "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`"
         - If you don't get access, please contact one of us.
 
