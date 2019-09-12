@@ -1,5 +1,7 @@
 # Authentication
 Clear-Host;
+Enable-AzureRmAlias
+
 $subscriptionId = "160c90f1-6bbe-4276-91f3-f732cc0a45db";
 if ([string]::IsNullOrEmpty((Get-AzureRmContext).Account)) {
     $connectResult = (Connect-AzureRmAccount -ErrorAction Stop);
