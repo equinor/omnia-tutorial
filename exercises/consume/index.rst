@@ -156,6 +156,8 @@ environment.
 
   Note: if running this in DataBricks then wrap the last line in a *display()* block so it is shown correctly e.g. 
 
+  TODO: Below code does not work... display(df_plot) works-ish... We do not get the nice graph as pictured in completed notebook below.
+
    .. code:: python
 
       ...
@@ -171,7 +173,8 @@ Consuming an API from PowerBI
 
 To run this part of the tutorial you will need Power BI desktop `installed <https://powerbi.microsoft.com/en-us/downloads/>`__
 . Use the advanced download options for direct download to avoid 
-installing through Microsoft Store).
+installing through Microsoft Store). For this you need elevated installer, elevated privileges or developer profile for your laptop. 
+Alternatively you need to apply for PowerBI in access-it and download from Equinor Applications.
 
 Getting data into PowerBI is similar as with Excel as both use power query to
 import data.
@@ -183,7 +186,7 @@ import data.
   
 * You will now be in a set of dialog boxes that mirror those above in the 
   Excel section for importing data that you can follow to have the data 
-  availablew in Power BI.
+  available in Power BI.
 
 * To verify the data is loaded you can click the *data view*.
 

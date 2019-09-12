@@ -32,7 +32,7 @@ There are **no prerequisites** to run the exercises other than a modern browser.
 * `Azure Command Line Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__ and / or `Powershell Interface <https://docs.microsoft.com/en-us/powershell/azure/>`__
 * `Azure Storage Explorer <https://azure.microsoft.com/en-us/features/storage-explorer/>`__
 * `GIT <https://git-scm.com/downloads>`__
-* `SQL Server Management Studio (SSMS) <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017>`__
+* `SQL Server Management Studio (SSMS) <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017>`__ and / or `Azure Data Studio <https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-2017>`__
 * `Visual Studio <https://visualstudio.microsoft.com/vs/>`__ and / or `Visual Studio Code <https://code.visualstudio.com/>`__
 
 You may also want to consider having the following:
