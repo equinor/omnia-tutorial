@@ -1,0 +1,11 @@
+{
+    "name": "EDC2019CommonSQL",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=edc2019-sql.database.windows.net;Initial Catalog=common"
+        }
+    }
+}

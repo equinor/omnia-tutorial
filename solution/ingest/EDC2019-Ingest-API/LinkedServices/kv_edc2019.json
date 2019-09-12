@@ -1,0 +1,11 @@
+{
+    "name": "kv_edc2019",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureKeyVault",
+        "typeProperties": {
+            "baseUrl": "https://edc2019-common-kv.vault.azure.net/"
+        }
+    }
+}
