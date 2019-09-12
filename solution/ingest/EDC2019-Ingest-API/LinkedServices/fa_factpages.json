@@ -1,0 +1,19 @@
+{
+    "name": "fa_factpages",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureFunction",
+        "typeProperties": {
+            "functionAppUrl": "https://factpages-tutorial.azurewebsites.net",
+            "functionKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "kv_edc2019",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "factpages"
+            }
+        }
+    }
+}

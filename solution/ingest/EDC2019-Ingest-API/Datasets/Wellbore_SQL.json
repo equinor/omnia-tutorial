@@ -1,0 +1,341 @@
+{
+    "name": "Wellbore_SQL",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "EDC2019CommonSQL",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "wlbWellboreName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbWell",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDrillingOperator",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbProductionLicence",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbPurpose",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbStatus",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbContent",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbWellType",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbSubSea",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEntryDate",
+                "type": "varchar"
+            },
+            {
+                "name": "wlbCompletionDate",
+                "type": "varchar"
+            },
+            {
+                "name": "wlbField",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDrillPermit",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDiscovery",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDiscoveryWellbore",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbBottomHoleTemperature",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbSeismicLocation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbMaxInclation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbKellyBushElevation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFinalVerticalDepth",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbTotalDepth",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbWaterDepth",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbKickOffPoint",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbAgeAtTd",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFormationAtTd",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbMainArea",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDrillingFacility",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFacilityTypeDrilling",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDrillingFacilityFixedOrMoveable",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbLicensingActivity",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbMultilateral",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbPurposePlanned",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEntryYear",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbCompletionYear",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbReclassFromWellbore",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbReentryExplorationActivity",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbPlotSymbol",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFormationWithHc1",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbAgeWithHc1",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFormationWithHc2",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbAgeWithHc2",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFormationWithHc3",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbAgeWithHc3",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDrillingDays",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbReentry",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbGeodeticDatum",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsDeg",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsMin",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsSec",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsCode",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwDeg",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwMin",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwSec",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwCode",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsDecDeg",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwDesDeg",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNsUtm",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbEwUtm",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbUtmZone",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart1",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart2",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart3",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart4",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart5",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNamePart6",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbPressReleaseUrl",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFactPageUrl",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbFactMapUrl",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDiskosWellboreType",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDiskosWellboreParent",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbWdssQcDate",
+                "type": "varchar"
+            },
+            {
+                "name": "wlbReleasedDate",
+                "type": "varchar"
+            },
+            {
+                "name": "wlbNpdidWellbore",
+                "type": "nvarchar"
+            },
+            {
+                "name": "dscNpdidDiscovery",
+                "type": "nvarchar"
+            },
+            {
+                "name": "fldNpdidField",
+                "type": "nvarchar"
+            },
+            {
+                "name": "fclNpdidFacilityDrilling",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbNpdidWellboreReclass",
+                "type": "nvarchar"
+            },
+            {
+                "name": "prlNpdidProductionLicence",
+                "type": "nvarchar"
+            },
+            {
+                "name": "wlbDateUpdated",
+                "type": "varchar"
+            },
+            {
+                "name": "wlbDateUpdatedMax",
+                "type": "varchar"
+            },
+            {
+                "name": "datesyncNPD",
+                "type": "varchar"
+            }
+        ],
+        "typeProperties": {
+            "tableName":"dbo.Wellbore"
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}
