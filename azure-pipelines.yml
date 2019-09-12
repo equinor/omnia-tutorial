@@ -15,7 +15,7 @@ steps:
   displayName: 'Bash - Setup'
 
 - bash: |
-   cd docs/presentations/
+   cd presentations/
    hovercraft introduction.rst output/introduction
    hovercraft ingest.rst output/ingest
    hovercraft compute.rst output/compute
@@ -27,5 +27,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/docs/presentations/output'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/presentations/output'
     artifactName: 'drop'
