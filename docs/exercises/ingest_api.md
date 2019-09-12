@@ -21,8 +21,6 @@ In this section you will set up a Data Factory pipeline with an Azure function a
 ### Linked Services
 1. In Data Factory, click on *Connections*, *New* and *Compute*. Select *Azure Function*.
 - ![alt-text1](./images/ingest/API/AzureFunctionCompute.PNG)
-<br/>
-Here you will need the following parameters:
 - **Name:** *"Your Azure Function linked service name"*
 - **Azure Function App selection method:** From Azure subscription
 - **Function App URL:** (factpages-tutorial)https://factpages-tutorial.azurewebsites.net
