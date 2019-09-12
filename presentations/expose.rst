@@ -152,6 +152,8 @@ Representational State Transfer (REST)
 Open API Specification
 ======================
 
+TODO - we talked about making images a separate slide to make it bigger?
+
 .. |openapi2| image:: ./images/expose/open-api-v2.jpg
   :width: 300px
 
@@ -189,6 +191,8 @@ Open API Specification
 
 Open API Specification
 ======================
+
+TODO - we talked about making images a separate slide to make it bigger?
 
 .. |openapi3| image:: ./images/expose/open-api-v3.jpg
   :width: 300px
@@ -311,8 +315,24 @@ Part 2:
 Summary
 =======
 
-* TODO
+TODO - look through copied items from consume and see if points and notes makes sense...
+
+* Authorisation & Authentication
+* Deployment & Sharing
+* Legal aspects
+* Performance
+* Sharing
 
 .. note::
 
-  * TODO
+   * *Authorisation & Authentication* - for simplicity this exercise used an 
+     open API with no security. In real world scenarios it is highly likely 
+     that you will need to ensure API's are secured.
+   * *Deployment & Sharing* - once you have a solution created that exposes data
+     through an API you might want to operationalise and share it somehow.
+   * *Legal aspects* - if you modify and combine data, you may be changing the 
+     security classification and so need to consider possible implications
+   * *Performance* - There are different query patterns and also a question 
+     about what options are best and where to run compute. We might need 
+     additional backend infrastructure to improve API performance.
+   * *Sharing* - when consuming and curating existing data you are suddenly a producer as well. Consider if your value-added work should be shared.

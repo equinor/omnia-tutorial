@@ -13,8 +13,8 @@ to try whatever of these options you like.
 Prerequisites
 -------------
 
-You can select which of the options you want to try so only need the
-tools for those parts. More details follow in the different sections.
+* If you have not completed the API module then you can connect to an already prepared API for this part, as mentioned in the below samples. If you have your own API then just substitute this.
+* You can select which of the options you want to try so only need the tools for those parts. More details follow in the different sections.
 
 Using Microsoft Excel
 ---------------------
