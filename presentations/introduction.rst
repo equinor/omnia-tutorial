@@ -43,12 +43,13 @@ Introduction
 * A hands on introduction with Omnia
 * What are we not covering?
 * Signup
-* #edc_2019 @Slack
+* #edc_2019 on `Slack <http://equinor.slack.com>`__
 * https://github.com/equinor/omnia-tutorial/
 
 .. note::
     A hands on introduction with Omnia
-    * They will get a better understanding of Omnia so they are better equiped to develop within Equinor's new IT platform
+
+    * They will get a better understanding of what Omnia is and how to use it so they are better equiped to develop within Equinor's new IT platform
     
     How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.
     
@@ -122,12 +123,13 @@ Data Architecture
     * Source - Important to show where data comes from - tag with source solution. 
     * Format - No changes with regards to format.  
     * Update frequency - show update frequency, Time stamp from source should be included 
-    * Access - Not accessible for all. (Today: Role = Data scientist)
     * Security classification - should have a security classification documented as basis for defining access and roles. 
-    * Geography - tag with country for data with restrictions on use because of sanctions, export control, authority reporting and other country specific legislation. 
-    * Asset/project - May be important to differentiate on access by asset / projects. 
     * Ownership - All Raw data should have an owner 
     * Naming - source system, ppossibly business context (data areas)
+
+    * Access - Not accessible for all. (Today: Role = Data scientist)
+    * Geography - tag with country for data with restrictions on use because of sanctions, export control, authority reporting and other country specific legislation. 
+    * Asset/project - May be important to differentiate on access by asset / projects. 
 
     Transform (Enterprise)
 
@@ -146,6 +148,8 @@ Data Architecture
 
     * Similar requirements to Transform, but often application specific to meet solution specific needs (access pattern, performance)
     * Data in prepared should be exposed through the enterprise layer also. 
+
+TODO: Verify layer names and update image
 
 ----
 
@@ -169,6 +173,8 @@ Subscriptions and all That
 ==========================
 
 .. image:: images/introduction/subscriptions-resourcegroups.png
+
+TODO: Swap MG with Tennent in the image as that is more commonly referenced.
 
 .. note::
 
@@ -217,5 +223,5 @@ https://portal.azure.com
       * All resources button
       * Search
       * Show example for browsing to data factory (main links - overview, access, ...)
-      * Cloud shell (e.g. 'az group list') (TODO: Link to cloud-shell-quickstart.md?) Guinea pigs to test this!
+      * Cloud shell (e.g. 'az group list'). They will use this later in the exercises
       * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)
