@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville);
+
+body {
+    font-size: 200%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-weight: normal;
+    margin-bottom: 0.3em;
+    margin-top: 0.3em;
+    text-align: left;
+}
+
+pre {
+    text-align: left;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+    margin-bottom: 0.3em;
+    margin-top: 0.3em;
+}
+
+tt {
+    font-size: 125;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+li {
+    font-weight: normal;
+    margin-bottom: 0.3em;
+    margin-top: 0.3em;
+    padding-left: 0.3em;
+    line-height: 1.8em;
+    text-align: left;
+}
+
+a {
+    color: rgb(69, 87, 182);
+}
+
+.hidden {
+    display: none;
+}
+
+.header img {
+    opacity: 0.2;
+    position: absolute;
+    left: 0;
+}
+
+.footer {
+    position: absolute;
+    top: 95%;
+    font-size: 50%;
+}
+
+.step {
+    width: 800px;
+}
