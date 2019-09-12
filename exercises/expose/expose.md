@@ -1,21 +1,5 @@
 # EDC API
 
-# Azure Cloud Shell
-TODO: Move to the correct place
-## How to use Azure Cloud Shell
-https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart-powershell
-
-## Persist files in Azure Cloud Shell
-https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage
-
-## Azure Storage Account
- - Use basic settings and select `Omnia Application Workspace - Sandbox` subscription
-
-![Azure Storage Account](./images/azure-storage-account.jpg)
-
-## How to upload files from local computer
-https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload-and-download-files
-
 ## 1. Setup
 
 1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place. To check the this:
@@ -44,8 +28,9 @@ https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload
     1. In the Azure CLI using VSCode:
         - If you havent used and configured Cloud Shell previously you will need to do that now:
             - Azure Storage Account - Choose the powershell-variant
-            
+
             ![Azure Storage Account](./images/welcome-storage.png)
+            
             - Azure Storage Account - Use advanced settings and select `Omnia Application Workspace - Sandbox` subscription
 
             ![Azure Storage Account](./images/azure-storage-account.jpg)
