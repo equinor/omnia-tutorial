@@ -171,7 +171,7 @@ Data Flow
 Data Factory
 ============
 
-Info
+TODO: Info
 
 ----
 
@@ -203,12 +203,14 @@ Exercise
 Summary
 =======
 
-* Other tools
 * Automation & DevOps
+* Triggering & Scheduling Jobs
+* Other tools
 * Monitoring
 
 .. note::
 
-   * *Other tools* - there are many other tools that can also be used.
    * *Automation & Devops* - Github, automation and devops. Also operationalising.
+   * *Triggering & Scheduling Jobs* - How to trigger and schedule Data Factory jobs
+   * *Other tools* - there are many other tools that can also be used.
    * *Monitoring* - How to know if things go wrong (e.g. source unavailable).

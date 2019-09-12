@@ -1,6 +1,6 @@
 Introduction
 ============
-The main part of the tutorial covers the following points for computing in Azure Databricks:
+This tutorial covers the following steps for computing in Azure Databricks:
 
 * Extraction
   
@@ -17,8 +17,11 @@ The extras section covers other options you can consider.
 
 Prerequisites
 -------------
-* User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace.
-* User has own SQL server and database created in module **Ingest**. 
+
+* Access to Azure
+* Tutorial onboarding completed
+
+* User has own SQL server and database created in module **Ingest**. TODO: Is this needed as we can reference solution
 
 Create Notebook in Databricks
 -----------------------------
