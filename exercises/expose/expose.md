@@ -42,7 +42,19 @@ https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload
             - Enter your username
             - Copy and paste in the token string instead of you password, this should start the download.
     1. In the Azure CLI using VSCode:
-        -  Open up a cloud shell prompt [here](https://shell.azure.com/)
+        - If you havent used and configured Cloud Shell previously you will need to do that now:
+            - Azure Storage Account - Choose the powershell-variant
+            
+            ![Azure Storage Account](./images/welcome-storage.png)
+            - Azure Storage Account - Use advanced settings and select `Omnia Application Workspace - Sandbox` subscription
+
+            ![Azure Storage Account](./images/azure-storage-account.jpg)
+            - How to use Azure Cloud Shell - https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart-powershell
+            - Persist files in Azure Cloud Shell - https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage
+            - How to upload files from local computer - https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload-and-download-files
+
+        - Open up a cloud shell prompt [here](https://shell.azure.com/)
+        - If you 
         - Run the command `cd`, this should move you to the `/hom/<shortname>` folder
         - Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
         - If you are prompted with a login, enter your credentials.
