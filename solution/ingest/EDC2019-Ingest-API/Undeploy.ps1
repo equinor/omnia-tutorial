@@ -1,6 +1,6 @@
 # Authentication
 Clear-Host;
-$subscriptionId = "4bb8df6f-e5b7-45f8-8db6-22ec061d6938";
+$subscriptionId = "160c90f1-6bbe-4276-91f3-f732cc0a45db";
 if ([string]::IsNullOrEmpty((Get-AzureRmContext).Account)) {
     $connectResult = (Connect-AzureRmAccount -ErrorAction Stop);
     Write-Output "`n$($connectResult.Context.Account.Id) connected to tenant $($connectResult.Context.Tenant), subscription $($connectResult.Context.Subscription).";
@@ -12,8 +12,8 @@ $contextResult = Set-AzureRMContext -SubscriptionId $subscriptionId;
 Write-Output "Subscription set to $($contextResult.Subscription.Name) ($($contextResult.Subscription.Id)).";
 
 # Paths and variables
-$dfname = "ODET2DFDev";
-$rgname = "odet2rgdev";
+$dfname = "edc2019-common-df";
+$rgname = "EDC2019Common";
 
 
 #Pipelines
