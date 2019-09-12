@@ -60,7 +60,7 @@ In this section you will set up a Data Factory pipeline with an Azure function a
 - ![alt-text](./images/ingest/API/9_AzureFunctionActivity.PNG)
 3. Set up a Copy activity. The Source is the Blob Storage Dataset and Sink is the SQL Dataste.
 4. In pre-copy script type in the command *DELETE FROM  dbo.Wellbore*
-- ![alt-text](./images/ingest/API/10_SourceSink.PNG)
+- ![alt-text](./images/ingest/API/10_SourceSink.png)
 5. Under Mapping, select Import schemas. This will automatically set up column mapping
 - ![alt-text](./images/ingest/API/11_Mapping.PNG)
 4. Click on the green area on the right hand side of the Azure function activity and drag the green line over to the copy activity. This will controll the data flow and will make sure that the copy activity only starts when the Azure function activity has completed successfully
