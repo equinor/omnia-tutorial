@@ -43,16 +43,16 @@ Introduction
 * A hands on introduction with Omnia
 * What are we not covering?
 * Signup
+* #edc_2019 @Slack
 * https://github.com/equinor/omnia-tutorial/
 
 .. note::
-    | P - A hands on introduction with Omnia
-    | O - A better understanding of Omnia
-    | W - Better equiped to develop within Equinor's new IT platform
-    | E - Who has worked with Omnia? What expectations do people have?
-    | R - ?
+    A hands on introduction with Omnia
+    * They will get a better understanding of Omnia so they are better equiped to develop within Equinor's new IT platform
     
     How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.
+    
+    A lot of material to get through, but we focus on the most important points so don't panic if you can't complete something.
 
     What we are not covering
 
@@ -63,8 +63,9 @@ Introduction
     Other 
 
     * Allowed to leave if not suitable.
-    * Signup / provisioning.
-    * High level agenda (steps, presentation + exercises). Visit in detail later
+    * Signup / provisioning. 
+    * Ask questions via Slack 
+    * Show high level agenda (steps, presentation + exercises). Visit in detail later
     
 ----
 
@@ -160,6 +161,7 @@ What we Will Build
     * The story is key.
     * Explain how this relates to data architecture
     * Show github repository and present agenda
+    * Exercises to introduce concepts. Fine if they don't complete anything as we have clear interfaces between each part and completed end points you can reference if you don't get yours completed.
 
 ----
 
@@ -214,4 +216,6 @@ https://portal.azure.com
       * Create resource
       * All resources button
       * Search
+      * Show example for browsing to data factory (main links - overview, access, ...)
       * Cloud shell (e.g. 'az group list') (TODO: Link to cloud-shell-quickstart.md?) Guinea pigs to test this!
+      * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)
