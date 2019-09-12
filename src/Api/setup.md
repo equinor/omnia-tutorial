@@ -7,6 +7,40 @@
     - In the list on the left under the title `Settings`, click the field called `Identity`,
     - Status should be toggled to  `On`,
     - If it is `Off`, toggle it `On`, and press save. This enables the MSI for your app.
+1. **Getting the source code:**
+    1. Locally using Visual Studio Code or Visual Studio 17/19:
+        - If you don't have Git installed, go to [git](https://git-scm.com/downloads), and download the appropriate version.
+        - To verify the installation, open a powershell prompt and type `git`, this should display a list of git commands
+        - With git installed, navigate to a folder where you want to download the git repository, example `C:\Code`.
+        - Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
+        - If you are prompted with a login, enter your credentials.
+        - The multi-factor authentication might mess up the login, to fix this:
+            -  Navigate to [GitHub](https://github.com/) and login in
+            - Find the account meny on the top right
+            - Go to `settings`
+            - Go to `Developer Settings`
+            - Go to `Personal access tokens` and press `Generate new token` on the right.
+            - Select the `repo` permissions
+            - When the token has been generated it will display as a long string of character, something like `c26abfb14015d35c19fb4f2b0ba529de2b4f48fa`, copy this to a text document.
+            - Go back to the powershell prompt from earlier, and re-run the command `git clone https://github.com/equinor/omnia-tutorial.git`
+            - Enter your username
+            - Copy and paste in the token string instead of you password, this should start the download.
+    1. In the Azure CLI using VSCode:
+        -  Open up a cloud shell prompt [here](https://shell.azure.com/)
+        - Run the command `cd`, this should move you to the `/hom/<shortname>` folder
+        - Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
+        - If you are prompted with a login, enter your credentials.
+        - The multi-factor authentication might mess up the login, to fix this:
+            -  Navigate to [GitHub](https://github.com/) and login in
+            - Find the account meny on the top right
+            - Go to `settings`
+            - Go to `Developer Settings`
+            - Go to `Personal access tokens` and press `Generate new token` on the right.
+            - Select the `repo` permissions
+            - When the token has been generated it will display as a long string of character, something like `c26abfb14015d35c19fb4f2b0ba529de2b4f48fa`, copy this to a text document.
+            - Go back to the powershell prompt from earlier, and re-run the command `git clone https://github.com/equinor/omnia-tutorial.git`
+            - Enter your username
+            - Copy and paste in the token string instead of you password, this should start the download.
 1. **Opening up the project:**
     1. Using Visual Studio 17/19:
         - Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
@@ -15,12 +49,12 @@
         - This should open a Visual Studio 17/19 window
         - On one of the sides, there should be a `Solution Explorer` containing all the files in the project
         - If the `Solution Explorer` isn't there, press `Ctrl-Alt-L` and it should appear. If not, navigate to `View` in the top and select `Solution Explorer`.
-    2. Using Visual Studio Code:
+    1. Using Visual Studio Code:
         - Open up Visual Studio Code
         - Click `File` in the top left, and select `Open Folder`
         - Navigate to `omnia-tutorial\src\Api` and select the folder `EDC-API-skeleton` and click `Select Folder`
         - This should open the file structure in the `Explorer` on the left, if not open it by pressing `Ctrl-Shift-E`, or press the icon in the top left.
-    3. Using VSCode in Azure CLI:
+    1. Using VSCode in Azure CLI:
         - Navigate to the folder `omnia-tutorial\src\Api`
         - Enter `code EDC-API-skeleton`
         - This should open a VSCode view with the correct folder open
