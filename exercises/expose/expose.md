@@ -131,7 +131,7 @@ Since we are in the web API domain, all results from the API has to be associate
 
 Example:
 ```C#
-var entries = _context.Entries.ToList();
+var entries = _context.ProductionData.ToList();
 return Ok(entries);
 ```
 
