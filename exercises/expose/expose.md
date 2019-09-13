@@ -31,16 +31,24 @@
 
             ![Azure Storage Account](./images/welcome-storage.png)
             
-            - Azure Storage Account - Use advanced settings and select `Omnia Application Workspace - Sandbox` subscription
+            - Azure Storage Account - Choose advanced settings
 
-            ![Azure Storage Account](./images/azure-storage-account.jpg)
-            - How to use Azure Cloud Shell - https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart-powershell
-            - Persist files in Azure Cloud Shell - https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage
-            - How to upload files from local computer - https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload-and-download-files
+            ![Azure Storage Account](./images/basic-storage.png)
+            - Use the following settings for advanced setup:
+                - Subscription: "Omnia Application Workspace - Sandbox"
+                - Cloud Shell region: Noth Europe
+                - Resource group: ``Use existing`` --> edc2019_\<shortname\>
+                - Storage account: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. mystorage
+                - File share: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. myfileshare
+
+            ![Azure Storage Account](./images/advanced-storage.png)
+            - For some general information about Azure cloud shell
+                - [How to use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart-powershell)
+                - [Persist files in Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage)
+                - [How to upload files from local computer](https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload-and-download-files)
 
         - Open up a cloud shell prompt [here](https://shell.azure.com/)
-        - If you 
-        - Run the command `cd`, this should move you to the `/hom/<shortname>` folder
+        - Run the command `cd`, this should move you to the `/$home/<shortname>` folder
         - Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
         - If you are prompted with a login, enter your credentials.
         - The multi-factor authentication might mess up the login, to fix this:
@@ -211,6 +219,7 @@ After a while a new window will open with the API
 - Visual Studio Code will ask you if you want to overwrite the existing content. Click `Deploy` to confirm
 
 ### VSCode in Azure CLI
+- Run the command `Set-AzContext "Omnia Application Workspace - Sandbox"` 
 - Navigate to the folder with the with the solution.
     - Typically `/home/<your-name>/code/omnia-tutorial/src/Api/EDC-API-skeleton`
 - Run `dotnet publish -c Release`, this creates the project in the `publish` folder.
@@ -226,7 +235,7 @@ After a while a new window will open with the API
     ```
     - Run the following block to deploy the zip file:
     ```ps1
-    Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>app" -ArchivePath $publishDir
+    Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>-app" -ArchivePath $publishZip
     ```
 - The deployment might take a few seconds
 - It should produce output like the table below if the deployment was successful:
