@@ -1,0 +1,346 @@
+{
+    "name": "Wellbore_BL_JSON",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "EDC2019CommonBL",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureBlob",
+        "structure": [
+            {
+                "name": "wlbWellboreName",
+                "type": "String"
+            },
+            {
+                "name": "wlbWell",
+                "type": "String"
+            },
+            {
+                "name": "wlbDrillingOperator",
+                "type": "String"
+            },
+            {
+                "name": "wlbProductionLicence",
+                "type": "String"
+            },
+            {
+                "name": "wlbPurpose",
+                "type": "String"
+            },
+            {
+                "name": "wlbStatus",
+                "type": "String"
+            },
+            {
+                "name": "wlbContent",
+                "type": "String"
+            },
+            {
+                "name": "wlbWellType",
+                "type": "String"
+            },
+            {
+                "name": "wlbSubSea",
+                "type": "String"
+            },
+            {
+                "name": "wlbEntryDate",
+                "type": "String"
+            },
+            {
+                "name": "wlbCompletionDate",
+                "type": "String"
+            },
+            {
+                "name": "wlbField",
+                "type": "String"
+            },
+            {
+                "name": "wlbDrillPermit",
+                "type": "String"
+            },
+            {
+                "name": "wlbDiscovery",
+                "type": "String"
+            },
+            {
+                "name": "wlbDiscoveryWellbore",
+                "type": "String"
+            },
+            {
+                "name": "wlbBottomHoleTemperature",
+                "type": "String"
+            },
+            {
+                "name": "wlbSeismicLocation",
+                "type": "String"
+            },
+            {
+                "name": "wlbMaxInclation",
+                "type": "String"
+            },
+            {
+                "name": "wlbKellyBushElevation",
+                "type": "String"
+            },
+            {
+                "name": "wlbFinalVerticalDepth",
+                "type": "String"
+            },
+            {
+                "name": "wlbTotalDepth",
+                "type": "String"
+            },
+            {
+                "name": "wlbWaterDepth",
+                "type": "String"
+            },
+            {
+                "name": "wlbKickOffPoint",
+                "type": "String"
+            },
+            {
+                "name": "wlbAgeAtTd",
+                "type": "String"
+            },
+            {
+                "name": "wlbFormationAtTd",
+                "type": "String"
+            },
+            {
+                "name": "wlbMainArea",
+                "type": "String"
+            },
+            {
+                "name": "wlbDrillingFacility",
+                "type": "String"
+            },
+            {
+                "name": "wlbFacilityTypeDrilling",
+                "type": "String"
+            },
+            {
+                "name": "wlbDrillingFacilityFixedOrMoveable",
+                "type": "String"
+            },
+            {
+                "name": "wlbLicensingActivity",
+                "type": "String"
+            },
+            {
+                "name": "wlbMultilateral",
+                "type": "String"
+            },
+            {
+                "name": "wlbPurposePlanned",
+                "type": "String"
+            },
+            {
+                "name": "wlbEntryYear",
+                "type": "String"
+            },
+            {
+                "name": "wlbCompletionYear",
+                "type": "String"
+            },
+            {
+                "name": "wlbReclassFromWellbore",
+                "type": "String"
+            },
+            {
+                "name": "wlbReentryExplorationActivity",
+                "type": "String"
+            },
+            {
+                "name": "wlbPlotSymbol",
+                "type": "String"
+            },
+            {
+                "name": "wlbFormationWithHc1",
+                "type": "String"
+            },
+            {
+                "name": "wlbAgeWithHc1",
+                "type": "String"
+            },
+            {
+                "name": "wlbFormationWithHc2",
+                "type": "String"
+            },
+            {
+                "name": "wlbAgeWithHc2",
+                "type": "String"
+            },
+            {
+                "name": "wlbFormationWithHc3",
+                "type": "String"
+            },
+            {
+                "name": "wlbAgeWithHc3",
+                "type": "String"
+            },
+            {
+                "name": "wlbDrillingDays",
+                "type": "String"
+            },
+            {
+                "name": "wlbReentry",
+                "type": "String"
+            },
+            {
+                "name": "wlbGeodeticDatum",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsDeg",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsMin",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsSec",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsCode",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwDeg",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwMin",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwSec",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwCode",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsDecDeg",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwDesDeg",
+                "type": "String"
+            },
+            {
+                "name": "wlbNsUtm",
+                "type": "String"
+            },
+            {
+                "name": "wlbEwUtm",
+                "type": "String"
+            },
+            {
+                "name": "wlbUtmZone",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart1",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart2",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart3",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart4",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart5",
+                "type": "String"
+            },
+            {
+                "name": "wlbNamePart6",
+                "type": "String"
+            },
+            {
+                "name": "wlbPressReleaseUrl",
+                "type": "String"
+            },
+            {
+                "name": "wlbFactPageUrl",
+                "type": "String"
+            },
+            {
+                "name": "wlbFactMapUrl",
+                "type": "String"
+            },
+            {
+                "name": "wlbDiskosWellboreType",
+                "type": "String"
+            },
+            {
+                "name": "wlbDiskosWellboreParent",
+                "type": "String"
+            },
+            {
+                "name": "wlbWdssQcDate",
+                "type": "String"
+            },
+            {
+                "name": "wlbReleasedDate",
+                "type": "String"
+            },
+            {
+                "name": "wlbNpdidWellbore",
+                "type": "String"
+            },
+            {
+                "name": "dscNpdidDiscovery",
+                "type": "String"
+            },
+            {
+                "name": "fldNpdidField",
+                "type": "String"
+            },
+            {
+                "name": "fclNpdidFacilityDrilling",
+                "type": "String"
+            },
+            {
+                "name": "wlbNpdidWellboreReclass",
+                "type": "String"
+            },
+            {
+                "name": "prlNpdidProductionLicence",
+                "type": "String"
+            },
+            {
+                "name": "wlbDateUpdated",
+                "type": "String"
+            },
+            {
+                "name": "wlbDateUpdatedMax",
+                "type": "String"
+            },
+            {
+                "name": "datesyncNPD",
+                "type": "String"
+            }
+        ],
+        "typeProperties": {
+            "format": {
+                "type": "JsonFormat",
+                "filePattern": "arrayOfObjects"
+            },
+            "fileName": "wellbore.json",
+            "folderPath": "factpages"
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}

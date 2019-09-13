@@ -82,7 +82,7 @@ else {
 
 
 $rg = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue 
-
+$rgCreated = $false
 if ($null -eq $rg)
 {
     Write-Host "Creating ResourceGroup $resourceGroupName ... " -NoNewline
@@ -92,9 +92,11 @@ if ($null -eq $rg)
     Write-Host "Granting Permission to $principalName ... " -NoNewline
     New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionName "Owner" -ResourceGroupName $resourceGroupName | Out-Null
     Write-Host "Done" -ForegroundColor Green
+    $rgCreated = $true
 
 }
 else {
+    $rgCreated = $false
     Write-Host "Already exists..." -ForegroundColor "Red"
     return;
 }
@@ -234,3 +236,64 @@ catch{
 
 }
 
+# send notification email to user
+function EmailNotification{
+    param([string]$recipient)
+    # get smtp properties from key vault
+    $secretInfo = Get-AzKeyVaultSecret -VaultName 'EDC2019KV' -Name SmtpConnectionDetails -ErrorAction Stop
+    $secpasswd = $secretInfo.SecretValue
+    $username = $secretInfo.Tags.User
+    $port = $secretInfo.Tags.Port
+    $smtpServer = $secretInfo.Tags.Server
+    $sslStatus = $secretInfo.Tags.EnableSsl
+
+    # Set e-mail properties
+    $content = New-Object System.Net.Mail.MailMessage
+    $content.From = $username
+    $content.To.Add($recipient)
+    $content.Subject = ("Hands On With Omnia Workshop Onboarded")
+    $content.IsBodyHtml = $true
+
+    $content.Body = "<html><head><style type='text/css'>table{ font-size:11pt;font-family:Calibri;border:solid 1px #cccccc;vertical-align:top;padding:0px 0px;border-spacing:0px 0px;}img.middle{vertical-align:middle;}</style></head><body><div style='font-size:11pt;font-family:Calibri'>Hi,<p>"
+    $content.Body += ("You have been successfully onboarded to EDC workshop: <b>Hands on with Omnia</b>.<p>")
+    $content.Body += ("In the link below you can find the resource group created for you:<p>")
+    $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/edc2019_" + $shortName + "/overview <p>")
+    $content.Body += ("You can find the shared common resources for this workshop in the resource group <b>EDC2019Common</b>:<p>")
+    $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/overview<p>")
+    $content.Body += ("The workshop Github repository is available here:<p>")
+    $content.Body += ("https://github.com/equinor/omnia-tutorial<p>")
+    $content.Body += ("We have a Slack channel <b>#edc2019-omnia</b> for information, discussion and questions. Feel free to join the channel here:<p>")
+    $content.Body += ("https://app.slack.com/client/T02JL00JU/CMPSS6U3F<p>")
+    $content.Body += ("<b>If you are redirected to home page by clicking the links above, try paste and go to the links in browser.</b><p>")
+    $content.Body += ("Thank you for attending our workshop. Wish you good luck!<p>")
+    $content.Body += ("Best regards!<p>")
+    $content.Body += ("OMNIA Family<p>")
+    $content.Body += "</div></body></html>"
+    
+    # set SMTP server
+    $smtpClient = New-Object System.Net.Mail.SmtpClient($smtpServer, $port)
+    $smtpClient.EnableSsl = $sslStatus
+    $smtpClient.Credentials = New-Object System.Net.NetworkCredential($username, $secpasswd)
+    
+    # Send e-mail 
+    $smtpClient.Send($content)
+
+}
+
+try {
+    if($rgCreated){
+        $recipient = $shortName + '@equinor.com'
+        EmailNotification $recipient
+        Write-Host "User $shortname onboarded successfully with email sent." -ForegroundColor Green
+    }
+    else{
+        Write-Host "Email was not sent." -ForegroundColor Red
+    }
+}
+catch { 
+    $exceptionDetails = $_.Exception | format-list -force | Out-String
+    $lineNo = $_.InvocationInfo.ScriptLineNumber
+    $exceptionDetails = "$exceptionDetails, Line number: $lineNo"
+    Write-Error $exceptionDetails
+    throw
+}

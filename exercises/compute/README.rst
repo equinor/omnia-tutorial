@@ -1,6 +1,6 @@
 Introduction
 ============
-The main part of the tutorial covers the following points for computing in Azure Databricks:
+This tutorial covers the following steps for computing in Azure Databricks:
 
 * Extraction
   
@@ -17,8 +17,11 @@ The extras section covers other options you can consider.
 
 Prerequisites
 -------------
-* User has access to databricks workspace **EDC2019sharedDatabricks**, has own folder created in the workspace.
-* User has own SQL server and database created in module **Ingest**. 
+
+* Access to Azure
+* Tutorial onboarding completed
+
+* User has own SQL server and database created in module **Ingest**. TODO: Is this needed as we can reference solution
 
 Create Notebook in Databricks
 -----------------------------
@@ -54,7 +57,7 @@ After the notebook is created, you will jump to the notebook page. And you can s
 
   * The **tenant ID** of Equinor is "3aa4a235-b6e2-48d5-9195-7fcf05b459b0".
 
-  * For the tasks without reference script given, you can find the solution script in `EDC Compute Module Solutions <https://github.com/equinor/omnia-tutorial/blob/master/solution/Compute/compute_solution.py>`_.
+  * For the tasks without reference script given, you can find the solution script in `EDC Compute Module Solutions <https://github.com/equinor/omnia-tutorial/blob/master/exercises/compute/solution/compute_solution.py>`_.
 
 
 Extraction - Load data from ADLS Gen 2

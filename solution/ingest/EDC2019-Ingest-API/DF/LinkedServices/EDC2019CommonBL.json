@@ -1,0 +1,11 @@
+{
+    "name": "EDC2019CommonBL",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "serviceEndpoint": "https://omniatutorial.blob.core.windows.net"
+        }
+    }
+}

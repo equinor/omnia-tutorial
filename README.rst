@@ -15,10 +15,10 @@ Contents
 --------
 
 #. Introduction - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/introduction/index.html>`__ (`rst <presentations/introduction.rst>`__)
-#. Ingestion - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst <presentations/ingest.rst>`__) | `Exercises <exercises/ingest/index.rst>`__
-#. Compute - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst <presentations/compute.rst>`__) | `Exercises <exercises/compute/index.rst>`__
-#. Expose - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst <presentations/expose.rst>`__) | `Exercises <exercises/expose/index.rst>`__
-#. Consume - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst <presentations/consume.rst>`__) | `Exercises <exercises/consume/index.rst>`__
+#. Ingestion - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/ingest/index.html>`__ (`rst <presentations/ingest.rst>`__) | `Exercises <exercises/ingest/README.rst>`__
+#. Compute - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/compute/index.html>`__ (`rst <presentations/compute.rst>`__) | `Exercises <exercises/compute/README.rst>`__
+#. Expose - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/expose/index.html>`__ (`rst <presentations/expose.rst>`__) | `Exercises <exercises/expose/README.rst>`__
+#. Consume - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/consume/index.html>`__ (`rst <presentations/consume.rst>`__) | `Exercises <exercises/consume/README.rst>`__
 #. End Notes - `Presentation <https://mhewstoragev2.z16.web.core.windows.net/endnotes/index.html>`__ (`rst <presentations/endnotes.rst>`__)
 
 Note that for the exercises, we provide reference implementations for each step that you can use if you have trouble completing prior parts.
