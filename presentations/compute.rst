@@ -38,17 +38,18 @@ Compute Introduction
 ====================
 
 * Why Compute?
+* Where
 * Batch v's Event Driven
 * Elasticity
-* Cost
+* Cost considerations
 
 .. note::
 
-   * Compute for processing data (cleaning, transformation, ...)
-
-   * Elasticity: the ability to scale up/down according to workload. eg: worker nodes, cores
-
-   * Cost: compare between setting up a phisical server and using an online service like databricks, in storage, cluster usage and cost
+   * *Why Compute* - Compute for processing data (cleaning, transformation, ...)
+   * *Where* - on ingest, triggered, scheduled, on expose, client side
+   * *Batch v's Event Driven* - Different ways of triggering compute
+   * *Elasticity* - the ability to scale up/down according to workload. eg: worker nodes, cores
+   * *Cost* - Compare between setting up a phisical server and using an online service like databricks, in storage, cluster usage and cost
 
 ----
 
@@ -116,6 +117,8 @@ Exercise Overview
 .. image:: ./images/compute/compute_module.PNG
 
 Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exercises/compute.rst
+
+----
 
 Summary
 -------
