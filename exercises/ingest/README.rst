@@ -325,8 +325,9 @@ infrastruvture. There are however several points that we haven't covered in
 the interest of time:
 
 * Automation and DevOps
-* Monitoring
 * Triggering & Scheduling Jobs
+* Data Catalog
+* Monitoring
 
 .. note::
 

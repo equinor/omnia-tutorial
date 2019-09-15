@@ -206,6 +206,7 @@ Summary
 * Automation & DevOps
 * Triggering & Scheduling Jobs
 * Other tools
+* Data Catalog
 * Monitoring
 
 .. note::
@@ -213,4 +214,5 @@ Summary
    * *Automation & Devops* - Github, automation and devops. Also operationalising.
    * *Triggering & Scheduling Jobs* - How to trigger and schedule Data Factory jobs
    * *Other tools* - there are many other tools that can also be used.
+   * *Data Catalog* - To be a part of the Data Platform, we should datasets to Data Catalog.
    * *Monitoring* - How to know if things go wrong (e.g. source unavailable).
