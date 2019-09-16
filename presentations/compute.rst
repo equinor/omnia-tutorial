@@ -45,8 +45,8 @@ Compute Introduction
 
 .. note::
 
-   * *Why Compute* - Compute for processing data (cleaning, transformation, ...)
-   * *Where* - on ingest, triggered, scheduled, on expose, client side
+   * *Why Compute* - for processing data (cleaning, transformation, enrichment...)
+   * *Where* - many stages: on ingest, triggered, scheduled, on expose, client side
    * *Batch v's Event Driven* - Different ways of triggering compute
    * *Elasticity* - the ability to scale up/down according to workload. eg: worker nodes, cores
    * *Cost* - Compare between setting up a phisical server and using an online service like databricks, in storage, cluster usage and cost
@@ -80,6 +80,8 @@ Azure Databricks
 .. note::
 
    * Apache Spark + databricks + enterprise cloud
+   * Spark was originally developed in University of California, Berkeley's AMPLab, was licensed under Apache, matured and developed by open-source
+   * Databricks was founded by the original creators of Spark
    * Input can be stream data/any storage, like sql, blob, s3
    * output can be storage, visualization, machine learning pipelines...
 
@@ -94,8 +96,7 @@ Azure Databricks
 *Image Source: http://quant36.rssing.com/chan-11018997/all_p2.html*
 
 .. note::
-   * only spark supports all the three
-   * explain a little about these three
+   * spark supports all the three
    * spark is good: 
        * spark is fast because RAM & distributed framework, 
        * expensive because RAM. 
@@ -123,6 +124,7 @@ Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exerci
 Summary
 -------
 
-* Automation and DevOps
-* Create client, store client secret in key vault, set up client permissions
-* Source Control (Github)
+* Introduction to Compute
+* Compute Options
+* Azure Databricks
+* Exercise Overview
