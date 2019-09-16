@@ -317,11 +317,11 @@ VSCode in Azure CLI
     - Create a reference to the publish folder: `$publishFolder = "<path-to-folder>"`, this is the same folder from the last step.
     - Create variable in the CLI: `$publishZip = "publish.zip"`
     - Create the zip:
-    ```ps1
-    if(Test-path $publishZip) {Remove-item $publishZip}
-    Add-Type -assembly "system.io.compression.filesystem"
-    [io.compression.zipfile]::CreateFromDirectory($publishFolder, $publishZip)
-    ```
+      ```ps1
+      if(Test-path $publishZip) {Remove-item $publishZip}
+      Add-Type -assembly "system.io.compression.filesystem"
+      [io.compression.zipfile]::CreateFromDirectory($publishFolder, $publishZip)
+      ```
     - Run the following block to deploy the zip file:
     ```ps1
     Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>-app" -ArchivePath $publishZip
