@@ -8,8 +8,6 @@ This repository contains a hands-on tutorial on using the Omnia Data Platform.
 We will give a general introduction to Omnia concepts whilst walking through 
 building the below scenario:
 
-TODO: Fix diagram + other places.
-
 .. image:: presentations/images/architecture-overview.png
     :width: 800px
 
