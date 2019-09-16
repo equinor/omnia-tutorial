@@ -301,14 +301,14 @@ TODO: Skeleton and Solution don't match!
 
 .. code::
 
-    public async Task<ActionResult<IEnumerable<ProductionData>>> GetProductionData(string searchString)
+    public ActionResult<IEnumerable<ProductionData>> GetList(string search)
     {
         var productionDataQueryable = _context.ProductionData.AsQueryable();
 
-        if (!string.IsNullOrEmpty(searchString))
+        if (!string.IsNullOrEmpty(search))
         {
             productionDataQueryable = productionDataQueryable
-                .Where(pa => pa.Wellbore.Contains(searchString) || pa.Year.ToString().Contains(searchString));
+                .Where(pa => pa.Wellbore.Contains(search) || pa.Year.ToString().Contains(search));
         };
 
         return productionDataQueryable.ToList();
@@ -321,7 +321,7 @@ following:
 
 .. code::
 
-    public async Task<ActionResult<ProductionData>> GetProductionData(int id)
+    public ActionResult<ProductionData> Get(int id)
     {
         var productionData =  _context.ProductionData.Find(id);
 
@@ -460,8 +460,7 @@ and importing and publishing such a file in APIM is trivial.
 Completing the API
 ------------------
 
-Earlier we only added code for the *ProductionDataController* 
-*GetProductionData* methods. Here we will complete the other parts.
+Earlier we only added code for the *ProductionDataController* methods. Here we will complete the other parts.
 
 You can reference the Entity Framework examples above or look at the reference
 implementation in *omnia-tutorial\exercises\expose\solution\EDC-API*.
@@ -472,7 +471,7 @@ implementation in *omnia-tutorial\exercises\expose\solution\EDC-API*.
 **1.1 Create**
 ..............
 
-Implement the controller method `PostProductionData(ProductionDataRequest request)`
+Implement the controller method `Post(ProductionDataRequest request)`
 
 * Take `ProductionDataRequest` object and create a new `ProductionData` object
 * Insert the new `ProductionData` object in the table.
@@ -481,7 +480,7 @@ Implement the controller method `PostProductionData(ProductionDataRequest reques
 **1.2 Update**
 ..............
 
-Implemented the controller method `PutProductionData(int id, ProductionData productionData)`
+Implemented the controller method `Put(int id, ProductionData productionData)`
 
 * Update an entry in the database using the `Update` functionality of Entity 
   Framework
@@ -490,7 +489,7 @@ Implemented the controller method `PutProductionData(int id, ProductionData prod
 **1.3 Delete**
 ..............
 
-Implement the controller method `DeleteProductionData(int id)`
+Implement the controller method `Delete(int id)`
 * Delete an entry in the database based on its' ID
 * Should return the deleted entry
 * *NB: Can't delete an entry that doesn't exist.*
