@@ -152,8 +152,6 @@ Representational State Transfer (REST)
 Open API Specification
 ======================
 
-TODO - we talked about making images a separate slide to make it bigger?
-
 .. |openapi2| image:: ./images/expose/open-api-v2.jpg
   :width: 300px
 
@@ -191,8 +189,6 @@ TODO - we talked about making images a separate slide to make it bigger?
 
 Open API Specification
 ======================
-
-TODO - we talked about making images a separate slide to make it bigger?
 
 .. |openapi3| image:: ./images/expose/open-api-v3.jpg
   :width: 300px
