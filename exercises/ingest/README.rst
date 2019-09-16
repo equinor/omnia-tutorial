@@ -317,6 +317,13 @@ You can verify the output by going back to the database query editor and running
 
     SELECT * FROM [dbo].[ProductionData]
 
+Additional Exercise
+-------------------
+
+There is an additional `ingestion exercise <ingest_api.md>`_ that you can work
+through that uses Azure Functions to ingest data from a REST service to Blob
+storage, followed by Data Factory to copy the data to SQL Server. 
+
 Summary
 -------
 
@@ -325,8 +332,9 @@ infrastruvture. There are however several points that we haven't covered in
 the interest of time:
 
 * Automation and DevOps
-* Monitoring
 * Triggering & Scheduling Jobs
+* Data Catalog
+* Monitoring
 
 .. note::
 

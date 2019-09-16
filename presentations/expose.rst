@@ -322,6 +322,7 @@ TODO - look through copied items from consume and see if points and notes makes 
 * Legal aspects
 * Performance
 * Sharing
+* Data Catalog
 
 .. note::
 
@@ -336,3 +337,4 @@ TODO - look through copied items from consume and see if points and notes makes 
      about what options are best and where to run compute. We might need 
      additional backend infrastructure to improve API performance.
    * *Sharing* - when consuming and curating existing data you are suddenly a producer as well. Consider if your value-added work should be shared.
+   * *Data Catalog* - To be a part of the Data Platform, we should datasets to Data Catalog.

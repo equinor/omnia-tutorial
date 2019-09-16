@@ -362,6 +362,13 @@ What we Didn't Cover
 
 In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
 
-* Automation and DevOps
-* Security (Authentication / Authorisation)
-* ...
+* Authorisation & Authentication
+* Deployment & Sharing
+* Legal aspects
+* Performance
+* Sharing
+* Data Catalog
+
+.. note::
+
+    * Content copied from presentation summary
