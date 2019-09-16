@@ -315,14 +315,13 @@ Part 2:
 Summary
 =======
 
-TODO - look through copied items from consume and see if points and notes makes sense...
-
 * Authorisation & Authentication
 * Deployment & Sharing
 * Legal aspects
 * Performance
 * Sharing
 * Data Catalog
+* Publishing in APIM
 
 .. note::
 
@@ -338,3 +337,4 @@ TODO - look through copied items from consume and see if points and notes makes 
      additional backend infrastructure to improve API performance.
    * *Sharing* - when consuming and curating existing data you are suddenly a producer as well. Consider if your value-added work should be shared.
    * *Data Catalog* - To be a part of the Data Platform, we should datasets to Data Catalog.
+   * *Publishing in APIM* - Should be published in APIM.
