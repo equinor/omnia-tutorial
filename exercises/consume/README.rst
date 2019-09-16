@@ -13,8 +13,11 @@ to try whatever of these options you like.
 Prerequisites
 -------------
 
-* If you have not completed the API module then you can connect to an already prepared API for this part, as mentioned in the below samples. If you have your own API then just substitute this.
-* You can select which of the options you want to try so only need the tools for those parts. More details follow in the different sections.
+* If you have not completed the API module then you can connect to an already 
+  prepared API for this part, as mentioned in the below samples. If you have 
+  your own API then just substitute this.
+* You can select which of the options you want to try so only need the tools 
+  for those parts. More details follow in the different sections.
 
 Using Microsoft Excel
 ---------------------
@@ -173,7 +176,8 @@ Consuming an API from PowerBI
 
 To run this part of the tutorial you will need Power BI desktop `installed <https://powerbi.microsoft.com/en-us/downloads/>`__
 . Use the advanced download options for direct download to avoid 
-installing through Microsoft Store). For this you need elevated installer, elevated privileges or developer profile for your laptop. 
+installing through Microsoft Store). For this you need elevated installer, 
+elevated privileges or developer profile for your laptop. 
 Alternatively you need to apply for PowerBI in access-it and download from Equinor Applications.
 
 Getting data into PowerBI is similar as with Excel as both use power query to
@@ -182,7 +186,7 @@ import data.
 * Open PowerBI 
 
 * From the startup screen, or home tab chose the option *Get data* followed
-  by *Other->Web* followed by *Connect*. 
+  by *Other->Web* followed by *Connect*.
   
 * You will now be in a set of dialog boxes that mirror those above in the 
   Excel section for importing data that you can follow to have the data 
@@ -195,7 +199,7 @@ import data.
 * Moving back to the *report view* we will add a simple graph.
 
   * Click on the *line chart* icon under *Visualisations* to add a new line 
-    chart
+    chart.
   * Drag fields across to *Axis*, *Legend* and *Values* as shown below.
   * Change the aggregation of the values to *Sum* from the drop down.
 

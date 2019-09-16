@@ -15,6 +15,17 @@ A Key Vault is an Azure resource for storing secret information such as password
 6. Click *Add*
 ![alt-text](./images/API/3_KeyVaultPermission.PNG)
 
+## Storage Account
+This section covers how to grant access to a Storage Account for your Data Factory using Managed Identity.
+1. In the Azure portal, navigate to the Storage Account *omniatutorial* in the resource group *EDC2019Common*.
+2. Click on *Access control*. Then click *Add*, *Add role assignment*.
+3. Select following values
+- **Role:** Storage Blob Data Contributor
+- **Assing access to:** Azure AD user, group, or service principal
+- **Select:** *Your Data Factory name*
+- ![alt-text](./images/API/BlobAccess.PNG)
+4. Click *Save*
+
 ## Data Factory
 In this section you will set up a Data Factory pipeline with an Azure function and a copy from Blob Storage to an SQL database. You will need to created Linked Services, in order to establish connection to resources, and Datasets for retrieving data. When these have been set up then you are ready to set up a Data Factory pipeline.
 
