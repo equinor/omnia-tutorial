@@ -18,16 +18,16 @@ namespace EDC_API.Controllers
             _context = context;
         }
 
-        // GET: production-data
+        // GET: production-data?search=<searchString>
         [HttpGet]
-        public ActionResult<IEnumerable<ProductionData>> GetList(string searchString)
+        public ActionResult<IEnumerable<ProductionData>> GetList(string search)
         {
             var productionDataQueryable = _context.ProductionData.AsQueryable();
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(search))
             {
                 productionDataQueryable = productionDataQueryable
-                    .Where(pa => pa.Wellbore.Contains(searchString) || pa.Year.ToString().Contains(searchString));
+                    .Where(pa => pa.Wellbore.Contains(search) || pa.Year.ToString().Contains(search));
             };
 
             return productionDataQueryable.ToList();

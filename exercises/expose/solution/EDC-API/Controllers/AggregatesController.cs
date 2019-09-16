@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using EDC_API.Data;
 using EDC_API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EDC_API.Controllers
 {
-    [Route("api/aggregates")]
+    [Route("aggregates")]
     [ApiController]
     public class AggregatesController : ControllerBase
     {
@@ -15,46 +16,49 @@ namespace EDC_API.Controllers
         {
             _context = context;
         }
+        // GET: aggregates/oil-between-dates?fromYear={year}&toYear={year}&fromMonth={monthNumber}&toMonth={monthNumber}
         [HttpGet("oil-between-dates")]
-        public object GetOilBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        public ActionResult<List<OilBetweenDates>> GetOilBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
         {
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
                                   group pd.Oil by pd.Wellbore into wellboreOilRecords
-                                  select new 
+                                  select new OilBetweenDates
                                   {
-                                      Wellbore = wellboreOilRecords.Key, 
-                                      OilSum = wellboreOilRecords.Sum() 
+                                      Wellbore = wellboreOilRecords.Key,
+                                      OilSum = wellboreOilRecords.Sum()
                                   };
 
             return uniqueWellbores.ToList();
         }
 
+        // GET: aggregates/oil-avg-between-dates?fromYear={year}&toYear={year}&fromMonth={monthNumber}&toMonth={monthNumber}
         [HttpGet("oil-avg-between-dates")]
-        public object GetOilAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        public ActionResult<List<OilAvgBetweenDates>> GetOilAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
         {
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
                                   group pd.Oil by pd.Wellbore into wellboreOilRecords
-                                  select new 
-                                  { 
-                                      Wellbore = wellboreOilRecords.Key, 
-                                      OilAvg = wellboreOilRecords.Average() 
+                                  select new OilAvgBetweenDates
+                                  {
+                                      Wellbore = wellboreOilRecords.Key,
+                                      OilAvg = wellboreOilRecords.Average()
                                   };
 
             return uniqueWellbores.ToList();
         }
 
+        // GET: aggregates/gas-between-dates?fromYear={year}&toYear={year}&fromMonth={monthNumber}&toMonth={monthNumber}
         [HttpGet("gas-between-dates")]
-        public object GetGasBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        public ActionResult<List<GasBetweenDates>> GetGasBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
         {
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
                                   group pd.Gas by pd.Wellbore into wellboreGasRecords
-                                  select new
+                                  select new GasBetweenDates
                                   {
                                       Wellbore = wellboreGasRecords.Key,
                                       GasSum = wellboreGasRecords.Sum()
@@ -63,14 +67,15 @@ namespace EDC_API.Controllers
             return uniqueWellbores.ToList();
         }
 
+        // GET: aggregates/gas-avg-between-dates?fromYear={year}&toYear={year}&fromMonth={monthNumber}&toMonth={monthNumber}
         [HttpGet("gas-avg-between-dates")]
-        public object GetGasAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        public ActionResult<List<GasAvgBetweenDates>> GetGasAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
         {
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var uniqueWellbores = from pd in prodData
                                   group pd.Gas by pd.Wellbore into wellboreGasRecords
-                                  select new
+                                  select new GasAvgBetweenDates
                                   {
                                       Wellbore = wellboreGasRecords.Key,
                                       GasAvg = wellboreGasRecords.Average()
@@ -79,18 +84,19 @@ namespace EDC_API.Controllers
             return uniqueWellbores.ToList();
         }
 
+        // GET: aggregates/wellbore-records-between-dates?fromYear={year}&toYear={year}&fromMonth={monthNumber}&toMonth={monthNumber}
         [HttpGet("wellbore-records-between-dates")]
-        public object GetWellboreRecordsBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
+        public ActionResult<List<WellboreRecordsBetweenDates>> GetWellboreRecordsBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)
         {
             var prodData = GetProductionDataBetweenDates(fromYear, toYear, fromMonth, toMonth);
 
             var recordsPerWellbore = from pd in prodData
-                                  group pd.Wellbore by pd.Wellbore into wellboreRecords
-                                  select new
-                                  {
-                                      Wellbore = wellboreRecords.Key,
-                                      Records = wellboreRecords.Count()
-                                  };
+                                     group pd.Wellbore by pd.Wellbore into wellboreRecords
+                                     select new WellboreRecordsBetweenDates
+                                     {
+                                         Wellbore = wellboreRecords.Key,
+                                         Records = wellboreRecords.Count()
+                                     };
 
             return recordsPerWellbore.ToList();
         }

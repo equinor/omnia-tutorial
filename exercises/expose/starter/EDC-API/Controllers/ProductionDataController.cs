@@ -11,7 +11,6 @@ using EDC_API.Models;
 namespace EDC_API.Controllers
 {
     [Route("production-data")]
-
     [ApiController]
     public class ProductionDataController : ControllerBase
     {
@@ -19,13 +18,13 @@ namespace EDC_API.Controllers
 
         public ProductionDataController(CommonDbContext context)
         {
-            
+
             _context = context;
         }
 
-        // GET: production-data
+        // GET: production-data?search=<searchString>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductionData>>> GetProductionData()
+        public ActionResult<IEnumerable<ProductionData>> GetList(string search)
         {
             // TODO Use the CommonDbContext to retrieve all entries from the ProductionData table
 
@@ -34,7 +33,7 @@ namespace EDC_API.Controllers
 
         // GET: production-data/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductionData>> GetProductionData(int id)
+        public ActionResult<ProductionData> Get(int id)
         {
             // TODO Retrieve a single entry with the specified Id.
             throw new NotImplementedException();
@@ -42,15 +41,15 @@ namespace EDC_API.Controllers
 
         // PUT: production-data/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductionData(int id, ProductionData productionData)
+        public IActionResult Put(int id, ProductionData productionData)
         {
             // TODO Update a ProductionData entry
             throw new NotImplementedException();
         }
 
-        // POST: ProductionDatas
+        // POST: production-data
         [HttpPost]
-        public async Task<ActionResult<ProductionData>> PostProductionData(ProductionDataRequest request)
+        public ActionResult<ProductionData> Post(ProductionDataRequest request)
         {
             // TODO Add new entry to the database
             throw new NotImplementedException();
@@ -58,7 +57,7 @@ namespace EDC_API.Controllers
 
         // DELETE: production-data/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ProductionData>> DeleteProductionData(int id)
+        public ActionResult<ProductionData> Delete(int id)
         {
             // TODO Delete existing entry from the database.
             throw new NotImplementedException();
