@@ -2,7 +2,8 @@ Introduction
 ============
 This part of the tutorial covers how to expose a SQL Server database-table as an API.
 
-This module is quite code-heavy and would typically involve having some toolsets pre-installed, like Visual Studio or Visual Studio Code. 
+This module is quite code-heavy and would typically involve having some
+ toolsets pre-installed, like Visual Studio or Visual Studio Code. 
 The exercise will explain how to use these tools, but we also have a variant that uses no-pre installed applications.
 
 
