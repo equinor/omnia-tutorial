@@ -123,8 +123,6 @@ Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exerci
 Summary
 -------
 
-In the interest of time and simplicity, the following points have been omitted from this tutorial although should / must be considered when building production ready solutions:
-
 * Automation and DevOps
 * Create client, store client secret in key vault, set up client permissions
 * Source Control (Github)
