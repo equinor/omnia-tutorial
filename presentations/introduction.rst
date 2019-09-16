@@ -149,7 +149,6 @@ Data Architecture
     * Similar requirements to Transform, but often application specific to meet solution specific needs (access pattern, performance)
     * Data in prepared should be exposed through the enterprise layer also. 
 
-TODO: Verify layer names and update image
 
 ----
 
