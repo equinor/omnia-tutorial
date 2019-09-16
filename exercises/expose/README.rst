@@ -297,8 +297,6 @@ The controller method `GetProductionData()` should return a list containing
 the entire `ProductionData` table. Replacing the method with the 
 following:
 
-TODO: Skeleton and Solution don't match!
-
 .. code::
 
     public ActionResult<IEnumerable<ProductionData>> GetList(string search)
@@ -314,7 +312,7 @@ TODO: Skeleton and Solution don't match!
         return productionDataQueryable.ToList();
     }
     
-The controller method `GetProductionData(int id)` should return a single 
+The controller method `Get(int id)` should return a single 
 entry from the `ProductionData` table, correpsonding to the ID. It should
 also appropriately handle non-existing entries. Replacing the method with the 
 following:
@@ -484,7 +482,6 @@ Implemented the controller method `Put(int id, ProductionData productionData)`
 
 * Update an entry in the database using the `Update` functionality of Entity 
   Framework
-* *NB: Make sure to handle concurrent updates.*
 
 **1.3 Delete**
 ..............
