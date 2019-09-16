@@ -80,7 +80,7 @@ Azure Databricks
 .. note::
 
    * Apache Spark + databricks + enterprise cloud
-   * Spark was originally developed in University of California, Berkeley's AMPLab, was licensed under Apache, matured and developed by open-source
+   * Spark was originally developed for HPC in University of California, Berkeley's AMPLab, was licensed under Apache, matured and developed by open-source
    * Databricks was founded by the original creators of Spark
    * Input can be stream data/any storage, like sql, blob, s3
    * output can be storage, visualization, machine learning pipelines...
