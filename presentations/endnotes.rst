@@ -59,7 +59,7 @@ What we Didn't Cover
       * Ways of working with Azure (SDK, CLI, ARM templates, ...)
       * Different technologies.
 
-    * Operations, monitoring. Also ties in with Devops
+    * Operations, monitoring, billing, ... Also ties in with Devops
 
 ----
 
