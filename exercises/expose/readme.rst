@@ -316,7 +316,8 @@ VSCode in Azure CLI
 - Create .zip file of the project:
     - Create a reference to the publish folder: `$publishFolder = "<path-to-folder>"`, this is the same folder from the last step.
     - Create variable in the CLI: `$publishZip = "publish.zip"`
-    - Create the zip:
+    - Create the zip: 
+
       ```ps1
       if(Test-path $publishZip) {Remove-item $publishZip}
       Add-Type -assembly "system.io.compression.filesystem"
