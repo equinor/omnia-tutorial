@@ -17,7 +17,7 @@ Azure Databricks:
   
   * Load transformed data to SQL server for further analysis
 
-In addition rhe extras section covers other options you can consider.
+In addition the extras section covers other options you can consider.
 
 Prerequisites
 -------------
