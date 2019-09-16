@@ -8,6 +8,7 @@ if ($null -eq $context )
     $context = Connect-AzAccount
 }
 
+$shortName = $shortName.ToLower()
 
 #Common Variables
 $edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
