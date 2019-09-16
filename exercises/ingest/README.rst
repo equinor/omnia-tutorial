@@ -299,7 +299,7 @@ Swith to the Mapping tab, and click Import Schemas
 .. image:: images/SQL/10_Mapping.png
 
 Map the columns as shown below and then remove the mapping to the ID column. 
-This is an Idenntity column in the database.
+This is an Identity column in the database.
 
 .. image:: images/SQL/11_Mapping2.png
 
