@@ -171,7 +171,9 @@ Data Flow
 Data Factory
 ============
 
-TODO: Info
+.. image:: images/ingest/datafactory-workflow.png
+
+Azure Data Factory is a cloud-based data integration service that allows you to create data-driven workflows in the cloud for orchestrating and automating data movement and data transformation. Using Azure Data Factory, you can create and schedule data-driven workflows (called pipelines) that can ingest data from disparate data stores. It can process and transform the data by using compute services such as Azure Databricks, Azure Function and others.
 
 ----
 
