@@ -2,38 +2,38 @@ Introduction
 ============
 This tutorial covers the following steps:
 
-* Create an Azure Data Factory Pipeline to Copy data from an HTTP endpoint 
+* Creating an Azure Data Factory Pipeline to copy data from an HTTP endpoint 
   (NPD) into Data Lake Storage Gen2
-* Using Storage Explorer
-* Create an Azure SQL Server, 
-* Create an Azure SQL Database.
-* Create an Azure Data Factory Pipeline to Copy data from Data Lake to SQL 
+* Using Azure Storage Explorer
+* Creating an Azure SQL Server
+* Creating an Azure SQL Database
+* Creating an Azure Data Factory Pipeline to copy data from the Data Lake Store to an SQL 
   Database
 
 Prerequisites
 -------------
 
 * Access to Azure
-* Tutorial onboarding completed
+* Tutorial onboarding completion
 
-Information about the Data
+Information About the Data
 --------------------------
 
 We will use public data available from NPD. From the following page you can browse all NPD data: 
 
 http://factpages.npd.no/factpages/
 
-For this exercise we will use the downloadable production csv file from :
+For this exercise we will use the production CSV file downloadable from:
 
 http://factpages.npd.no/ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en
 
 Getting started
 ---------------
 
-A Data Factory resource has been pre created for you to use. To access this you need to locate the data factory resource in the Azure portal
+A Data Factory resource has been pre-created for you to use. To access this, you need to locate the Data Factory resource in the Azure Portal:
 
-* Log into http://portal.azure.com 
-* Locate the data factory in your resource group either using search (e.g. 
+* Log in to http://portal.azure.com 
+* Locate the Data Factory in your resource group either using search (e.g. 
   *edc2019* or *<short name>*) or browsing *all resources*
 * In the Overview section of the Data Factory resource, click 
   *Author & Monitor* to open the Data Factory editor.
@@ -41,15 +41,19 @@ A Data Factory resource has been pre created for you to use. To access this you 
 Data Factory
 ------------
 
-A data factory has a few concepts that it is useful to be aware of. You will typically create *pipelines* which provide a logical grouping of activities that together perform a task. The activities in a pipeline define actions to perform on your data such as copying or transformation.
+A Data Factory has a few concepts that it is useful to be aware of.
 
-*Linked services* provide reusable connections to different data sources. Linked services are much like connection strings, which define the connection information needed for Data Factory to connect to external resources.
+*Pipelines* provide a logical grouping of activities that together perform a task.
 
-A *dataset* is a named view of data that simply points or references the data you want to use in your activities as inputs and outputs. Datasets identify data within different data stores, such as tables, files, folders, and documents.
+*Activities* in a pipeline define actions to perform on your data such as copying or transformation. Activities operate on datasets.
+
+*Datasets* are named views of data that point to the data you want to use in your activities as inputs and outputs. Datasets identify data within different data stores, such as tables, files, folders, and documents. Datasets use connections defined by linked services.
+
+*Linked services* provide reusable connections to different data sources. Linked services are much like connection strings, which define the connection information needed for a Data Factory to connect to external resources.
 
 *Linked services* can be setup as *sources* or *sinks* from where you gather or send data respectively. 
 
-More information is available at: Reference Azure Data factory documentation: https://docs.microsoft.com/en-us/azure/data-factory/
+More information is available at https://docs.microsoft.com/en-us/azure/data-factory/
 
 Ingest into Azure Data Lake Storage Gen2
 ----------------------------------------
@@ -62,7 +66,9 @@ There are different ways to setup a pipeline including from scratch, from existi
 
 In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer surface. You can also search for activities in the Activities toolbox. 
 
-Give the activity a meaningful name such as *Copy_NPD_Data*.
+| Give the activity a meaningful name such as *Copy_NPD_Data*.
+| More information on naming: https://docs.omnia.equinor.com/services/apim/overview/namingconventions/
+| Also https://dataplatformwiki.azurewebsites.net/develop/namingconventions (older but more complete)
 
 .. image:: images/2_Copy_Activity.png
 
@@ -77,8 +83,6 @@ Browse, or search and select the HTTP type.
 Even though the source is a CSV file (DelimitedText), we will just do a straight copy of the file so select the *Binary* option.
 
 .. image:: images/5_new_binary.png
-
-TODO: Verify naming best practices with DE team for data sets, sources and sinks!
 
 In the source dataset *Set Properties* window that pops up use the name FieldProductionMonthly_NPD and from the *Linked service* dropdown select new to create a new linked service to link to the NDP Factpages website.
 
