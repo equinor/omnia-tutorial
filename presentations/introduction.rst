@@ -173,8 +173,6 @@ Subscriptions and all That
 
 .. image:: images/introduction/subscriptions-resourcegroups.png
 
-TODO: Swap MG with Tennent in the image as that is more commonly referenced.
-
 .. note::
 
   Some common concepts that they will encounter
