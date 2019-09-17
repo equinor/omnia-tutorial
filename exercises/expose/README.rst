@@ -249,8 +249,10 @@ the following:
   enter the command `dotnet build` to build your solution, and `dotnet run` 
   to start the API. 
 
-  The default URL is typically `localhost:5001`, and the swagger page should
-  be available at localhost:5001/swagger.
+  The service should now be up and running in the context of the 
+  CLI- workspace.
+  But we have had some problems on accessing the running site, so to
+  fully test this, head down to the Deploying to Azure section.
 
 Implementing the code-changes
 -----------------------------
@@ -413,14 +415,14 @@ VSCode in Azure CLI
 * It should produce output like the table below if the deployment was 
   successful:
 
-=========================== ========    ======================== ====================================================== =============
-Name                        State       ResourceGroup            EnabledHostNames                                       Location 
-=========================== ========    ======================== ====================================================== =============
-edc2019-"your-shortname"app Running     edc2019_"your-shortname" {"edc2019-"your-hortname"app.azurewebsites.net", ...   North Europe 
-=========================== ========    ======================== ====================================================== =============
+==============================  ========    =========================== ======================================================== =============
+Name                            State       ResourceGroup               EnabledHostNames                                         Location 
+==============================  ========    =========================== ======================================================== =============
+edc2019-\<your-shortname\>-app  Running     edc2019\_\<your-shortname\> {"edc2019-\<your-hortname\>-app.azurewebsites.net", ...  North Europe 
+==============================  ========    =========================== ======================================================== =============
 
 * Navigate to 
-  `edc2019-'your-shortname'app.azurewebsites.net/swagger/` to 
+  `edc2019-\<your-shortname\>-app.azurewebsites.net/swagger/` to 
   verify that the API is running as it should.
 
 Open API Specification
@@ -458,7 +460,9 @@ and importing and publishing such a file in APIM is trivial.
 Completing the API
 ------------------
 
-Earlier we only added code for the *ProductionDataController* methods. Here we will complete the other parts.
+Earlier we only added code for the *ProductionDataController* read-method. Here we will complete the other parts.
+
+Note that this will only work if you have setup your own SQL Server, as you only have read-rights on the Common-one.
 
 You can reference the Entity Framework examples above or look at the reference
 implementation in *omnia-tutorial\exercises\expose\solution\EDC-API*.
@@ -554,6 +558,3 @@ In the interest of time and simplicity, the following points have been omitted f
 * Data Catalog
 * Publishing in APIM
 
-.. note::
-
-    * Content copied from presentation summary
