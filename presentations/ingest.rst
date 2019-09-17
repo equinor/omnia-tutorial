@@ -131,10 +131,10 @@ Ingest Alternatives
 * Azure Data Factory​ (recommended)
 * Azure Functions​
 * Azure Databricks​
-* Custom Applications​
 * Stream Analytics​
 * HD Insight
 * IoT Hub
+* Custom Applications​
 
 .. note::
 
@@ -224,7 +224,7 @@ Summary
 
 * Automation & DevOps
 * Triggering & Scheduling Jobs
-* Other tools
+* Other Tools
 * Data Catalog
 * Monitoring
 
