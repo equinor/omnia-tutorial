@@ -102,13 +102,11 @@ https://eun-su1.azuredatacatalog.com
 Storage Alternatives
 ====================
 
-* Data Lake Store
-* Blob Store
-* Archive Storage
-* Relational Databases
-* NOSQL Databases
-* Timeseries Databases
-* ...
+* Azure Data Lake Store
+* Azure Blob Storage (Tiers: Hot, Cool, Archive)
+* Relational Databases (Azure SQL Database, PostgreSQL, MySQL)
+* NoSQL Databases (Cosmos DB, Azure Table Storage)
+* Timeseries Databases (Time Series Insights, Self-Hosted Solutions)
 
 .. note:: 
   * Before doing ingest we need somewhere to put the data
@@ -172,8 +170,18 @@ Data Factory
 ============
 
 .. image:: images/ingest/datafactory-workflow.png
+  :width: 800px
 
-Azure Data Factory is a cloud-based data integration service that allows you to create data-driven workflows in the cloud for orchestrating and automating data movement and data transformation. Using Azure Data Factory, you can create and schedule data-driven workflows (called pipelines) that can ingest data from disparate data stores. It can process and transform the data by using compute services such as Azure Databricks, Azure Function and others.
+* Cloud-based data integration service
+* Orchestrate and automate data movement and transformation
+* Create and schedule data-driven workflows (pipelines)
+* Ingest data from disparate data stores
+
+.. note::
+
+  We are focusing on "Connect and Collect"
+
+  Azure Data Factory is a cloud-based data integration service that allows you to create data-driven workflows in the cloud for orchestrating and automating data movement and data transformation. Using Azure Data Factory, you can create and schedule data-driven workflows (called pipelines) that can ingest data from disparate data stores. It can process and transform the data by using compute services such as Azure Databricks, Azure Function and others.
 
 ----
 
