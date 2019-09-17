@@ -71,7 +71,7 @@ Compute Options
 
 Azure Databricks
 ================
-* What is Databricks?
+* What is Azure Databricks?
 
 .. image:: ./images/compute/azure_databricks.png
 
