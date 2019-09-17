@@ -11,8 +11,6 @@ $adGroup = Get-AzADGroup -ObjectId $edcAADGroup
 $groupMembers = Get-AzADGroupMember -GroupObjectId $edcAADGroup
 
 
-
-
 foreach ($user in $groupMembers | Where-Object {$_.Type -eq "User"})
 {
     Write-Host "Checking $($user.UserPrincipalName) ... "  -NoNewline
@@ -31,5 +29,16 @@ foreach ($user in $groupMembers | Where-Object {$_.Type -eq "User"})
         $df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName
         Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId
     }
+
+    $appPrincipal = $null
+    $appPrincipal = $groupMembers | Where-Object {$_.Type -eq "ServicePrincipal" -and $_.DisplayName -eq $appServiceName}
+    if ($null -eq $appPrincipal)
+    {
+        Write-Host " fixing app id ... " -ForegroundColor Yellow -NoNewline
+        $appService = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appServiceName
+        Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
+    }
     Write-Host "Done" -ForegroundColor Green
+
+
 }
