@@ -103,16 +103,25 @@ Storage Alternatives
 ====================
 
 * Azure Data Lake Store
-* Azure Blob Storage (Tiers: Hot, Cool, Archive)
-* Relational Databases (Azure SQL Database, PostgreSQL, MySQL)
-* NoSQL Databases (Cosmos DB, Azure Table Storage)
-* Timeseries Databases (Time Series Insights, Self-Hosted Solutions)
+* Azure Blob Storage
+* Relational Databases
+* NoSQL Databases
+* Timeseries Databases
 
 .. note:: 
+
   * Before doing ingest we need somewhere to put the data
   * Temporary e.g. queues / Service Bus v's persistant
   * Many different options for different needs
   * Datalake the concept v's datalake the technology.
+
+  Types
+
+  * Azure Data Lake Store
+  * Azure Blob Storage (Tiers: Hot, Cool, Archive)
+  * Relational Databases (Azure SQL Database, PostgreSQL, MySQL)
+  * NoSQL Databases (Cosmos DB, Azure Table Storage)
+  * Timeseries Databases (Time Series Insights, Self-Hosted Solutions)
 
 ----
 
