@@ -2,8 +2,7 @@ Introduction
 ============
 This tutorial covers the following steps:
 
-* Creating an Azure Data Factory Pipeline to copy data from an HTTP endpoint 
-  (NPD) into Data Lake Storage Gen2
+* Creating an Azure Data Factory Pipeline to copy data from an HTTP endpoint (NPD) into Data Lake Storage Gen2
 * Using Azure Storage Explorer
 * Creating an Azure SQL Server
 * Creating an Azure SQL Database
@@ -132,7 +131,7 @@ You can also use the browse button to fill *Container* and *Directory*, but must
 
 .. image:: images/12_set_property.png
 
-Click *Finish* to set the properties and you now have a basic pipeline ready. Do a test-run of your newly created pipeline
+Click *Finish* to set the properties and you now have a basic pipeline ready. Do a test-run of your newly created pipeline.
 
 .. image:: images/test-pipeline.png
 
@@ -164,7 +163,7 @@ The web based "Storage Explorer (Preview)" provides a built in explorer within t
 If you work with Azure, you may want to install the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) that is a cross-platform (Windows, Linux and MacOS) client to connect to and work with Azure Storage Accounts.
 
 Ingest from Azure Data Lake Store into Azure SQL Database
---------------------------------------------------------
+---------------------------------------------------------
 
 In this step, you will first create an Azure SQL Server and Azure SQL Database. Azure SQL Server gives a runtime environment and Azure SQL Database gives database instances within this.
 
@@ -183,7 +182,7 @@ We will use a serverless option so select *SQL Databases* and *Create* with the 
 Enter the database configuration details, ensuring the following:
 
 * Check that the subscription is *Omnia Application Workspace - Sandbox*
-  and select your own resource group edc2019_{shortname}
+  and select your own resource group *edc2019_{shortname}*
 * Enter database name as *Common*
 * Click *Create new* under the *Select a server* option.
 
