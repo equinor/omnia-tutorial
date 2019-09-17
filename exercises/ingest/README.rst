@@ -19,7 +19,7 @@ Prerequisites
 Information About the Data
 --------------------------
 
-We will use public data available from NPD. From the following page you can browse all NPD data: 
+We will use public data available from NPD. From the following page you can browse all NPD data:
 
 http://factpages.npd.no/factpages/
 
@@ -32,16 +32,14 @@ Getting started
 
 A Data Factory resource has been pre-created for you to use. To access this, you need to locate the Data Factory resource in the Azure Portal:
 
-* Log in to http://portal.azure.com 
-* Locate the Data Factory in your resource group either using search (e.g. 
-  *edc2019* or *<short name>*) or browsing *all resources*
-* In the Overview section of the Data Factory resource, click 
-  *Author & Monitor* to open the Data Factory editor.
+* Log in to http://portal.azure.com
+* Locate the Data Factory in your resource group either using search (e.g. *edc2019* or *{your_short_name}*) or browsing *All resources*
+* In the Overview section of the Data Factory resource, click *Author & Monitor* to open the Data Factory editor.
 
 Data Factory
 ------------
 
-A Data Factory has a few concepts that it is useful to be aware of.
+A Data Factory has a few concepts are useful to be aware of.
 
 *Pipelines* provide a logical grouping of activities that together perform a task.
 
@@ -51,20 +49,20 @@ A Data Factory has a few concepts that it is useful to be aware of.
 
 *Linked services* provide reusable connections to different data sources. Linked services are much like connection strings, which define the connection information needed for a Data Factory to connect to external resources.
 
-*Linked services* can be setup as *sources* or *sinks* from where you gather or send data respectively. 
+*Linked services* can be setup as *sources* or *sinks* from where you gather or send data respectively.
 
 More information is available at https://docs.microsoft.com/en-us/azure/data-factory/
 
-Ingest into Azure Data Lake Storage Gen2
+Ingest data into Azure Data Lake Storage Gen2
 ----------------------------------------
 
-With your Data Factory open you should see a *get started* page.
+With your Data Factory open you should see a *Get started* page.
 
-There are different ways to setup a pipeline including from scratch, from existing templates, and the *Copy Data* wizard. In this exercise we will setup from scratch, so select the *Create pipeline* button to launch the Author tool:
+There are different ways to setup a pipeline including from scratch, from existing templates, and the *Copy Data* wizard. In this exercise we will setup a pipeline from scratch, so click the *Create pipeline* button to launch the *Author* tool:
 
 .. image:: images/1_Create_pipeline.png
 
-In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer surface. You can also search for activities in the Activities toolbox. 
+In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer area. You can also search for activities in the Activities toolbox.
 
 | Give the activity a meaningful name such as *Copy_NPD_Data*.
 | More information on naming: https://docs.omnia.equinor.com/services/apim/overview/namingconventions/
@@ -72,19 +70,19 @@ In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity 
 
 .. image:: images/2_Copy_Activity.png
 
-To setup where the *Copy Data* activity will fetch data from, switch to the *Source* tab in the *settings*, and select new dataset
+To setup where the *Copy Data* activity will fetch data from, switch to the *Source* tab in the *settings*, and select new dataset.
 
 .. image:: images/3_new_dataset.png
 
-Browse, or search and select the HTTP type.
+Browse, or search for and select the HTTP type.
 
 .. image:: images/4_new_http_dataset.png
 
-Even though the source is a CSV file (DelimitedText), we will just do a straight copy of the file so select the *Binary* option.
+Even though the source is a CSV file (DelimitedText), we will just do a straight copy of the file, so select the *Binary* option.
 
 .. image:: images/5_new_binary.png
 
-In the source dataset *Set Properties* window that pops up use the name FieldProductionMonthly_NPD and from the *Linked service* dropdown select new to create a new linked service to link to the NDP Factpages website.
+In the source dataset *Set Properties* window that pops up, use the name FieldProductionMonthly_NPD and from the *Linked service* dropdown select *New* to create a new linked service to connect to the NDP Factpages website.
 
 .. image:: images/6_new_linkedservice_http.png
 
@@ -94,13 +92,13 @@ Use the following values when configuring the linked service:
 * Base URL: *http://factpages.npd.no*
 * Authentication type: *Anonymous*
 
-And click *Finish* to create it.
+Click *Finish* to create it.
 
 .. image:: images/7_new_linkedservicehttp2.png
 
 To finish setting up the source, add the *Relative URL* below that targets the production report we want to download then click *Finish*
 
-ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en
+``ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en``
 
 .. image:: images/8_set_property.png
 
@@ -114,7 +112,7 @@ Again as we will do a straight copy, select the *Binary* option.
 
 .. image:: images/10_new_binary.png
 
-In the sink dataset *Set Properties* window that pops up use the name FieldProductionMonthly_DLS and from the *Linked service* dropdown select new to create a new linked service to link to link to the Data Lake Store with the following properties:
+In the sink dataset *Set Properties* window that pops up, use the name FieldProductionMonthly_DLS and from the *Linked service* dropdown select *New* to create a new linked service to connect to the Data Lake Store with the following properties:
 
 * Name: *EDC2019CommonDLS*
 * Authentication method: *Managed identity*
@@ -142,91 +140,75 @@ Check status of the run and you should see after a short while it changes to *Su
 
 .. image:: images/test-run.png
 
-As a final step we will save our changes by clicking *Publish All*. This TODO: What does this do?
+As a final step we will save all our changes by clicking *Publish All*.
 
 .. image:: images/publish_all.png
 
-Verify the Ingested File in dls
+Verify the Ingested File in DLS
 -------------------------------
 
-The Data Lake Store we copied to is a seperate (shared) resource that has been pre created. We can access this resource to view the uploaded file.
+The Data Lake Store we copied to is a seperate (shared) resource that has been pre-created. We can access this resource to view the uploaded file.
 
 There are many ways to access files in Data Lake store including through code, using command line tools, through the Azure Portal and more.
 
-To browse through the Azure portal, you first need to find the Data Lake resource similar to as we did previously to locate the Data Factory. This is called *edc2019dls* (hint: use search).
+To browse through the Azure portal, you first need to find the Data Lake resource, similar to as we did previously to locate the Data Factory. This is called *edc2019dls* (hint: use search).
 
 With the Data Lake Store selected, you can use the *Storage Explorer* link to browse the file structure.
 
 .. image:: images/storage-explorer.png
 
-The web based "Storage Explorer (Preview)" provides a built in explorer within the Azure Portal. You can browse to teh target folder you used above to verify your file has been created. Double clicking on the actual file will download it to your computer, from here you can view the file in your favorite csv-application.
+The web based "Storage Explorer (Preview)" provides a built in explorer within the Azure Portal. You can navigate to the target folder you used above to verify your file has been created. Double clicking on the actual file will download it to your computer, from here you can view the file in your favorite CSV editor.
 
 .. image:: images/storage-explorer-view-file.png
 
-If you work with Azure you may want to install the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) that is a cross-platform (windows, linux and macOS) client to connect to and work with Azure Storage Accounts.
+If you work with Azure, you may want to install the [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) that is a cross-platform (Windows, Linux and MacOS) client to connect to and work with Azure Storage Accounts.
 
-Ingest from Azure Datalake Store into Azure SQL Database
+Ingest from Azure Data Lake Store into Azure SQL Database
 --------------------------------------------------------
 
-In this step, you will first create an Azure SQL Server and Azure SQL 
-Database. Azure SQL Server gives a runtime environment and Azure SQL 
-Database gives database instances within this. 
+In this step, you will first create an Azure SQL Server and Azure SQL Database. Azure SQL Server gives a runtime environment and Azure SQL Database gives database instances within this.
 
-Back in the Azure Portal, select *All services* from the left menu, then 
-type Azure SQL in the search box. 
+Back in the Azure Portal, select *All services* from the left menu, then type Azure SQL in the search box.
 
-(Optional) Select the star next to Azure SQL to favorite it and add it as 
-an item in the left-hand navigation for quick access.
+(Optional) Select the star next to Azure SQL to favorite it and add it as an item in the left-hand navigation for quick access.
 
-Click on the *Azure SQL* service in the results list. This will show a list
-of Azure SQL resources. We will add a new one so click *+ Add* to open
-the Select SQL deployment option page. 
+Click on the *Azure SQL* service in the results list. This will show a list of Azure SQL resources. We will add a new one so click *+ Add* to open the Select SQL deployment option page.
 
-You are presented with different options of what you can create. For
-additional information about the different services selecting the 
-corresponding *Show details* button.
+You are presented with different options of what you can create. For additional information about the different services selecting the corresponding *Show details* button.
 
-We will use a serverless option so select *SQL Databases* and 
-*Create* with the default *Single Database* option selected.
+We will use a serverless option so select *SQL Databases* and *Create* with the default *Single Database* option selected.
 
 .. image:: images/SQL/1_new_sql_server.png
 
 Enter the database configuration details, ensuring the following:
 
 * Check that the subscription is *Omnia Application Workspace - Sandbox*
-  and select your own resource group edc2019_<shortname>
+  and select your own resource group edc2019_{shortname}
 * Enter database name as *Common*
-* Click *Create new* under the *Select a server* option. 
+* Click *Create new* under the *Select a server* option.
 
-  * Provide a uniqe Server name using consistent naming e.g. 
-    edc2019-<shortname>
-  * Enter a custom password under the create server dialog as shown below. 
+  * Provide a uniqe Server name using consistent naming e.g.
+    edc2019-{shortname}
+  * Enter a custom password under the create server dialog as shown below.
   * Location should be *North Europe*
   * Be sure to check the box *Allow Azure services to access server* so that
     Datafactory (and other services) can access the database.
   * Click *OK*
 
 * Under *Compute & Storage* select *Configure database* and chose the *Basic*
-  option as we only have minimal requirements performance wise. 
+  option as we only have minimal requirements performance wise.
 
 .. image:: images/SQL/2_new_sql_server2.png
 
-Click *Review + create* to create the database followed by *Create* after you 
-have reviewed the settings.
+Click *Review + create* to create the database followed by *Create* after you have reviewed the settings.
 
-Once the database is created locate / search to find the created SQL Server 
-(not the SQL database within it) so we can add Firewall details to access 
-any databases remotely. In the SQL Server links select the *Firewalls and
-virtual networks* link to modify the firewall
+Once the database is created locate / search to find the created SQL Server (not the SQL database within it) so we can add Firewall details to access any databases remotely. In the SQL Server links select the *Firewalls and
+virtual networks* link to modify the firewall.
 
-As we will copy data by using the Azure Data Factory integration runtime, 
-we need to ensure the Azure SQL Server firewall is open so that Azure 
-services can access the server. This is done by ensuring the *Allow access
-to Azure services* option is set to *ON*.
+As we will copy data by using the Azure Data Factory integration runtime, we need to ensure the Azure SQL Server firewall is open so that Azure services can access the server. This is done by ensuring the *Allow access to Azure services* option is set to *ON*.
 
 We will open for other needed addresses too as shown in the image below.
-For access from the Equinor internal network the IP address 143.97.2.35 
-should be added.
+For access from the Equinor internal network the IP address *143.97.2.35* should be added.
 
 Save your changes.
 
