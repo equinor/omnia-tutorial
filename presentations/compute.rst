@@ -127,10 +127,12 @@ Summary
 * Automation and DevOps
 * Additional Setup
 * Source Control (Github)
+* Different Connection Options
 * Other Tools
 
 .. note::
 
    * *Automation & Devops* - Github, automation and devops. Also operationalising.
    * *Additional Setup* - Create client, store client secret in key vault, set up client permissions
+   * *Different Connection Options* - Service principles, client connections, etc.
    * *Other tools* - there are many other tools that can also be used.
