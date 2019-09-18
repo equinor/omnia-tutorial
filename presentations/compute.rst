@@ -124,7 +124,13 @@ Exercise Link: https://github.com/equinor/omnia-tutorial/blob/master/docs/exerci
 Summary
 -------
 
-* Introduction to Compute
-* Compute Options
-* Azure Databricks
-* Exercise Overview
+* Automation and DevOps
+* Additional Setup
+* Source Control (Github)
+* Other Tools
+
+.. note::
+
+   * *Automation & Devops* - Github, automation and devops. Also operationalising.
+   * *Additional Setup* - Create client, store client secret in key vault, set up client permissions
+   * *Other tools* - there are many other tools that can also be used.

@@ -366,6 +366,7 @@ In the interest of time and simplicity, the following points have been omitted f
 * Automation and DevOps
 * Create client, store client secret in key vault, set up client permissions
 * Source Control (Github)
+* Other Tools
 
 .. note::
 
