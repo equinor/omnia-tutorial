@@ -343,7 +343,7 @@ Solution:
       df_4.write.format('jdbc').options(
             url='jdbc:sqlserver://<your-sql-server-name>.database.windows.net:1433;database=<your-sql-database-name>',
             driver='com.microsoft.sqlserver.jdbc.SQLServerDriver',
-            dbtable='dbo.FieldProduction',
+            dbtable='dbo.FieldProduction-<short-name>',
             user='<your-sql-server-username>',
             password='<your-sql-server-password>').mode('append').save()
 
