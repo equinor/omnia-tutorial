@@ -409,6 +409,7 @@ VSCode in Azure CLI
     with your shortname:
 
     .. code-block::
+    
       Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>-app" -ArchivePath $publishZip
 
 * The deployment might take a few seconds
