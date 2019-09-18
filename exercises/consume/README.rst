@@ -106,7 +106,7 @@ Most programming languages provide easy support for consuming API's and Python
 is no exception. We will use the pandas library to collect the json format 
 data from our API and matplotlib to create a simple plot of the results.
 
-As in the compute exercise we will use DataBricks as our runtime environment, 
+As in the compute exercise we will use Databricks as our runtime environment, 
 although you can run the same code locally if you have python setup, in 
 `Azure notebooks <https://notebooks.azure.com/>`_ or any other python 
 environment.
@@ -157,19 +157,17 @@ environment.
       df_plot.plot(title ="Yearly Oil Production per Wellbore", ax=ax)
       plt.legend(fontsize="x-small", loc='upper right')
 
-  Note: if running this in DataBricks then wrap the last line in a *display()* block so it is shown correctly e.g. 
-
-  TODO: Below code does not work... display(df_plot) works-ish... We do not get the nice graph as pictured in completed notebook below.
+  Note: if running this in Databricks then you need to also add the following line directly after the above to show the plot:
 
    .. code:: python
 
       ...
-      display(plt.legend(fontsize="x-small", loc='upper right')
+      display(fig)
 
 
 A completed notebook is provided at https://github.com/equinor/omnia-tutorial/blob/master/exercises/consume/solution/consume-from-api.ipynb.
 
-This notebook can be viewed online in github run locally, in the cloud or imported directly into DataBricks.
+This notebook can be viewed online in github, run locally, in the cloud or imported directly into DataBricks.
 
 Consuming an API from PowerBI
 -----------------------------
