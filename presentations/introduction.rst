@@ -189,7 +189,7 @@ Subscriptions and all That
   * Grouping
   * Billing
 
-  How this relates to this workshop - Omnia Applications (v's workshop) - subscription / resource group
+  How this relates to this workshop and what we have created - Omnia Applications (v's workshop) - subscription / resource group
 
 ----
 
