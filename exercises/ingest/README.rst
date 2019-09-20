@@ -195,7 +195,11 @@ Enter the database configuration details, ensuring the following:
   * Click *OK*
 
 * Under *Compute & Storage* select *Configure database* and chose the *Basic*
-  option as we only have minimal requirements performance wise.
+  option as we only have minimal requirements performance wise. If you look at
+  the pricing estimation you will see a difference between approximately 30 
+  NOK for the basic option v's ~2500 NOK for the standard offering. This is
+  just one example of how important it is to have a correct cost focus and
+  understand what our needs are and what we are actually provisioning costs.
 
 .. image:: images/SQL/2_new_sql_server2.png
 

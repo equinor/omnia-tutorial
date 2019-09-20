@@ -81,6 +81,10 @@ Considerations
     * Guaranteed delivery
     * Operations and monitoring
     * Copy Data v's Connect (reference existing data source)
+    * Different technology options for realising the above
+
+      * Cost
+      * V1 v's V2 v's V3 generation of products and corresponding maturity.
 
 ----
 

@@ -49,17 +49,23 @@ Introduction
 .. note::
     A hands on introduction with Omnia
 
-    * They will get a better understanding of what Omnia is and how to use it so they are better equiped to develop within Equinor's new IT platform
-    
-    How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.
-    
-    A lot of material to get through, but we focus on the most important points so don't panic if you can't complete something.
+    * They will get a better understanding of what Omnia is and how to use it so they are better equiped to develop within Equinor's new IT platform    
+    * How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.    
+    * A lot of material to get through, but we focus on the most important points so don't panic if you can't complete something.
+    * Difference from MS course - focus on implementation and Equinor focus. Supplement with MS courses for tech deep dive.
 
     What we are not covering
 
     * You will not be an expert after 1 day
     * Every possible scenario - but we will touch on alternatives
     * All the details - this is a high level introduction to set context, we will dig into the details more as we go along. 
+
+    Signup
+
+    * Pre created resources.
+    * Destroy after 1? week
+    * Apply for *Data Developer* role in in AccessIT to get access to the 
+      Omnia *sandbox* environment (*VanDamme*) 
 
     Other 
 
