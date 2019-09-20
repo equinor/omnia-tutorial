@@ -260,7 +260,7 @@ Solution:
 
   dbutils.fs.mount(
   source = "abfss://dls@edc2019dls.dfs.core.windows.net/data/open/npd.no/field_production/",
-  mount_point = "/mnt/edc2019",
+  mount_point = "/mnt/edc2019<shortname>",
   extra_configs = configs)
 
   df = spark.read.format('csv').options(
