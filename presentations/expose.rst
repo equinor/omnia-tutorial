@@ -268,14 +268,14 @@ API Hosting Alternatives
 * Omnia Radix
 * Azure Functions
 * Azure App Service
-* AKS / ACI
+* Azure Kubernetes Service / Azure Container Instances
 * (Storage)
 
 .. note::
   * Radix - Simplified hosting of Docker containers. Includes automatic build, deploy,..
   * Azure Functions - Serverless (explain what serverless is) hosting of API's and applications
   * Azure App Service - Hosting of code / Docker containers
-  * AKS / ACI - Hosting of containers in managed scalable infrastructure.
+  * Azure Kubernetes Service / Azure Container Instances - Hosting of containers in managed scalable infrastructure.
   * V2 Storage - Static web hosting of open content so not for API's
   
   **Do not use Virtual Machines!**
