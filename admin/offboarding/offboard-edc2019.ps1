@@ -14,14 +14,6 @@ Write-Host "Done" -ForegroundColor Green
 #Common Variables
 $edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
 
-$commonRg = "EDC2019Common"
-$commonDls = "edc2019dls"
-
-
-$location = "northeurope"
-
-$adGroup = Get-AzADGroup -ObjectId $edcAADGroup
-
 $groupMembers = Get-AzADGroupMember -GroupObjectId $edcAADGroup
 
 foreach ($member in $groupMembers)
@@ -36,4 +28,4 @@ foreach ($member in $groupMembers)
     Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $edcAADGroup -WhatIf
 }
 
-Remove-AzResourceGroup -Name $commonRg -WhatIf
+Write-Host "Offboarding complete. Run the script to delete the shared runtime environment if desired." -ForegroundColor Green

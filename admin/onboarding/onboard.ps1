@@ -1,4 +1,4 @@
-param([string]$shortName)
+param([Parameter(Mandatory=$true)] [string]$shortName)
 
 # Handle Login to Azure
 
