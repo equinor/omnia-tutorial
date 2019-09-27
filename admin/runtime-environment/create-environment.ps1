@@ -42,8 +42,8 @@ $AzModuleVersion = "2.0.0"
 
 $DLSTemplateFilePath = "templates/dls/template.json"
 $DLSParametersFilePath = "templates/dls/parameters.json"
-$DFTemplateFilePath = "templates/data-factory/deployment.json"
-#$DFParametersFilePath = "templates/data-factory/parameters.json"
+$DFTemplateFilePath = "templates/data-factory-pipelines/template.json"
+$DFParametersFilePath = "templates/data-factory-pipelines/parameters.json"
 $SQLTemplateFilePath = "templates/sql/template.json"
 $SQLParametersFilePath = "templates/sql/parameters.json"
 $DataBricksTemplateFilePath = "templates/databricks/template.json"
@@ -100,18 +100,18 @@ if($resourceProviders.length) {
 
 # Create or check for existing resource group
 $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
-# if(!$resourceGroup)
-# {
-#     if(!$ResourceGroupLocation) {
-#         Write-Host "Resource group '$ResourceGroupName' does not exist. To create a new resource group, please enter a location.";
-#         $resourceGroupLocation = Read-Host "ResourceGroupLocation";
-#     }
-#     Write-Host "Creating resource group '$ResourceGroupName' in location '$ResourceGroupLocation'";
-#     New-AzResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation
-# }
-# else{
-#     Write-Host "Using existing resource group '$ResourceGroupName'";
-# }
+if(!$resourceGroup)
+{
+    if(!$ResourceGroupLocation) {
+        Write-Host "Resource group '$ResourceGroupName' does not exist. To create a new resource group, please enter a location.";
+        $resourceGroupLocation = Read-Host "ResourceGroupLocation";
+    }
+    Write-Host "Creating resource group '$ResourceGroupName' in location '$ResourceGroupLocation'";
+    $resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation
+}
+else{
+    Write-Host "Using existing resource group '$ResourceGroupName'";
+}
 
 # # Create the Data Lake Store
 # Write-Host "Creating Data Lake Store ... " -NoNewline
@@ -123,10 +123,18 @@ $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Silen
 # Write-Host "Done" -ForegroundColor Green
 
 # Create the Data Factory
-# Write-Host "Creating Data Factory ... " -NoNewline
-# $df = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DFTemplateFilePath;
-# #$df = New-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName  -TemplateFile $DFTemplateFilePath -TemplateParameterFile $DFParametersFilePath;
-# Write-Host "$df Done" -ForegroundColor Green
+$dfName = "$ScenarioName-common-df"
+$keyVault = Get-AzDataFactory -Name "$ScenarioName-common-df" -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue 
+if ($null -eq $keyVault)
+{
+    Write-Host "Creating Data Factory ... " -NoNewline
+    $df = New-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName -Location $resourceGroup.Location
+    Write-Host "$df" -ForegroundColor Green
+    Write-Host "Data Factory Created" -ForegroundColor Green
+}
+else {
+    Write-Host "Data Factoryalready exists. Skipping creation!" -ForegroundColor "Yellow"
+}
 
 # Create the Key Vault
 $keyVault = Get-AzKeyVault -VaultName "$ScenarioName-common-kv" -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue 
@@ -146,11 +154,7 @@ $sqlDb = Get-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName "$S
 if ($null -eq $sqlDb)
 {
     Write-Host "Creating SQL Database ... " -NoNewline
-    if(Test-Path $SQLParametersFilePath) {
-        $sql = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $SQLTemplateFilePath -TemplateParameterFile $SQLParametersFilePath -scenarioName $ScenarioName;
-    } else {
-        $sql = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $SQLTemplateFilePath;
-    }
+    $sql = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $SQLTemplateFilePath -TemplateParameterFile $SQLParametersFilePath -scenarioName $ScenarioName;
     Write-Host "$sql SQL Database Created" -ForegroundColor Green
 }
 else {
@@ -162,11 +166,7 @@ $dataBricks = Get-AzResource -ResourceGroupName $resourceGroupName -Name "$Scena
 if ($null -eq $dataBricks)
 {
     Write-Host "Creating Databricks ... " -NoNewline
-    if(Test-Path $DataBricksParametersFilePath) {
-        $dataBricks = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DataBricksTemplateFilePath -TemplateParameterFile $DataBricksParametersFilePath -scenarioName $ScenarioName;
-    } else {
-        $dataBricks = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DataBricksTemplateFilePath;
-    }
+    $dataBricks = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DataBricksTemplateFilePath -TemplateParameterFile $DataBricksParametersFilePath -scenarioName $ScenarioName;
     Write-Host "$dataBricks Databricks Created" -ForegroundColor Green
 }
 else {
@@ -178,11 +178,7 @@ $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name "$ScenarioNam
 if ($null -eq $webApp)
 {
     Write-Host "Creating Web App ... " -NoNewline
-    if(Test-Path $WebAppParametersFilePath) {
-        $webApp = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $WebAppTemplateFilePath -TemplateParameterFile $WebAppParametersFilePath -scenarioName $ScenarioName;
-    } else {
-        $webApp = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $WebAppTemplateFilePath;
-    }
+    $webApp = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $WebAppTemplateFilePath -TemplateParameterFile $WebAppParametersFilePath -scenarioName $ScenarioName;
     Write-Host "$webApp Created" -ForegroundColor Green
 }
 else {
