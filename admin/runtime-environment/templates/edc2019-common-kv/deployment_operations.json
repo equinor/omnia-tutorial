@@ -1,0 +1,32 @@
+[
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/edc2019-common-kv/operations/85D6B01F7EF39CE3",
+    "operationId": "85D6B01F7EF39CE3",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-09T13:42:30.0380533Z",
+      "duration": "PT17.8927692S",
+      "trackingId": "1114319c-1b5e-4e35-857f-e2249775a6ca",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.KeyVault/vaults/edc2019-common-kv",
+        "resourceType": "Microsoft.KeyVault/vaults",
+        "resourceName": "edc2019-common-kv"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/edc2019-common-kv/operations/08586335703552851706",
+    "operationId": "08586335703552851706",
+    "properties": {
+      "provisioningOperation": "EvaluateDeploymentOutput",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-09T13:42:30.1256396Z",
+      "duration": "PT0.0503255S",
+      "trackingId": "6e3d57bd-60fe-4ecb-a2ef-185c74d78f19",
+      "statusCode": "OK",
+      "statusMessage": null
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "Microsoft.DataFactory-edc2019-common-df",
+  "type": "Microsoft.Resources/deployments",
+  "properties": {
+    "templateHash": "10299968973494688547",
+    "parameters": {
+      "name": {
+        "type": "String",
+        "value": "edc2019-common-df"
+      },
+      "location": {
+        "type": "String",
+        "value": "westeurope"
+      },
+      "apiVersion": {
+        "type": "String",
+        "value": "2018-06-01"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2019-09-03T09:59:59.5438128Z",
+    "duration": "PT5.1832857S",
+    "correlationId": "4ae47748-fd09-45ad-bb3a-ca1db4e46fe6",
+    "providers": [
+      {
+        "namespace": "Microsoft.DataFactory",
+        "resourceTypes": [
+          {
+            "resourceType": "factories",
+            "locations": [
+              "westeurope"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [],
+    "validationLevel": "Template"
+  }
+}

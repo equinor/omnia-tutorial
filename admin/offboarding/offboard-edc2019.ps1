@@ -22,10 +22,10 @@ foreach ($member in $groupMembers)
     {
         $shortName = $member.UserPrincipalName.Split("@")[0].ToLower()
         $resourceGroupName = "edc2019_$shortName"
-        Remove-AzResourceGroup -Name $resourceGroupName -WhatIf
+        Remove-AzResourceGroup -Name $resourceGroupName
     }
 
-    Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $edcAADGroup -WhatIf
+    Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $edcAADGroup
 }
 
 Write-Host "Offboarding complete. Run the script to delete the shared runtime environment if desired." -ForegroundColor Green

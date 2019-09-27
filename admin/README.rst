@@ -15,6 +15,12 @@ Shared Runtime Environment
 Setup
 ^^^^^
 
+ARM templates for the different common components are under the templates 
+folder. To create an environment you should perform the following steps.
+
+* Run the **create-environment.ps1** script to setup key resources.
+* TODO - add additional steps here!!!
+
 Removal
 ^^^^^^^
 

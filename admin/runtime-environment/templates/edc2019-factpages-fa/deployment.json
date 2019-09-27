@@ -1,0 +1,151 @@
+{
+  "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812",
+  "name": "Microsoft.FunctionApp7795f833-b812",
+  "type": "Microsoft.Resources/deployments",
+  "properties": {
+    "templateHash": "811307032307863448",
+    "parameters": {
+      "name": {
+        "type": "String",
+        "value": "factpages-tutorial"
+      },
+      "storageName": {
+        "type": "String",
+        "value": "factpagestutoriade3"
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "factpagesplan"
+      },
+      "hostingEnvironment": {
+        "type": "String",
+        "value": ""
+      },
+      "location": {
+        "type": "String",
+        "value": "North Europe"
+      },
+      "sku": {
+        "type": "String",
+        "value": "Standard"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "S1"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "0"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "EDC2019Common"
+      },
+      "subscriptionId": {
+        "type": "String",
+        "value": "160c90f1-6bbe-4276-91f3-f732cc0a45db"
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2019-09-06T08:23:22.0915207Z",
+    "duration": "PT45.2859702S",
+    "correlationId": "9c4677f6-a2c8-457a-a24a-c4f148986f00",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "northeurope"
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "northeurope"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Storage",
+        "resourceTypes": [
+          {
+            "resourceType": "storageAccounts",
+            "locations": [
+              "northeurope"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "microsoft.insights",
+        "resourceTypes": [
+          {
+            "resourceType": "components",
+            "locations": [
+              "northeurope"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/serverfarms/factpagesplan",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "factpagesplan"
+          },
+          {
+            "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Storage/storageAccounts/factpagestutoriade3",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "factpagestutoriade3"
+          },
+          {
+            "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/microsoft.insights/components/factpages-tutorial",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "factpages-tutorial"
+          },
+          {
+            "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Storage/storageAccounts/factpagestutoriade3",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "factpagestutoriade3",
+            "actionName": "listKeys",
+            "apiVersion": "2015-05-01-preview"
+          },
+          {
+            "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/microsoft.insights/components/factpages-tutorial",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "factpages-tutorial",
+            "apiVersion": "2015-05-01"
+          }
+        ],
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/sites/factpages-tutorial",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "factpages-tutorial"
+      }
+    ],
+    "outputResources": [
+      {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/microsoft.insights/components/factpages-tutorial"
+      },
+      {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Storage/storageAccounts/factpagestutoriade3"
+      },
+      {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/serverfarms/factpagesplan"
+      },
+      {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/sites/factpages-tutorial"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}

@@ -1,0 +1,153 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory Name",
+            "defaultValue": "edc2019-common-df"
+        },
+        "EDC2019CommonSQL_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'EDC2019CommonSQL'"
+        },
+        "IWIT_servicePrincipalKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'servicePrincipalKey' of 'IWIT'"
+        },
+        "NPD FactPages_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "http://factpages.npd.no"
+        },
+        "EDC2019CommonDLS_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://edc2019dls.dfs.core.windows.net"
+        },
+        "IWIT_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://iwitprod.azurewebsites.net"
+        },
+        "IWIT_properties_typeProperties_servicePrincipalId": {
+            "type": "string",
+            "defaultValue": "ff53907a-d176-4480-86a8-0a029115bb0b"
+        },
+        "IWIT_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+        },
+        "IWIT_properties_typeProperties_aadResourceId": {
+            "type": "string",
+            "defaultValue": "ff53907a-d176-4480-86a8-0a029115bb0b"
+        },
+        "AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+            "type": "string",
+            "defaultValue": "blob"
+        },
+        "kv_edc2019_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://edc2019-common-kv.vault.azure.net/"
+        },
+        "EDC2019CommonBL_properties_typeProperties_serviceEndpoint": {
+            "type": "string",
+            "defaultValue": "https://omniatutorial.blob.core.windows.net"
+        },
+        "Wellbore_BL_JSON_properties_typeProperties_fileName": {
+            "type": "string",
+            "defaultValue": "wellbore.json"
+        },
+        "Wellbore_BL_JSON_properties_typeProperties_folderPath": {
+            "type": "string",
+            "defaultValue": "factpages"
+        },
+        "containerUri": {
+            "type": "string",
+            "metadata": "URI to storage account containing linked ARM templates"
+        },
+        "containerSasToken": {
+            "type": "string",
+            "metadata": "Sas Token to storage account containing linked ARM templates"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "ArmTemplate_0",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    },
+                    "EDC2019CommonSQL_connectionString": {
+                        "value": "[parameters('EDC2019CommonSQL_connectionString')]"
+                    },
+                    "IWIT_servicePrincipalKey": {
+                        "value": "[parameters('IWIT_servicePrincipalKey')]"
+                    },
+                    "NPD FactPages_properties_typeProperties_url": {
+                        "value": "[parameters('NPD FactPages_properties_typeProperties_url')]"
+                    },
+                    "EDC2019CommonDLS_properties_typeProperties_url": {
+                        "value": "[parameters('EDC2019CommonDLS_properties_typeProperties_url')]"
+                    },
+                    "IWIT_properties_typeProperties_url": {
+                        "value": "[parameters('IWIT_properties_typeProperties_url')]"
+                    },
+                    "IWIT_properties_typeProperties_servicePrincipalId": {
+                        "value": "[parameters('IWIT_properties_typeProperties_servicePrincipalId')]"
+                    },
+                    "IWIT_properties_typeProperties_tenant": {
+                        "value": "[parameters('IWIT_properties_typeProperties_tenant')]"
+                    },
+                    "IWIT_properties_typeProperties_aadResourceId": {
+                        "value": "[parameters('IWIT_properties_typeProperties_aadResourceId')]"
+                    },
+                    "kv_edc2019_properties_typeProperties_baseUrl": {
+                        "value": "[parameters('kv_edc2019_properties_typeProperties_baseUrl')]"
+                    },
+                    "EDC2019CommonBL_properties_typeProperties_serviceEndpoint": {
+                        "value": "[parameters('EDC2019CommonBL_properties_typeProperties_serviceEndpoint')]"
+                    },
+                    "AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+                        "value": "[parameters('AzureBlobStorage1_properties_typeProperties_connectionString_secretName')]"
+                    },
+                    "Wellbore_BL_JSON_properties_typeProperties_fileName": {
+                        "value": "[parameters('Wellbore_BL_JSON_properties_typeProperties_fileName')]"
+                    },
+                    "Wellbore_BL_JSON_properties_typeProperties_folderPath": {
+                        "value": "[parameters('Wellbore_BL_JSON_properties_typeProperties_folderPath')]"
+                    }
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "ArmTemplate_1",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-02-01",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "factoryName": {
+                        "value": "[parameters('factoryName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
+            ]
+        }
+    ]
+}

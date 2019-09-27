@@ -1,0 +1,120 @@
+[
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/22F33A9A341EBCAD",
+    "operationId": "22F33A9A341EBCAD",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:23:21.9709745Z",
+      "duration": "PT19.761799S",
+      "trackingId": "4d56313f-c682-49d3-8979-6cc448b48cb4",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/sites/factpages-tutorial",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "factpages-tutorial"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/92CD079C1FB4F4FD",
+    "operationId": "92CD079C1FB4F4FD",
+    "properties": {
+      "provisioningOperation": "Action",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:23:02.1809485Z",
+      "duration": "PT0.1232828S",
+      "trackingId": "e52a3dc1-5e2e-464c-b668-4190f8e9ff5c",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Storage/storageAccounts/factpagestutoriade3",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "factpagestutoriade3",
+        "actionName": "listKeys",
+        "apiVersion": "2015-05-01-preview"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/B085C349F603AD04",
+    "operationId": "B085C349F603AD04",
+    "properties": {
+      "provisioningOperation": "Read",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:22:44.0198981Z",
+      "duration": "PT0.1659543S",
+      "trackingId": "119c3127-0de3-44db-9600-387f0cd98dc0",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/microsoft.insights/components/factpages-tutorial",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "factpages-tutorial",
+        "apiVersion": "2015-05-01"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/18BCC4B144EB69F0",
+    "operationId": "18BCC4B144EB69F0",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:22:43.8269245Z",
+      "duration": "PT5.9178649S",
+      "trackingId": "5e3b13bb-c3a1-41b0-b171-7ccdcd6d6067",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/microsoft.insights/components/factpages-tutorial",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "factpages-tutorial"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/F462CC9A469C1F2F",
+    "operationId": "F462CC9A469C1F2F",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:22:42.0859433Z",
+      "duration": "PT4.1768837S",
+      "trackingId": "2ef62d85-f3ee-432c-ada6-6f77b026584c",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Web/serverfarms/factpagesplan",
+        "resourceType": "Microsoft.Web/serverfarms",
+        "resourceName": "factpagesplan"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/B65D384C53F1AFBD",
+    "operationId": "B65D384C53F1AFBD",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:23:02.0225209Z",
+      "duration": "PT24.1134613S",
+      "trackingId": "d6b9dad7-0ab2-441b-9839-5662a9fb184e",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Storage/storageAccounts/factpagestutoriade3",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "factpagestutoriade3"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/EDC2019Common/providers/Microsoft.Resources/deployments/Microsoft.FunctionApp7795f833-b812/operations/08586338487286720782",
+    "operationId": "08586338487286720782",
+    "properties": {
+      "provisioningOperation": "EvaluateDeploymentOutput",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-09-06T08:23:22.0692352Z",
+      "duration": "PT0.0672166S",
+      "trackingId": "4638ab9c-3569-4cbd-bdd9-5c6336be4700",
+      "statusCode": "OK",
+      "statusMessage": null
+    }
+  }
+]
