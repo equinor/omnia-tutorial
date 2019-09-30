@@ -23,7 +23,7 @@ very often so time hasn't been invested in this at this stage.
 
 * Run the **create-environment.ps1** script to setup key resources.
 
-* On boarding
+* Onboarding
 
   * Under Active Directory | App registrations add a new registration 
     (service principal) *OmniaTutorial_DLS* if it doesn't already 
@@ -33,7 +33,10 @@ very often so time hasn't been invested in this at this stage.
     *DlsOnboarding*. Note the application ID (client ID) and 
     update the onboard.ps1 script $clientId (line 183) to use this.
   * Create a secret in the key vault *smtpConnectionDetails* this is used for
-    details when sending hte onboarding email.
+    details when sending hte onboarding email. Request email sending details.
+    Enter the password as the secret and populate the other values as tags 
+    named User (value: Omnia@equinor.com), Server (value: mrrr.statoil.com), 
+    EnableSsl (value: true), Port (value: 25)
 
 * Data Lake Store
 
