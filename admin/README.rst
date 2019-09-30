@@ -86,18 +86,19 @@ very often so time hasn't been invested in this at this stage.
   * Add the library *azure-datalake-store* from PyPI to both clusters.
   * Add the library *adal* from PyPI to the high concurrency cluster.
 
-* Go into the WebApp | Identity and verify System assigned status is On.
-* Open query editor for the common database and run the below SQL to give the
-  app service access to the database. 
+* App Service
 
-  .. code-block:: sql
+  * Go into the WebApp | Identity and verify System assigned status is On.
+  * Open query editor for the common database and run the below SQL to give
+    the app service access to the database. 
 
-    CREATE USER [omnia-tutorial-common] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
-    GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial-common]
-* Open the solution at *exercises\expose\solution\EDC-API.sln* and publish to
-  the created app service. Verify by going to the website under the path 
-  */swagger/*
+    .. code-block:: sql
 
+      CREATE USER [omnia-tutorial-common] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
+      GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial-common]
+  * Open the solution at *exercises\expose\solution\EDC-API.sln* and publish
+    to the created app service. Verify by going to the website under the path 
+    */swagger/*
 
 
 Removal
