@@ -1,0 +1,2764 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "factoryName": {
+            "type": "string",
+            "metadata": "Data Factory Name",
+            "defaultValue": "edc2019-common-df"
+        },
+        "EDC2019CommonSQL_connectionString": {
+            "type": "secureString",
+            "metadata": "Secure string for 'connectionString' of 'EDC2019CommonSQL'"
+        },
+        "IWIT_servicePrincipalKey": {
+            "type": "secureString",
+            "metadata": "Secure string for 'servicePrincipalKey' of 'IWIT'"
+        },
+        "NPD FactPages_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "http://factpages.npd.no"
+        },
+        "EDC2019CommonDLS_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://edc2019dls.dfs.core.windows.net"
+        },
+        "IWIT_properties_typeProperties_url": {
+            "type": "string",
+            "defaultValue": "https://iwitprod.azurewebsites.net"
+        },
+        "IWIT_properties_typeProperties_servicePrincipalId": {
+            "type": "string",
+            "defaultValue": "ff53907a-d176-4480-86a8-0a029115bb0b"
+        },
+        "IWIT_properties_typeProperties_tenant": {
+            "type": "string",
+            "defaultValue": "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
+        },
+        "IWIT_properties_typeProperties_aadResourceId": {
+            "type": "string",
+            "defaultValue": "ff53907a-d176-4480-86a8-0a029115bb0b"
+        },
+        "AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+            "type": "string",
+            "defaultValue": "blob"
+        },
+        "kv_edc2019_properties_typeProperties_baseUrl": {
+            "type": "string",
+            "defaultValue": "https://edc2019-common-kv.vault.azure.net/"
+        },
+        "EDC2019CommonBL_properties_typeProperties_serviceEndpoint": {
+            "type": "string",
+            "defaultValue": "https://omniatutorial.blob.core.windows.net"
+        },
+        "Wellbore_BL_JSON_properties_typeProperties_fileName": {
+            "type": "string",
+            "defaultValue": "wellbore.json"
+        },
+        "Wellbore_BL_JSON_properties_typeProperties_folderPath": {
+            "type": "string",
+            "defaultValue": "factpages"
+        }
+    },
+    "variables": {
+        "factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+    },
+    "resources": [
+        {
+            "name": "[concat(parameters('factoryName'), '/NPD FactPages')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "HttpServer",
+                "typeProperties": {
+                    "url": "[parameters('NPD FactPages_properties_typeProperties_url')]",
+                    "enableServerCertificateValidation": true,
+                    "authenticationType": "Anonymous"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019CommonDLS')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobFS",
+                "typeProperties": {
+                    "url": "[parameters('EDC2019CommonDLS_properties_typeProperties_url')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019CommonSQL')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureSqlDatabase",
+                "typeProperties": {
+                    "connectionString": "[parameters('EDC2019CommonSQL_connectionString')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/IWIT')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "RestService",
+                "typeProperties": {
+                    "url": "[parameters('IWIT_properties_typeProperties_url')]",
+                    "enableServerCertificateValidation": true,
+                    "authenticationType": "AadServicePrincipal",
+                    "servicePrincipalId": "[parameters('IWIT_properties_typeProperties_servicePrincipalId')]",
+                    "servicePrincipalKey": {
+                        "type": "SecureString",
+                        "value": "[parameters('IWIT_servicePrincipalKey')]"
+                    },
+                    "tenant": "[parameters('IWIT_properties_typeProperties_tenant')]",
+                    "aadResourceId": "[parameters('IWIT_properties_typeProperties_aadResourceId')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobStorage",
+                "typeProperties": {
+                    "connectionString": {
+                        "type": "AzureKeyVaultSecret",
+                        "store": {
+                            "referenceName": "kv_edc2019",
+                            "type": "LinkedServiceReference"
+                        },
+                        "secretName": "[parameters('AzureBlobStorage1_properties_typeProperties_connectionString_secretName')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/kv_edc2019')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/fa_factpages')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureFunction",
+                "typeProperties": {
+                    "functionAppUrl": "https://factpages-tutorial.azurewebsites.net",
+                    "functionKey": {
+                        "type": "AzureKeyVaultSecret",
+                        "store": {
+                            "referenceName": "kv_edc2019",
+                            "type": "LinkedServiceReference"
+                        },
+                        "secretName": "factpages"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/kv_edc2019')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/kv_edc2019')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureKeyVault",
+                "typeProperties": {
+                    "baseUrl": "[parameters('kv_edc2019_properties_typeProperties_baseUrl')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019CommonBL')]",
+            "type": "Microsoft.DataFactory/factories/linkedServices",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "type": "AzureBlobStorage",
+                "typeProperties": {
+                    "serviceEndpoint": "[parameters('EDC2019CommonBL_properties_typeProperties_serviceEndpoint')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019-WellExploration')]",
+            "type": "Microsoft.DataFactory/factories/triggers",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "runtimeState": "Started",
+                "pipelines": [
+                    {
+                        "pipelineReference": {
+                            "referenceName": "EDC2019-WellExploration",
+                            "type": "PipelineReference"
+                        },
+                        "parameters": {}
+                    }
+                ],
+                "type": "ScheduleTrigger",
+                "typeProperties": {
+                    "recurrence": {
+                        "frequency": "Day",
+                        "interval": 1,
+                        "startTime": "2019-09-03T12:10:00Z",
+                        "endTime": "2019-10-01T12:10:00Z",
+                        "timeZone": "UTC",
+                        "schedule": {}
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/pipelines/EDC2019-WellExploration')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019-FieldProduction')]",
+            "type": "Microsoft.DataFactory/factories/triggers",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "annotations": [],
+                "runtimeState": "Started",
+                "pipelines": [
+                    {
+                        "pipelineReference": {
+                            "referenceName": "EDC2019_FieldProduction",
+                            "type": "PipelineReference"
+                        },
+                        "parameters": {}
+                    }
+                ],
+                "type": "ScheduleTrigger",
+                "typeProperties": {
+                    "recurrence": {
+                        "frequency": "Day",
+                        "interval": 1,
+                        "startTime": "2019-09-03T12:11:00Z",
+                        "endTime": "2019-10-01T12:11:00Z",
+                        "timeZone": "UTC",
+                        "schedule": {}
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/pipelines/EDC2019_FieldProduction')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/WellExploration_NPD')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "NPD FactPages",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Binary",
+                "typeProperties": {
+                    "location": {
+                        "type": "HttpServerLocation",
+                        "relativeUrl": "/ReportServer?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/NPD FactPages')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FieldProductionMonthly_NPD')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "NPD FactPages",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Binary",
+                "typeProperties": {
+                    "location": {
+                        "type": "HttpServerLocation",
+                        "relativeUrl": "/ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/NPD FactPages')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FieldProduction_DLS_BIN')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonDLS",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Binary",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "field_production_monthly.csv",
+                        "folderPath": "data/open/npd.no/field_production",
+                        "fileSystem": "dls"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FieldProduction_DLS_CSV')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonDLS",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "field_production_monthly.csv",
+                        "folderPath": "data/open/npd.no/field_production",
+                        "fileSystem": "dls"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": [
+                    {
+                        "name": "prfInformationCarrier",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfYear",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfMonth",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdOilNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdGasNetBillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdNGLNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdCondensateNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdOeNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdProducedWaterInFieldMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfNpdidInformationCarrier",
+                        "type": "String"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FieldProduction_SQL')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonSQL",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "Wellbore",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "Year",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Month",
+                        "type": "int",
+                        "precision": 10
+                    },
+                    {
+                        "name": "Oil",
+                        "type": "decimal",
+                        "precision": 15,
+                        "scale": 5
+                    },
+                    {
+                        "name": "Gas",
+                        "type": "decimal",
+                        "precision": 15,
+                        "scale": 5
+                    },
+                    {
+                        "name": "Id",
+                        "type": "int",
+                        "precision": 10
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "ProductionData"
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonSQL')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/WellExploration_DLS_BIN')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonDLS",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "Binary",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "well_exploration.csv",
+                        "folderPath": "data/open/npd.no/well_exploration",
+                        "fileSystem": "dls"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FieldProdFixed')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonDLS",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "field_production_monthly.csv",
+                        "folderPath": "user/jmor",
+                        "fileSystem": "dls"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": [
+                    {
+                        "name": "prfInformationCarrier",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfYear",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfMonth",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdOilNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdGasNetBillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdNGLNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdCondensateNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdOeNetMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfPrdProducedWaterInFieldMillSm3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prfNpdidInformationCarrier",
+                        "type": "String"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/Wellbore_SQL')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonSQL",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureSqlTable",
+                "schema": [
+                    {
+                        "name": "wlbWellboreName",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbWell",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDrillingOperator",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbProductionLicence",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbPurpose",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbStatus",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbContent",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbWellType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbSubSea",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEntryDate",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "wlbCompletionDate",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "wlbField",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDrillPermit",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDiscovery",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDiscoveryWellbore",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbBottomHoleTemperature",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbSeismicLocation",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbMaxInclation",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbKellyBushElevation",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFinalVerticalDepth",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbTotalDepth",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbWaterDepth",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbKickOffPoint",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbAgeAtTd",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFormationAtTd",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbMainArea",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDrillingFacility",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFacilityTypeDrilling",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDrillingFacilityFixedOrMoveable",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbLicensingActivity",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbMultilateral",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbPurposePlanned",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEntryYear",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbCompletionYear",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbReclassFromWellbore",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbReentryExplorationActivity",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbPlotSymbol",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFormationWithHc1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbAgeWithHc1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFormationWithHc2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbAgeWithHc2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFormationWithHc3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbAgeWithHc3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDrillingDays",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbReentry",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbGeodeticDatum",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsDeg",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsMin",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsSec",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwDeg",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwMin",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwSec",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwCode",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsDecDeg",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwDesDeg",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNsUtm",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbEwUtm",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbUtmZone",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart1",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart2",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart3",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart4",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart5",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNamePart6",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbPressReleaseUrl",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFactPageUrl",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbFactMapUrl",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDiskosWellboreType",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDiskosWellboreParent",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbWdssQcDate",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "wlbReleasedDate",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "wlbNpdidWellbore",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "dscNpdidDiscovery",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "fldNpdidField",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "fclNpdidFacilityDrilling",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbNpdidWellboreReclass",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "prlNpdidProductionLicence",
+                        "type": "nvarchar"
+                    },
+                    {
+                        "name": "wlbDateUpdated",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "wlbDateUpdatedMax",
+                        "type": "varchar"
+                    },
+                    {
+                        "name": "datesyncNPD",
+                        "type": "varchar"
+                    }
+                ],
+                "typeProperties": {
+                    "schema": "dbo",
+                    "table": "Wellbore"
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonSQL')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/FactPages_BL')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "AzureBlobStorage1",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobStorageLocation",
+                        "fileName": "factpages.csv",
+                        "container": "factpages"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": [
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/Wellbore_BL_JSON')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "EDC2019CommonBL",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "AzureBlob",
+                "structure": [
+                    {
+                        "name": "wlbWellboreName",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbWell",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDrillingOperator",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbProductionLicence",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbPurpose",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbStatus",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbContent",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbWellType",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbSubSea",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEntryDate",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbCompletionDate",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbField",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDrillPermit",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDiscovery",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDiscoveryWellbore",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbBottomHoleTemperature",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbSeismicLocation",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbMaxInclation",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbKellyBushElevation",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFinalVerticalDepth",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbTotalDepth",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbWaterDepth",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbKickOffPoint",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbAgeAtTd",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFormationAtTd",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbMainArea",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDrillingFacility",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFacilityTypeDrilling",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDrillingFacilityFixedOrMoveable",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbLicensingActivity",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbMultilateral",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbPurposePlanned",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEntryYear",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbCompletionYear",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbReclassFromWellbore",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbReentryExplorationActivity",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbPlotSymbol",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFormationWithHc1",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbAgeWithHc1",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFormationWithHc2",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbAgeWithHc2",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFormationWithHc3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbAgeWithHc3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDrillingDays",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbReentry",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbGeodeticDatum",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsDeg",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsMin",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsSec",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsCode",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwDeg",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwMin",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwSec",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwCode",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsDecDeg",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwDesDeg",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNsUtm",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbEwUtm",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbUtmZone",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart1",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart2",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart3",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart4",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart5",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNamePart6",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbPressReleaseUrl",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFactPageUrl",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbFactMapUrl",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDiskosWellboreType",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDiskosWellboreParent",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbWdssQcDate",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbReleasedDate",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNpdidWellbore",
+                        "type": "String"
+                    },
+                    {
+                        "name": "dscNpdidDiscovery",
+                        "type": "String"
+                    },
+                    {
+                        "name": "fldNpdidField",
+                        "type": "String"
+                    },
+                    {
+                        "name": "fclNpdidFacilityDrilling",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbNpdidWellboreReclass",
+                        "type": "String"
+                    },
+                    {
+                        "name": "prlNpdidProductionLicence",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDateUpdated",
+                        "type": "String"
+                    },
+                    {
+                        "name": "wlbDateUpdatedMax",
+                        "type": "String"
+                    },
+                    {
+                        "name": "datesyncNPD",
+                        "type": "String"
+                    }
+                ],
+                "typeProperties": {
+                    "format": {
+                        "type": "JsonFormat",
+                        "filePattern": "arrayOfObjects"
+                    },
+                    "fileName": "[parameters('Wellbore_BL_JSON_properties_typeProperties_fileName')]",
+                    "folderPath": "[parameters('Wellbore_BL_JSON_properties_typeProperties_folderPath')]"
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonBL')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019-WellExploration')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "WellExploration",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "BinarySource",
+                                "storeSettings": {
+                                    "type": "HttpReadSettings",
+                                    "requestMethod": "GET"
+                                }
+                            },
+                            "sink": {
+                                "type": "BinarySink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings",
+                                    "copyBehavior": "PreserveHierarchy"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "WellExploration_NPD",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "WellExploration_DLS_BIN",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ]
+                    }
+                ],
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/WellExploration_NPD')]",
+                "[concat(variables('factoryId'), '/datasets/WellExploration_DLS_BIN')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019_FieldProduction')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "NPD_DLS",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "BinarySource",
+                                "storeSettings": {
+                                    "type": "HttpReadSettings",
+                                    "requestMethod": "GET"
+                                }
+                            },
+                            "sink": {
+                                "type": "BinarySink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings",
+                                    "copyBehavior": "PreserveHierarchy"
+                                }
+                            },
+                            "enableStaging": false
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "FieldProductionMonthly_NPD",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "FieldProduction_DLS_BIN",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ]
+                    }
+                ],
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/FieldProductionMonthly_NPD')]",
+                "[concat(variables('factoryId'), '/datasets/FieldProduction_DLS_BIN')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019_JMOR_FillData')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "CopyNPDDataIntoSQL",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "DelimitedTextSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextReadSettings"
+                                }
+                            },
+                            "sink": {
+                                "type": "AzureSqlSink"
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "prfInformationCarrier",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Wellbore",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfYear",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfMonth",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfPrdOilNetMillSm3",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Oil",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfPrdGasNetBillSm3",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Gas",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "FieldProdFixed",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "FieldProduction_SQL",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ]
+                    }
+                ],
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/FieldProdFixed')]",
+                "[concat(variables('factoryId'), '/datasets/FieldProduction_SQL')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019_FieldProduction_DLS_SQL')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "DLS_SQL",
+                        "type": "Copy",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "DelimitedTextSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings",
+                                    "recursive": true
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextReadSettings"
+                                }
+                            },
+                            "sink": {
+                                "type": "AzureSqlSink",
+                                "disableMetricsCollection": false
+                            },
+                            "enableStaging": false,
+                            "enableSkipIncompatibleRow": true,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "prfInformationCarrier",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "Wellbore",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfYear",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Year",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfMonth",
+                                            "type": "Int32"
+                                        },
+                                        "sink": {
+                                            "name": "Month",
+                                            "type": "Int32"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfPrdOilNetMillSm3",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Oil",
+                                            "type": "Decimal"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prfPrdGasNetBillSm3",
+                                            "type": "Double"
+                                        },
+                                        "sink": {
+                                            "name": "Gas",
+                                            "type": "Decimal"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "FieldProduction_DLS_CSV",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "FieldProduction_SQL",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ]
+                    }
+                ],
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/datasets/FieldProduction_DLS_CSV')]",
+                "[concat(variables('factoryId'), '/datasets/FieldProduction_SQL')]"
+            ]
+        },
+        {
+            "name": "[concat(parameters('factoryName'), '/EDC2019-Ingest-API')]",
+            "type": "Microsoft.DataFactory/factories/pipelines",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "IngestData",
+                        "type": "AzureFunctionActivity",
+                        "dependsOn": [],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "functionName": "Ingest",
+                            "method": "GET",
+                            "headers": {
+                                "Url": "http://factpages.npd.no/ReportServer?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en",
+                                "ContainerName": "factpages",
+                                "FileName": "wellbore.json"
+                            }
+                        },
+                        "linkedServiceName": {
+                            "referenceName": "fa_factpages",
+                            "type": "LinkedServiceReference"
+                        }
+                    },
+                    {
+                        "name": "CopyBlobToSql",
+                        "type": "Copy",
+                        "dependsOn": [
+                            {
+                                "activity": "IngestData",
+                                "dependencyConditions": [
+                                    "Succeeded"
+                                ]
+                            }
+                        ],
+                        "policy": {
+                            "timeout": "7.00:00:00",
+                            "retry": 0,
+                            "retryIntervalInSeconds": 30,
+                            "secureOutput": false,
+                            "secureInput": false
+                        },
+                        "userProperties": [],
+                        "typeProperties": {
+                            "source": {
+                                "type": "BlobSource",
+                                "recursive": true
+                            },
+                            "sink": {
+                                "type": "AzureSqlSink",
+                                "preCopyScript": "DELETE FROM  [dbo].[Wellbore]",
+                                "disableMetricsCollection": false
+                            },
+                            "enableStaging": false,
+                            "enableSkipIncompatibleRow": true,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "mappings": [
+                                    {
+                                        "source": {
+                                            "name": "wlbWellboreName",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbWellboreName",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbWell",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbWell",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDrillingOperator",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDrillingOperator",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbProductionLicence",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbProductionLicence",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbPurpose",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbPurpose",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbStatus",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbStatus",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbContent",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbContent",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbWellType",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbWellType",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbSubSea",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbSubSea",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEntryDate",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEntryDate",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbCompletionDate",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbCompletionDate",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbField",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbField",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDrillPermit",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDrillPermit",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDiscovery",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDiscovery",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDiscoveryWellbore",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDiscoveryWellbore",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbBottomHoleTemperature",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbBottomHoleTemperature",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbSeismicLocation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbSeismicLocation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbMaxInclation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbMaxInclation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbKellyBushElevation",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbKellyBushElevation",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFinalVerticalDepth",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFinalVerticalDepth",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbTotalDepth",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbTotalDepth",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbWaterDepth",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbWaterDepth",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbKickOffPoint",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbKickOffPoint",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbAgeAtTd",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbAgeAtTd",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFormationAtTd",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFormationAtTd",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbMainArea",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbMainArea",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDrillingFacility",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDrillingFacility",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFacilityTypeDrilling",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFacilityTypeDrilling",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDrillingFacilityFixedOrMoveable",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDrillingFacilityFixedOrMoveable",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbLicensingActivity",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbLicensingActivity",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbMultilateral",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbMultilateral",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbPurposePlanned",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbPurposePlanned",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEntryYear",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEntryYear",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbCompletionYear",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbCompletionYear",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbReclassFromWellbore",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbReclassFromWellbore",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbReentryExplorationActivity",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbReentryExplorationActivity",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbPlotSymbol",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbPlotSymbol",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFormationWithHc1",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFormationWithHc1",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbAgeWithHc1",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbAgeWithHc1",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFormationWithHc2",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFormationWithHc2",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbAgeWithHc2",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbAgeWithHc2",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFormationWithHc3",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFormationWithHc3",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbAgeWithHc3",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbAgeWithHc3",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDrillingDays",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDrillingDays",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbReentry",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbReentry",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbGeodeticDatum",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbGeodeticDatum",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsDeg",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsDeg",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsMin",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsMin",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsSec",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsSec",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsCode",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsCode",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwDeg",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwDeg",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwMin",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwMin",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwSec",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwSec",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwCode",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwCode",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsDecDeg",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsDecDeg",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwDesDeg",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwDesDeg",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNsUtm",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNsUtm",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbEwUtm",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbEwUtm",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbUtmZone",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbUtmZone",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart1",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart1",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart2",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart2",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart3",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart3",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart4",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart4",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart5",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart5",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNamePart6",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNamePart6",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbPressReleaseUrl",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbPressReleaseUrl",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFactPageUrl",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFactPageUrl",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbFactMapUrl",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbFactMapUrl",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDiskosWellboreType",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDiskosWellboreType",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDiskosWellboreParent",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDiskosWellboreParent",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbWdssQcDate",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbWdssQcDate",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbReleasedDate",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbReleasedDate",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNpdidWellbore",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNpdidWellbore",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "dscNpdidDiscovery",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "dscNpdidDiscovery",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "fldNpdidField",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "fldNpdidField",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "fclNpdidFacilityDrilling",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "fclNpdidFacilityDrilling",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbNpdidWellboreReclass",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbNpdidWellboreReclass",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "prlNpdidProductionLicence",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "prlNpdidProductionLicence",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDateUpdated",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDateUpdated",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "wlbDateUpdatedMax",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "wlbDateUpdatedMax",
+                                            "type": "String"
+                                        }
+                                    },
+                                    {
+                                        "source": {
+                                            "name": "datesyncNPD",
+                                            "type": "String"
+                                        },
+                                        "sink": {
+                                            "name": "datesyncNPD",
+                                            "type": "String"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "referenceName": "Wellbore_BL_JSON",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "Wellbore_SQL",
+                                "type": "DatasetReference",
+                                "parameters": {}
+                            }
+                        ]
+                    }
+                ],
+                "annotations": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/fa_factpages')]",
+                "[concat(variables('factoryId'), '/datasets/Wellbore_BL_JSON')]",
+                "[concat(variables('factoryId'), '/datasets/Wellbore_SQL')]"
+            ]
+        }
+    ]
+}

@@ -38,7 +38,7 @@ $adGroup = Get-AzADGroup -ObjectId $edcAADGroup
 
 # Adding the current user to the shared Databricks-instance
 
-$secretName = "DBricksToken"
+$secretName = "DatabricksToken"
 Write-Host "Getting Databricks access-token from $commonKvName ... " -NoNewline
 $tokenValue = (Get-AzKeyVaultSecret -VaultName $commonKvName -Name $secretName -ErrorAction Stop).SecretValueText
 if ($null -eq $tokenValue)

@@ -77,6 +77,13 @@ It was not found, please install from: https://docs.microsoft.com/en-us/powershe
     exit
 } 
 
+# Verify that the SqlServer module is installed
+if (!(Get-InstalledModule -Name SqlServer -ErrorAction SilentlyContinue)) {
+    Write-Host "This script requires to have SqlServer Module installed..
+It was not found, please install from: https://docs.microsoft.com/en-gb/sql/powershell/download-sql-server-ps-module?view=sql-server-2017"
+    exit
+} 
+
 # sign in
 $context = Get-AzContext
 if ($null -eq $context )
@@ -84,6 +91,8 @@ if ($null -eq $context )
     Write-Host "Logging in...";
     $context = Connect-AzAccount
 }
+
+$account = Get-AzADUser -UserPrincipalName $context.Account.Id
 
 # select subscription
 Write-Host "Selecting subscription '$Subscription'";
@@ -124,8 +133,8 @@ else{
 
 # Create the Data Factory
 $dfName = "$ScenarioName-common-df"
-$keyVault = Get-AzDataFactory -Name "$ScenarioName-common-df" -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue 
-if ($null -eq $keyVault)
+$df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue 
+if ($null -eq $df)
 {
     Write-Host "Creating Data Factory ... " -NoNewline
     $df = New-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName -Location $resourceGroup.Location
@@ -135,6 +144,7 @@ if ($null -eq $keyVault)
 else {
     Write-Host "Data Factoryalready exists. Skipping creation!" -ForegroundColor "Yellow"
 }
+
 
 # Create the Key Vault
 $keyVault = Get-AzKeyVault -VaultName "$ScenarioName-common-kv" -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue 
@@ -149,17 +159,59 @@ else {
     Write-Host "Key Vault already exists. Skipping creation!" -ForegroundColor "Yellow"
 }
 
+
 # Create the SQL Database
-$sqlDb = Get-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName "$ScenarioName-common-sql" -DatabaseName "common" -ErrorAction SilentlyContinue 
+$serverName = "$ScenarioName-common-sql"
+$databaseName = "common"
+$sqlDb = Get-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -ErrorAction SilentlyContinue 
 if ($null -eq $sqlDb)
 {
-    Write-Host "Creating SQL Database ... " -NoNewline
+    Write-Host "Creating SQL Database '$serverName'... " -NoNewline
     $sql = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $SQLTemplateFilePath -TemplateParameterFile $SQLParametersFilePath -scenarioName $ScenarioName;
     Write-Host "$sql SQL Database Created" -ForegroundColor Green
 }
 else {
     Write-Host "SQL Database already exists. Skipping creation!" -ForegroundColor "Yellow"
 }
+
+# SQL - Add Firewall rule 
+$serverFirewallRuleClient = Get-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName -ServerName $serverName -FirewallRuleName "Client" -ErrorAction SilentlyContinue
+if (!$serverFirewallRuleClient)
+{
+    # Create a server firewall rule that allows access from the specified IP range
+    Write-Host "Creating firewallrule for $serverName"
+    # Find breakout IP address
+    $whatsMyIP = (Invoke-WebRequest -uri https://ipinfo.io/ip).Content.Trim()
+    $startIP = $whatsMyIP
+    $endIP = $whatsMyIP    
+    Write-Host "Start IP: $startIP"
+    Write-Host "End IP: $endIP"
+    $serverFirewallRuleClient = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -FirewallRuleName "Client" -StartIpAddress $startIP -EndIpAddress $endIP
+    Write-Host "Azure SQL server firewall rule:"
+    $serverFirewallRuleClient
+}
+
+# SQL - Set a server Active Directory Admin
+$serverAADAdmin = Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName -ServerName $serverName
+if (!$serverAADAdmin)
+{
+    Write-Host "Setting Active Directory Admin for $serverName"
+    $serverAADAdmin = Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DisplayName $account.DisplayName `
+    -ObjectId $account.Id
+    Write-Host "Azure SQL server Active Directory Admin:"
+    $serverAADAdmin
+}
+
+# Create table and view and populate
+$connectionString = "Data Source=$serverName.database.windows.net;Authentication=Active Directory Integrated; Initial Catalog=$databaseName"
+$sqlScriptFile = "resources\\setup_database.sql"
+Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
+$sqlScriptFile = "resources\\populate_database.sql"
+Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
 
 # Create Databricks
 $dataBricks = Get-AzResource -ResourceGroupName $resourceGroupName -Name "$ScenarioName-common-databricks" -ErrorAction SilentlyContinue 
