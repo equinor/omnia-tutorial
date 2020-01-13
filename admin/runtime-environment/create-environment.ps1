@@ -32,7 +32,7 @@ param(
  $Subscription = "Omnia Application Workspace - Sandbox",
 
  [string]
- $ResourceGroupName = "OmniaTutorialCommon",
+ $ResourceGroupName = "omnia-tutorial-common",
 
  [string]
  $ResourceGroupLocation = "northeurope"

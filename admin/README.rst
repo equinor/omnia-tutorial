@@ -21,7 +21,7 @@ folder. To create an environment you should perform the below steps:
 Note: More of this could be automated, but it is assumed this won't be run 
 very often so time hasn't been invested in this at this stage.
 
-* Run the **create-environment.ps1** script to setup key resources.
+* Run the **runtime-environment/create-environment.ps1** script to setup key resources.
 
 * Onboarding
 
