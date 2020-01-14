@@ -13,24 +13,24 @@ $shortName = $shortName.ToLower()
 #Common Variables
 $edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
 
-$commonRg = "EDC2019Common"
-$commonDls = "edc2019dls"
+$commonRg = "omnia-tutorial-common"
+$commonDls = "omniatutorialdls"
 
 $commonSubscriptionId = "160c90f1-6bbe-4276-91f3-f732cc0a45db"
 $commonSubscriptionName = "Omnia Application Workspace - Sandbox"
 
 $logFile = "onboardErrors.ps1" 
 
-$commonKvName = "EDC2019KV"
+$commonKvName = "omnia-tutorial-common-kv"
 
 $location = "northeurope"
 
 $principalName = "$shortName" + "@equinor.com"
-$resourceGroupName = "edc2019_$shortName"
-$dfName = "edc2019-" + $shortName + "-df"
+$resourceGroupName = "omnia-tutorial-$shortName"
+$dfName = "omnia-tutorial-" + $shortName + "-df"
 
-$appServicePlanName = "edc2019-" + $shortName + "-asp"
-$appServiceName = "edc2019-" + $shortName + "-app" 
+$appServicePlanName = "omnia-tutorial-" + $shortName + "-asp"
+$appServiceName = "omnia-tutorial-" + $shortName + "-app" 
 
 
 $adGroup = Get-AzADGroup -ObjectId $edcAADGroup
@@ -176,15 +176,14 @@ catch {
 
 # create user folder in datalake 
 
-$storageAccount = "edc2019dls"
+$storageAccount = "omniatutorialdls"
 $fileSystem = "dls"
-
 $tenantId = "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
 $clientId = "df14e561-cf9a-45f9-bc21-b0f38f2b2c27"
 
 try{
     Write-Host "Creating user folder in datalake ..."
-    $clientSecret = (Get-AzKeyVaultSecret -VaultName 'EDC2019KV' -Name 'DlsOnboarding' -ErrorAction Stop ).SecretValueText 
+    $clientSecret = (Get-AzKeyVaultSecret -VaultName $commonKvName -Name 'DlsOnboarding' -ErrorAction Stop ).SecretValueText 
 
     # Acquire OAuth token
     $body = @{ 
@@ -241,7 +240,7 @@ catch{
 function EmailNotification{
     param([string]$recipient)
     # get smtp properties from key vault
-    $secretInfo = Get-AzKeyVaultSecret -VaultName 'EDC2019KV' -Name SmtpConnectionDetails -ErrorAction Stop
+    $secretInfo = Get-AzKeyVaultSecret -VaultName $commonKvName -Name SmtpConnectionDetails -ErrorAction Stop
     $secpasswd = $secretInfo.SecretValue
     $username = $secretInfo.Tags.User
     $port = $secretInfo.Tags.Port

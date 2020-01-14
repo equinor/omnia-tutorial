@@ -63,10 +63,10 @@ Some work has already been done to connect the Data Lake Store into Data
 Bricks. This includes:
 
 * We pre-created a Databricks resource for you to use.
-* A Service Principal **OmniaEDC2019_DatabricksSPN** has been created and 
+* A Service Principal **omnia-tutorial-databricks** has been created and 
   set up to be used to authenticate Databricks with the database. 
   The application ID (client ID) of this Service Principal is 
-  "f0d5bd54-9617-491d-afa1-07c8bd4dc5c1".  
+  "6b26b7a0-b848-4c68-b0c4-4bfbea141a06".  
 * There is a secret created for this Service Principal to be used as a client 
   secret. The secret is stored in the shared key vault **EDC2019KV** with 
   secret name **databricksSpnClientSecret**. The permissions of this client

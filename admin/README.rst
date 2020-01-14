@@ -41,7 +41,7 @@ very often so time hasn't been invested in this at this stage.
 
   * Start Data Factory and from the ARM template dropdown import the 
     data-factory-pipelines temnplate and properties, updating properties and
-    settings to not reference the EDC resources (TODO: fix / automate this)
+    settings to reference the EDC resources (TODO: fix / automate this)
 
 * Databricks
 
@@ -51,16 +51,14 @@ very often so time hasn't been invested in this at this stage.
   * Go into the key vault. Add a new secret named *DatabricksToken* with the 
     above token
   * Under Active Directory | App registrations add a new registration 
-    (service principal) *OmniaTutorial_DatabricksSPN* if it doesn't already 
+    (service principal) *omnia-tutorial-databricks* if it doesn't already 
     exist that will be used for client credential authentication against the 
     data lake and Sql Server. Under certificates & secrets, create a new 
     client secret. Add the value to keyvault as a secret named 
     *DatabricksSpnClientSecret*. Note the application ID (client ID) and 
-    update the compute exercise with this. (Should we pre create and always 
-    use common SP here?)
+    update the compute exercise with this.
   * Link databricks and the keyvault as described at: https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html
-    Scope name *omnia-tutorial-common-kv* using the service principal client 
-    secret value.
+    Scope name *omnia-tutorial-common-kv* Manage Principal set to *Creator*.
   * Give the service principal permission to the datalake. Under DataLake 
     access control give the service principal the *STORAGE BLOB DATA 
     CONTRIBUTOR* role.
@@ -84,7 +82,7 @@ very often so time hasn't been invested in this at this stage.
 
       CREATE USER [omnia-tutorial-common] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
       GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial-common]
-  * Open the solution at *exercises\expose\solution\EDC-API.sln* and publish
+  * Open the solution at */exercises/expose/solution/EDC-API.sln* in visual studio and publish
     to the created app service. Verify by going to the website under the path 
     */swagger/*
 
@@ -108,6 +106,8 @@ Removal
 
 Run the **delete-environment.ps1** script to remove the shared runtime 
 environment and all common / shared resources.
+NOTE: This script will not remove the app registrations / service principals
+- these may be reused at a later time is already setup.
 
 Onboarding
 ----------

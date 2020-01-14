@@ -3,9 +3,9 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "factoryName": {
-            "value": "edc2019-common-df"
+            "value": "omnia-tutorial-common-df"
         },
-        "EDC2019CommonSQL_connectionString": {
+        "OmniaTutorialCommonSQL_connectionString": {
             "value": ""
         },
         "IWIT_servicePrincipalKey": {
@@ -14,8 +14,8 @@
         "NPD FactPages_properties_typeProperties_url": {
             "value": "http://factpages.npd.no"
         },
-        "EDC2019CommonDLS_properties_typeProperties_url": {
-            "value": "https://edc2019dls.dfs.core.windows.net"
+        "OmniaTutorialCommonDLS_properties_typeProperties_url": {
+            "value": "https://omniatutorialdls.dfs.core.windows.net"
         },
         "IWIT_properties_typeProperties_url": {
             "value": "https://iwitprod.azurewebsites.net"
@@ -33,9 +33,9 @@
             "value": "blob"
         },
         "kv_edc2019_properties_typeProperties_baseUrl": {
-            "value": "https://edc2019-common-kv.vault.azure.net/"
+            "value": "https://omnia-tutorial-common-kv.vault.azure.net/"
         },
-        "EDC2019CommonBL_properties_typeProperties_serviceEndpoint": {
+        "OmniaTutorialCommonBL_properties_typeProperties_serviceEndpoint": {
             "value": "https://omniatutorial.blob.core.windows.net"
         },
         "Wellbore_BL_JSON_properties_typeProperties_fileName": {

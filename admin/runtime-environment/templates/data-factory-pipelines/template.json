@@ -5,11 +5,11 @@
         "factoryName": {
             "type": "string",
             "metadata": "Data Factory Name",
-            "defaultValue": "edc2019-common-df"
+            "defaultValue": "omnia-tutorial-common-df"
         },
-        "EDC2019CommonSQL_connectionString": {
+        "OmniaTutorialCommonSQL_connectionString": {
             "type": "secureString",
-            "metadata": "Secure string for 'connectionString' of 'EDC2019CommonSQL'"
+            "metadata": "Secure string for 'connectionString' of 'OmniaTutorialCommonSQL'"
         },
         "IWIT_servicePrincipalKey": {
             "type": "secureString",
@@ -19,9 +19,9 @@
             "type": "string",
             "defaultValue": "http://factpages.npd.no"
         },
-        "EDC2019CommonDLS_properties_typeProperties_url": {
+        "OmniaTutorialCommonDLS_properties_typeProperties_url": {
             "type": "string",
-            "defaultValue": "https://edc2019dls.dfs.core.windows.net"
+            "defaultValue": "https://omniatutorialdls.dfs.core.windows.net"
         },
         "IWIT_properties_typeProperties_url": {
             "type": "string",
@@ -43,11 +43,11 @@
             "type": "string",
             "defaultValue": "blob"
         },
-        "kv_edc2019_properties_typeProperties_baseUrl": {
+        "kv_omnia-tutorial_properties_typeProperties_baseUrl": {
             "type": "string",
-            "defaultValue": "https://edc2019-common-kv.vault.azure.net/"
+            "defaultValue": "https://omnia-tutorial-common-kv.vault.azure.net/"
         },
-        "EDC2019CommonBL_properties_typeProperties_serviceEndpoint": {
+        "OmniaTutorialCommonBL_properties_typeProperties_serviceEndpoint": {
             "type": "string",
             "defaultValue": "https://omniatutorial.blob.core.windows.net"
         },
@@ -80,27 +80,27 @@
             "dependsOn": []
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019CommonDLS')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorialCommonDLS')]",
             "type": "Microsoft.DataFactory/factories/linkedServices",
             "apiVersion": "2018-06-01",
             "properties": {
                 "annotations": [],
                 "type": "AzureBlobFS",
                 "typeProperties": {
-                    "url": "[parameters('EDC2019CommonDLS_properties_typeProperties_url')]"
+                    "url": "[parameters('OmniaTutorialCommonDLS_properties_typeProperties_url')]"
                 }
             },
             "dependsOn": []
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019CommonSQL')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorialCommonSQL')]",
             "type": "Microsoft.DataFactory/factories/linkedServices",
             "apiVersion": "2018-06-01",
             "properties": {
                 "annotations": [],
                 "type": "AzureSqlDatabase",
                 "typeProperties": {
-                    "connectionString": "[parameters('EDC2019CommonSQL_connectionString')]"
+                    "connectionString": "[parameters('OmniaTutorialCommonSQL_connectionString')]"
                 }
             },
             "dependsOn": []
@@ -138,7 +138,7 @@
                     "connectionString": {
                         "type": "AzureKeyVaultSecret",
                         "store": {
-                            "referenceName": "kv_edc2019",
+                            "referenceName": "kv_omnia-tutorial",
                             "type": "LinkedServiceReference"
                         },
                         "secretName": "[parameters('AzureBlobStorage1_properties_typeProperties_connectionString_secretName')]"
@@ -146,7 +146,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/kv_edc2019')]"
+                "[concat(variables('factoryId'), '/linkedServices/kv_omnia-tutorial')]"
             ]
         },
         {
@@ -161,7 +161,7 @@
                     "functionKey": {
                         "type": "AzureKeyVaultSecret",
                         "store": {
-                            "referenceName": "kv_edc2019",
+                            "referenceName": "kv_omnia-tutorial",
                             "type": "LinkedServiceReference"
                         },
                         "secretName": "factpages"
@@ -169,37 +169,37 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/kv_edc2019')]"
+                "[concat(variables('factoryId'), '/linkedServices/kv_omnia-tutorial')]"
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/kv_edc2019')]",
+            "name": "[concat(parameters('factoryName'), '/kv_omnia-tutorial')]",
             "type": "Microsoft.DataFactory/factories/linkedServices",
             "apiVersion": "2018-06-01",
             "properties": {
                 "annotations": [],
                 "type": "AzureKeyVault",
                 "typeProperties": {
-                    "baseUrl": "[parameters('kv_edc2019_properties_typeProperties_baseUrl')]"
+                    "baseUrl": "[parameters('kv_omnia-tutorial_properties_typeProperties_baseUrl')]"
                 }
             },
             "dependsOn": []
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019CommonBL')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorialCommonBL')]",
             "type": "Microsoft.DataFactory/factories/linkedServices",
             "apiVersion": "2018-06-01",
             "properties": {
                 "annotations": [],
                 "type": "AzureBlobStorage",
                 "typeProperties": {
-                    "serviceEndpoint": "[parameters('EDC2019CommonBL_properties_typeProperties_serviceEndpoint')]"
+                    "serviceEndpoint": "[parameters('OmniaTutorialCommonBL_properties_typeProperties_serviceEndpoint')]"
                 }
             },
             "dependsOn": []
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019-WellExploration')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial-WellExploration')]",
             "type": "Microsoft.DataFactory/factories/triggers",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -208,7 +208,7 @@
                 "pipelines": [
                     {
                         "pipelineReference": {
-                            "referenceName": "EDC2019-WellExploration",
+                            "referenceName": "OmniaTutorial-WellExploration",
                             "type": "PipelineReference"
                         },
                         "parameters": {}
@@ -227,11 +227,11 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/pipelines/EDC2019-WellExploration')]"
+                "[concat(variables('factoryId'), '/pipelines/OmniaTutorial-WellExploration')]"
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019-FieldProduction')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial-FieldProduction')]",
             "type": "Microsoft.DataFactory/factories/triggers",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -240,7 +240,7 @@
                 "pipelines": [
                     {
                         "pipelineReference": {
-                            "referenceName": "EDC2019_FieldProduction",
+                            "referenceName": "OmniaTutorial_FieldProduction",
                             "type": "PipelineReference"
                         },
                         "parameters": {}
@@ -259,7 +259,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/pipelines/EDC2019_FieldProduction')]"
+                "[concat(variables('factoryId'), '/pipelines/OmniaTutorial_FieldProduction')]"
             ]
         },
         {
@@ -312,7 +312,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonDLS",
+                    "referenceName": "OmniaTutorialCommonDLS",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -327,7 +327,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonDLS')]"
             ]
         },
         {
@@ -336,7 +336,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonDLS",
+                    "referenceName": "OmniaTutorialCommonDLS",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -397,7 +397,7 @@
                 ]
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonDLS')]"
             ]
         },
         {
@@ -406,7 +406,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonSQL",
+                    "referenceName": "OmniaTutorialCommonSQL",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -450,7 +450,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonSQL')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonSQL')]"
             ]
         },
         {
@@ -459,7 +459,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonDLS",
+                    "referenceName": "OmniaTutorialCommonDLS",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -474,7 +474,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonDLS')]"
             ]
         },
         {
@@ -483,7 +483,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonDLS",
+                    "referenceName": "OmniaTutorialCommonDLS",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -544,7 +544,7 @@
                 ]
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonDLS')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonDLS')]"
             ]
         },
         {
@@ -553,7 +553,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonSQL",
+                    "referenceName": "OmniaTutorialCommonSQL",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -890,7 +890,7 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonSQL')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonSQL')]"
             ]
         },
         {
@@ -1171,7 +1171,7 @@
             "apiVersion": "2018-06-01",
             "properties": {
                 "linkedServiceName": {
-                    "referenceName": "EDC2019CommonBL",
+                    "referenceName": "OmniaTutorialCommonBL",
                     "type": "LinkedServiceReference"
                 },
                 "annotations": [],
@@ -1512,11 +1512,11 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('factoryId'), '/linkedServices/EDC2019CommonBL')]"
+                "[concat(variables('factoryId'), '/linkedServices/OmniaTutorialCommonBL')]"
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019-WellExploration')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial-WellExploration')]",
             "type": "Microsoft.DataFactory/factories/pipelines",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -1574,7 +1574,7 @@
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019_FieldProduction')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial_FieldProduction')]",
             "type": "Microsoft.DataFactory/factories/pipelines",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -1632,7 +1632,7 @@
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019_JMOR_FillData')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial_JMOR_FillData')]",
             "type": "Microsoft.DataFactory/factories/pipelines",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -1744,7 +1744,7 @@
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019_FieldProduction_DLS_SQL')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial_FieldProduction_DLS_SQL')]",
             "type": "Microsoft.DataFactory/factories/pipelines",
             "apiVersion": "2018-06-01",
             "properties": {
@@ -1858,7 +1858,7 @@
             ]
         },
         {
-            "name": "[concat(parameters('factoryName'), '/EDC2019-Ingest-API')]",
+            "name": "[concat(parameters('factoryName'), '/OmniaTutorial-Ingest-API')]",
             "type": "Microsoft.DataFactory/factories/pipelines",
             "apiVersion": "2018-06-01",
             "properties": {
