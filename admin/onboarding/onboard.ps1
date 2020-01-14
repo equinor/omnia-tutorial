@@ -180,7 +180,7 @@ $storageAccount = "edc2019dls"
 $fileSystem = "dls"
 
 $tenantId = "3aa4a235-b6e2-48d5-9195-7fcf05b459b0"
-$clientId = "6e27dafd-0816-4653-ac63-2d7e01b5d764"
+$clientId = "df14e561-cf9a-45f9-bc21-b0f38f2b2c27"
 
 try{
     Write-Host "Creating user folder in datalake ..."

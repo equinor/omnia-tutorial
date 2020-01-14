@@ -21,24 +21,12 @@ folder. To create an environment you should perform the below steps:
 Note: More of this could be automated, but it is assumed this won't be run 
 very often so time hasn't been invested in this at this stage.
 
-* Run the **runtime-environment/create-environment.ps1** script to setup key resources.
-
-* Onboarding
-
-  * Under Active Directory | App registrations add a new registration 
-    (service principal) *OmniaTutorial_DLS* if it doesn't already 
-    exist that will be used for client credential authentication against the 
-    data lake. Under certificates & secrets, create a new 
-    client secret. Add the value to keyvault as a secret named 
-    *DlsOnboarding*. Note the application ID (client ID) and 
-    update the onboard.ps1 script $clientId (line 183) to use this.
-  * Create a secret in the key vault *smtpConnectionDetails* this is used for
-    details when sending hte onboarding email. Request email sending details.
-    Enter the password as the secret and populate the other values as tags 
-    named User (value: Omnia@equinor.com), Server (value: mrrr.statoil.com), 
-    EnableSsl (value: true), Port (value: 25)
+* Change to the runtime-environment folder and run the **create-environment.ps1** script to setup key resources.
 
 * Data Lake Store
+
+  * A DLS v2 needs to be setup manually by the Omnia Solum team as current policy doesn't allow this to be created.
+    Create this as a standard storage account named **omniatutorialdls** using **LRS** replication and with **Hierarchical namespace** enabled.
 
   * Create the folders:
 
@@ -100,6 +88,20 @@ very often so time hasn't been invested in this at this stage.
     to the created app service. Verify by going to the website under the path 
     */swagger/*
 
+* Onboarding
+
+  * Under Active Directory | App registrations add a new registration 
+    (service principal) *omnia-tutorial* if it doesn't already 
+    exist that will be used for client credential authentication against the 
+    data lake. Under certificates & secrets, create a new 
+    client secret. Add the value to keyvault as a secret named 
+    *DlsOnboarding*. Note the application ID (client ID) and 
+    update the onboard.ps1 script $clientId (line 183) to use this.
+  * Create a secret in the key vault *smtpConnectionDetails* this is used for
+    details when sending hte onboarding email. Request email sending details.
+    Enter the password as the secret and populate the other values as tags 
+    named User (value: Omnia@equinor.com), Server (value: mrrr.statoil.com), 
+    EnableSsl (value: true), Port (value: 25)
 
 Removal
 ^^^^^^^

@@ -14,4 +14,5 @@ Set-AzContext -SubscriptionName $commonSubscriptionId | Out-Null
 Write-Host "Done" -ForegroundColor Green
 
 
-Remove-AzResourceGroup -Name $commonRg -WhatIf
+# Fix: We don't delete the resource group automatically as this is where the static website is hosted.
+# Remove-AzResourceGroup -Name $commonRg -WhatIf

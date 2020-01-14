@@ -89,7 +89,8 @@ $context = Get-AzContext
 if ($null -eq $context )
 {
     Write-Host "Logging in...";
-    $context = Connect-AzAccount
+    Connect-AzAccount
+    $context = Get-AzContext
 }
 
 $account = Get-AzADUser -UserPrincipalName $context.Account.Id
@@ -208,6 +209,7 @@ if (!$serverAADAdmin)
 
 # Create table and view and populate
 $connectionString = "Data Source=$serverName.database.windows.net;Authentication=Active Directory Integrated; Initial Catalog=$databaseName"
+Write-Host $connectionString
 $sqlScriptFile = "resources\\setup_database.sql"
 Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
 $sqlScriptFile = "resources\\populate_database.sql"
