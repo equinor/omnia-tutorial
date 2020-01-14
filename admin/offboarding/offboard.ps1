@@ -12,20 +12,20 @@ Set-AzContext -SubscriptionName $commonSubscriptionId | Out-Null
 Write-Host "Done" -ForegroundColor Green
 
 #Common Variables
-$edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
+$participantsAADGroup = "0bf1cd33-f89c-4de2-851a-ff7bcd6ba1a9"
 
-$groupMembers = Get-AzADGroupMember -GroupObjectId $edcAADGroup
+$groupMembers = Get-AzADGroupMember -GroupObjectId $participantsAADGroup
 
 foreach ($member in $groupMembers)
 {
     if ($member.Type -eq "User")
     {
         $shortName = $member.UserPrincipalName.Split("@")[0].ToLower()
-        $resourceGroupName = "edc2019_$shortName"
+        $resourceGroupName = "omnia-tutorial-$shortName"
         Remove-AzResourceGroup -Name $resourceGroupName
     }
 
-    Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $edcAADGroup
+    Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $participantsAADGroup
 }
 
 Write-Host "Offboarding complete. Run the script to delete the shared runtime environment if desired." -ForegroundColor Green

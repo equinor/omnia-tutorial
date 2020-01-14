@@ -11,7 +11,9 @@ if ($null -eq $context )
 $shortName = $shortName.ToLower()
 
 #Common Variables
-$edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
+
+# Group used for giving access (OMNIA - Tutorial participants) - participants should be added here
+$edcAADGroup = "0bf1cd33-f89c-4de2-851a-ff7bcd6ba1a9"
 
 $commonRg = "omnia-tutorial-common"
 $commonDls = "omniatutorialdls"
