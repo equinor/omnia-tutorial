@@ -7,8 +7,8 @@ Write-Host "Setting Subscription to $commonSubscriptionName ... " -NoNewline
 Set-AzContext -SubscriptionName $commonSubscriptionId | Out-Null
 Write-Host "Done" -ForegroundColor Green
 
-$adGroup = Get-AzADGroup -ObjectId $edcAADGroup
-$groupMembers = Get-AzADGroupMember -GroupObjectId $edcAADGroup
+$adGroup = Get-AzADGroup -ObjectId $AADGroup
+$groupMembers = Get-AzADGroupMember -GroupObjectId $AADGroup
 
 
 foreach ($user in $groupMembers | Where-Object {$_.Type -eq "User"})
