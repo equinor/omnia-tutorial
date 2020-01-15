@@ -26,7 +26,7 @@ Note that for the exercises, we provide reference implementations for each step 
 Exercise Prerequisites
 ----------------------
 
-There are **no prerequisites** to run the exercises other than a modern browser. That said, we present alternatives that more closely match how you might otherwise develop for Omnia. In that regard it can be useful to have a developer profile PC with the following free tools installed: 
+There are **no prerequisites** to run the exercises other than a modern browser. That said, we present alternatives that more closely match how you might otherwise develop for Omnia. In that regard, and especially if you intend to continue developing within Omnia it can be useful to have a developer profile PC with the following free tools installed: 
 
 * `Azure SDK <https://azure.microsoft.com/en-us/downloads/>`__ for the language of your choice.
 * `Azure Command Line Interface <https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest>`__ and / or `Powershell Interface <https://docs.microsoft.com/en-us/powershell/azure/>`__
@@ -42,7 +42,7 @@ You may also want to consider having the following:
 
 Getting Help
 ------------
-For the EDC 2019 conference, please join the ``#edc2019-omnia`` Slack channel for information, questions and discussion.
+Please join the ``#omnia`` Slack channel for information, questions and discussion.
 
 Otherwise please see the ``Omnia`` yammer channel.
 
