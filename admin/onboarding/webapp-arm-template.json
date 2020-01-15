@@ -25,8 +25,8 @@
       }
     },
     "variables": {
-      "webAppPortalName": "[concat('edc2019-', parameters('shortName'), '-app')]",
-      "appServicePlanName": "[concat('edc2019-', parameters('shortName'), '-asp')]"
+      "webAppPortalName": "[concat('omnia-tutorial-', parameters('shortName'), '-app')]",
+      "appServicePlanName": "[concat('omnia-tutorial-', parameters('shortName'), '-asp')]"
     },
     "resources": [
       {

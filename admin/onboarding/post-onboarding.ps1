@@ -1,4 +1,4 @@
-$edcAADGroup = "c5f931df-8725-4611-9594-378ec0a82c13"
+$AADGroup = "0bf1cd33-f89c-4de2-851a-ff7bcd6ba1a9"
 
 $commonSubscriptionId = "160c90f1-6bbe-4276-91f3-f732cc0a45db"
 $commonSubscriptionName = "Omnia Application Workspace - Sandbox"
@@ -16,9 +16,9 @@ foreach ($user in $groupMembers | Where-Object {$_.Type -eq "User"})
     Write-Host "Checking $($user.UserPrincipalName) ... "  -NoNewline
     $shortName = $user.UserPrincipalName.Split("@")[0].ToLower()
 
-    $resourceGroupName = "edc2019_$shortName"
-    $dfName = "edc2019-" + $shortName + "-df"
-    $appServiceName = "edc2019-" + $shortName + "-app" 
+    $resourceGroupName = "omnia-tutorial-$shortName"
+    $dfName = "omnia-tutorial-" + $shortName + "-df"
+    $appServiceName = "omnia-tutorial-" + $shortName + "-app" 
 
     $dfPrincipal = $null
     $dfPrincipal = $groupMembers | Where-Object {$_.Type -eq "ServicePrincipal" -and $_.DisplayName -eq $dfName}

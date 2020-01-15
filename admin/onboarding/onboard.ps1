@@ -13,7 +13,7 @@ $shortName = $shortName.ToLower()
 #Common Variables
 
 # Group used for giving access (OMNIA - Tutorial participants) - participants should be added here
-$edcAADGroup = "0bf1cd33-f89c-4de2-851a-ff7bcd6ba1a9"
+$AADGroup = "0bf1cd33-f89c-4de2-851a-ff7bcd6ba1a9"
 
 $commonRg = "omnia-tutorial-common"
 $commonDls = "omniatutorialdls"
@@ -35,7 +35,7 @@ $appServicePlanName = "omnia-tutorial-" + $shortName + "-asp"
 $appServiceName = "omnia-tutorial-" + $shortName + "-app" 
 
 
-$adGroup = Get-AzADGroup -ObjectId $edcAADGroup
+$adGroup = Get-AzADGroup -ObjectId $AADGroup
 
 
 # Adding the current user to the shared Databricks-instance
@@ -142,12 +142,12 @@ Start-Sleep -Seconds 5
 Write-Host "Done" -ForegroundColor Green
 
 
-Write-Host "Adding User to OMNIA - EDC2019 ..." -NoNewline
+Write-Host "Adding User to AD Group ..." -NoNewline
 Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $user.Id 
 Write-Host "Done" -ForegroundColor Green
 
 try {
-    Write-Host "Adding DF MSI to OMNIA - EDC2019 ..." -NoNewline
+    Write-Host "Adding DF MSI to AD Group ..." -NoNewline
     $df = Get-AzDataFactoryV2 -Name $dfName -ResourceGroupName $resourceGroupName
     Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $df.Identity.PrincipalId
     Write-Host "Done" -ForegroundColor Green
@@ -166,7 +166,7 @@ catch {
 }
 
 try {
-    Write-Host "Adding WebApp MSI to OMNIA - EDC2019 ..." -NoNewline
+    Write-Host "Adding WebApp MSI to AD Group ..." -NoNewline
     $appService = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appServiceName
     Add-AzADGroupMember -TargetGroupObjectId $adGroup.Id -MemberObjectId $appService.Identity.PrincipalId
     Write-Host "Done" -ForegroundColor Green
