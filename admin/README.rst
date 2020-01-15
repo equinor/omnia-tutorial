@@ -32,7 +32,7 @@ very often so time hasn't been invested in this at this stage.
     client secret. Add the value to keyvault as a secret named 
     *DlsOnboarding*. Note the application ID (client ID) and 
     update the onboard.ps1 script $clientId (line 183) to use this.
-  * Create a secret in the key vault *smtpConnectionDetails* this is used for
+  * Create a secret in the key vault *SmtpConnectionDetails* this is used for
     details when sending the onboarding email. Request email sending details.
     Enter the password as the secret and populate the other values as tags 
     named User (value: Omnia@equinor.com), Server (value: mrrr.statoil.com), 
