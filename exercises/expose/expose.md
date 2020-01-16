@@ -64,8 +64,8 @@
             - Copy and paste in the token string instead of you password, this should start the download.
 1. **Opening up the project:**
     1. Using Visual Studio 17/19:
-        - Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial\src\Api\EDC-API-skeleton`
-        - Double click on `EDC-API-skeleton.sln`
+        - Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial/exercises/expose/starter`
+        - Double click on `omnia-turorial-API-starter.sln`
         - If you are prompted to select program to open the file with, select Visual Studio 17/19.
         - This should open a Visual Studio 17/19 window
         - On one of the sides, there should be a `Solution Explorer` containing all the files in the project
@@ -73,11 +73,11 @@
     1. Using Visual Studio Code:
         - Open up Visual Studio Code
         - Click `File` in the top left, and select `Open Folder`
-        - Navigate to `omnia-tutorial\src\Api` and select the folder `EDC-API-skeleton` and click `Select Folder`
+        - Navigate to `omnia-tutorial/exercises/expose/starter` and select the folder `omnia-tutorial-API-starter` and click `Select Folder`
         - This should open the file structure in the `Explorer` on the left, if not open it by pressing `Ctrl-Shift-E`, or press the icon in the top left.
     1. Using VSCode in Azure CLI:
-        - Navigate to the folder `omnia-tutorial\src\Api`
-        - Enter `code EDC-API-skeleton`
+        - Navigate to the folder `omnia-tutorial/exercises/expose/starter`
+        - Enter `code omnia-tutorial-API-starter`
         - This should open a VSCode view with the correct folder open
 1. **IF YOU HAVE COMPLETED THE PREVIOUS TASKS AND WANT TO USE YOUR OWN DATA SOURCE:**
     1. Given that you have opened the solution, described in the previous step, open the file called `appsettings.json`
@@ -122,7 +122,7 @@
     - In Visual Studio 17/19, simply hit `F5` and the page should be available at `https://localhost:44373/swagger`. If the window doesn't appear, find the base URL in the Visual studio `Output` window, and add `/swagger`.
     - In Visual Studio Code, use `dotnet build` to build your solution, and `dotnet run` to start the API. The default URL is typically `localhost:5001`, and the page should be available at `localhost:5001/swagger`.
 
-1. If you at any point in the code feel stuck, it is allowed to look at the reference implementation in `omnia-tutorial\src\Api\EDC-API`.
+1. If you at any point in the code feel stuck, it is allowed to look at the reference implementation in `omnia-tutorial/exercises/expose/solution`.
 
 ## 2. ProductionDatasController
 In the solution explorer, under the folder `Controllers` you should find the `ProductionDatasController`. This controller should implement the most common functionality for any API; Create, Read, Update, and Delete (CRUD). Typically CRUD is implemented on a per-table/view basis.
@@ -221,9 +221,9 @@ After a while a new window will open with the API
 ### VSCode in Azure CLI
 - Run the command `Set-AzContext "Omnia Application Workspace - Sandbox"` 
 - Navigate to the folder with the with the solution.
-    - Typically `/home/<your-name>/code/omnia-tutorial/src/Api/EDC-API-skeleton`
+    - Typically `/home/<your-name>/code/omnia-tutorial/exercises/expose/starter/omnia-tutorial-API-starter`
 - Run `dotnet publish -c Release`, this creates the project in the `publish` folder.
-    - Typically `/home/<your-name>/code/omnia-tutorial/src/Api/EDC-API-skeleton/EDC-API/bin/Release/netcoreapp2.2/publish/`
+    - Typically `/home/<your-name>/code/omnia-tutorial/exercises/expose/starter/omnia-tutorial-API-starter/Eomnia-tutorial-API-starter/bin/Release/netcoreapp2.2/publish/`
 - Create .zip file of the project:
     - Create a reference to the publish folder: `$publishFolder = "<path-to-folder>"`, this is the same folder from the last step.
     - Create variable in the CLI: `$publishZip = "publish.zip"`
