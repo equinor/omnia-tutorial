@@ -1,4 +1,4 @@
-# EDC API
+# Omnia Tutorial API
 
 ## 1. Setup
 
@@ -37,7 +37,7 @@
             - Use the following settings for advanced setup:
                 - Subscription: "Omnia Application Workspace - Sandbox"
                 - Cloud Shell region: Noth Europe
-                - Resource group: ``Use existing`` --> edc2019_\<shortname\>
+                - Resource group: ``Use existing`` --> omnia-tutorial-\<shortname\>
                 - Storage account: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. mystorage
                 - File share: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. myfileshare
 
@@ -85,7 +85,7 @@
     1. The connection string is on the following format: 
         - `Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
         - Example:
-        - `Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
+        - `Server=tcp:omnia-tutorial-<shortname>-sql..database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
         - To find the URL, navigate to your resouce group in the [Azure Portal](portal.azure.com), open up your `SQL database`. The URL should be located in the top right under `Server name`.
         > Note that the connection string does NOT contain any username/password, this is handled by the MSI.
     1. Then we have to grant the MSI access in the database:
@@ -99,7 +99,7 @@
 1. **IF YOU HAVE NOT COMPLETED THE PREVIOUS TASKS AND WANT TO USE OUR DATA SOURCE:**
     1. Given that you have opened the solution, described in the previous step, open the file called `appsettings.json`
     1. Update the `ConnectionString` in `appsettings.json` with the connection string for our database. The connection string is on the following format: 
-        - "`Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`"
+        - "`Server=tcp:omnia-tutorial-common-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`"
         - If you don't get access, please contact one of us.
 
     > NOTE: We only give read access to our database. All endpoints with creates/updates/deletes will then fail, but the logic should still be in place. This is to ensure that someone doesn't break the database for all the rest.
@@ -202,8 +202,8 @@ In a traditional setup deployments to Azure should be done using some DevOps too
 - Select `Publish..`
 - Select `App Service` and then check of `Select Existing` and hit `Publish`
 - Give the app a logical name
-- Select the subscription `Omnia Application Workspace - Sandbox` and `edc2019_<shortname>`
-- Select the app service `edc2019-<shortname>app` and hit `Ok`
+- Select the subscription `Omnia Application Workspace - Sandbox` and your resouce group `omnia-tutorial-<shortname>`
+- Select the app service `omnia-tutorial-<shortname>-app` and hit `Ok`
 
 After a while a new window will open with the API
 
@@ -235,16 +235,16 @@ After a while a new window will open with the API
     ```
     - Run the following block to deploy the zip file:
     ```ps1
-    Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>-app" -ArchivePath $publishZip
+    Publish-AzWebapp -ResourceGroupName "omnia-tutorial-<your-shortname>" -Name "omnia-tutorial-<your-shortname>-app" -ArchivePath $publishZip
     ```
 - The deployment might take a few seconds
 - It should produce output like the table below if the deployment was successful:
 
 | Name | State |ResourceGroup |EnabledHostNames | Location |
 |--|--|--|--|--|
-| edc2019-`your-hortname`app | Running | edc2019_`your-hortname` | {`edc2019-'your-hortname'app.azurewebsites.net`, ...| North Europe |
+| omnia-tutorial-`your-hortname`-app | Running | omnia-tutorial-`your-hortname` | {`omnia-tutorial-'your-hortname'app.azurewebsites.net`, ...| North Europe |
 
-- Navigate to `edc2019-'your-hortname'app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
+- Navigate to `omnia-tutorial-'your-hortname'-app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
 
 ## 5 Open API Specification
 
