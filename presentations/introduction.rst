@@ -43,7 +43,8 @@ Introduction
 * A hands on introduction with Omnia
 * What are we not covering?
 * Signup
-* #edc_2019 on `Slack <http://equinor.slack.com>`__
+* #omnia on `Slack <http://equinor.slack.com>`__
+* OMNIA on `Yammer <https://www.yammer.com/statoil.com/#/threads/inGroup?type=in_group&feedId=10658772>`__
 * https://github.com/equinor/omnia-tutorial/
 
 .. note::

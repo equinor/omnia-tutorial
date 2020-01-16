@@ -24,7 +24,7 @@ http://factpages.npd.no/factpages/
 
 For this exercise we will use the production CSV file downloadable from:
 
-http://factpages.npd.no/ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en
+https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.129&CultureCode=en
 
 Getting started
 ---------------
@@ -32,7 +32,7 @@ Getting started
 A Data Factory resource has been pre-created for you to use. To access this, you need to locate the Data Factory resource in the Azure Portal:
 
 * Log in to http://portal.azure.com
-* Locate the Data Factory in your resource group either using search (e.g. *edc2019* or *{your_short_name}*) or browsing *All resources*
+* Locate the Data Factory in your resource group either using search (e.g. *omnia-tutorial* or *{your_short_name}*) or browsing *All resources*
 * In the Overview section of the Data Factory resource, click *Author & Monitor* to open the Data Factory editor.
 
 Data Factory
@@ -46,14 +46,19 @@ A Data Factory has a few concepts are useful to be aware of.
 
 *Datasets* are named views of data that point to the data you want to use in your activities as inputs and outputs. Datasets identify data within different data stores, such as tables, files, folders, and documents. Datasets use connections defined by linked services.
 
-*Linked services* provide reusable connections to different data sources. Linked services are much like connection strings, which define the connection information needed for a Data Factory to connect to external resources.
-
+*Linked services* provide reusable connections to different data sources. 
+Linked services are much like connection strings, which define the connection
+information needed for a Data Factory to connect to external resources.
 *Linked services* can be setup as *sources* or *sinks* from where you gather or send data respectively.
+
+*Data flows* are visually designed data transformations.
 
 More information is available at https://docs.microsoft.com/en-us/azure/data-factory/
 
 Ingest data into Azure Data Lake Storage Gen2
-----------------------------------------
+---------------------------------------------
+
+In this part we will create a very simple pipeline to copy data, however Data Factory can include more advanced logic and transformations, including calling other components.
 
 With your Data Factory open you should see a *Get started* page.
 
@@ -95,9 +100,9 @@ Click *Finish* to create it.
 
 .. image:: images/7_new_linkedservicehttp2.png
 
-To finish setting up the source, add the *Relative URL* below that targets the production report we want to download then click *Finish*
+To finish setting up the source, add the *Relative URL* below that targets the production report we want to download then click *Create*
 
-``ReportServer?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en``
+``ReportServer_npdpublic?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.129&CultureCode=en``
 
 .. image:: images/8_set_property.png
 
@@ -113,11 +118,13 @@ Again as we will do a straight copy, select the *Binary* option.
 
 In the sink dataset *Set Properties* window that pops up, use the name FieldProductionMonthly_DLS and from the *Linked service* dropdown select *New* to create a new linked service to connect to the Data Lake Store with the following properties:
 
-* Name: *EDC2019CommonDLS*
+* Name: *OmniaTutorialDLS*
 * Authentication method: *Managed identity*
-* Account selection method: *As per the image below*
+* Account selection method: *From Azure Subscription*
+* Azure Subscription: *Omnia Application Workspace - Sandbox*
+* Storage account name: *omniatutorialdls*
 
-Test the connection and click *Finish* to create the new lined service.
+Test the connection and click *Create* to create the new lined service.
 
 .. image:: images/11_new_linkeservice_dls.png
 
@@ -131,7 +138,7 @@ You can also use the browse button to fill *Container* and *Directory*, but must
 
 .. image:: images/12_set_property.png
 
-Click *Finish* to set the properties and you now have a basic pipeline ready. Do a test-run of your newly created pipeline.
+Click *OK* to set the properties and you now have a basic pipeline ready. Do a test-run of your newly created pipeline.
 
 .. image:: images/test-pipeline.png
 
@@ -150,7 +157,7 @@ The Data Lake Store we copied to is a seperate (shared) resource that has been p
 
 There are many ways to access files in Data Lake store including through code, using command line tools, through the Azure Portal and more.
 
-To browse through the Azure portal, you first need to find the Data Lake resource, similar to as we did previously to locate the Data Factory. This is called *edc2019dls* (hint: use search).
+To browse through the Azure portal, you first need to find the Data Lake resource, similar to as we did previously to locate the Data Factory. This is called *omniatutorialdls* (hint: use search).
 
 With the Data Lake Store selected, you can use the *Storage Explorer* link to browse the file structure.
 
