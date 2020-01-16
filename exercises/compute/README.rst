@@ -27,7 +27,7 @@ Prerequisites
 
 Create a Notebook in Databricks
 -------------------------------
-* Open Databricks workspace **EDC2019sharedDatabricks** with URL: https://northeurope.azuredatabricks.net/?o=1561392505117079.
+* Open Databricks workspace **omnia-tutorial-common-databricks** with URL: https://northeurope.azuredatabricks.net/?o=8968177579896594.
 
   **Note: Don't launch the workspace from Azure Portal. You don't have access 
   there.**
@@ -37,7 +37,7 @@ Create a Notebook in Databricks
   icon, shown as below:
 
   .. image:: ./images/peopleicon.PNG
-* Accept the invitation from workspace **EDC2019sharedDatabricks**. Make sure
+* Accept the invitation from workspace **omnia-tutorial-common-databricks**. Make sure
   you are working in this workspace before you continue.
 * Find your user folder under **Workspace**, like below:
   

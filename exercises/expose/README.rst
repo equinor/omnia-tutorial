@@ -36,7 +36,7 @@ connected with the database using a managed service identity (MSI). To check
 this:
 
 * Locate the app service in your resource group in the 
-  `Azure Portal <https://portal.azure.com>`_  (Hint: search for "edc2019-<shortname>-app"
+  `Azure Portal <https://portal.azure.com>`_  (Hint: search for "omnia-tutorial-<shortname>-app"
 * In the list on the left under the title `Settings`, click the field 
   called "Identity",
 * Status should be toggled to *On*,
