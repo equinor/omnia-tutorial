@@ -25,43 +25,43 @@
             - Go back to the powershell prompt from earlier, and re-run the command `git clone https://github.com/equinor/omnia-tutorial.git`
             - Enter your username
             - Copy and paste in the token string instead of you password, this should start the download.
-    1. In the Azure CLI using VSCode:
-        - If you havent used and configured Cloud Shell previously you will need to do that now:
-            - Azure Storage Account - Choose the powershell-variant
-
-            ![Azure Storage Account](./images/welcome-storage.png)
+    1. Using Visual Studio Online:
+        - Navigate to `https://online.visualstudio.com/`.
+        - If you havent used and configured Visual studio Online previously you will need to do that now:
+            - Create a billing plan: ![here](images/create-billing-plan.PNG)
+                
+                - Select subscription `Omnia Application Workspace - Sandbox`
+                - Location `West Europe`
+                - Plan Name can be whatever, but we suggest `omnia-tutorial-<shortname>-vscode`
+                -  Select your resouce group `omnia-tutorial-<shortname>`
+                - Wait a little while until plan is ready.
+            - Create new Environment:
             
-            - Azure Storage Account - Choose advanced settings
+            ![here](images/create-environment.PNG)
 
-            ![Azure Storage Account](./images/basic-storage.png)
-            - Use the following settings for advanced setup:
-                - Subscription: "Omnia Application Workspace - Sandbox"
-                - Cloud Shell region: Noth Europe
-                - Resource group: ``Use existing`` --> omnia-tutorial-\<shortname\>
-                - Storage account: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. mystorage
-                - File share: ``Create new`` --> your choice of name, all lowercase and no special characters, e.g. myfileshare
+            ![here](images/enter-name.PNG)
 
-            ![Azure Storage Account](./images/advanced-storage.png)
-            - For some general information about Azure cloud shell
-                - [How to use Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart-powershell)
-                - [Persist files in Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage)
-                - [How to upload files from local computer](https://docs.microsoft.com/en-us/azure/cloud-shell/using-the-shell-window#upload-and-download-files)
+            - Enter a name 
+            - Leave `Git Repository` emptry
+            - Click `Create`
+            - Wait a little while and until the environment is `Available`
 
-        - Open up a cloud shell prompt [here](https://shell.azure.com/)
-        - Run the command `cd`, this should move you to the `/$home/<shortname>` folder
-        - Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
-        - If you are prompted with a login, enter your credentials.
-        - The multi-factor authentication might mess up the login, to fix this:
-            -  Navigate to [GitHub](https://github.com/) and login in
-            - Find the account meny on the top right
-            - Go to `settings`
-            - Go to `Developer Settings`
-            - Go to `Personal access tokens` and press `Generate new token` on the right.
-            - Select the `repo` permissions
-            - When the token has been generated it will display as a long string of character, something like `c26abfb14015d35c19fb4f2b0ba529de2b4f48fa`, copy this to a text document.
-            - Go back to the powershell prompt from earlier, and re-run the command `git clone https://github.com/equinor/omnia-tutorial.git`
-            - Enter your username
-            - Copy and paste in the token string instead of you password, this should start the download.
+            ![here](images/environment-ready.PNG)
+
+            - Click on the `Environment`
+
+        - When you are inside the `Environment` it should look identical to the local version of Visual Studio Code.
+        - Open up a terminal window, 
+
+        ![](images/open-terminal.PNG)
+
+        - Enter `git clone https://github.com/equinor/omnia-tutorial.git` in the command line.
+
+        ![](images/git-clone.PNG)
+
+        - The project files should open up on the left:
+
+        ![](images/file-explorer.PNG)
 1. **Opening up the project:**
     1. Using Visual Studio 17/19:
         - Navigate to the folder where you cloned down the github repository, navigate to the folder `omnia-tutorial/exercises/expose/starter`
@@ -75,10 +75,9 @@
         - Click `File` in the top left, and select `Open Folder`
         - Navigate to `omnia-tutorial/exercises/expose/starter` and select the folder `omnia-tutorial-API-starter` and click `Select Folder`
         - This should open the file structure in the `Explorer` on the left, if not open it by pressing `Ctrl-Shift-E`, or press the icon in the top left.
-    1. Using VSCode in Azure CLI:
-        - Navigate to the folder `omnia-tutorial/exercises/expose/starter`
-        - Enter `code omnia-tutorial-API-starter`
-        - This should open a VSCode view with the correct folder open
+    1. Using Visual Studio Online:
+        - Navigate to the folder `omnia-tutorial/exercises/expose/starter/omnia-tutorial-API-starter`
+        - This should contain all the files you need
 1. **IF YOU HAVE COMPLETED THE PREVIOUS TASKS AND WANT TO USE YOUR OWN DATA SOURCE:**
     1. Given that you have opened the solution, described in the previous step, open the file called `appsettings.json`
     1. Update the `ConnectionString` in `appsettings.json` with the connection string for your database. 
@@ -121,6 +120,7 @@
 1. We have preconfigured Swashbuckle in the project, giving access to a documentation page. If you want to test your API, simply run the API locally.
     - In Visual Studio 17/19, simply hit `F5` and the page should be available at `https://localhost:44373/swagger`. If the window doesn't appear, find the base URL in the Visual studio `Output` window, and add `/swagger`.
     - In Visual Studio Code, use `dotnet build` to build your solution, and `dotnet run` to start the API. The default URL is typically `localhost:5001`, and the page should be available at `localhost:5001/swagger`.
+    - **This is not available** in Visual Studio Online, to see your changes you have to publish to the web app, see [part 4](#4-Moving-to-Azure).
 
 1. If you at any point in the code feel stuck, it is allowed to look at the reference implementation in `omnia-tutorial/exercises/expose/solution`.
 
@@ -204,10 +204,10 @@ In a traditional setup deployments to Azure should be done using some DevOps too
 - Give the app a logical name
 - Select the subscription `Omnia Application Workspace - Sandbox` and your resouce group `omnia-tutorial-<shortname>`
 - Select the app service `omnia-tutorial-<shortname>-app` and hit `Ok`
+- Wait for the deploy to complete
+- Navigate to your web app, `https://omnia-tutorial-<shortname>-app.azurewebsites.net/swagger/index.html` to view the API in Azure.
 
-After a while a new window will open with the API
-
-### [Visual Studio Code](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#generate-the-deployment-package-locally)
+### [Visual Studio Code & Visual Studio Online](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#generate-the-deployment-package-locally)  
 - Install the `Azure App Service` extension
 - Open Visual Studio Code terminal
 - Use the following command to generate a Release package to a sub folder called publish:
@@ -217,35 +217,8 @@ After a while a new window will open with the API
 - Select the subscription the existing Web App resides
 - Select the Web App from the list
 - Visual Studio Code will ask you if you want to overwrite the existing content. Click `Deploy` to confirm
-
-### VSCode in Azure CLI
-- Run the command `Set-AzContext "Omnia Application Workspace - Sandbox"` 
-- Navigate to the folder with the with the solution.
-    - Typically `/home/<your-name>/code/omnia-tutorial/exercises/expose/starter/omnia-tutorial-API-starter`
-- Run `dotnet publish -c Release`, this creates the project in the `publish` folder.
-    - Typically `/home/<your-name>/code/omnia-tutorial/exercises/expose/starter/omnia-tutorial-API-starter/Eomnia-tutorial-API-starter/bin/Release/netcoreapp2.2/publish/`
-- Create .zip file of the project:
-    - Create a reference to the publish folder: `$publishFolder = "<path-to-folder>"`, this is the same folder from the last step.
-    - Create variable in the CLI: `$publishZip = "publish.zip"`
-    - Create the zip:
-    ```ps1
-    if(Test-path $publishZip) {Remove-item $publishZip}
-    Add-Type -assembly "system.io.compression.filesystem"
-    [io.compression.zipfile]::CreateFromDirectory($publishFolder, $publishZip)
-    ```
-    - Run the following block to deploy the zip file:
-    ```ps1
-    Publish-AzWebapp -ResourceGroupName "omnia-tutorial-<your-shortname>" -Name "omnia-tutorial-<your-shortname>-app" -ArchivePath $publishZip
-    ```
-- The deployment might take a few seconds
-- It should produce output like the table below if the deployment was successful:
-
-| Name | State |ResourceGroup |EnabledHostNames | Location |
-|--|--|--|--|--|
-| omnia-tutorial-`your-hortname`-app | Running | omnia-tutorial-`your-hortname` | {`omnia-tutorial-'your-hortname'app.azurewebsites.net`, ...| North Europe |
-
-- Navigate to `omnia-tutorial-'your-hortname'-app.azurewebsites.net/swagger/index.html` to verify that the API is running as it should.
-
+- Wait for the deploy to complete
+- Navigate to your web app, `https://omnia-tutorial-<shortname>-app.azurewebsites.net/swagger/index.html` to view the API in Azure. 
 ## 5 Open API Specification
 
 As mentioned earlier, we have enabled [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) for the project. Swashbuckle is a open-source framework that auto generates a Open API Specification file based on the source code.
