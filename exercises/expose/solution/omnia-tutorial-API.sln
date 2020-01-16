@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "omnia-tutorial-API", "EDC-API\omnia-tutorial-API.csproj", "{8F719930-27AE-4861-8A99-2B7B85A5C07B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "omnia-tutorial-API", "omnia-tutorial-API\omnia-tutorial-API.csproj", "{434ED3B9-166B-4BF6-8449-A06B4C229F30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8F719930-27AE-4861-8A99-2B7B85A5C07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F719930-27AE-4861-8A99-2B7B85A5C07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F719930-27AE-4861-8A99-2B7B85A5C07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F719930-27AE-4861-8A99-2B7B85A5C07B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{434ED3B9-166B-4BF6-8449-A06B4C229F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{434ED3B9-166B-4BF6-8449-A06B4C229F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{434ED3B9-166B-4BF6-8449-A06B4C229F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{434ED3B9-166B-4BF6-8449-A06B4C229F30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A5F2950E-0C4A-4094-AAC5-C860DC69979E}
+		SolutionGuid = {87A3C88E-6BD1-4BA2-8EA5-CA0DA3584A2E}
 	EndGlobalSection
 EndGlobal
