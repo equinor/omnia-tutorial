@@ -47,7 +47,7 @@ Create a Notebook in Databricks
   .. image:: ./images/createnotebook.PNG
 
 * Input the name for your new notebook (e.g. 'Compute') and attach the 
-  notebook to the running **EDC-HighConcurrency-Shared** cluster we have 
+  notebook to the running **High concurrency** cluster we have 
   pre-created for you. Azure Passthrough is enabled on this cluster to
   simplify access to the data lake:
 
@@ -68,7 +68,7 @@ Bricks. This includes:
   The application ID (client ID) of this Service Principal is 
   "6b26b7a0-b848-4c68-b0c4-4bfbea141a06".  
 * There is a secret created for this Service Principal to be used as a client 
-  secret. The secret is stored in the shared key vault **EDC2019KV** with 
+  secret. The secret is stored in the shared key vault **omnia-tutorial-common-kv** with 
   secret name **databricksSpnClientSecret**. The permissions of this client
   have been set up for this module. 
 * The connection between the key vault and the Databricks workspace has been
@@ -81,7 +81,7 @@ Extract data from ADLS Gen 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this step, you need to load a .csv file as a dataframe from a folder in the datalake.
 
-The source file is stored in file system **dls** in Data Lake **edc2019dls**. If you have not completed previous parts of this tutorial you may access the file from the path **data/open/npd.no/field_production/field_production_monthly.csv** otherwise it will have been copied to your user folder by Data Factory at **/user/<your-short-name>/field_production_monthly.csv**. Be sure to update paths where necessary below.
+The source file is stored in file system **dls** in Data Lake **omniatutorialdls**. If you have not completed previous parts of this tutorial you may access the file from the path **data/open/npd.no/field_production/field_production_monthly.csv** otherwise it will have been copied to your user folder by Data Factory at **/user/<your-short-name>/field_production_monthly.csv**. Be sure to update paths where necessary below.
 
 Reference Databricks documentation `Authenticate to Azure Data Lake Storage with your Azure Active Directory Credentials <https://docs.azuredatabricks.net/spark/latest/data-sources/azure/adls-passthrough.html>`_. Use the code under the section *Read and write Azure Data Lake Storage using credential passthrough* to load the .csv file from the datalake as a dataframe.
 
@@ -89,7 +89,7 @@ Solution:
 
 .. code:: python
 
-      df = spark.read.csv("abfss://dls@edc2019dls.dfs.core.windows.net/user/<your-short-name>/*.csv", header='true').collect()
+      df = spark.read.csv("abfss://dls@omniatutorialdls.dfs.core.windows.net/user/<your-short-name>/*.csv", header='true').collect()
       df = spark.createDataFrame(df)
       display(df)
 
@@ -210,7 +210,7 @@ from the last step into this table.
 Add the following to a new cell in your notebook and run the cell:
   
 **Be sure to replace <your-sql-server-name> with the name of your Azure 
-SQL Server. This should be in the format edc2019-<short name>.**
+SQL Server. This should be in the format omnia-tutorial-<short name>.**
 
 .. code:: python
 
@@ -329,7 +329,7 @@ SQL Server. This should be in the format edc2019-<short name>.**
 Load - Load Data Into SQL Database With Username And Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Redo step **Store Data To a SQL Table**. Instead of using service 
-principal **OmniaEDC2019_DatabricksSPN** to connect to SQL database, use 
+principal **omnia-tutorial-databricks** to connect to SQL database, use 
 the username and password you created in module **Ingest** to connect from 
 databricks to your database. 
 
