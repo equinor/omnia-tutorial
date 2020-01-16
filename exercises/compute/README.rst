@@ -72,7 +72,7 @@ Bricks. This includes:
   secret name **databricksSpnClientSecret**. The permissions of this client
   have been set up for this module. 
 * The connection between the key vault and the Databricks workspace has been
-  set up with a secret scope **edc_key_vault_scope** in Databricks. 
+  set up with a secret scope **omnia-tutorial-common-kv** in Databricks. 
 * The **tenant ID** of Equinor is "3aa4a235-b6e2-48d5-9195-7fcf05b459b0".
 
 Extract
@@ -156,7 +156,7 @@ Setup Connection to SQL server
 Reference `Connect Azure Databricks to SQL Database & Azure SQL Data Warehouse using a Service Principal <https://thedataguy.blog/connect-azure-databricks-to-sql-database-azure-sql-data-warehouse-using-a-service-principal/>`_ to understand how to use client credentials to authenticate against SQL server from databricks.
 
 We need to set the pre-created service principal 
-**OmniaEDC2019_DatabricksSPN** as a user to your database with **db_owner** 
+**omnia-tutorial-databricks** as a user to your database with **db_owner** 
 role. 
 
 To do this you will need to locate your SQL Database in the Azure portal and
@@ -164,9 +164,9 @@ using Query Editor run the following SQL query:
 
 .. code:: sql
 
-      CREATE USER [OmniaEDC2019_DatabricksSPN] FROM  EXTERNAL PROVIDER WITH DEFAULT_SCHEMA=[dbo];
+      CREATE USER [omnia-tutorial-databricks] FROM  EXTERNAL PROVIDER WITH DEFAULT_SCHEMA=[dbo];
 
-      EXEC sp_addrolemember N'db_owner', N'OmniaEDC2019_DatabricksSPN';
+      EXEC sp_addrolemember N'db_owner', N'omnia-tutorial-databricks';
 
 We can now use this service principal to connect to the database. To avoid
 storing passwords in our code, we will get the client secret that has already 
@@ -178,7 +178,7 @@ Add the following to a new cell in your notebook and run the cell:
 
 .. code:: python
 
-    client_secret = dbutils.secrets.get(scope = "edc_key_vault_scope", key = "DatabricksSpnClientSecret")
+    client_secret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
 Now we will use this client secret to get an access token that we can use
 to authenticate against SQL server with client credentials. 
@@ -239,7 +239,7 @@ Extract - Read Data From Datalake Using Client Credentials With Mounting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Create a new notebook to redo step **Get Data From Datalake Gen 2** but instead of using Azure Passthrough, reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to mount targeted data to databricks with client credentials.
 
-**Note: Choose cluster "EDC-Standard-Shared" to run the notebook. Azure Passthrough is not enabled on this cluster.**
+**Note: Choose cluster "Standard" to run the notebook. Azure Passthrough is not enabled on this cluster.**
 
 Solution:
   
@@ -248,7 +248,7 @@ Solution:
   clientId = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
 
   # Get client secret of service principal from key vault
-  clientSecret = dbutils.secrets.get(scope = "edc_key_vault_scope", key = "DatabricksSpnClientSecret")
+  clientSecret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
   # only mount once
   configs = {"fs.azure.account.auth.type": "OAuth",
@@ -259,19 +259,19 @@ Solution:
       "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
   dbutils.fs.mount(
-  source = "abfss://dls@edc2019dls.dfs.core.windows.net/data/open/npd.no/field_production/",
-  mount_point = "/mnt/edc2019<shortname>",
+  source = "abfss://dls@omniatutorialdls.dfs.core.windows.net/data/open/npd.no/field_production/",
+  mount_point = "/mnt/omniatutorial<shortname>",
   extra_configs = configs)
 
   df = spark.read.format('csv').options(
-  header='true', inferschema='false').load("/mnt/edc2019/*.csv")
+  header='true', inferschema='false').load("/mnt/omniatutorial/*.csv")
   display(df)
 
 Extract - Read Data From Datalake Directly Using Client Credentials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Create a new notebook to redo step **Get Data From Datalake Gen 2** but reference Databricks documentation `Azure Data Lake Storage Gen 2 <https://docs.databricks.com/spark/latest/data-sources/azure/azure-datalake-gen2.html>`_ to access data in datalake directly with client credentials.
 
-**Note: Choose cluster "EDC-Standard-Shared" to run the notebook. Azure Passthrough is not enabled on this cluster.**
+**Note: Choose cluster "Standard" to run the notebook. Azure Passthrough is not enabled on this cluster.**
 
 Solution:
   
@@ -279,17 +279,17 @@ Solution:
 
       clientId = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
       # Get client secret of service principal from key vault
-      clientSecret = dbutils.secrets.get(scope = "edc_key_vault_scope", key = "DatabricksSpnClientSecret")
+      clientSecret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
       # set up spark session to connect to datalake with client credentials
-      spark.conf.set("fs.azure.account.auth.type.edc2019dls.dfs.core.windows.net", "OAuth")
-      spark.conf.set("fs.azure.account.oauth.provider.type.edc2019dls.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-      spark.conf.set("fs.azure.account.oauth2.client.id.edc2019dls.dfs.core.windows.net", clientId)
-      spark.conf.set("fs.azure.account.oauth2.client.secret.edc2019dls.dfs.core.windows.net", clientSecret)
-      spark.conf.set("fs.azure.account.oauth2.client.endpoint.edc2019dls.dfs.core.windows.net", "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token")
+      spark.conf.set("fs.azure.account.auth.type.omniatutorialdls.dfs.core.windows.net", "OAuth")
+      spark.conf.set("fs.azure.account.oauth.provider.type.omniatutorialdls.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+      spark.conf.set("fs.azure.account.oauth2.client.id.omniatutorialdls.dfs.core.windows.net", clientId)
+      spark.conf.set("fs.azure.account.oauth2.client.secret.omniatutorialdls.dfs.core.windows.net", clientSecret)
+      spark.conf.set("fs.azure.account.oauth2.client.endpoint.omniatutorialdls.dfs.core.windows.net", "https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token")
 
       df = spark.read.format('csv').options(
-      header='true', inferschema='false').load("abfss://dls@edc2019dls.dfs.core.windows.net/data/open/npd.no/field_production/*.csv")
+      header='true', inferschema='false').load("abfss://dls@omniatutorialdls.dfs.core.windows.net/data/open/npd.no/field_production/*.csv")
       display(df)
 
 Extract - Read Data From SQL Database using Client Credentials
@@ -299,7 +299,7 @@ Create a new notebook and reference `Connect Azure Databricks to SQL Database & 
 Solution:
 
 **Be sure to replace <your-sql-server-name> with the name of your Azure 
-SQL Server. This should be in the format edc2019-<short name>.**
+SQL Server. This should be in the format omniatutorial-<short name>.**
 
 .. code:: python
 
@@ -309,7 +309,7 @@ SQL Server. This should be in the format edc2019-<short name>.**
       authority_uri = authority_host_uri + '/' + tenant
       resource_uri = 'https://database.windows.net/'
       client_id = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
-      client_secret = dbutils.secrets.get(scope = "edc_key_vault_scope", key = "DatabricksSpnClientSecret")
+      client_secret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
       context = adal.AuthenticationContext(authority_uri, api_version=None)
       mgmt_token = context.acquire_token_with_client_credentials(resource_uri, client_id, client_secret)
