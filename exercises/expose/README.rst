@@ -431,6 +431,7 @@ Implemented the controller method ``Put(int id, ProductionData productionData)``
 ..............
 
 Implement the controller method ``Delete(int id)``
+
 * Delete an entry in the database based on its' ID
 * Should return the deleted entry
 * *NB: Can't delete an entry that doesn't exist*
