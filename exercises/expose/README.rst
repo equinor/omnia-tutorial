@@ -1,7 +1,8 @@
 Omnia Tutorial API
 ==================
 
-## 1. Setup
+1. Setup
+--------
 
 1. Make sure that the web api is connected with the database using MSI. This is done by the setup scripts, and should be in place. To check the this:
     * Locate the app service in your resource group in the [Azure Portal](portal.azure.com)
