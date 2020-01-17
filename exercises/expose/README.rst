@@ -245,6 +245,8 @@ the following:
   But we have had some problems on accessing the running site, so to
   fully test this, head down to the Deploying to Azure section.
 
+* **This is not available** in Visual Studio Online, to see your changes you have to publish to the web app.
+
 Implementing the code-changes
 -----------------------------
 
@@ -348,8 +350,8 @@ from there. Be sure to swap out <shortname> with your actual shortname.
 
 `Reference <https://docs.microsoft.com/en-us/dotnet/azure/dotnet-quickstart-vs?view=azure-dotnet#deploying-the-application-as-an-azure-web-app>`__
 
-Visual Studio Code
-^^^^^^^^^^^^^^^^^^
+Visual Studio Code & Visual Studio Online
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Install the `Azure App Service` extension
 * Open Visual Studio Code terminal
@@ -373,49 +375,6 @@ from there. Be sure to swap out <shortname> with your actual shortname.
 
 `Reference <https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#generate-the-deployment-package-locally>`__
 
-VSCode in Azure CLI
-^^^^^^^^^^^^^^^^^^^
-
-* Run the command `Set-AzContext "Omnia Application Workspace - Sandbox"` so 
-  we are working in the correct subscription.
-* Ensure you are still in the correct folder.
-* Run `dotnet publish -c Release`, this creates the project in the 
-  `publish` folder. Note this path as you need it in the next step. 
-
-  Typically this is `/home/<your-name>/omnia-tutorial/expose/starter/EDC-API/bin/Release/netcoreapp2.2/publish/`
-* Create a .zip file of the project:
-
-  * Create a reference to the publish folder: 
-    `$publishFolder = "<path-to-folder>"`, this is the same folder from the 
-    last step.
-  * Create variable in the CLI: `$publishZip = "publish.zip"`
-  * Create the zip
-
-    .. code-block::
-
-      if(Test-path ~/$publishZip) {Remove-item ~/$publishZip} 
-      Add-Type -assembly "system.io.compression.filesystem" 
-      [io.compression.zipfile]::CreateFromDirectory($publishFolder, $publishZip)
-  * Run the following block to deploy the zip file, replacing <your-shortname>
-    with your shortname:
-
-    .. code-block::
-    
-      Publish-AzWebapp -ResourceGroupName "edc2019_<your-shortname>" -Name "edc2019-<your-shortname>-app" -ArchivePath $publishZip
-
-* The deployment might take a few seconds
-* It should produce output like the table below if the deployment was 
-  successful:
-
-==============================  ========    =========================== ======================================================== =============
-Name                            State       ResourceGroup               EnabledHostNames                                         Location 
-==============================  ========    =========================== ======================================================== =============
-edc2019-\<your-shortname\>-app  Running     edc2019\_\<your-shortname\> {"edc2019-\<your-hortname\>-app.azurewebsites.net", ...  North Europe 
-==============================  ========    =========================== ======================================================== =============
-
-* Navigate to 
-  `edc2019-\<your-shortname\>-app.azurewebsites.net/swagger/` to 
-  verify that the API is running as it should.
 
 Open API Specification
 ----------------------
