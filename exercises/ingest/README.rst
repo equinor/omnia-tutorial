@@ -189,16 +189,14 @@ We will use a serverless option so select *SQL Databases* and *Create* with the 
 Enter the database configuration details, ensuring the following:
 
 * Check that the subscription is *Omnia Application Workspace - Sandbox*
-  and select your own resource group *edc2019_{shortname}*
+  and select your own resource group *omnia-tutorial-{shortname}*
 * Enter database name as *Common*
 * Click *Create new* under the *Select a server* option.
 
   * Provide a uniqe Server name using consistent naming e.g.
-    edc2019-{shortname}
+    omnia-tutorial-{shortname}
   * Enter a custom password under the create server dialog as shown below.
   * Location should be *North Europe*
-  * Be sure to check the box *Allow Azure services to access server* so that
-    Datafactory (and other services) can access the database.
   * Click *OK*
 
 * Under *Compute & Storage* select *Configure database* and chose the *Basic*
@@ -212,12 +210,14 @@ Enter the database configuration details, ensuring the following:
 
 Click *Review + create* to create the database followed by *Create* after you have reviewed the settings.
 
+This will create both a server 
+
 Once the database is created locate / search to find the created SQL Server (not the SQL database within it) so we can add Firewall details to access any databases remotely. In the SQL Server links select the *Firewalls and
 virtual networks* link to modify the firewall.
 
 As we will copy data by using the Azure Data Factory integration runtime, we need to ensure the Azure SQL Server firewall is open so that Azure services can access the server. This is done by ensuring the *Allow access to Azure services* option is set to *ON*.
 
-We will open for other needed addresses too as shown in the image below.
+Click the *Add client ip* button to add access to your current external IP address. 
 For access from the Equinor internal network the IP address *143.97.2.35* should be added.
 
 Save your changes.
@@ -236,7 +236,7 @@ Go to the SQL Database resource itself and select the Query Editor link.
 
 Create a table and user by entering and running the below SQL in the query
 editor. Be sure to swap out *NameOfDatafactory* in the SQL code below with 
-the actual name of your data factory e.g. edc2019-<shortname>-df
+the actual name of your data factory e.g. omnia-tutorial-<shortname>-df
 
 .. code-block:: sql
 
@@ -266,7 +266,7 @@ In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity 
 
 Switch to the Source tab in the copy activity settings, and select new dataset. 
 
-This time we will copy from the Datalake, but using DelimitedText so we can write to the different database columns. We will also reuse the *EDC2019CommonDLS* linked service that we created earlier.
+This time we will copy from the Datalake, but using DelimitedText so we can write to the different database columns. We will also reuse the linked service that we created earlier.
 
 .. image:: images/SQL/1_new_dataset_dls.png
 
@@ -275,7 +275,7 @@ This time we will copy from the Datalake, but using DelimitedText so we can writ
 
 .. image:: images/SQL/4_linkedservice_dls.png
 
-Add the file path to the Datalake store. Be sure also to select the option *First Row as Header*.
+Add the file path to the Datalake store. Be sure also to select the option *First Row as Header* and Import schema from *connection/store*.
 
 .. image:: images/SQL/5_set_property.png
 
