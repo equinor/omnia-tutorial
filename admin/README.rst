@@ -44,6 +44,8 @@ very often so time hasn't been invested in this at this stage.
     Create this as a standard storage account named **omniatutorialdls** using **LRS** replication and with **Hierarchical namespace** enabled.
 
   * Give the omnia-tutorial service principal the **Storage Blob Data Owner** role.
+  
+  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob Data Contributor** role.
 
   * Create the folders:
 
