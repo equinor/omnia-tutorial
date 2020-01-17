@@ -6,13 +6,6 @@ This module is quite code-heavy and would typically involve having some tools pr
 
 The exercise has 3 different paths showing how to achieve the goals using Visual Studio, Visual Studio Code, and also a variant that uses no-pre installed applications.
 
-A Word of warning
------------------
-
-Doing this without the installed tools is cumbersome and inefficient, so...:
-
-.. image:: ./images/dont-panic.jpg
-    :width: 200px
 
 Prerequisites
 -------------
