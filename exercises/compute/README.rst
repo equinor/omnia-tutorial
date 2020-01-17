@@ -194,7 +194,7 @@ Add the following to a new cell in your notebook and run the cell:
       tenant = '3aa4a235-b6e2-48d5-9195-7fcf05b459b0'
       authority_uri = authority_host_uri + '/' + tenant
       resource_uri = 'https://database.windows.net/'
-      client_id = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
+      client_id = '6b26b7a0-b848-4c68-b0c4-4bfbea141a06'
 
       context = adal.AuthenticationContext(authority_uri, api_version=None)
       mgmt_token = context.acquire_token_with_client_credentials(resource_uri, client_id, client_secret)
@@ -245,7 +245,7 @@ Solution:
   
 .. code:: python
 
-  clientId = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
+  clientId = '6b26b7a0-b848-4c68-b0c4-4bfbea141a06'
 
   # Get client secret of service principal from key vault
   clientSecret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
@@ -277,7 +277,7 @@ Solution:
   
 .. code:: python
 
-      clientId = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
+      clientId = '6b26b7a0-b848-4c68-b0c4-4bfbea141a06'
       # Get client secret of service principal from key vault
       clientSecret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
@@ -308,7 +308,7 @@ SQL Server. This should be in the format omniatutorial-<short name>.**
       tenant = '3aa4a235-b6e2-48d5-9195-7fcf05b459b0'
       authority_uri = authority_host_uri + '/' + tenant
       resource_uri = 'https://database.windows.net/'
-      client_id = 'f0d5bd54-9617-491d-afa1-07c8bd4dc5c1'
+      client_id = '6b26b7a0-b848-4c68-b0c4-4bfbea141a06'
       client_secret = dbutils.secrets.get(scope = "omnia-tutorial-common-kv", key = "DatabricksSpnClientSecret")
 
       context = adal.AuthenticationContext(authority_uri, api_version=None)
