@@ -241,12 +241,12 @@ the actual name of your data factory e.g. omnia-tutorial-<shortname>-df
 .. code-block:: sql
 
     CREATE TABLE [dbo].[ProductionData](
-        [Wellbore] [varchar](200) NOT NULL,
-        [Year] [int] NOT NULL,
-        [Month] [int] NOT NULL,
-        [Oil] [decimal](15, 5) NOT NULL,
-        [Gas] [decimal](15, 5) NOT NULL,
-        [Id] [int] IDENTITY(1,1) NOT NULL
+      [Wellbore] [varchar](200) NULL,
+      [Year] [int] NULL,
+      [Month] [int] NULL,
+      [Oil] [decimal](15, 5) NULL,
+      [Gas] [decimal](15, 5) NULL,
+      [Id] [int] IDENTITY(1,1) NOT NULL
     ) ON [PRIMARY]
     GO
 
