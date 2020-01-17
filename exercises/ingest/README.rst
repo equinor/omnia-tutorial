@@ -241,7 +241,7 @@ the actual name of your data factory e.g. omnia-tutorial-<shortname>-df
 .. code-block:: sql
 
     CREATE TABLE [dbo].[ProductionData](
-        [Wellbore] [varchar](50) NOT NULL,
+        [Wellbore] [varchar](200) NOT NULL,
         [Year] [int] NOT NULL,
         [Month] [int] NOT NULL,
         [Oil] [decimal](15, 5) NOT NULL,
