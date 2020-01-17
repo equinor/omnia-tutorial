@@ -99,11 +99,11 @@ Visual Studio Online
 
 * Open up a terminal window,
 
-.. image:: ./images/open-terminal.PNG
+.. image:: ./images/open-terminal.png
 
 * Enter ``git clone https://github.com/equinor/omnia-tutorial.git`` in the command line.
 
-.. image:: ./images/git-cline.PNG
+.. image:: ./images/git-clone.PNG
 
 * The project files should open up on the left:
 
