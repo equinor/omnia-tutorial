@@ -25,7 +25,7 @@ This module needs three things:
 
   * Visual Studio + git
   * Visual Studio Code + git
-  * A modern browser using the portal-experience with VSCode in Azure CLI
+  * A modern browser using the portal-experience with Visual Studio Online
 
 Setting up
 ----------
@@ -57,10 +57,10 @@ If you havent used and configured Visual Studio Online previously you will need 
 
 .. image:: ./images/create-billing-plan.PNG
 
-    * Select subscription `Omnia Application Workspace - Sandbox`
-    * Location `West Europe`
-    * Plan Name can be whatever, but we suggest `omnia-tutorial-<shortname>-vscode`
-    *  Select your resouce group `omnia-tutorial-<shortname>`
+    * Select subscription ``Omnia Application Workspace - Sandbox``
+    * Location ``West Europe``
+    * Plan Name can be whatever, but we suggest ``omnia-tutorial-<shortname>-vscode``
+    *  Select your resouce group ``omnia-tutorial-<shortname>``
     * Wait a little while until plan is ready.
 
 * Create new Environment:
@@ -92,7 +92,7 @@ Visual Studio Code or Visual Studio 17/19
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * In powershell or a command prompt, navigate to a folder where you want to
   download the git repository, example "C:\Code".
-* Run the command `git clone https://github.com/equinor/omnia-tutorial.git`
+* Run the command ``git clone https://github.com/equinor/omnia-tutorial.git``
 
 Visual Studio Online
 ^^^^^^^^^^^^^^^^^^^^
@@ -118,7 +118,7 @@ Visual Studio 17/19
 ^^^^^^^^^^^^^^^^^^^
 
 * Start Visual Studio.
-* Open the *EDC-API-skeleton.sln* solution file located in the folder where 
+* Open the *omnia-tutorial-API-starter.sln* solution file located in the folder where 
   you cloned down the github repository under the 
   *omnia-tutorial\\exercises\\expose\\starter* folder
 * On one of the sides, there should be a "Solution Explorer" containing all 
@@ -133,7 +133,7 @@ Visual Studio Code
 * Open up Visual Studio Code
 * Click "File" in the top left, and select "Open Folder"
 * Navigate to "omnia-tutorial\\exercises\\expose\\starter" and select the 
-  folder "EDC-API" and click "Select Folder"
+  folder "omnia-tutorial-API-starter" and click "Select Folder"
 * This should open the file structure in the "Explorer" on the left, if not 
   open it by pressing `Ctrl-Shift-E`, or press the *Explorer* icon in the top
   left.
@@ -143,7 +143,7 @@ Visual Studio Online
 
 * Click "File" in the top left, and select "Open Folder"
 * Navigate to "omnia-tutorial\\exercises\\expose\\starter" and select the 
-  folder "EDC-API" and click "Select Folder"
+  folder "omnia-tutorial-API-starter" and click "Select Folder"
 * This should open the file structure in the "Explorer" on the left, if not 
   open it by pressing `Ctrl-Shift-E`, or press the *Explorer* icon in the top
   left.
@@ -181,7 +181,7 @@ that will host our API.
 
   Example:
   
-  ``Server=tcp:edc-api-track.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
+  ``Server=tcp:omnia-tutorial-<shortname>-sql..database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
 
   .. note:: 
     The connection string does NOT contain any username/password, this is 
@@ -189,14 +189,14 @@ that will host our API.
 
 * We now need to grant the MSI access in the database so navigate to your 
   resouce group in the `Azure Portal <portal.azure.com>`__ and locate your 
-  `SQL database`.
-* In the list on the left, navigate to `Query editor (preview)`, and connect
-  using `Active Directory authentication`. 
+  ``SQL database``.
+* In the list on the left, navigate to ``Query editor (preview)``, and connect
+  using ``Active Directory authentication``. 
   
   *(The login might fail, retry it a few times before contacting one of us)*.
 * This should open a query editor, enter the following commands, replacing the
   <app name> placeholder with the name of your AppService e.g. 
-  edc2019-<shortname>-app: 
+  omnia-tutorial-<shortname>-app: 
 
   .. code-block:: sql
 
@@ -209,10 +209,10 @@ Scenario 2
 If you have not completed the ingest module we will use a shared completed 
 database that has already been created.
 
-* Update the `ConnectionString` in `appsettings.json` with the connection 
+* Update the ``ConnectionString`` in ``appsettings.json`` with the connection 
   string for the common  database. The connection string is as follows: 
 
-  `Server=tcp:edc2019-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;`
+  ``Server=tcp:omnia-tutorial-common-sql.database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
 
   If you don't get access, please contact one of us.
 
@@ -228,22 +228,11 @@ Swashbuckle in the project, giving access to a documentation page for the API.
 Any time you want to test your API, simply run the API locally by doing
 the following:
 
-* In Visual Studio 17/19, press `F5`. 
+* In Visual Studio 17/19, press ``F5``. 
 
-  The swagger page should be available at https://localhost:44373/swagger. If the window doesn't appear, find the base URL in the Visual studio `Output` window, and add `/swagger`.
+  The swagger page should be available at https://localhost:44373/swagger. If the window doesn't appear, find the base URL in the Visual studio ``Output`` window, and add ``/swagger``.
 * In Visual Studio Code open a terminal window and enter the command 
-  `dotnet build` to build your solution, and `dotnet run` to start the API. 
-
-  The default URL is typically `localhost:5001`, and the swagger page should 
-  be available at localhost:5001/swagger.
-* If using the cloud shell, make sure you are still in the EDC-API folder and
-  enter the command `dotnet build` to build your solution, and `dotnet run` 
-  to start the API. 
-
-  The service should now be up and running in the context of the 
-  CLI- workspace.
-  But we have had some problems on accessing the running site, so to
-  fully test this, head down to the Deploying to Azure section.
+  ``dotnet build`` to build your solution, and ``dotnet run`` to start the API.
 
 * **This is not available** in Visual Studio Online, to see your changes you have to publish to the web app.
 
@@ -335,17 +324,17 @@ Visual Studio 17/19
 ^^^^^^^^^^^^^^^^^^^
 
 * Right click the api project in the solution explorer
-* Select `Publish..`
-* Select `App Service` and then check of `Select Existing` and hit `Publish`
+* Select ``Publish..``
+* Select ``App Service`` and then check of ``Select Existing`` and hit ``Publish``
 * Give the app a logical name
-* Select the subscription `Omnia Application Workspace - Sandbox` and 
-  `edc2019_<shortname>` resource group.
-* Select the app service `edc2019-<shortname>-app` and hit `Ok`
+* Select the subscription ``Omnia Application Workspace - Sandbox`` and 
+  ``omnia-tutorial-<shortname>`` resource group.
+* Select the app service ``omnia-tutorial-<shortname>-app`` and hit ``Ok``
 
 After a while a new window will open with the deployed API. As this is the 
 base url, it will give a 404 error. You can either append part of the API path
 directly e.g. */production-data* or access the swagger file at 
-https://edc2019-<shortname>-app.azurewebsites.net/swagger/index.html and test 
+https://omnia-tutorial-<shortname>-app.azurewebsites.net/swagger/index.html and test 
 from there. Be sure to swap out <shortname> with your actual shortname.
 
 `Reference <https://docs.microsoft.com/en-us/dotnet/azure/dotnet-quickstart-vs?view=azure-dotnet#deploying-the-application-as-an-azure-web-app>`__
@@ -353,24 +342,24 @@ from there. Be sure to swap out <shortname> with your actual shortname.
 Visual Studio Code & Visual Studio Online
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Install the `Azure App Service` extension
+* Install the ``Azure App Service`` extension
 * Open Visual Studio Code terminal
 * Use the following command to generate a Release package to a sub folder 
   called publish:
-  * `dotnet publish -c Release -o ./publish`
+  * ``dotnet publish -c Release -o ./publish``
 * A new publish folder will be created under the project structure
-* Right click the `publish` folder and select `Deploy to Web App...`, this 
+* Right click the ``publish`` folder and select ``Deploy to Web App...``, this 
   might prompt for login
-* Select the subscription `Omnia Application Workspace - Sandbox` and 
-  `edc2019_<shortname>` resource group.
-* Select the app service `edc2019-<shortname>-app` if needed and hit `Ok`
+* Select the subscription ``Omnia Application Workspace - Sandbox`` and 
+  ``omnia-tutorial-<shortname>`` resource group.
+* Select the app service ``omnia-tutorial-<shortname>-app`` if needed and hit ``Ok``
 * Visual Studio Code will ask you if you want to overwrite the existing 
-  content. Click `Deploy` to confirm
+  content. Click ``Deploy`` to confirm
 
 After a while a new window will open with the deployed API. As this is the 
 base url, it will give a 404 error. You can either append part of the API path
 directly e.g. */production-data* or access the swagger file at 
-https://edc2019-<shortname>-app.azurewebsites.net/swagger/index.html and test 
+https://omnia-tutorial-<shortname>-app.azurewebsites.net/swagger/index.html and test 
 from there. Be sure to swap out <shortname> with your actual shortname.
 
 `Reference <https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#generate-the-deployment-package-locally>`__
@@ -416,7 +405,7 @@ Earlier we only added code for the *ProductionDataController* read-method. Here 
 Note that this will only work if you have setup your own SQL Server, as you only have read-rights on the Common-one.
 
 You can reference the Entity Framework examples above or look at the reference
-implementation in *omnia-tutorial\exercises\expose\solution\EDC-API*.
+implementation in *omnia-tutorial\exercises\expose\solution\omnia-tutorial-API*.
 
 1. ProductionDataController
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -424,24 +413,24 @@ implementation in *omnia-tutorial\exercises\expose\solution\EDC-API*.
 **1.1 Create**
 ..............
 
-Implement the controller method `Post(ProductionDataRequest request)`
+Implement the controller method ``Post(ProductionDataRequest request)``
 
-* Take `ProductionDataRequest` object and create a new `ProductionData` object
-* Insert the new `ProductionData` object in the table.
+* Take ``ProductionDataRequest`` object and create a new ``ProductionData`` object
+* Insert the new ``ProductionData`` object in the table.
 * *NB: Can't create an existing entry.*
 
 **1.2 Update**
 ..............
 
-Implemented the controller method `Put(int id, ProductionData productionData)`
+Implemented the controller method ``Put(int id, ProductionData productionData)``
 
-* Update an entry in the database using the `Update` functionality of Entity 
+* Update an entry in the database using the ``Update`` functionality of Entity 
   Framework
 
 **1.3 Delete**
 ..............
 
-Implement the controller method `Delete(int id)`
+Implement the controller method ``Delete(int id)``
 * Delete an entry in the database based on its' ID
 * Should return the deleted entry
 * *NB: Can't delete an entry that doesn't exist.*
@@ -454,13 +443,13 @@ All these methods calculate properties for all the wellbores.
 **2.1 Calculate sum of Oil & Gas between 2 dates**
 ..................................................
 
-Implemented the controller method `GetOilBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+Implemented the controller method ``GetOilBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)``
 
 * Takes in 2 dates, as a year-month pair, and calculates the total amount of 
   Oil production in the interval sorted by wellbores.
 * Should return a list of wellbores and their total amount of Oil
 
-Implemented the controller method `GetGasBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+Implemented the controller method ``GetGasBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)``
 
 * Takes in 2 dates, as a year-month pair, and calculates the total amount of 
   Gas production in the interval.
@@ -471,13 +460,13 @@ Be sure to preprocess the input properly
 **2.2 Calculate average Oil and Gas between 2 dates**
 .....................................................
 
-Implemented the controller method `GetOilAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+Implemented the controller method ``GetOilAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)``
 
 * Takes in 2 dates, as a year-month pair, and calculates the average amount 
   of Oil production in the interval sorted by wellbores.
 * Should return a list of wellbores and their average amount of Oil
 
-Implemented the controller method `GetGasAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+Implemented the controller method ``GetGasAvgBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)``
 
 * Takes in 2 dates, as a year-month pair, and calculates the average amount 
   of Gas production in the interval.
@@ -489,7 +478,7 @@ Be sure to preprocess the input properly
 **2.3 Find the number of wellbore records between 2 dates**
 ...........................................................
 
-Implement the method `GetWellboreRecordsBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)`
+Implement the method ``GetWellboreRecordsBetweenDates(int? fromYear, int? toYear, int? fromMonth, int? toMonth)``
 
 * Should return a list of wellbores and the amount of records each wellbore 
   has for the given period.
