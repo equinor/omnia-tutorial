@@ -405,7 +405,7 @@ Earlier we only added code for the *ProductionDataController* read-method. Here 
 Note that this will only work if you have setup your own SQL Server, as you only have read-rights on the Common-one.
 
 You can reference the Entity Framework examples above or look at the reference
-implementation in *omnia-tutorial\exercises\expose\solution\omnia-tutorial-API*.
+implementation in *omnia-tutorial\\exercises\\expose\\solution\\omnia-tutorial-API*.
 
 1. ProductionDataController
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
