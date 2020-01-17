@@ -417,7 +417,7 @@ Implement the controller method ``Post(ProductionDataRequest request)``
 
 * Take ``ProductionDataRequest`` object and create a new ``ProductionData`` object
 * Insert the new ``ProductionData`` object in the table.
-* *NB: Can't create an existing entry.*
+* *NB: Can't create an existing entry*
 
 **1.2 Update**
 ..............
@@ -433,7 +433,7 @@ Implemented the controller method ``Put(int id, ProductionData productionData)``
 Implement the controller method ``Delete(int id)``
 * Delete an entry in the database based on its' ID
 * Should return the deleted entry
-* *NB: Can't delete an entry that doesn't exist.*
+* *NB: Can't delete an entry that doesn't exist*
 
 **2. AggregatesController**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
