@@ -57,11 +57,11 @@ If you havent used and configured Visual Studio Online previously you will need 
 
 .. image:: ./images/create-billing-plan.PNG
 
-    * Select subscription ``Omnia Application Workspace - Sandbox``
-    * Location ``West Europe``
-    * Plan Name can be whatever, but we suggest ``omnia-tutorial-<shortname>-vscode``
-    *  Select your resouce group ``omnia-tutorial-<shortname>``
-    * Wait a little while until plan is ready.
+* Select subscription ``Omnia Application Workspace - Sandbox``
+* Location ``West Europe``
+* Plan Name can be whatever, but we suggest ``omnia-tutorial-<shortname>-vscode``
+*  Select your resouce group ``omnia-tutorial-<shortname>``
+* Wait a little while until plan is ready.
 
 * Create new Environment:
 
