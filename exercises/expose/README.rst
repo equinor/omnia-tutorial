@@ -455,7 +455,7 @@ Implemented the controller method ``GetGasBetweenDates(int? fromYear, int? toYea
   Gas production in the interval.
 * Should return a list of wellbores and their total amount of Gas
 
-Be sure to preprocess the input properly
+*Be sure to preprocess the input properly*
 
 **2.2 Calculate average Oil and Gas between 2 dates**
 .....................................................
@@ -472,7 +472,7 @@ Implemented the controller method ``GetGasAvgBetweenDates(int? fromYear, int? to
   of Gas production in the interval.
 * Should return a list of wellbores and their average amount of Gas
 
-Be sure to preprocess the input properly
+*Be sure to preprocess the input properly*
 
 
 **2.3 Find the number of wellbore records between 2 dates**
@@ -483,7 +483,7 @@ Implement the method ``GetWellboreRecordsBetweenDates(int? fromYear, int? toYear
 * Should return a list of wellbores and the amount of records each wellbore 
   has for the given period.
 
-> Be sure to preprocess the input properly
+*Be sure to preprocess the input properly*
 
 What we Didn't Cover
 --------------------
