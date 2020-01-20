@@ -44,7 +44,7 @@ If you will NOT be using Visual Studio or Visual Studio Code
 If you are NOT using Visual Studio or Visual Studio Code you will need to use Visual Studio Online. 
 If you havent used and configured Visual Studio Online previously you will need to do that now:
 
-* Navigate to ``https://online.visualstudio.com/``.
+* Navigate to https://online.visualstudio.com/. select *Get started* and log in with your Equinor account.
 
 * Create a billing plan:
 
@@ -60,20 +60,20 @@ If you havent used and configured Visual Studio Online previously you will need 
 
 .. image:: ./images/create-environment.PNG
 
-.. image:: ./images/enter-name.PNG
 
-    * Enter a name 
-    * Leave ``Git Repository`` emptry
-    * Click ``Create``
-    * Wait a little while and until the environment is ``Available``
+* Enter a name 
+* Leave ``Git Repository`` emptry
+* Click ``Create``
+* Wait a little while and until the environment is ``Available``
+
+.. image:: ./images/enter-name.PNG
 
 .. image:: ./images/environment-ready.PNG
 
 * Click on the ``Environment``
 
-* When you are inside the ``Environment`` it should look identical to the local version of Visual Studio Code.
-
-
+* When you are inside the ``Environment`` it should look identical to the 
+  local version of Visual Studio Code.
 
 Getting the code
 ----------------
@@ -86,6 +86,8 @@ Visual Studio Code or Visual Studio 17/19
 * In powershell or a command prompt, navigate to a folder where you want to
   download the git repository, example "C:\Code".
 * Run the command ``git clone https://github.com/equinor/omnia-tutorial.git``
+  or alternatively `download a zip file <https://github.com/equinor/omnia-tutorial/archive/master.zip>`_ 
+  and extract it to the folder where you will work from.
 
 Visual Studio Online
 ^^^^^^^^^^^^^^^^^^^^
@@ -112,7 +114,7 @@ Visual Studio 17/19
 
 * Start Visual Studio.
 * Open the *omnia-tutorial-API-starter.sln* solution file located in the folder where 
-  you cloned down the github repository under the 
+  you cloned the github repository under the 
   *omnia-tutorial\\exercises\\expose\\starter* folder
 * On one of the sides, there should be a "Solution Explorer" containing all 
   the files in the project
@@ -120,28 +122,16 @@ Visual Studio 17/19
   appear. If not, navigate to "View" in the top and select 
   "Solution Explorer".
 
-Visual Studio Code
-^^^^^^^^^^^^^^^^^^
+Visual Studio Code & Visual Studio Online
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Open up Visual Studio Code
+* Start Visual Studio Code / Vsual Studio Online
 * Click "File" in the top left, and select "Open Folder"
 * Navigate to "omnia-tutorial\\exercises\\expose\\starter" and select the 
   folder "omnia-tutorial-API-starter" and click "Select Folder"
 * This should open the file structure in the "Explorer" on the left, if not 
   open it by pressing `Ctrl-Shift-E`, or press the *Explorer* icon in the top
   left.
-
-Visual Studio Online
-^^^^^^^^^^^^^^^^^^^
-
-* Click "File" in the top left, and select "Open Folder"
-* Navigate to "omnia-tutorial\\exercises\\expose\\starter" and select the 
-  folder "omnia-tutorial-API-starter" and click "Select Folder"
-* This should open the file structure in the "Explorer" on the left, if not 
-  open it by pressing `Ctrl-Shift-E`, or press the *Explorer* icon in the top
-  left.
-
-
 
 Connecting to the data
 ----------------------
@@ -166,15 +156,13 @@ that will host our API.
 * Update the ``ConnectionString`` in ``appsettings.json`` with the connection 
   string for your database. This should be in the following format:
 
-  ``Server=tcp:<database url>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
+  ``Server=tcp:<server name>,1433;Initial Catalog=<database name>;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
 
-  To find the URL, navigate to your resouce group in the 
-  `Azure Portal <portal.azure.com>`__, open up your ``SQL database``. The URL 
-  should be located in the top right under ``Server name``.
+  Update server name and database name as appropriate.
 
   Example:
   
-  ``Server=tcp:omnia-tutorial-<shortname>-sql..database.windows.net,1433;Initial Catalog=common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
+  ``Server=tcp:omnia-tutorial-<shortname>.database.windows.net,1433;Initial Catalog=Common;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;``
 
   .. note:: 
     The connection string does NOT contain any username/password, this is 
@@ -318,7 +306,9 @@ Visual Studio 17/19
 
 * Right click the api project in the solution explorer
 * Select ``Publish..``
-* Select ``App Service`` and then check of ``Select Existing`` and hit ``Publish``
+* Select ``App Service`` and then check ``Select Existing``.
+  ``Create Profile`` and log into your account if needed then hit 
+  ``Publish``.
 * Give the app a logical name
 * Select the subscription ``Omnia Application Workspace - Sandbox`` and 
   ``omnia-tutorial-<shortname>`` resource group.
@@ -336,16 +326,9 @@ Visual Studio Code & Visual Studio Online
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Install the ``Azure App Service`` extension
-* Open Visual Studio Code terminal
-* Use the following command to generate a Release package to a sub folder 
-  called publish:
-  * ``dotnet publish -c Release -o ./publish``
-* A new publish folder will be created under the project structure
-* Right click the ``publish`` folder and select ``Deploy to Web App...``, this 
-  might prompt for login
-* Select the subscription ``Omnia Application Workspace - Sandbox`` and 
-  ``omnia-tutorial-<shortname>`` resource group.
-* Select the app service ``omnia-tutorial-<shortname>-app`` if needed and hit ``Ok``
+* In the extension browwe to your App Service under ``Omnia Application
+  Workspace - Sandbox``.
+* Right click the app service and select ``Deploy to Web App...``.
 * Visual Studio Code will ask you if you want to overwrite the existing 
   content. Click ``Deploy`` to confirm
 
