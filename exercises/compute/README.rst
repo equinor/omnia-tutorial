@@ -27,7 +27,7 @@ Prerequisites
 
 Create a Notebook in Databricks
 -------------------------------
-* Open Databricks workspace **omnia-tutorial-common-databricks** with URL: https://northeurope.azuredatabricks.net/?o=8968177579896594.
+* Open Databricks workspace **omnia-tutorial-common-databricks** with URL: https://northeurope.azuredatabricks.net/?o=4624185366344596.
 
   **Note: Don't launch the workspace from Azure Portal. You don't have access 
   there.**
@@ -203,7 +203,7 @@ Add the following to a new cell in your notebook and run the cell:
 
 Load transformed data to SQL server for further analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Finally we automatically cerate a table named 
+Finally we automatically create a table named 
 **dbo.TransformedFieldProduction** in the SQL database and write the dataframe
 from the last step into this table. 
 
