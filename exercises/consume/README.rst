@@ -50,7 +50,7 @@ course you can also program this in an Excel module later if you like.
   Note: If you did not complete the previous part then you may use this that
   of the completed scenario: 
   
-  https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12
+  https://omnia-tutorial-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12
 
   It will retrieve production data from January to December 2010 to 2015. 
 
@@ -122,7 +122,7 @@ environment.
       import pandas as pd
      
       # specify the url - swap the below (solution url) with your custom one from the expose exercise.
-      api_url = 'https://edc2019-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12'
+      api_url = 'https://omnia-tutorial-common.azurewebsites.net/production-data/between-dates?fromYear=2010&toYear=2015&fromMonth=1&toMonth=12'
      
       # Call the api and use pandas to convert the returned json into a dataframe
       df_production_data = pd.read_json(api_url)
