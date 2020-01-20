@@ -276,7 +276,7 @@
                 "typeProperties": {
                     "location": {
                         "type": "HttpServerLocation",
-                        "relativeUrl": "/ReportServer?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.35&CultureCode=en"
+                        "relativeUrl": "ReportServer_npdpublic?/FactPages/TableView/field_production_monthly&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=143.97.2.129&CultureCode=en"
                     }
                 }
             },
