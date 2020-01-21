@@ -50,4 +50,4 @@ Contributing
 ------------
 To contribute to this tutorial please submit a pull request (currently master is open for direct commits).
 
-Presentations are generate automatically using an azure devops build pipeline
+Presentations are generated automatically using an azure devops build pipeline

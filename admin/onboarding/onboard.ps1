@@ -258,7 +258,7 @@ function EmailNotification{
 
     $content.Body = "<html><head><style type='text/css'>table{ font-size:11pt;font-family:Calibri;border:solid 1px #cccccc;vertical-align:top;padding:0px 0px;border-spacing:0px 0px;}img.middle{vertical-align:middle;}</style></head><body><div style='font-size:11pt;font-family:Calibri'>Hi,<p>"
     $content.Body += ("Thank you for signing up for the 'Omnia and the Equinor Data Platform' workshop.<p>")
-    $content.Body += ("All the workshop material and documentation is available on Github at the link below. Whilst there are no pre-requisites for the workshop other than a modern browser, you might consider the optional software mentioned for a simplified experience:<p>")
+    $content.Body += ("All the workshop material and documentation is available on Github at the link below. There are no pre-requisites for the workshop other than a modern browser, although you might consider the optional software mentioned for a simplified experience:<p>")
     $content.Body += ("https://github.com/equinor/omnia-tutorial<p>")
     $content.Body += ("In the link below you can find a resource group created for use during the workshop:<p>")
     $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/omnia-tutorial-" + $shortName + "/overview <p>")
