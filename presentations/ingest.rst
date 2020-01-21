@@ -83,7 +83,7 @@ Considerations
     * Copy Data v's Connect (reference existing data source)
     * Different technology options for realising the above
 
-      * Cost (serverless & utility model. pricing calculator)
+      * Cost (serverless & utility model. pricing calculator - https://azure.microsoft.com/pricing/)
       * V1 v's V2 v's V3 generation of products and corresponding maturity.
 
 ----

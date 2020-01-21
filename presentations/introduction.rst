@@ -105,7 +105,7 @@ What is Omnia (and why?)
       * Omnia classic
       * Omnia applications
       * Standalone
-      * Sandbox - for personal training - not for testing!
+      * Student - for personal training
 
     * **Data Tab** - When does data become a part of the data platform. Will come back to later also.
 
@@ -226,5 +226,5 @@ https://portal.azure.com
       * All resources button
       * Search
       * Show example for browsing to data factory (main links - overview, access, ...)
-      * Cloud shell (e.g. 'az group list'). They will use this later in the exercises
+      * Cloud shell (e.g. 'ls', 'pwd', 'git clone <this repo>' 'az group list'). They will use this later in the exercises
       * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)

@@ -23,6 +23,8 @@ very often so time hasn't been invested in this at this stage.
 
 * Change to the runtime-environment folder and run the **create-environment.ps1** script to setup key resources.
 
+* Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on the *omnia-tutorial-common* resource group.
+
 * Onboarding
 
   * Under Active Directory | App registrations add a new registration 

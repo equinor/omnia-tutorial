@@ -68,9 +68,8 @@ There are different ways to setup a pipeline including from scratch, from existi
 
 In the Activities toolbox, expand Move & Transform. Drag the Copy Data activity from the Activities toolbox to the pipeline designer area. You can also search for activities in the Activities toolbox.
 
-| Give the activity a meaningful name such as *Copy_NPD_Data*.
-| More information on naming: https://docs.omnia.equinor.com/services/apim/overview/namingconventions/
-| Also https://dataplatformwiki.azurewebsites.net/develop/namingconventions (older but more complete)
+| Give the activity a meaningful name such as *Copy_NPD_Data* so it is easy to understand later what it does.
+| More information on naming: https://docs.omnia.equinor.com/services/data/concept/namingconventions/#datafactory-v2
 
 .. image:: images/2_Copy_Activity.png
 
