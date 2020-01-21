@@ -83,7 +83,7 @@ Considerations
     * Copy Data v's Connect (reference existing data source)
     * Different technology options for realising the above
 
-      * Cost
+      * Cost (serverless & utility model. pricing calculator)
       * V1 v's V2 v's V3 generation of products and corresponding maturity.
 
 ----
@@ -137,7 +137,7 @@ Ingest Alternatives
 * Azure Databricks​
 * Stream Analytics​
 * HD Insight
-* IoT Hub
+* Event Hub & IoT Hub
 * Custom Applications​
 
 .. note::
@@ -166,7 +166,7 @@ Ingest Alternatives
     Streaming data​
 
     * Stream Analytics​
-    * EH​
+    * Event Hub​
     * IoT Hub
 
 ----
@@ -176,6 +176,14 @@ Data Flow
 
 .. image:: images/ingest/data-flow.png
   :width: 800px
+
+
+.. note::
+
+  monolith v's microservice - shared resources v's multiple copies. Good 
+  services are charged on usage  so aim to avoid creating monoliths as hard
+  to manage and update.
+
 
 ----
 

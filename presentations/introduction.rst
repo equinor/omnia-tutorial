@@ -54,6 +54,7 @@ Introduction
     * How: A mixture of presentations and tutorial. We will reference Azure documentation extensively as they need to know how to navigate these pages.    
     * A lot of material to get through, but we focus on the most important points so don't panic if you can't complete something.
     * Difference from MS course - focus on implementation and Equinor focus. Supplement with MS courses for tech deep dive.
+    * Round the room, experience with Azure & Omnia.
 
     What we are not covering
 
@@ -65,13 +66,11 @@ Introduction
 
     * Pre created resources.
     * Destroy after 1? week
-    * Apply for *Data Developer* role in in AccessIT to get access to the 
-      Omnia *sandbox* environment (*VanDamme*) 
+    * Apply for *Omnia Student* role in in AccessIT to get access to the 
+      *Digital Academy Training* subscription.
 
     Other 
 
-    * Allowed to leave if not suitable.
-    * Signup / provisioning. 
     * Ask questions via Slack 
     * Show high level agenda (steps, presentation + exercises). Visit in detail later
     
