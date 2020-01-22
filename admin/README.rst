@@ -47,7 +47,7 @@ very often so time hasn't been invested in this at this stage.
 
   * Give the omnia-tutorial service principal the **Storage Blob Data Owner** role.
   
-  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob Data Contributor** role.
+  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob Data Contributor** role (also **Contributor**?? role to view files in online storage explorer).
 
   * Create the folders:
 
