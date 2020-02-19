@@ -155,6 +155,16 @@ Data Architecture
     * Similar requirements to Transform, but often application specific to meet solution specific needs (access pattern, performance)
     * Data in prepared should be exposed through the enterprise layer also. 
 
+----
+
+Data Architecture Implementation
+================================
+
+https://docs.omnia.equinor.com/services/data/dataarchitecture/implementation/
+
+.. note::
+    Direct link to Omnia docs to avoid duplication of material.
+    See also case study: https://docs.omnia.equinor.com/services/data/dataarchitecture/case-study/
 
 ----
 
