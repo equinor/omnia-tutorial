@@ -19,14 +19,19 @@ ARM templates for the different common components are under the templates
 folder. To create an environment you should perform the below steps:
 
 Note: More of this could be automated, but it is assumed this won't be run 
-very often so time hasn't been invested in this at this stage.
+too often?!? so time hasn't been invested in this at this stage.
 
-* Change to the runtime-environment folder and run the **create-environment.ps1** script to setup key resources.
+* Change to the runtime-environment folder and run the 
+  **create-environment.ps1** script to setup key resources.
 
-  * When prompted enter a password that meets Equinor guidelines (you do not need to remember this as AD login will be enabled).
-  * Creation of the data lake store might fail if the Resource Group does not exist from before and / or doesn't have a policy exception. In this case see the manual steps for data lake below.
+  * When prompted enter a SQL admin password that meets Equinor guidelines 
+    (you do not need to remember this as AD login will be enabled).
+  * Note: Creation of the data lake store might fail if the Resource Group 
+    does not exist from before and / or doesn't have a policy exception. In 
+    this case see the manual steps for data lake below.
 
-* Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on the *omnia-tutorial-common* resource group.
+* Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on 
+  the *omnia-tutorial-common* resource group.
 
 * Onboarding
 
@@ -45,12 +50,17 @@ very often so time hasn't been invested in this at this stage.
 
 * Data Lake Store
 
-  * If not created by the script, the a DLS v2 needs to be setup manually by the Omnia Solum team as current policy doesn't allow this to be created.
-    Create this as a standard storage account named **omniatutorialdls** using **LRS** replication and with **Hierarchical namespace** enabled.
+  * If not created by the script, the a DLS v2 needs to be setup manually by 
+    the Omnia Solum team as current policy doesn't allow this to be created.
+    Create this as a standard storage account named **omniatutorialdls** using
+    **LRS** replication and with **Hierarchical namespace** enabled.
 
-  * Give the omnia-tutorial service principal the **Storage Blob Data Owner** role.
+  * Give the omnia-tutorial service principal the **Storage Blob Data Owner** 
+    role.
   
-  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob Data Contributor** role (also **Contributor**?? role to view files in online storage explorer).
+  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob 
+    Data Contributor** role (also **Contributor**?? role to view files in 
+    online storage explorer).
 
   * Create the folders:
 
