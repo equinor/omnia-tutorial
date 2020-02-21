@@ -123,13 +123,22 @@ else{
     Write-Host "Using existing resource group '$ResourceGroupName'";
 }
 
-# # Create the Data Lake Store
-# Write-Host "Creating Data Lake Store ... " -NoNewline
+
+# Create the Data Lake Store
+$dls = Get-AzResource -ResourceGroupName $resourceGroupName -Name "omniatutorialdls" -ErrorAction SilentlyContinue 
+if ($null -eq $dls)
+{
+    Write-Host "Creating Data Lake Store ... " -NoNewline
+    $dls = New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DLSTemplateFilePath -TemplateParameterFile $DLSParametersFilePath  -scenarioName $ScenarioName
+    Write-Host "$dls Data Lake Store" -ForegroundColor Green
+}
+else {
+    Write-Host "Data Lake Store already exists. Skipping creation!" -ForegroundColor "Yellow"
+}
+
+
 # if(Test-Path $DLSParametersFilePath) {
-#     # New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DLSTemplateFilePath -TemplateParameterFile $DLSParametersFilePath;
-# } else {
-#     # New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DLSTemplateFilePath;
-# }
+#     # New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $DLSTemplateFilePath -TemplateParameterFile $DLSParametersFilePath  -scenarioName $ScenarioName
 # Write-Host "Done" -ForegroundColor Green
 
 # Create the Data Factory
@@ -211,9 +220,9 @@ if (!$serverAADAdmin)
 $connectionString = "Data Source=$serverName.database.windows.net;Authentication=Active Directory Integrated; Initial Catalog=$databaseName"
 Write-Host $connectionString
 $sqlScriptFile = "resources\\setup_database.sql"
-Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
+#Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
 $sqlScriptFile = "resources\\populate_database.sql"
-Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
+#Invoke-Sqlcmd -ConnectionString $connectionString -InputFile $sqlScriptFile 
 
 # Create Databricks
 $dataBricks = Get-AzResource -ResourceGroupName $resourceGroupName -Name "$ScenarioName-common-databricks" -ErrorAction SilentlyContinue 

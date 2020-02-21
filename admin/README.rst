@@ -23,6 +23,9 @@ very often so time hasn't been invested in this at this stage.
 
 * Change to the runtime-environment folder and run the **create-environment.ps1** script to setup key resources.
 
+  * When prompted enter a password that meets Equinor guidelines (you do not need to remember this as AD login will be enabled).
+  * Creation of the data lake store might fail if the Resource Group does not exist from before and / or doesn't have a policy exception. In this case see the manual steps for data lake below.
+
 * Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on the *omnia-tutorial-common* resource group.
 
 * Onboarding
@@ -42,7 +45,7 @@ very often so time hasn't been invested in this at this stage.
 
 * Data Lake Store
 
-  * A DLS v2 needs to be setup manually by the Omnia Solum team as current policy doesn't allow this to be created.
+  * If not created by the script, the a DLS v2 needs to be setup manually by the Omnia Solum team as current policy doesn't allow this to be created.
     Create this as a standard storage account named **omniatutorialdls** using **LRS** replication and with **Hierarchical namespace** enabled.
 
   * Give the omnia-tutorial service principal the **Storage Blob Data Owner** role.
@@ -101,9 +104,9 @@ very often so time hasn't been invested in this at this stage.
 
     .. code-block:: sql
 
-      CREATE USER [omnia-tutorial-common] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
-      GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial-common]
-  * Open the solution at */exercises/expose/solution/EDC-API.sln* in visual studio and publish
+      CREATE USER [omnia-tutorial] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
+      GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial]
+  * Open the solution at */exercises/expose/solution/omnia-tutorial-API.sln* in visual studio and publish
     to the created app service. Verify by going to the website under the path 
     */swagger/*
 
