@@ -136,8 +136,7 @@ Offboarding
 -----------
 
 The contents of this folder can be used to offboard all users and cleanup 
-any resources that they have used or created. It will also delete the 
-common resource group.
+any resources that they have used or created.
 
 Run the **offboard.ps1** script to perform offboarding. Note that 
 this does not prompt for any confirmation.

@@ -22,10 +22,11 @@ foreach ($member in $groupMembers)
     {
         $shortName = $member.UserPrincipalName.Split("@")[0].ToLower()
         $resourceGroupName = "omnia-tutorial-$shortName"
-        Write-Host "Removing $resourceGroupName"
+        Write-Host "Removing resource group $resourceGroupName"
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 
+    Write-Host "Removing $shortName from participants group"
     Remove-AzADGroupMember -MemberObjectId $($member.Id) -GroupObjectId $participantsAADGroup
 }
 
