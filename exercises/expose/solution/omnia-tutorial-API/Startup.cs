@@ -27,7 +27,7 @@ namespace omnia_tutorial
             {
                 c.SwaggerDoc("v1", new Info
                 {
-                    Title = "EDC API",
+                    Title = "Omnia Tutorial",
                     Version = "v1"
                 });
                 c.EnableAnnotations();
@@ -60,7 +60,7 @@ namespace omnia_tutorial
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EDC API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Omnia Tutorial");
             });
 
             app.UseHttpsRedirection();

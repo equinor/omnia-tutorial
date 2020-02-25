@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <RootNamespace>EDC_API</RootNamespace>
+    <RootNamespace>Omnia_Tutorial</RootNamespace>
     <UserSecretsId>0b7377ce-0282-47b7-91ce-0825aa194e4d</UserSecretsId>
   </PropertyGroup>
 
