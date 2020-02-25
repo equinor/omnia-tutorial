@@ -92,7 +92,7 @@ too often?!? so time hasn't been invested in this at this stage.
     *DatabricksSpnClientSecret*. Note the application ID (client ID) and 
     update the compute exercise with this.
   * Link databricks and the keyvault as described at: https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html
-    Scope name *omnia-tutorial-common-kv* Manage Principal set to *Creator*.
+    Scope name *omnia-tutorial-common-kv* Manage Principal set to *All Users*.
   * Give the service principal permission to the datalake. Under DataLake 
     access control give the service principal the *STORAGE BLOB DATA 
     CONTRIBUTOR* role.
