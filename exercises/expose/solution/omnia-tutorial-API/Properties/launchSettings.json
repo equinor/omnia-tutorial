@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "EDC_API": {
+    "Omnia_Tutorial": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
