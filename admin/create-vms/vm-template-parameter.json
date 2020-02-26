@@ -6,37 +6,22 @@
             "value": "northeurope"
         },
         "networkSecurityGroupId": {
-            "value": "/subscriptions/9bc2f845-5f0d-450d-bf32-82d81d9e8445/resourceGroups/ManagementRG/providers/Microsoft.Network/networkSecurityGroups/DigitalAcademyNSG"
+            "value": "/subscriptions/d4e5fecf-32d0-4314-a56e-ca2389ac7ac3/resourceGroups/DataPlatformRGDev/providers/Microsoft.Network/networkSecurityGroups/DataPlatformNSGDev"
         },
         "subnetName": {
-            "value": "DigitalAcademySubnet"
+            "value": "DataPlatformSubnetDev"
         },
         "virtualNetworkId": {
-            "value": "/subscriptions/9bc2f845-5f0d-450d-bf32-82d81d9e8445/resourceGroups/ManagementRG/providers/Microsoft.Network/virtualNetworks/DigitalAcademyVnet"
+            "value": "/subscriptions/d4e5fecf-32d0-4314-a56e-ca2389ac7ac3/resourceGroups/DataPlatformRGDev/providers/Microsoft.Network/virtualNetworks/DataPlatformVnetDev"
         },
         "osDiskType": {
             "value": "Premium_LRS"
         },
         "virtualMachineSize": {
-            "value": "Standard_B2ms"
+            "value": "Standard_D4s_v3"
         },
         "adminUsername": {
             "value": "omnia"
-        },
-        "autoShutdownStatus": {
-            "value": "Enabled"
-        },
-        "autoShutdownTime": {
-            "value": "19:00"
-        },
-        "autoShutdownTimeZone": {
-            "value": "UTC"
-        },
-        "autoShutdownNotificationStatus": {
-            "value": "Disabled"
-        },
-        "autoShutdownNotificationLocale": {
-            "value": "en"
         }
     }
 }
