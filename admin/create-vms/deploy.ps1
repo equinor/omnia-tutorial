@@ -16,7 +16,7 @@ Set-AzContext -SubscriptionName $subscriptionId
 $storageAccountName = "omniatutorialdiag"
 
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "blob-arm-template.json" -TemplateParameterFile "blob-template-parameter.json" -storageAccountName $storageAccountName
+# New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "blob-arm-template.json" -TemplateParameterFile "blob-template-parameter.json" -storageAccountName $storageAccountName
 
 $storageAccountId = (Get-AzResource -Name $storageAccountName -ResourceGroupName $resourceGroupName).ResourceId
 
