@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "northeurope"
+        },
+        "networkSecurityGroupId": {
+            "value": "/subscriptions/9bc2f845-5f0d-450d-bf32-82d81d9e8445/resourceGroups/ManagementRG/providers/Microsoft.Network/networkSecurityGroups/DigitalAcademyNSG"
+        },
+        "subnetName": {
+            "value": "DigitalAcademySubnet"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/9bc2f845-5f0d-450d-bf32-82d81d9e8445/resourceGroups/ManagementRG/providers/Microsoft.Network/virtualNetworks/DigitalAcademyVnet"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B2ms"
+        },
+        "adminUsername": {
+            "value": "omnia"
+        },
+        "autoShutdownStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownTime": {
+            "value": "19:00"
+        },
+        "autoShutdownTimeZone": {
+            "value": "UTC"
+        },
+        "autoShutdownNotificationStatus": {
+            "value": "Disabled"
+        },
+        "autoShutdownNotificationLocale": {
+            "value": "en"
+        }
+    }
+}
