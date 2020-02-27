@@ -264,6 +264,7 @@ function EmailNotification{
     $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/omnia-tutorial-" + $shortName + "/overview <p>")
     $content.Body += ("You can find shared common resources in the resource group <b>omnia-tutorial-common</b>:<p>")
     $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/omnia-tutorial-common/overview<p>")
+    $content.Body += ("For the Expose module, in case you don't have Visual Studio installed, we have spinned up a virtual machine with Visual Studio 2019 Community verison installed. The IP address and user credentials will be sent to you personally. Please contact us if you receive no email one day before the workshop.")
     $content.Body += ("We have a Slack channel <b>#omnia</b> for information, discussion and questions. Feel free to join the channel here:<p>")
     $content.Body += ("https://equinor.slack.com/archives/CBV2ELVTM<p>")
     $content.Body += ("<b>If you are redirected to the home page by clicking the links above, try pasting them into a browser.</b><p>")
