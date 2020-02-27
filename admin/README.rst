@@ -120,6 +120,14 @@ too often?!? so time hasn't been invested in this at this stage.
     to the created app service. Verify by going to the website under the path 
     */swagger/*
 
+* Create VMs in Digital Academy Training subscription
+
+  * Use the powershell script 'deploy.ps1' from folder /create-vms to create vms for users to use in the Expose module. Revise the parameters before you run the script, like the number of vms, username and password, etc. The powershell script will create a storage account for vm diagnostics and then create a certain number of vms in the resource group set as parameter. 
+
+  * When the powershell script is finished successfully, check all the resources created in the target resource group. Pick one or a few vms to test the connection and check if you can deploy the starter api to azure web app using Visual Studio. 
+
+  * Send out IP address and user credentials to each user separately. Put password in separate email.
+
 Removal
 ^^^^^^^
 
