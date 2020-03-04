@@ -1,0 +1,49 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+			"defaultValue": "northeurope"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "accountType": {
+            "type": "string",
+			"defaultValue": "Standard_LRS"
+        },
+        "kind": {
+            "type": "string",
+			"defaultValue": "Storage"
+        },
+        "supportsHttpsTrafficOnly": {
+            "type": "bool",
+			"defaultValue": "true"
+        },
+        "largeFileSharesState": {
+            "type": "string",
+			"defaultValue": "Disabled"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+                "largeFileSharesState": "[parameters('largeFileSharesState')]"
+            },
+            "dependsOn": [],
+            "sku": {
+                "name": "[parameters('accountType')]"
+            },
+            "kind": "[parameters('kind')]",
+            "tags": {}
+        }
+    ],
+    "outputs": {}
+}

@@ -258,12 +258,13 @@ function EmailNotification{
 
     $content.Body = "<html><head><style type='text/css'>table{ font-size:11pt;font-family:Calibri;border:solid 1px #cccccc;vertical-align:top;padding:0px 0px;border-spacing:0px 0px;}img.middle{vertical-align:middle;}</style></head><body><div style='font-size:11pt;font-family:Calibri'>Hi,<p>"
     $content.Body += ("Thank you for signing up for the 'Omnia and the Equinor Data Platform' workshop.<p>")
-    $content.Body += ("All the workshop material and documentation is available on Github at the link below. There are no pre-requisites for the workshop other than a modern browser, although you might consider the optional software mentioned for a simplified experience:<p>")
+    $content.Body += ("All the workshop material and documentation is available on Github at the link below:<p>")
     $content.Body += ("https://github.com/equinor/omnia-tutorial<p>")
     $content.Body += ("In the link below you can find a resource group created for use during the workshop:<p>")
     $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/omnia-tutorial-" + $shortName + "/overview <p>")
     $content.Body += ("You can find shared common resources in the resource group <b>omnia-tutorial-common</b>:<p>")
     $content.Body += ("https://portal.azure.com/#@statoilsrm.onmicrosoft.com/resource/subscriptions/160c90f1-6bbe-4276-91f3-f732cc0a45db/resourceGroups/omnia-tutorial-common/overview<p>")
+    $content.Body += ("For the Expose module, in case you don't have Visual Studio installed, we have spinned up a virtual machine with Visual Studio 2019 Community version installed. The IP address and user credentials will be sent to you personally. Please contact us if you receive no email within one day of the workshop.<p>")
     $content.Body += ("We have a Slack channel <b>#omnia</b> for information, discussion and questions. Feel free to join the channel here:<p>")
     $content.Body += ("https://equinor.slack.com/archives/CBV2ELVTM<p>")
     $content.Body += ("<b>If you are redirected to the home page by clicking the links above, try pasting them into a browser.</b><p>")

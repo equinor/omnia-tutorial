@@ -19,11 +19,19 @@ ARM templates for the different common components are under the templates
 folder. To create an environment you should perform the below steps:
 
 Note: More of this could be automated, but it is assumed this won't be run 
-very often so time hasn't been invested in this at this stage.
+too often?!? so time hasn't been invested in this at this stage.
 
-* Change to the runtime-environment folder and run the **create-environment.ps1** script to setup key resources.
+* Change to the runtime-environment folder and run the 
+  **create-environment.ps1** script to setup key resources.
 
-* Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on the *omnia-tutorial-common* resource group.
+  * When prompted enter a SQL admin password that meets Equinor guidelines 
+    (you do not need to remember this as AD login will be enabled).
+  * Note: Creation of the data lake store might fail if the Resource Group 
+    does not exist from before and / or doesn't have a policy exception. In 
+    this case see the manual steps for data lake below.
+
+* Give the ``OMNIA - Tutorial participants`` AD group the **Reader** role on 
+  the *omnia-tutorial-common* resource group.
 
 * Onboarding
 
@@ -42,12 +50,17 @@ very often so time hasn't been invested in this at this stage.
 
 * Data Lake Store
 
-  * A DLS v2 needs to be setup manually by the Omnia Solum team as current policy doesn't allow this to be created.
-    Create this as a standard storage account named **omniatutorialdls** using **LRS** replication and with **Hierarchical namespace** enabled.
+  * If not created by the script, the a DLS v2 needs to be setup manually by 
+    the Omnia Solum team as current policy doesn't allow this to be created.
+    Create this as a standard storage account named **omniatutorialdls** using
+    **LRS** replication and with **Hierarchical namespace** enabled.
 
-  * Give the omnia-tutorial service principal the **Storage Blob Data Owner** role.
+  * Give the omnia-tutorial service principal the **Storage Blob Data Owner** 
+    role.
   
-  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob Data Contributor** role (also **Contributor**?? role to view files in online storage explorer).
+  * Give the ``OMNIA - Tutorial participants`` AD group the **Storage Blob 
+    Data Contributor** role (also **Contributor**?? role to view files in 
+    online storage explorer).
 
   * Create the folders:
 
@@ -79,7 +92,7 @@ very often so time hasn't been invested in this at this stage.
     *DatabricksSpnClientSecret*. Note the application ID (client ID) and 
     update the compute exercise with this.
   * Link databricks and the keyvault as described at: https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html
-    Scope name *omnia-tutorial-common-kv* Manage Principal set to *Creator*.
+    Scope name *omnia-tutorial-common-kv* Manage Principal set to *All Users*.
   * Give the service principal permission to the datalake. Under DataLake 
     access control give the service principal the *STORAGE BLOB DATA 
     CONTRIBUTOR* role.
@@ -101,11 +114,19 @@ very often so time hasn't been invested in this at this stage.
 
     .. code-block:: sql
 
-      CREATE USER [omnia-tutorial-common] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
-      GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial-common]
-  * Open the solution at */exercises/expose/solution/EDC-API.sln* in visual studio and publish
+      CREATE USER [omnia-tutorial] FROM  EXTERNAL PROVIDER  WITH DEFAULT_SCHEMA=[dbo]
+      GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: [dbo] TO [omnia-tutorial]
+  * Open the solution at */exercises/expose/solution/omnia-tutorial-API.sln* in visual studio and publish
     to the created app service. Verify by going to the website under the path 
     */swagger/*
+
+* Create VMs in Digital Academy Training subscription
+
+  * Use the powershell script 'deploy.ps1' from folder /create-vms to create vms for users to use in the Expose module. Revise the parameters before you run the script, like the number of vms, username and password, etc. The powershell script will create a storage account for vm diagnostics and then create a certain number of vms in the resource group set as parameter. 
+
+  * When the powershell script is finished successfully, check all the resources created in the target resource group. Pick one or a few vms to test the connection and check if you can deploy the starter api to azure web app using Visual Studio. 
+
+  * Send out IP address and user credentials to each user separately. Put password in separate email.
 
 Removal
 ^^^^^^^
@@ -136,8 +157,7 @@ Offboarding
 -----------
 
 The contents of this folder can be used to offboard all users and cleanup 
-any resources that they have used or created. It will also delete the 
-common resource group.
+any resources that they have used or created.
 
 Run the **offboard.ps1** script to perform offboarding. Note that 
 this does not prompt for any confirmation.

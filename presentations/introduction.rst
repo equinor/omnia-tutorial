@@ -155,6 +155,16 @@ Data Architecture
     * Similar requirements to Transform, but often application specific to meet solution specific needs (access pattern, performance)
     * Data in prepared should be exposed through the enterprise layer also. 
 
+----
+
+Data Architecture Implementation
+================================
+
+https://docs.omnia.equinor.com/services/data/dataarchitecture/implementation/
+
+.. note::
+    Direct link to Omnia docs to avoid duplication of material.
+    See also case study: https://docs.omnia.equinor.com/services/data/dataarchitecture/case-study/
 
 ----
 
@@ -224,7 +234,7 @@ https://portal.azure.com
     
       * Create resource
       * All resources button
-      * Search
+      * Search - importance of naming
       * Show example for browsing to data factory (main links - overview, access, ...)
       * Cloud shell (e.g. 'ls', 'pwd', 'git clone <this repo>' 'az group list'). They will use this later in the exercises
       * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)

@@ -27,7 +27,7 @@ Prerequisites
 
 Create a Notebook in Databricks
 -------------------------------
-* Open Databricks workspace **omnia-tutorial-common-databricks** with URL: https://northeurope.azuredatabricks.net/?o=4624185366344596.
+* Open Databricks workspace **omnia-tutorial-common-databricks** with URL: https://northeurope.azuredatabricks.net/?o=1057688697581960.
 
   **Note: Don't launch the workspace from Azure Portal. You don't have access 
   there.**
@@ -69,7 +69,7 @@ Bricks. This includes:
   "6b26b7a0-b848-4c68-b0c4-4bfbea141a06".  
 * There is a secret created for this Service Principal to be used as a client 
   secret. The secret is stored in the shared key vault **omnia-tutorial-common-kv** with 
-  secret name **databricksSpnClientSecret**. The permissions of this client
+  secret name **DatabricksSpnClientSecret**. The permissions of this client
   have been set up for this module. 
 * The connection between the key vault and the Databricks workspace has been
   set up with a secret scope **omnia-tutorial-common-kv** in Databricks. 
@@ -264,7 +264,7 @@ Solution:
   extra_configs = configs)
 
   df = spark.read.format('csv').options(
-  header='true', inferschema='false').load("/mnt/omniatutorial/*.csv")
+  header='true', inferschema='false').load("/mnt/omniatutorial<shortname>/*.csv")
   display(df)
 
 Extract - Read Data From Datalake Directly Using Client Credentials
@@ -319,7 +319,7 @@ SQL Server. This should be in the format omniatutorial-<short name>.**
             url="jdbc:sqlserver://<your-sql-server-name>.database.windows.net:1433",
             databaseName="Common",
             driver="com.microsoft.sqlserver.jdbc.SQLServerDriver",
-            dbtable="dbo.FieldProduction",
+            dbtable="dbo.ProductionData",
             encrypt="true",
             hostNameInCertificate = "*.database.windows.net",
             trustServerCertificate = "false",
@@ -343,7 +343,7 @@ Solution:
       df_4.write.format('jdbc').options(
             url='jdbc:sqlserver://<your-sql-server-name>.database.windows.net:1433;database=<your-sql-database-name>',
             driver='com.microsoft.sqlserver.jdbc.SQLServerDriver',
-            dbtable='dbo.FieldProduction-<short-name>',
+            dbtable='dbo.FieldProduction_<short-name>',
             user='<your-sql-server-username>',
             password='<your-sql-server-password>').mode('append').save()
 
