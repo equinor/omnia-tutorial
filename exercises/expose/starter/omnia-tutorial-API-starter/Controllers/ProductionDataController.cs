@@ -27,16 +27,17 @@ namespace omnia_tutorial.Controllers
         public ActionResult<IEnumerable<ProductionData>> GetList(string search)
         {
             // TODO Use the CommonDbContext to retrieve all entries from the ProductionData table
+            var productionDatas = _context.ProductionData.Where(f => f.Wellbore.Contains(search)).ToList();
 
-            throw new NotImplementedException();
+            return Ok(productionDatas);
         }
 
         // GET: production-data/5
         [HttpGet("{id}")]
         public ActionResult<ProductionData> Get(int id)
         {
-            // TODO Retrieve a single entry with the specified Id.
-            throw new NotImplementedException();
+            var productionData = _context.ProductionData.FirstOrDefault(f => f.Id == id);
+            return Ok(productionData);
         }
 
         // PUT: production-data/5
