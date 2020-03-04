@@ -234,7 +234,7 @@ https://portal.azure.com
     
       * Create resource
       * All resources button
-      * Search
+      * Search - importance of naming
       * Show example for browsing to data factory (main links - overview, access, ...)
       * Cloud shell (e.g. 'ls', 'pwd', 'git clone <this repo>' 'az group list'). They will use this later in the exercises
       * Show onboarding script (https://github.com/equinor/omnia-tutorial/blob/master/src/onboarding/onboard.ps1)
