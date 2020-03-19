@@ -1,11 +1,7 @@
-﻿using omnia_tutorial.Models;
-using Microsoft.Azure.Services.AppAuthentication;
+﻿using Microsoft.Azure.Services.AppAuthentication;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
+using omnia_tutorial.Models;
 
 namespace omnia_tutorial.Data
 {

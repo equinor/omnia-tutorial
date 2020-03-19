@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using omnia_tutorial.Data;
 using omnia_tutorial.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace omnia_tutorial.Controllers
 {
@@ -37,7 +37,7 @@ namespace omnia_tutorial.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProductionData> Get(int id)
         {
-            var productionData =  _context.ProductionData.Find(id);
+            var productionData = _context.ProductionData.Find(id);
 
             if (productionData == null)
             {
@@ -89,7 +89,7 @@ namespace omnia_tutorial.Controllers
             }
             catch (DbUpdateException)
             {
-                    throw;
+                throw;
             }
 
             var productionData = _context.ProductionData.Last();
