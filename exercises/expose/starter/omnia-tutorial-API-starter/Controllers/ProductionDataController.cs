@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using omnia_tutorial.Data;
 using omnia_tutorial.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace omnia_tutorial.Controllers
 {
@@ -27,7 +24,6 @@ namespace omnia_tutorial.Controllers
         public ActionResult<IEnumerable<ProductionData>> GetList(string search)
         {
             // TODO Use the CommonDbContext to retrieve all entries from the ProductionData table
-
             throw new NotImplementedException();
         }
 
@@ -35,7 +31,6 @@ namespace omnia_tutorial.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProductionData> Get(int id)
         {
-            // TODO Retrieve a single entry with the specified Id.
             throw new NotImplementedException();
         }
 
