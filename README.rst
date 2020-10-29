@@ -3,8 +3,10 @@
 
 omnia-tutorial
 ==============
+ **This is an open repo and we encourage all of you to contribute to maintaining and improving this repo.**
 
-This repository contains a hands-on tutorial on using the Omnia Data Platform.
+This repository contains a hands-on tutorial on using the Omnia Data Platform. 
+
 We will give a general introduction to Omnia concepts whilst walking through 
 building the below scenario:
 
